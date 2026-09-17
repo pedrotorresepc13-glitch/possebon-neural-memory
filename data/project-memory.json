@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "project": "POSSEBON App",
+    "source_repository": "pedrotorresepc13-glitch/possebon",
+    "source_branch": "possebon",
+    "package_id": "br.com.possebon.app",
+    "purpose": "Memória externa viva, mapa estrutural e referência operacional do desenvolvimento",
+    "updated_at": "2026-09-16",
+    "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF ou dados pessoais nesta memória.",
+    "global_rules": [
+      "Unidade é fronteira rígida de dados e contexto.",
+      "Pessoa é única; vínculo funcional/candidato é contextual por unidade.",
+      "Sessão permanente não deve cair por expiração normal do access token.",
+      "Minha Ronda Gerencial é referência visual e comportamental da Segurança Operacional.",
+      "Equipe é opcional nos fluxos de Segurança Operacional.",
+      "Mudança só passa para estável depois de implementada e validada.",
+      "Flutter usa o GitHub do app como fonte operacional; backend MAD Builder usa ZIP/arquivo mais recente validado, não o GitHub Web.",
+      "Evitar código duplicado e telas divergentes; reutilizar componentes e regras compartilhadas.",
+      "Não misturar responsável atual de um Plano de Ação com criador do registro que originou o plano."
+    ]
+  },
+  "status_legend": {
+    "stable": "Estável/implantado",
+    "active": "Ativo em evolução",
+    "attention": "Precisa correção/validação",
+    "planned": "Planejado"
+  },
+  "nodes": [
+    {"id":"core","title":"POSSEBON App","kind":"core","status":"active","x":3650,"y":2450,"summary":"Aplicativo Flutter Android/Web com contexto por unidade, sessão permanente, segurança operacional, transporte, acesso, documentos, RDO e recursos offline.","rules":["Código limpo e reutilização de componentes","Não criar divergência visual entre módulos equivalentes"],"files":["lib/main.dart","pubspec.yaml"]},
+    {"id":"session","title":"Sessão Permanente","kind":"service","status":"active","x":3200,"y":1520,"summary":"Access token curto + refresh token seguro + renovação single-flight. Falha de rede não deve provocar logout.","rules":["Refresh token fica no armazenamento seguro","Somente um refresh simultâneo","Falha de rede não apaga autenticação"],"files":["lib/core/session/auth_session_manager.dart","lib/core/session/session_storage.dart","lib/services/session_service.dart"]},
+    {"id":"access","title":"Acesso / Login","kind":"screen","status":"active","x":2460,"y":1510,"summary":"Seleção de unidade, CPF, identificação, senha/primeiro acesso e continuidade da sessão.","rules":["Unidade obrigatória antes da identificação","Sessão existente deve ser reaproveitada quando válida"],"files":["lib/screens/acesso_screen.dart","lib/screens/splash_screen.dart"]},
+    {"id":"home","title":"Home","kind":"screen","status":"active","x":3650,"y":1450,"summary":"Hub contextual por Pessoa + Unidade + capabilities. Abre módulos e carrega disponibilidade de recursos.","rules":["Conteúdo deve respeitar unit_id","Capabilities controlam exibição/acesso"],"files":["lib/screens/home_screen.dart"],"next":["Reduzir rebuilds globais","Separar responsabilidades de carregamento e UI"]},
+    {"id":"security","title":"Segurança Operacional","kind":"domain","status":"active","x":4850,"y":2100,"summary":"Domínio compartilhado por Minha Ronda, Dono de Área, Audicomp, Amigo do Peito e Planos de Ação.","rules":["Padrão visual oficial = Minha Ronda Gerencial","Equipe opcional","Listar somente registros do usuário atual quando aplicável"]},
+    {"id":"ronda","title":"Minha Ronda Gerencial","kind":"screen","status":"stable","x":5540,"y":1500,"summary":"Referência visual/funcional da Segurança Operacional. Trabalha com identificação, condições, evidências, planos e PDF.","rules":["Serve como padrão oficial dos demais fluxos equivalentes","PDF salvo deve poder ser reaberto"],"files":["lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart"]},
+    {"id":"dono","title":"Dono de Área","kind":"screen","status":"attention","x":5580,"y":1840,"summary":"Fluxo de Dono de Área. Deve se comportar como Minha Ronda na etapa Segurança, alterando apenas perguntas/dados próprios.","rules":["Subcategorias oficiais IDs 35–62","Equipe opcional","Etapa Segurança deve reutilizar comportamento da Minha Ronda"],"files":["lib/features/seguranca_operacional/presentation/dono_area_screen.dart","lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"],"next":["Validar etapa Segurança completa","Eliminar divergências visuais remanescentes"]},
+    {"id":"audicomp","title":"Audicomp","kind":"screen","status":"active","x":5580,"y":2180,"summary":"Auditoria comportamental com perguntas e regras próprias dentro do padrão de Segurança Operacional.","rules":["Mesmo padrão visual da família Segurança","Registros próprios do usuário"]},
+    {"id":"amigo","title":"Meu Amigo do Peito","kind":"screen","status":"active","x":5580,"y":2520,"summary":"Fluxo simplificado. Se resolvido no local, encerra; se não resolvido, gera Plano de Ação automático.","rules":["Sem etapa visual desnecessária entre decisão e finalização","Plano automático para Gerente SMS","Prazo padrão +7 dias quando não resolvido"],"files":["lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart"]},
+    {"id":"plans","title":"Meus Planos de Ação","kind":"screen","status":"attention","x":4920,"y":2940,"summary":"Planos atribuídos ao responsável atual. O executor pode ser diferente de quem criou o registro de origem.","rules":["Listar pelo responsável atual do plano","Abrir registro/PDF de origem sem exigir ser criador","Replanejamento deve acrescentar histórico, não sobrescrever","Troca de responsável no replanejamento é opcional"],"files":["lib/features/seguranca_operacional/presentation/planos_acao_screen.dart","lib/features/seguranca_operacional/data/seguranca_operacional_repository.dart"],"next":["Validar origem PDF em todos os quatro fluxos","Validar motivo e troca opcional no replanejamento","Adicionar evidência de execução em etapa posterior"]},
+    {"id":"rdo","title":"Meu RDO","kind":"screen","status":"active","x":2600,"y":2770,"summary":"RDO offline-first com fila local e sincronização protegida.","rules":["Mostrar somente RDO do usuário atual","Arquivado não pode ser editado","Emissão deve ser editável na próxima etapa"],"files":["lib/screens/meu_rdo_screen.dart","lib/repositories/rdo_repository.dart","lib/services/rdo_sync_service.dart"],"next":["Implementar edição somente em status Emissão","Abrir arquivados em modo somente leitura"]},
+    {"id":"transport","title":"Meu Transporte","kind":"screen","status":"active","x":1640,"y":2240,"summary":"Rotas, confirmação de uso, GPS, monitor/motorista, mapa e presença no transporte.","rules":["Contexto por unidade","Tracking não pode ser interrompido por logout durante rota ativa"],"files":["lib/screens/meu_transporte_screen.dart","lib/screens/transporte_mapa_screen.dart","lib/services/transporte_tracking_service.dart"]},
+    {"id":"geofence","title":"Cerca Virtual","kind":"service","status":"active","x":1580,"y":2730,"summary":"Configuração e presença por geofence, vinculadas ao contexto da unidade.","rules":["Presença deve usar unidade atual","Configuração administrativa respeita capability"],"files":["lib/screens/cerca_virtual_admin_screen.dart","lib/features/access_control/data/access_control_api.dart"]},
+    {"id":"attendance","title":"Controle de Acesso","kind":"domain","status":"active","x":1040,"y":2480,"summary":"Camada de presença relacionada a Transporte e Cerca Virtual.","rules":["Origem T = Transporte","Origem C = Cerca Virtual"]},
+    {"id":"notices","title":"Quadro de Avisos","kind":"screen","status":"active","x":3160,"y":3440,"summary":"Avisos por unidade/público com estado local de leitura.","rules":["Sem vazamento entre unidades","Tipo C = candidatos; tipo F = colaboradores com refinamentos funcionais"],"files":["lib/screens/quadro_avisos_screen.dart"]},
+    {"id":"profile","title":"Meus Dados","kind":"screen","status":"active","x":3660,"y":3500,"summary":"Dados pessoais, dados funcionais e foto oficial.","rules":["Pessoa é única","Dados funcionais respeitam unidade atual"],"files":["lib/screens/meus_dados_screen.dart"]},
+    {"id":"training","title":"Meus Treinamentos","kind":"screen","status":"active","x":4170,"y":3700,"summary":"Lista treinamentos com cache local primeiro e atualização silenciosa depois.","files":["lib/screens/meus_treinamentos_screen.dart"]},
+    {"id":"documents","title":"Processo / Documentos","kind":"screen","status":"active","x":4680,"y":3550,"summary":"Documentos exigidos pelo vínculo em vaga/processo. Envio individual e visualização.","rules":["Vínculo com vaga é criado pelo RH","Candidatura no app não cria vínculo de vaga","Conteúdo respeita unidade"],"files":["lib/screens/processo_documentos_screen.dart"]},
+    {"id":"badge","title":"Cadastro de Crachá","kind":"screen","status":"active","x":2050,"y":3510,"summary":"Busca colaborador, leitura QR e OCR/ML Kit de crachá.","files":["lib/screens/cadastro_cracha_screen.dart","lib/screens/qr_cracha_scanner_screen.dart"]},
+    {"id":"manifest","title":"Sugestões / Manifestação","kind":"screen","status":"active","x":2580,"y":3750,"summary":"Sugestão, reclamação, elogio e dúvida; fluxo de relato com contador e envio.","files":["lib/screens/manifestacao_screen.dart"]},
+    {"id":"api","title":"API / Rede","kind":"service","status":"active","x":3600,"y":4470,"summary":"ApiService legado coexistindo com ApiClient novo. Autenticação e timeouts são centrais para a experiência.","rules":["Não criar logout por falha transitória de rede","Não duplicar lógica de token em novos clientes"],"files":["lib/services/api_service.dart","lib/core/network/api_client.dart","lib/core/network/api_uri_builder.dart"]},
+    {"id":"offline","title":"Offline / Cache","kind":"service","status":"active","x":2800,"y":4470,"summary":"Drift/SQLite, cache contextual, arquivos locais e outbox de RDO.","rules":["Cache deve ser isolado por Pessoa + Unidade","Erro de negócio/permissão não deve ser mascarado com cache antigo"],"files":["lib/repositories/app_repository_native.dart","lib/database/app_database.dart"]},
+    {"id":"notifications","title":"Notificações","kind":"service","status":"active","x":4300,"y":4430,"summary":"Firebase/FCM e navegação para destinos do app.","rules":["Sessão deve permanecer válida para receber/abrir contexto corretamente"],"files":["lib/services/notification_service.dart"]},
+    {"id":"performance","title":"Performance / UX","kind":"quality","status":"attention","x":5180,"y":4380,"summary":"Auditoria atual: teclado e algumas telas abrem lentamente. Suspeitas principais são rebuilds amplos, telas monolíticas, mapas/imagens e trabalho concorrente no UI thread.","next":["Medir em profile no aparelho real","Corrigir teclado/input primeiro","Depois navegação, Home, mapas e imagens"]},
+    {"id":"design","title":"Design System","kind":"quality","status":"active","x":5970,"y":3540,"summary":"Tema, cores, inputs, botões, cards, barras de progresso e padrões visuais do app.","rules":["Evitar cores soltas por tela","Segurança Operacional deve ter um padrão único"],"files":["lib/core/theme/app_theme.dart","lib/core/theme/app_colors.dart"]},
+    {"id":"brain","title":"Memória Neural do Projeto","kind":"memory","status":"active","x":3650,"y":5050,"summary":"Este repositório: referência externa para arquitetura, regras, decisões, estado e histórico do desenvolvimento.","rules":["Atualizar após mudanças validadas","Não registrar segredos ou dados pessoais","Distinguir planejado, em evolução e estável"],"files":["data/project-memory.json","docs/architecture.md","docs/performance-audit.md","docs/decisions.md"]}
+  ],
+  "edges": [
+    ["core","home"],["core","session"],["core","api"],["core","offline"],["core","security"],["core","rdo"],["core","transport"],["core","performance"],["core","design"],["core","brain"],
+    ["access","session"],["session","api"],["home","security"],["security","ronda"],["security","dono"],["security","audicomp"],["security","amigo"],["security","plans"],
+    ["home","rdo"],["home","transport"],["transport","attendance"],["geofence","attendance"],["attendance","api"],
+    ["home","notices"],["home","profile"],["profile","training"],["home","documents"],["home","badge"],["home","manifest"],
+    ["rdo","offline"],["transport","api"],["notices","api"],["documents","api"],["plans","api"],["ronda","plans"],["dono","plans"],["audicomp","plans"],["amigo","plans"],
+    ["notifications","home"],["design","security"],["brain","core"],["performance","home"],["performance","security"],["performance","transport"]
+  ],
+  "current_focus": [
+    "Finalizar vínculo visual e funcional do registro de origem dos Meus Planos de Ação.",
+    "Validar replanejamento com motivo, histórico acumulativo e troca opcional de responsável.",
+    "Auditar e corrigir lentidão do teclado/IME e abertura de telas no app inteiro.",
+    "Depois iniciar a etapa de edição controlada do Meu RDO.",
+    "Manter este repositório atualizado como memória externa do projeto."
+  ]
+}
