@@ -1,0 +1,40 @@
+name: Validate Neural Memory
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate memory graph and JSON
+        run: python scripts/validate_memory.py
+
+      - name: Check required files
+        run: |
+          test -f README.md
+          test -f index.html
+          test -f app.js
+          test -f styles.css
+          test -f data/project-memory.json
+          test -f data/current-state.json
+          test -f data/api-contracts.json
+          test -f docs/operating-protocol.md
+          test -f docs/business-rules.md
+          test -f docs/module-map.md
+          test -f docs/backend-map.md
+          test -f docs/quality-gates.md
