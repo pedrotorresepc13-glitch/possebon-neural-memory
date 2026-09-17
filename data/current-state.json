@@ -1,246 +1,101 @@
 {
-  "updated_at": "2026-09-17T10:38:19-03:00",
-  "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
-  "source_snapshot": {
+  "updated_at": "2026-09-17T14:15:00-03:00",
+  "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
+  "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "remote_head_observed": "40408bf",
-    "remote_head_message": "Atualiza registro do permission_handler no Windows",
-    "plan_commit": "ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb",
-    "plan_commit_message": "Finaliza origem e replanejamento dos Planos de Ação",
-    "working_tree_after_push": "limpo no último status informado pelo usuário",
-    "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
+    "flutter_head_confirmed": "c35188f865dafa502fef0bfe5302ca9c5c8c137a",
+    "backend_baseline": "possebon_web-15-09-2026-11-23-26.zip + pacotes backend explicitamente confirmados pelo usuário",
+    "backend_rule": "GitHub Web não é fonte autoritativa do backend MAD Builder."
   },
-  "active_focus_order": [
-    "Planos de Ação: mostrar descrição e ação/tratativa no detalhe, remover preview da evidência da origem e permitir uma ou mais imagens de conclusão vinculadas ao Plano de Ação.",
-    "Segurança Operacional: corrigir Dono de Área/Audicomp para reutilizar o padrão da Minha Ronda; categorias recolhíveis no Dono; condições inseguras com Plano de Ação; reconhecimento seguro com imagem opcional em Ronda, Audicomp e Dono.",
-    "Sessão permanente + Cerca Virtual: corrigir ativação/refresh em produção; a tabela app_dispositivo observada ainda não possui dispositivo_uid, refresh_token_hash nem sessao_ativa preenchidos, portanto o fluxo de background não pode ser considerado confiável.",
-    "Performance do app: diagnosticar teclado/IME e abertura lenta de telas em Profile Mode.",
-    "Meu RDO: edição somente em Emissão e Arquivado somente leitura."
+  "flutter": {
+    "status": "applied_pending_runtime_validation",
+    "confirmed_commits": {
+      "planos_origem_replanejamento": "ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb",
+      "windows_permission_handler": "40408bf",
+      "seguranca_unificacao": "12da8bc83a322954d3bca783e556b98ce142c3e3",
+      "performance": "718ee93a",
+      "rdo_edicao": "c35188f865dafa502fef0bfe5302ca9c5c8c137a"
+    },
+    "prioridades": {
+      "1_planos": "applied",
+      "2_seguranca": "applied",
+      "3_performance": "applied_static_validated_runtime_pending",
+      "4_rdo": "applied_static_validated_runtime_pending"
+    }
+  },
+  "backend_confirmed_applied": [
+    "POSSEBON_ETAPA1_SEGURANCA_MADBUILDER.zip",
+    "POSSEBON_ETAPA1_AJUSTES_16-09-2026.zip"
   ],
-  "local_git_state": {
-    "captured_at": "2026-09-17T10:04:36-03:00",
-    "branch_head_published": "40408bf",
-    "stashes": [
-      "stash@{0}: On possebon: backup local restante antes de sincronizar planos",
-      "stash@{1}: autostash",
-      "stash@{2}: On possebon: backup local antes da cerca virtual"
+  "backend_prepared": {
+    "status": "prepared_not_applied",
+    "package": "POSSEBON_PRIORIDADES_1_2_4_BACKEND_FINAL_17-09-2026.zip",
+    "files": [
+      "app/custom/RondaGerencialAppApiTrait.php",
+      "app/custom/SegurancaOperacionalAppApiTrait.php",
+      "app/custom/RdoAppApiTrait.php"
     ],
-    "working_tree": "clean após commit/push do registro Windows, conforme saída do usuário",
-    "stash0_classification": {
-      "minha_ronda_gerencial_screen.dart": "mudança funcional importante: expõe classes/drafts/editores compartilháveis da Minha Ronda; preservar para a etapa de unificação com Dono de Área/Audicomp",
-      "pubspec.lock": "não restaurar automaticamente: diff observado contém downgrade de dependências transientes sem relação direta com Planos",
-      "windows_generated_plugins": "consolidados no commit 40408bf",
-      "gradle_fileHashes_lock": "ruído de ambiente; não versionar"
-    },
-    "safety_rule": "Não usar stash pop/drop; extrair apenas arquivos intencionais de stash com inspeção e manter backups até validação."
+    "validation": [
+      "php -l nos 3 traits OK",
+      "composição SegurancaOperacional + RondaGerencial + Rdo + AmigoPeito OK",
+      "ZIP íntegro",
+      "contratos estáticos Flutter/backend conferidos"
+    ],
+    "do_not_apply_old_final_packages": [
+      "POSSEBON_ETAPA2_PLANOS_BACKEND_FINAL.zip",
+      "POSSEBON_ETAPA2_PLANOS_V2.zip",
+      "POSSEBON_ETAPA2_CORRECAO_ORIGEM_ENDPOINT.zip"
+    ]
   },
-  "modules": {
-    "session": {
-      "status": "attention",
-      "validated": false,
-      "summary": "A arquitetura Flutter de sessão permanente existe, mas evidência de produção mostra que a sessão permanente não está sendo registrada no app_dispositivo. Não considerar resolvido até dispositivo_uid, refresh_token_hash e sessao_ativa passarem a ser populados e o refresh funcionar após expiração do access token.",
-      "runtime_evidence": [
-        "Snapshot app_dispositivo com 78 registros: dispositivo_uid vazio em todos, refresh_token_hash vazio em todos e sessao_ativa vazia em todos.",
-        "Registros recentes já possuem unit_id, mas continuam sem os campos da sessão permanente.",
-        "SessionService trata ativação permanente como best-effort e apenas escreve debugPrint quando falha, o que pode esconder erro real do endpoint /api/app/sessao/ativar."
-      ],
-      "must_preserve": [
-        "falha de rede não desloga",
-        "refresh single-flight",
-        "logout/revogação explícitos continuam funcionando",
-        "tracking/notificações/cerca não dependem de relogin diário"
-      ],
-      "next": [
-        "validar em produção /api/app/sessao/ativar e descobrir por que não grava app_dispositivo",
-        "confirmar refresh_token salvo no aparelho após login",
-        "testar token expirado sem abrir tela de login",
-        "testar callback da cerca com app fechado após expiração do access token"
-      ]
-    },
-    "geofence": {
-      "status": "attention",
-      "summary": "A geofence nativa é criada sem expiração diária e pode disparar com o app fechado, mas o callback usa AccessControlApi -> SessionService.getToken(). Sem refresh token funcional, a presença da Cerca Virtual falha após o access token expirar.",
-      "presence_sources": {"C": "Cerca Virtual", "T": "Transporte"},
-      "next": [
-        "resolver sessão permanente antes de considerar background confiável",
-        "validar entrada na cerca no dia seguinte sem abrir o app"
-      ]
-    },
-    "plans": {
-      "status": "attention",
-      "summary": "Flutter de origem/replanejamento foi publicado, mas o detalhe e a conclusão ainda precisam dos ajustes funcionais pedidos: contexto do plano no topo, sem preview da evidência da origem e com imagens próprias de conclusão.",
-      "flutter_commit": "ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb",
-      "published": true,
-      "flutter_analyze": {
-        "result_after_rebase": "22 issues found; apenas info/warning, nenhum error."
-      },
-      "confirmed_requirements": [
-        "no topo manter Origem, Área de segurança, Responsável, Solicitante e Prazo",
-        "mostrar também Não conformidade/descrição e Ação/tratativa para identificar claramente o plano em execução",
-        "não mostrar Evidência da ocorrência dentro do Plano; a evidência da origem fica acessível pelo botão Abrir registro de origem",
-        "na conclusão permitir uma ou mais imagens opcionais",
-        "imagens de conclusão devem usar o mesmo padrão de armazenamento de imagens da Minha Ronda/PhotoReport",
-        "title da imagem de conclusão = Plano de Ação #<id>",
-        "description da imagem de conclusão = nota de execução",
-        "replanejamento mantém motivo obrigatório, histórico acumulativo e transferência opcional"
-      ],
-      "backend_package_prepared": {
-        "status": "superseded_by_new_requirements",
-        "name": "POSSEBON_ETAPA2_PLANOS_BACKEND_FINAL.zip",
-        "note": "Não aplicar como versão final sem incorporar as novas imagens de conclusão e a padronização de PhotoReport."
-      }
-    },
-    "dono": {
-      "status": "attention",
-      "summary": "Etapas 1 e 2 estão funcionalmente próximas do esperado, mas o código remoto atual ainda tem regressões: Equipe volta a ser obrigatória na validação, categorias ficam todas abertas e a etapa Segurança usa List<String>, portanto condições inseguras não transportam Planos de Ação nem evidências como a Minha Ronda.",
-      "confirmed_requirements": [
-        "Etapa 1 permanece no padrão atual e Equipe é opcional",
-        "Etapa 2 deve permitir abrir/fechar categorias para reduzir extensão da tela",
-        "Etapa 3 deve reutilizar o editor de Condição insegura da Minha Ronda, incluindo imagem opcional e um ou mais Planos de Ação",
-        "Reconhecimento seguro deve aceitar imagem opcional",
-        "não manter implementações paralelas que voltem a divergir da Minha Ronda"
-      ],
-      "next": [
-        "integrar com segurança a alteração compartilhável da Minha Ronda preservada no stash",
-        "substituir List<String> de condições/reconhecimentos por drafts estruturados",
-        "corrigir payload e backend para persistir condições + planos + imagens"
-      ]
-    },
-    "ronda": {
-      "status": "active",
-      "summary": "Continua sendo a referência funcional/visual. Condição insegura já suporta evidência e Planos de Ação. Reconhecimento seguro ainda precisa ganhar imagem opcional para virar o padrão compartilhado definitivo.",
-      "next": [
-        "criar/usar modelo compartilhado de reconhecimento seguro com descrição + imagem opcional",
-        "manter metadados PhotoReport consistentes"
-      ]
-    },
-    "audicomp": {
-      "status": "attention",
-      "summary": "O fluxo atual ainda usa listas simples de texto em Segurança para condições/reconhecimentos. Precisa compartilhar o mesmo editor estruturado da Minha Ronda para condições, planos e imagens e reconhecimento com imagem opcional."
-    },
-    "security_images": {
-      "status": "attention",
-      "summary": "Regra unificada: qualquer imagem da Segurança Operacional deve seguir o padrão da Minha Ronda, ser registrada em photo_report, possuir title/description e usar o mesmo caminho/política de armazenamento; campos legados podem ser mantidos apenas para compatibilidade.",
-      "rules": [
-        "Plano de Ação: title Plano de Ação #ID; description nota de execução",
-        "Reconhecimento seguro: title Reconhecimento seguro #N; description descrição do reconhecimento",
-        "Condição insegura/não conformidade: title contextual numerado; description descrição registrada",
-        "Ronda, Audicomp e Dono devem usar a mesma regra e helper backend"
-      ]
-    },
-    "security_operational": {
-      "status": "attention",
-      "summary": "Minha Ronda é referência. Dono/Audicomp ainda possuem código paralelo na etapa Segurança e precisam compartilhar modelos/editores para impedir novas regressões.",
-      "ronda": "active/reference",
-      "dono_area": "attention",
-      "audicomp": "attention",
-      "amigo_peito": "active",
-      "plans": "attention"
-    },
-    "notifications": {
-      "status": "active",
-      "summary": "FCM e navegação contextual integrados; manter coerência com sessão/unidade."
-    },
-    "windows_plugins": {
-      "status": "stable",
-      "commit": "40408bf",
-      "summary": "generated_plugin_registrant.cc e generated_plugins.cmake registram permission_handler_windows e foram publicados separadamente."
-    },
-    "performance": {
-      "status": "attention",
-      "summary": "Sintomas atuais: teclado/IME quase travando e algumas telas lentas. Corrigir depois dos problemas funcionais críticos, medindo em Profile Mode.",
-      "symptoms": [
-        "teclado/IME abre quase travando em algumas telas",
-        "algumas telas demoram para abrir"
-      ],
-      "initial_code_findings": [
-        "telas stateful/monolíticas grandes",
-        "setState amplo em listeners e tracking",
-        "dependência de MediaQuery.viewInsets em subárvores grandes",
-        "Home concentra várias responsabilidades",
-        "mapa/tracking possuem polling/animação/rebuilds"
-      ]
-    },
-    "rdo": {
-      "status": "active",
-      "summary": "Offline-first e sincronização protegida já existem.",
-      "next": [
-        "listar somente RDO do usuário atual",
-        "permitir editar apenas status Emissão",
-        "arquivado somente leitura"
-      ]
-    },
-    "transport": {
-      "status": "active",
-      "summary": "Rotas, tracking, mapa, monitor/motorista e presença estão integrados; depende da sessão permanente para background confiável."
-    }
+  "requirements_now_implemented_in_prepared_backend": {
+    "planos": [
+      "origem_relatorio_pdf aponta para PDF original do registro",
+      "executor não recebe preview duplicado da evidência da origem",
+      "replanejamento com motivo, histórico acumulativo e responsável opcional",
+      "conclusão aceita até 10 imagens",
+      "imagens da conclusão em photo_report com active_record PlanoAcao, primary_key do plano, título Plano de Ação #ID e descrição igual à nota de execução"
+    ],
+    "seguranca": [
+      "Equipe permanece opcional",
+      "Condição insegura em Ronda/Dono/Audicomp usa imagem PhotoReport e 0..N Planos de Ação",
+      "Reconhecimento seguro em Ronda/Dono/Audicomp aceita imagem opcional",
+      "Dono/Audicomp usam o mesmo helper físico de imagem da Minha Ronda",
+      "PDFs consideram imagens de PhotoReport"
+    ],
+    "rdo": [
+      "lista somente RDO criado pelo usuário atual",
+      "GET meu-rdo aceita rdo_id e devolve rdo_edicao",
+      "somente status E Emissão é editável",
+      "outros status são somente leitura no app",
+      "POST enviar aceita rdo_id e atualiza o RDO próprio na mesma unidade",
+      "paralisações mantidas preservam IDs/anexos"
+    ]
   },
-  "extra_nodes": [
-    {
-      "id": "security_images",
-      "title": "Imagens Segurança",
-      "kind": "rule",
-      "status": "attention",
-      "x": 6040,
-      "y": 2980,
-      "summary": "Padrão único de imagens para Ronda, Audicomp, Dono e Planos: PhotoReport + title + description + mesmo caminho/política de armazenamento.",
-      "rules": [
-        "Não criar storage paralelo por módulo",
-        "Imagem da origem não aparece duplicada no executor do plano",
-        "Imagens de conclusão pertencem ao Plano de Ação"
-      ],
-      "files": ["PhotoReport.php", "RondaGerencialAppApiTrait.php", "SegurancaOperacionalAppApiTrait.php"]
-    },
-    {
-      "id": "background_presence",
-      "title": "Sessão + Background",
-      "kind": "service",
-      "status": "attention",
-      "x": 2320,
-      "y": 2010,
-      "summary": "Liga sessão permanente à Cerca Virtual/Transporte em background. A geofence persiste entre dias, mas cada envio precisa obter token válido via refresh.",
-      "files": [
-        "lib/services/access_presence_automation_service_native.dart",
-        "lib/features/access_control/data/access_control_api.dart",
-        "lib/core/session/auth_session_manager.dart"
-      ],
-      "rules": [
-        "deve funcionar mesmo sem abrir o app no dia seguinte",
-        "expiração do access token não pode quebrar presença automática"
-      ]
-    }
+  "runtime_validation_required_after_backend_apply": [
+    "Plano: abrir registro de origem, replanejar, concluir com 2+ imagens e conferir photo_report",
+    "Ronda: reconhecimento seguro com imagem",
+    "Dono: Equipe vazia, condição insegura com plano+imagem e reconhecimento com imagem",
+    "Audicomp: condição insegura com plano+imagem e reconhecimento com imagem",
+    "RDO: editar próprio em Emissão, Arquivado somente leitura e impedir acesso a RDO de outro criador"
   ],
-  "extra_edges": [
-    ["session", "background_presence"],
-    ["background_presence", "geofence"],
-    ["background_presence", "transport"],
-    ["security", "security_images"],
-    ["security_images", "ronda"],
-    ["security_images", "dono"],
-    ["security_images", "audicomp"],
-    ["security_images", "plans"]
-  ],
-  "backend_confirmed_history": {
-    "session_v2": "Código/pacote foi aplicado anteriormente segundo confirmação, mas a evidência atual de banco contradiz o funcionamento esperado; revalidar produção antes de chamar de resolvido.",
-    "security_first_package": "Aplicado e confirmado anteriormente: traits de Segurança/Ronda/Amigo + controller/routes compatíveis com sessão.",
-    "security_post_test_adjustment": "Aplicado e confirmado anteriormente: correções Dono IDs 35..62/equipe opcional e Amigo Gerente SMS/+7 dias.",
-    "later_photo_and_plan_packages": "Não assumir aplicados sem nova verificação."
+  "session_and_background": {
+    "status": "attention_deferred_until_priorities_1_4_finish",
+    "known_problem": "produção observada ainda não preenchia dispositivo_uid, refresh_token_hash e sessao_ativa em app_dispositivo; sessão permanente/geofence não pode ser considerada estável."
   },
-  "repo_cleanup": {
-    "status": "stable",
-    "summary": "A memória neural existe somente no repositório possebon-neural-memory; duplicatas no app foram removidas."
+  "local_git_safety": {
+    "known_stashes": [
+      "backup local restante antes de sincronizar planos",
+      "autostash",
+      "backup local antes da cerca virtual"
+    ],
+    "rule": "Não usar stash pop/drop sem inspeção e confirmação."
   },
-  "do_not_forget": [
-    "Flutter GitHub é fonte operacional do app, mas stashes locais podem conter trabalho funcional ainda não integrado.",
-    "Backend exige baseline validado separado.",
-    "Nunca apagar stash/local changes sem inspeção.",
-    "Equipe opcional na Segurança Operacional.",
-    "Encarregado não participa dos filtros do Quadro de Avisos.",
-    "Unidade é fronteira rígida.",
-    "Pessoa não deve ser duplicada ao virar Colaborador.",
-    "PDF oficial existente deve ser reutilizado quando a origem já gerou relatório.",
-    "Toda imagem de Segurança Operacional segue PhotoReport + title + description + armazenamento padronizado.",
-    "Mudança preparada não equivale a mudança aplicada."
+  "next": [
+    "Usuário aplicar somente os 3 arquivos do pacote backend final.",
+    "Executar php -l no servidor.",
+    "Executar testes funcionais das prioridades 1, 2 e 4.",
+    "Somente após os testes marcar backend como stable.",
+    "Depois retomar sessão permanente + Cerca Virtual."
   ]
 }
