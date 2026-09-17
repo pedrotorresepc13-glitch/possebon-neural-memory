@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#06151d" />
+  <meta name="description" content="Mapa neural e memória viva do POSSEBON App" />
+  <title>POSSEBON Neural Memory</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <strong>POSSEBON Neural Memory</strong>
+      <span>memória viva + mapa estrutural do app</span>
+    </div>
+    <div class="actions">
+      <input id="search" type="search" placeholder="Buscar tela, módulo, regra, arquivo..." autocomplete="off" />
+      <button id="focusBtn" type="button">Foco atual</button>
+      <button id="centerBtn" type="button">Centralizar</button>
+      <button id="resetBtn" type="button">100%</button>
+    </div>
+  </header>
+
+  <aside class="legend">
+    <span><i class="dot stable"></i> estável</span>
+    <span><i class="dot active"></i> em evolução</span>
+    <span><i class="dot attention"></i> atenção</span>
+    <span><i class="dot planned"></i> planejado</span>
+  </aside>
+
+  <main id="viewport" class="viewport" aria-label="Mapa neural infinito do POSSEBON">
+    <div id="world" class="world">
+      <svg id="edges" class="edges" width="7600" height="5200" viewBox="0 0 7600 5200"></svg>
+      <div id="nodes" class="nodes"></div>
+    </div>
+  </main>
+
+  <aside id="inspector" class="inspector hidden">
+    <button id="closeInspector" class="close" aria-label="Fechar">×</button>
+    <div id="inspectorContent"></div>
+  </aside>
+
+  <aside id="focusPanel" class="focus-panel hidden">
+    <button id="closeFocus" class="close" aria-label="Fechar">×</button>
+    <h2>Foco atual</h2>
+    <div id="focusContent"></div>
+  </aside>
+
+  <footer class="hud">
+    <span id="zoomLabel">100%</span>
+    <span>arraste para mover • roda do mouse para zoom • clique em um nó para detalhes</span>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
