@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T07:10:00-03:00",
+  "updated_at": "2026-09-17T10:38:19-03:00",
   "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
   "source_snapshot": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -12,15 +12,14 @@
     "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
   },
   "active_focus_order": [
-    "Aplicar e validar o pacote backend final de Meus Planos de Ação",
-    "Validar PDF/registro de origem e replanejamento completo no aparelho",
-    "Preservar a alteração funcional de Minha Ronda existente em stash e só integrá-la junto com a unificação real do Dono de Área",
-    "Performance do app: diagnosticar teclado/IME e abertura lenta de telas",
-    "Meu RDO: edição somente em Emissão e arquivado somente leitura",
-    "Manter memória neural sincronizada com mudanças validadas"
+    "Planos de Ação: mostrar descrição e ação/tratativa no detalhe, remover preview da evidência da origem e permitir uma ou mais imagens de conclusão vinculadas ao Plano de Ação.",
+    "Segurança Operacional: corrigir Dono de Área/Audicomp para reutilizar o padrão da Minha Ronda; categorias recolhíveis no Dono; condições inseguras com Plano de Ação; reconhecimento seguro com imagem opcional em Ronda, Audicomp e Dono.",
+    "Sessão permanente + Cerca Virtual: corrigir ativação/refresh em produção; a tabela app_dispositivo observada ainda não possui dispositivo_uid, refresh_token_hash nem sessao_ativa preenchidos, portanto o fluxo de background não pode ser considerado confiável.",
+    "Performance do app: diagnosticar teclado/IME e abertura lenta de telas em Profile Mode.",
+    "Meu RDO: edição somente em Emissão e Arquivado somente leitura."
   ],
   "local_git_state": {
-    "captured_at": "2026-09-17T07:04:36-03:00",
+    "captured_at": "2026-09-17T10:04:36-03:00",
     "branch_head_published": "40408bf",
     "stashes": [
       "stash@{0}: On possebon: backup local restante antes de sincronizar planos",
@@ -29,84 +28,139 @@
     ],
     "working_tree": "clean após commit/push do registro Windows, conforme saída do usuário",
     "stash0_classification": {
-      "minha_ronda_gerencial_screen.dart": "mudança funcional importante: expõe classes/drafts/editores compartilháveis da Minha Ronda; preservar para a etapa de unificação com Dono de Área",
+      "minha_ronda_gerencial_screen.dart": "mudança funcional importante: expõe classes/drafts/editores compartilháveis da Minha Ronda; preservar para a etapa de unificação com Dono de Área/Audicomp",
       "pubspec.lock": "não restaurar automaticamente: diff observado contém downgrade de dependências transientes sem relação direta com Planos",
-      "windows_generated_plugins": "já consolidados separadamente no commit 40408bf",
+      "windows_generated_plugins": "consolidados no commit 40408bf",
       "gradle_fileHashes_lock": "ruído de ambiente; não versionar"
     },
     "safety_rule": "Não usar stash pop/drop; extrair apenas arquivos intencionais de stash com inspeção e manter backups até validação."
   },
   "modules": {
     "session": {
-      "status": "stable",
-      "validated": true,
-      "summary": "Sessão permanente com access token curto, refresh token seguro e renovação silenciosa está implementada como arquitetura-base.",
+      "status": "attention",
+      "validated": false,
+      "summary": "A arquitetura Flutter de sessão permanente existe, mas evidência de produção mostra que a sessão permanente não está sendo registrada no app_dispositivo. Não considerar resolvido até dispositivo_uid, refresh_token_hash e sessao_ativa passarem a ser populados e o refresh funcionar após expiração do access token.",
+      "runtime_evidence": [
+        "Snapshot app_dispositivo com 78 registros: dispositivo_uid vazio em todos, refresh_token_hash vazio em todos e sessao_ativa vazia em todos.",
+        "Registros recentes já possuem unit_id, mas continuam sem os campos da sessão permanente.",
+        "SessionService trata ativação permanente como best-effort e apenas escreve debugPrint quando falha, o que pode esconder erro real do endpoint /api/app/sessao/ativar."
+      ],
       "must_preserve": [
         "falha de rede não desloga",
         "refresh single-flight",
         "logout/revogação explícitos continuam funcionando",
-        "tracking/notificações não dependem de relogin diário"
+        "tracking/notificações/cerca não dependem de relogin diário"
+      ],
+      "next": [
+        "validar em produção /api/app/sessao/ativar e descobrir por que não grava app_dispositivo",
+        "confirmar refresh_token salvo no aparelho após login",
+        "testar token expirado sem abrir tela de login",
+        "testar callback da cerca com app fechado após expiração do access token"
+      ]
+    },
+    "geofence": {
+      "status": "attention",
+      "summary": "A geofence nativa é criada sem expiração diária e pode disparar com o app fechado, mas o callback usa AccessControlApi -> SessionService.getToken(). Sem refresh token funcional, a presença da Cerca Virtual falha após o access token expirar.",
+      "presence_sources": {"C": "Cerca Virtual", "T": "Transporte"},
+      "next": [
+        "resolver sessão permanente antes de considerar background confiável",
+        "validar entrada na cerca no dia seguinte sem abrir o app"
+      ]
+    },
+    "plans": {
+      "status": "attention",
+      "summary": "Flutter de origem/replanejamento foi publicado, mas o detalhe e a conclusão ainda precisam dos ajustes funcionais pedidos: contexto do plano no topo, sem preview da evidência da origem e com imagens próprias de conclusão.",
+      "flutter_commit": "ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb",
+      "published": true,
+      "flutter_analyze": {
+        "result_after_rebase": "22 issues found; apenas info/warning, nenhum error."
+      },
+      "confirmed_requirements": [
+        "no topo manter Origem, Área de segurança, Responsável, Solicitante e Prazo",
+        "mostrar também Não conformidade/descrição e Ação/tratativa para identificar claramente o plano em execução",
+        "não mostrar Evidência da ocorrência dentro do Plano; a evidência da origem fica acessível pelo botão Abrir registro de origem",
+        "na conclusão permitir uma ou mais imagens opcionais",
+        "imagens de conclusão devem usar o mesmo padrão de armazenamento de imagens da Minha Ronda/PhotoReport",
+        "title da imagem de conclusão = Plano de Ação #<id>",
+        "description da imagem de conclusão = nota de execução",
+        "replanejamento mantém motivo obrigatório, histórico acumulativo e transferência opcional"
+      ],
+      "backend_package_prepared": {
+        "status": "superseded_by_new_requirements",
+        "name": "POSSEBON_ETAPA2_PLANOS_BACKEND_FINAL.zip",
+        "note": "Não aplicar como versão final sem incorporar as novas imagens de conclusão e a padronização de PhotoReport."
+      }
+    },
+    "dono": {
+      "status": "attention",
+      "summary": "Etapas 1 e 2 estão funcionalmente próximas do esperado, mas o código remoto atual ainda tem regressões: Equipe volta a ser obrigatória na validação, categorias ficam todas abertas e a etapa Segurança usa List<String>, portanto condições inseguras não transportam Planos de Ação nem evidências como a Minha Ronda.",
+      "confirmed_requirements": [
+        "Etapa 1 permanece no padrão atual e Equipe é opcional",
+        "Etapa 2 deve permitir abrir/fechar categorias para reduzir extensão da tela",
+        "Etapa 3 deve reutilizar o editor de Condição insegura da Minha Ronda, incluindo imagem opcional e um ou mais Planos de Ação",
+        "Reconhecimento seguro deve aceitar imagem opcional",
+        "não manter implementações paralelas que voltem a divergir da Minha Ronda"
+      ],
+      "next": [
+        "integrar com segurança a alteração compartilhável da Minha Ronda preservada no stash",
+        "substituir List<String> de condições/reconhecimentos por drafts estruturados",
+        "corrigir payload e backend para persistir condições + planos + imagens"
+      ]
+    },
+    "ronda": {
+      "status": "active",
+      "summary": "Continua sendo a referência funcional/visual. Condição insegura já suporta evidência e Planos de Ação. Reconhecimento seguro ainda precisa ganhar imagem opcional para virar o padrão compartilhado definitivo.",
+      "next": [
+        "criar/usar modelo compartilhado de reconhecimento seguro com descrição + imagem opcional",
+        "manter metadados PhotoReport consistentes"
+      ]
+    },
+    "audicomp": {
+      "status": "attention",
+      "summary": "O fluxo atual ainda usa listas simples de texto em Segurança para condições/reconhecimentos. Precisa compartilhar o mesmo editor estruturado da Minha Ronda para condições, planos e imagens e reconhecimento com imagem opcional."
+    },
+    "security_images": {
+      "status": "attention",
+      "summary": "Regra unificada: qualquer imagem da Segurança Operacional deve seguir o padrão da Minha Ronda, ser registrada em photo_report, possuir title/description e usar o mesmo caminho/política de armazenamento; campos legados podem ser mantidos apenas para compatibilidade.",
+      "rules": [
+        "Plano de Ação: title Plano de Ação #ID; description nota de execução",
+        "Reconhecimento seguro: title Reconhecimento seguro #N; description descrição do reconhecimento",
+        "Condição insegura/não conformidade: title contextual numerado; description descrição registrada",
+        "Ronda, Audicomp e Dono devem usar a mesma regra e helper backend"
       ]
     },
     "security_operational": {
       "status": "attention",
-      "summary": "Minha Ronda é referência. Dono de Área ainda exige validação de paridade funcional/visual; há uma mudança de compartilhamento da Ronda preservada em stash, ainda não integrada.",
-      "ronda": "stable/reference",
+      "summary": "Minha Ronda é referência. Dono/Audicomp ainda possuem código paralelo na etapa Segurança e precisam compartilhar modelos/editores para impedir novas regressões.",
+      "ronda": "active/reference",
       "dono_area": "attention",
-      "audicomp": "active",
+      "audicomp": "attention",
       "amigo_peito": "active",
-      "plans": "active"
+      "plans": "attention"
     },
-    "plans": {
+    "notifications": {
       "status": "active",
-      "flutter_commit": "ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb",
-      "published": true,
-      "flutter_analyze": {
-        "result_after_rebase": "22 issues found; apenas info/warning, nenhum error.",
-        "interpretation": "Implementação Flutter publicada e sem erro de análise estática. Ainda não declarar fluxo concluído sem validar backend e aparelho."
-      },
-      "implemented": [
-        "rótulo neutro Abrir registro de origem",
-        "abertura do PDF oficial via origem_relatorio_pdf",
-        "evidência da ocorrência no detalhe quando disponível",
-        "replanejamento iniciado por botão explícito",
-        "nova data + motivo obrigatório",
-        "troca opcional de responsável pesquisável",
-        "repository/API enviam motivo e responsavel_id opcional",
-        "nota_execucao apresentada como histórico quando disponível"
-      ],
-      "backend_package_prepared": {
-        "status": "prepared_not_applied",
-        "name": "POSSEBON_ETAPA2_PLANOS_BACKEND_FINAL.zip",
-        "base": "RondaGerencialAppApiTrait.php do ETAPA1_SEGURANCA_MADBUILDER confirmado + SegurancaOperacionalAppApiTrait.php do ETAPA1_AJUSTES_16-09-2026 confirmado",
-        "files": [
-          "app/custom/RondaGerencialAppApiTrait.php",
-          "app/custom/SegurancaOperacionalAppApiTrait.php"
-        ],
-        "changes": [
-          "meus-planos devolve active_record, primary_key, origem_registro_id, origem_relatorio_pdf e evidencia",
-          "replanejamento exige motivo e aceita novo responsavel opcional na mesma unidade",
-          "historico de replanejamento e execucao passa a ser acumulativo",
-          "contexto carrega chapa para historico"
-        ],
-        "validation": "php -l OK nos dois arquivos e ZIP validado sem erro",
-        "does_not_change": ["api.php", "ApiAppController.php", "schema", "AmigoPeitoAppApiTrait.php", "sessao permanente"]
-      },
-      "backend_application_state": "Pacote final preparado e validado sintaticamente, mas AINDA NAO APLICADO. Somente marcar aplicado depois de confirmacao do usuario.",
-      "next_validation": [
-        "Ronda -> Plano -> abrir origem",
-        "Dono -> Plano -> abrir origem",
-        "Audicomp -> Plano -> abrir origem",
-        "Amigo -> Plano -> abrir origem",
-        "replanejar mantendo responsável",
-        "replanejar trocando responsável",
-        "histórico após múltiplos replanejamentos"
-      ]
+      "summary": "FCM e navegação contextual integrados; manter coerência com sessão/unidade."
     },
     "windows_plugins": {
       "status": "stable",
       "commit": "40408bf",
-      "summary": "generated_plugin_registrant.cc e generated_plugins.cmake passaram a registrar permission_handler_windows e foram publicados separadamente."
+      "summary": "generated_plugin_registrant.cc e generated_plugins.cmake registram permission_handler_windows e foram publicados separadamente."
+    },
+    "performance": {
+      "status": "attention",
+      "summary": "Sintomas atuais: teclado/IME quase travando e algumas telas lentas. Corrigir depois dos problemas funcionais críticos, medindo em Profile Mode.",
+      "symptoms": [
+        "teclado/IME abre quase travando em algumas telas",
+        "algumas telas demoram para abrir"
+      ],
+      "initial_code_findings": [
+        "telas stateful/monolíticas grandes",
+        "setState amplo em listeners e tracking",
+        "dependência de MediaQuery.viewInsets em subárvores grandes",
+        "Home concentra várias responsabilidades",
+        "mapa/tracking possuem polling/animação/rebuilds"
+      ]
     },
     "rdo": {
       "status": "active",
@@ -119,38 +173,59 @@
     },
     "transport": {
       "status": "active",
-      "summary": "Rotas, tracking, mapa, monitor/motorista e presença estão integrados."
-    },
-    "geofence": {
-      "status": "active",
-      "summary": "Cerca Virtual integrada ao controle de acesso e ao contexto da unidade.",
-      "presence_sources": {"C": "Cerca Virtual", "T": "Transporte"}
-    },
-    "notifications": {
-      "status": "active",
-      "summary": "FCM e navegação contextual integrados; manter coerência com sessão/unidade."
-    },
-    "performance": {
-      "status": "attention",
-      "symptoms": [
-        "teclado/IME abre quase travando em algumas telas",
-        "algumas telas demoram para abrir"
-      ],
-      "initial_code_findings": [
-        "telas stateful/monolíticas grandes",
-        "setState amplo em listeners e tracking",
-        "dependência de MediaQuery.viewInsets em subárvores grandes",
-        "Home concentra várias responsabilidades",
-        "mapa/tracking possuem polling/animação/rebuilds"
-      ],
-      "rule": "Medir em profile antes de refatoração ampla; corrigir uma causa por vez e comparar antes/depois."
+      "summary": "Rotas, tracking, mapa, monitor/motorista e presença estão integrados; depende da sessão permanente para background confiável."
     }
   },
+  "extra_nodes": [
+    {
+      "id": "security_images",
+      "title": "Imagens Segurança",
+      "kind": "rule",
+      "status": "attention",
+      "x": 6040,
+      "y": 2980,
+      "summary": "Padrão único de imagens para Ronda, Audicomp, Dono e Planos: PhotoReport + title + description + mesmo caminho/política de armazenamento.",
+      "rules": [
+        "Não criar storage paralelo por módulo",
+        "Imagem da origem não aparece duplicada no executor do plano",
+        "Imagens de conclusão pertencem ao Plano de Ação"
+      ],
+      "files": ["PhotoReport.php", "RondaGerencialAppApiTrait.php", "SegurancaOperacionalAppApiTrait.php"]
+    },
+    {
+      "id": "background_presence",
+      "title": "Sessão + Background",
+      "kind": "service",
+      "status": "attention",
+      "x": 2320,
+      "y": 2010,
+      "summary": "Liga sessão permanente à Cerca Virtual/Transporte em background. A geofence persiste entre dias, mas cada envio precisa obter token válido via refresh.",
+      "files": [
+        "lib/services/access_presence_automation_service_native.dart",
+        "lib/features/access_control/data/access_control_api.dart",
+        "lib/core/session/auth_session_manager.dart"
+      ],
+      "rules": [
+        "deve funcionar mesmo sem abrir o app no dia seguinte",
+        "expiração do access token não pode quebrar presença automática"
+      ]
+    }
+  ],
+  "extra_edges": [
+    ["session", "background_presence"],
+    ["background_presence", "geofence"],
+    ["background_presence", "transport"],
+    ["security", "security_images"],
+    ["security_images", "ronda"],
+    ["security_images", "dono"],
+    ["security_images", "audicomp"],
+    ["security_images", "plans"]
+  ],
   "backend_confirmed_history": {
-    "session_v2": "Aplicada e confirmada anteriormente: sessão permanente usando app_dispositivo e rotas ativar/refresh/revogar.",
+    "session_v2": "Código/pacote foi aplicado anteriormente segundo confirmação, mas a evidência atual de banco contradiz o funcionamento esperado; revalidar produção antes de chamar de resolvido.",
     "security_first_package": "Aplicado e confirmado anteriormente: traits de Segurança/Ronda/Amigo + controller/routes compatíveis com sessão.",
     "security_post_test_adjustment": "Aplicado e confirmado anteriormente: correções Dono IDs 35..62/equipe opcional e Amigo Gerente SMS/+7 dias.",
-    "later_photo_and_plan_packages": "Nao assumir aplicados sem nova verificacao."
+    "later_photo_and_plan_packages": "Não assumir aplicados sem nova verificação."
   },
   "repo_cleanup": {
     "status": "stable",
@@ -165,6 +240,7 @@
     "Unidade é fronteira rígida.",
     "Pessoa não deve ser duplicada ao virar Colaborador.",
     "PDF oficial existente deve ser reutilizado quando a origem já gerou relatório.",
+    "Toda imagem de Segurança Operacional segue PhotoReport + title + description + armazenamento padronizado.",
     "Mudança preparada não equivale a mudança aplicada."
   ]
 }
