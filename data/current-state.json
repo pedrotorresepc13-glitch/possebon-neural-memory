@@ -1,0 +1,124 @@
+{
+  "updated_at": "2026-09-16T22:36:00-03:00",
+  "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
+  "source_snapshot": {
+    "flutter_repository": "pedrotorresepc13-glitch/possebon",
+    "flutter_branch": "possebon",
+    "remote_head_observed": "23d7bbb8d2ffad5eef3405b211bcd20ea5006bf7",
+    "remote_head_note": "Commit de remoção da antiga pasta neural do repositório do app. Antes da próxima alteração Flutter, conferir se o working tree local possui mudanças ainda não publicadas.",
+    "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
+  },
+  "active_focus_order": [
+    "Meus Planos de Ação: concluir origem do registro/PDF e replanejamento",
+    "Performance do app: diagnosticar teclado/IME e abertura lenta de telas",
+    "Meu RDO: edição somente em Emissão e arquivado somente leitura",
+    "Manter memória neural sincronizada com mudanças validadas"
+  ],
+  "modules": {
+    "session": {
+      "status": "active",
+      "validated": true,
+      "summary": "Sessão permanente com access token curto, refresh token seguro e renovação silenciosa está implementada como arquitetura-base.",
+      "must_preserve": [
+        "falha de rede não desloga",
+        "refresh single-flight",
+        "logout/revogação explícitos continuam funcionando",
+        "tracking/notificações não dependem de relogin diário"
+      ]
+    },
+    "security_operational": {
+      "status": "attention",
+      "summary": "Família funcional em evolução. Minha Ronda é referência. Dono de Área ainda exige validação de paridade funcional/visual.",
+      "ronda": "stable/reference",
+      "dono_area": "attention",
+      "audicomp": "active",
+      "amigo_peito": "active",
+      "plans": "attention"
+    },
+    "plans": {
+      "status": "attention",
+      "remote_flutter_state": "A branch remota observada ainda pode não conter todas as alterações locais testadas recentemente na tela de Planos; conferir arquivo real antes de editar.",
+      "confirmed_requirements": [
+        "responsável atual do plano não é necessariamente autor da origem",
+        "abrir registro/PDF oficial de origem pelo vínculo do plano",
+        "não depender da lista 'Minha Ronda' do executor",
+        "replanejamento exige motivo",
+        "troca de responsável é opcional",
+        "histórico deve ser acumulativo"
+      ],
+      "backend_application_state": "Há correções preparadas/fornecidas recentemente para origem PDF e replanejamento; tratar como não confirmadas até verificar os arquivos efetivamente aplicados no backend atual.",
+      "next_validation": [
+        "Ronda -> Plano -> abrir origem",
+        "Dono -> Plano -> abrir origem",
+        "Audicomp -> Plano -> abrir origem",
+        "Amigo -> Plano -> abrir origem",
+        "replanejar mantendo responsável",
+        "replanejar trocando responsável",
+        "histórico após múltiplos replanejamentos"
+      ]
+    },
+    "rdo": {
+      "status": "active",
+      "summary": "Offline-first e sincronização protegida já existem.",
+      "next": [
+        "listar somente RDO do usuário atual",
+        "permitir editar apenas status Emissão",
+        "arquivado somente leitura"
+      ]
+    },
+    "transport": {
+      "status": "active",
+      "summary": "Rotas, tracking, mapa, monitor/motorista e presença estão integrados.",
+      "watch": [
+        "não interromper tracking por sessão",
+        "início de rota/notificações",
+        "ocultar ações de ponto quando não houver percurso"
+      ]
+    },
+    "geofence": {
+      "status": "active",
+      "summary": "Cerca Virtual integrada ao controle de acesso e ao contexto da unidade.",
+      "presence_sources": {"C": "Cerca Virtual", "T": "Transporte"}
+    },
+    "notifications": {
+      "status": "active",
+      "watch": [
+        "FCM coerente com sessão salva",
+        "navegação correta ao abrir push",
+        "não misturar unidade/contexto"
+      ]
+    },
+    "performance": {
+      "status": "attention",
+      "symptoms": [
+        "teclado/IME abre quase travando em algumas telas",
+        "algumas telas demoram para abrir"
+      ],
+      "initial_code_findings": [
+        "telas stateful/monolíticas grandes",
+        "setState amplo em listeners e tracking",
+        "dependência de MediaQuery.viewInsets em subárvores grandes",
+        "Home concentra várias responsabilidades",
+        "mapa/tracking possuem polling/animação/rebuilds"
+      ],
+      "rule": "Medir em profile antes de refatoração ampla; corrigir uma causa por vez e comparar antes/depois."
+    }
+  },
+  "backend_confirmed_history": {
+    "session_v2": "Aplicada e confirmada anteriormente: sessão permanente usando app_dispositivo e rotas ativar/refresh/revogar.",
+    "security_first_package": "Aplicado e confirmado anteriormente: traits de Segurança/Ronda/Amigo + controller/routes compatíveis com sessão.",
+    "security_post_test_adjustment": "Aplicado e confirmado anteriormente: correções Dono IDs 35..62/equipe opcional e Amigo Gerente SMS/+7 dias.",
+    "later_photo_and_plan_packages": "Não assumir aplicados sem nova verificação."
+  },
+  "do_not_forget": [
+    "Usuário trabalha na branch local possebon e prefere receber tudo integrado nela.",
+    "Flutter GitHub é fonte operacional do app; backend exige baseline validado separado.",
+    "Nunca apagar stash/local changes sem inspeção quando houver conflito Git.",
+    "Equipe opcional na Segurança Operacional.",
+    "Encarregado não participa dos filtros do Quadro de Avisos.",
+    "Unidade é fronteira rígida.",
+    "Pessoa não deve ser duplicada ao virar Colaborador.",
+    "PDF oficial existente deve ser reutilizado quando a origem já gerou relatório.",
+    "Mudança preparada não equivale a mudança aplicada."
+  ]
+}
