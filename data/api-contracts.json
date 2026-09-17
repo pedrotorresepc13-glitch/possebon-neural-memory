@@ -1,0 +1,75 @@
+{
+  "updated_at": "2026-09-16",
+  "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
+  "auth": {
+    "session_activate": {
+      "method": "POST",
+      "path": "/api/app/sessao/ativar",
+      "auth": "Bearer",
+      "purpose": "Ativar sessão permanente do dispositivo e emitir access + refresh token.",
+      "known_body": ["plataforma", "dispositivo_uid"]
+    },
+    "session_refresh": {
+      "method": "POST",
+      "path": "/api/app/sessao/refresh",
+      "auth": "refresh_token",
+      "purpose": "Renovar sessão sem pedir senha."
+    },
+    "session_revoke": {
+      "method": "POST",
+      "path": "/api/app/sessao/revogar",
+      "auth": "refresh_token",
+      "purpose": "Revogar sessão do aparelho."
+    }
+  },
+  "core": {
+    "units": {"path": "/api/app/unidades", "purpose": "Listar unidades disponíveis."},
+    "identify": {"path": "/api/app/identificar", "purpose": "Identificar Pessoa no contexto do fluxo de acesso; confirmar rota exata no backend vigente."},
+    "authenticate": {"path": "/api/app/autenticar", "purpose": "Autenticação do app; confirmar rota/payload no backend vigente."},
+    "my_data": {"path": "/api/app/meus-dados", "purpose": "Dados da Pessoa/Colaborador no contexto da unidade."},
+    "training": {"path": "/api/app/meus-treinamentos", "purpose": "Treinamentos da Pessoa/contexto."},
+    "process_documents": {"path": "/api/app/processo-documentos", "purpose": "Processo/vaga/documentos da Pessoa + unidade."}
+  },
+  "security": {
+    "access": {"path": "/api/app/seguranca/acesso", "purpose": "Capabilities dos módulos de Segurança Operacional; conferir nome exato no api.php atual."},
+    "my_plans": {
+      "method": "GET",
+      "path": "/api/app/seguranca/meus-planos",
+      "purpose": "Planos atribuídos ao responsável atual.",
+      "required_response_semantics": [
+        "id/status/prazos",
+        "responsavel_nome",
+        "solicitante_nome quando disponível",
+        "origem_nome",
+        "active_record",
+        "primary_key",
+        "origem_relatorio_pdf quando resolvido",
+        "pode_executar",
+        "pode_replanejar"
+      ],
+      "critical_rule": "A origem é resolvida pelo vínculo do plano, não pela autoria do executor."
+    },
+    "plan_replan": {
+      "purpose": "Replanejar plano com nova data, motivo obrigatório e responsável novo opcional.",
+      "history_rule": "Acrescentar histórico em nota_execucao/estrutura vigente; não sobrescrever entradas anteriores."
+    },
+    "plan_execute": {
+      "purpose": "Registrar conclusão/execução preservando histórico anterior."
+    }
+  },
+  "access_control": {
+    "geofence_admin_access": {"method": "GET", "path": "/api/app/cerca-virtual/acesso"},
+    "active_geofence": {"method": "GET", "path": "/api/app/cerca-virtual"},
+    "save_geofence": {"method": "POST", "path": "/api/app/cerca-virtual/salvar"},
+    "geofence_presence": {"method": "POST", "path": "/api/app/controle-acesso/cerca", "source_code": "C"},
+    "transport_status": {"method": "GET", "path": "/api/app/controle-acesso/transporte/status"},
+    "transport_presence": {"method": "POST", "path": "/api/app/controle-acesso/transporte", "source_code": "T"}
+  },
+  "contract_rules": [
+    "unit_id deve ser validado no backend, não apenas filtrado pela UI.",
+    "meus registros devem respeitar autoria/responsabilidade real mesmo para administradores.",
+    "401/403 de sessão permanente devem ser tratados de forma consistente com a política de renovação.",
+    "falha de rede não equivale a sessão revogada.",
+    "não adicionar/alterar rota sem registrar o contrato nesta memória após validação."
+  ]
+}
