@@ -1,44 +1,49 @@
 {
-  "updated_at": "2026-09-17T02:18:00-03:00",
+  "updated_at": "2026-09-17T02:20:26-03:00",
   "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
   "source_snapshot": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "local_head_observed": "68f64c15ce5d0a5797e5bd56370c093f88d33ed6",
+    "local_head_observed": "d46f9b8",
     "remote_head_after_neural_cleanup": "70fa6a6ebd2d7cb92ef7dd2f5cd33c66aafa895e",
-    "remote_relation": "O remoto está à frente do HEAD local. Não executar pull/rebase antes de preservar as mudanças locais não commitadas.",
+    "remote_relation": "O commit local de Planos está protegido no HEAD local, mas ainda não foi sincronizado com origin/possebon. Existem outras mudanças locais paralelas ainda não commitadas.",
     "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
   },
   "active_focus_order": [
-    "Consolidar as alterações locais corretas de Meus Planos de Ação em commit seletivo",
-    "Preservar separadamente as demais mudanças locais antes de sincronizar com origin/possebon",
-    "Meus Planos de Ação: validar origem do registro/PDF e replanejamento completo contra backend real",
+    "Preservar separadamente as demais mudanças locais antes de sincronizar o commit d46f9b8 com origin/possebon",
+    "Sincronizar o commit de Meus Planos de Ação sem perder mudanças paralelas",
+    "Validar origem do registro/PDF e replanejamento completo contra backend real",
     "Performance do app: diagnosticar teclado/IME e abertura lenta de telas",
     "Meu RDO: edição somente em Emissão e arquivado somente leitura",
     "Manter memória neural sincronizada com mudanças validadas"
   ],
   "local_git_state": {
-    "captured_at": "2026-09-17T02:16:54-03:00",
-    "stashes": [
+    "captured_at": "2026-09-17T02:20:26-03:00",
+    "stashes_known_before_sync": [
       "stash@{0}: autostash",
       "stash@{1}: backup local antes da cerca virtual"
     ],
-    "relevant_plan_files_modified": [
-      "lib/features/seguranca_operacional/presentation/planos_acao_screen.dart",
-      "lib/features/seguranca_operacional/data/seguranca_operacional_repository.dart",
-      "lib/services/api_service.dart"
-    ],
-    "other_local_changes_present": [
+    "committed_plan_change": {
+      "commit": "d46f9b8",
+      "message": "Finaliza origem e replanejamento dos Planos de Ação",
+      "files": [
+        "lib/features/seguranca_operacional/presentation/planos_acao_screen.dart",
+        "lib/features/seguranca_operacional/data/seguranca_operacional_repository.dart",
+        "lib/services/api_service.dart"
+      ],
+      "stats": "3 files changed, 296 insertions, 54 deletions",
+      "validation": "flutter analyze: 24 issues, apenas info/warning, nenhum error; git diff --cached --check sem saída antes do commit."
+    },
+    "other_local_changes_present_after_commit": [
       "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
       "pubspec.lock",
-      "tooling/etapa2_corrige_replanejamento_v3_20260916.py",
-      "tooling/etapa2_planos_origem_replanejar_v2_20260916.py",
       "windows/flutter/generated_plugin_registrant.cc",
       "windows/flutter/generated_plugins.cmake",
-      ".possebon_update_backups/.../fileHashes.lock"
+      ".possebon_update_backups/.../fileHashes.lock",
+      "tooling/etapa2_corrige_replanejamento_v3_20260916.py",
+      "tooling/etapa2_planos_origem_replanejar_v2_20260916.py"
     ],
-    "staging_after_last_command": "vazio; o usuário executou git restore --staged . após o analyze.",
-    "safety_rule": "Não usar reset --hard, stash pop/drop, restore em massa ou pull com autostash até separar e preservar as mudanças relevantes."
+    "safety_rule": "Não usar reset --hard, stash pop/drop, restore em massa ou pull com autostash enquanto as mudanças paralelas não forem preservadas e inspecionadas."
   },
   "modules": {
     "session": {
@@ -59,31 +64,31 @@
       "dono_area": "attention",
       "audicomp": "active",
       "amigo_peito": "active",
-      "plans": "attention"
+      "plans": "active"
     },
     "plans": {
-      "status": "attention",
+      "status": "active",
+      "flutter_commit": "d46f9b8",
       "flutter_analyze": {
-        "captured_at": "2026-09-17T02:16:54-03:00",
+        "captured_at": "2026-09-17T02:20:26-03:00",
         "result": "24 issues found; apenas info/warning, nenhum error.",
-        "interpretation": "As mudanças locais atuais de Planos compilam para análise estática sem erro de Dart. Ainda falta commit/sincronização e validação funcional contra backend."
+        "interpretation": "A implementação Flutter de origem/replanejamento está protegida em commit local e passou na análise estática. Ainda falta sincronização com o remoto e validação funcional/backend."
       },
-      "remote_flutter_state": "A branch remota ainda contém a implementação antiga da tela/repository/API de Planos.",
-      "local_flutter_state": "CONFIRMADO POR DIFF LOCAL: existem mudanças não commitadas implementando abertura do PDF de origem, evidência da ocorrência, botão explícito de replanejamento, motivo obrigatório e troca opcional de responsável.",
-      "local_changes_confirmed": [
-        "planos_acao_screen.dart importa url_launcher, RemotePersonSearch e ApiService",
+      "implemented_in_local_commit": [
+        "rótulo neutro 'Abrir registro de origem'",
         "_abrirOrigem usa origem_relatorio_pdf + ApiService.montarUrlArquivo + launchUrl",
         "bloco Não conformidade/Ação tratativa foi substituído por Registro de origem",
-        "evidencia pode ser exibida via Image.network",
-        "replanejamento abre bottom sheet sob demanda",
-        "motivo de replanejamento é obrigatório na UI",
-        "novo responsável é pesquisável e opcional",
+        "evidência da ocorrência pode ser exibida no detalhe do plano",
+        "replanejamento começa por botão explícito",
+        "bottom sheet de replanejamento com nova data",
+        "motivo de replanejamento obrigatório na UI",
+        "novo responsável pesquisável e opcional",
         "repository.replanejarPlano recebe motivo e responsavelId opcional",
-        "ApiService envia motivo e responsavel_id opcional para /api/app/seguranca/plano/replanejar"
+        "ApiService envia motivo e responsavel_id opcional para /api/app/seguranca/plano/replanejar",
+        "nota_execucao apresentada como histórico quando disponível"
       ],
-      "known_ui_problem": "O texto local ainda usa rótulo 'Abrir $origemNome em PDF'; regra aprovada é rótulo neutro como 'Abrir registro de origem' para não sugerir autoria do executor.",
       "backend_application_state": "Correções recentes de origem PDF/replanejamento foram fornecidas, mas o estado aplicado no backend deve ser reconfirmado antes de declarar o fluxo concluído.",
-      "next_action": "Aplicar o rótulo neutro, fazer commit seletivo somente dos três arquivos de Planos, guardar temporariamente as demais mudanças locais, rebasear no origin/possebon e restaurar as mudanças paralelas com inspeção.",
+      "next_action": "Preservar mudanças locais paralelas em stash nomeado, rebasear o commit d46f9b8 sobre origin/possebon, restaurar as mudanças paralelas com inspeção e então validar o fluxo no aparelho/backend.",
       "next_validation": [
         "Ronda -> Plano -> abrir origem",
         "Dono -> Plano -> abrir origem",
@@ -149,7 +154,7 @@
   },
   "repo_cleanup": {
     "status": "stable",
-    "summary": "A memória neural deve existir somente no repositório possebon-neural-memory. O arquivo duplicado project_brain/project_brain.json foi removido do repositório do app no commit 70fa6a6ebd2d7cb92ef7dd2f5cd33c66aafa895e."
+    "summary": "A memória neural existe somente no repositório possebon-neural-memory. O arquivo duplicado project_brain/project_brain.json foi removido do repositório do app no commit 70fa6a6ebd2d7cb92ef7dd2f5cd33c66aafa895e."
   },
   "do_not_forget": [
     "Usuário trabalha na branch local possebon e prefere receber tudo integrado nela.",
