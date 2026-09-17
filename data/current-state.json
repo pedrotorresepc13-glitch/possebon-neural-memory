@@ -1,49 +1,39 @@
 {
-  "updated_at": "2026-09-17T02:20:26-03:00",
+  "updated_at": "2026-09-17T07:04:36-03:00",
   "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
   "source_snapshot": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "local_head_observed": "d46f9b8",
-    "remote_head_after_neural_cleanup": "70fa6a6ebd2d7cb92ef7dd2f5cd33c66aafa895e",
-    "remote_relation": "O commit local de Planos está protegido no HEAD local, mas ainda não foi sincronizado com origin/possebon. Existem outras mudanças locais paralelas ainda não commitadas.",
+    "remote_head_observed": "40408bf",
+    "remote_head_message": "Atualiza registro do permission_handler no Windows",
+    "plan_commit": "ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb",
+    "plan_commit_message": "Finaliza origem e replanejamento dos Planos de Ação",
+    "working_tree_after_push": "limpo no último status informado pelo usuário",
     "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
   },
   "active_focus_order": [
-    "Preservar separadamente as demais mudanças locais antes de sincronizar o commit d46f9b8 com origin/possebon",
-    "Sincronizar o commit de Meus Planos de Ação sem perder mudanças paralelas",
-    "Validar origem do registro/PDF e replanejamento completo contra backend real",
+    "Validar no backend real o PDF/registro de origem e o replanejamento completo de Meus Planos de Ação",
+    "Preservar a alteração funcional de Minha Ronda existente em stash e só integrá-la junto com a unificação real do Dono de Área",
     "Performance do app: diagnosticar teclado/IME e abertura lenta de telas",
     "Meu RDO: edição somente em Emissão e arquivado somente leitura",
     "Manter memória neural sincronizada com mudanças validadas"
   ],
   "local_git_state": {
-    "captured_at": "2026-09-17T02:20:26-03:00",
-    "stashes_known_before_sync": [
-      "stash@{0}: autostash",
-      "stash@{1}: backup local antes da cerca virtual"
+    "captured_at": "2026-09-17T07:04:36-03:00",
+    "branch_head_published": "40408bf",
+    "stashes": [
+      "stash@{0}: On possebon: backup local restante antes de sincronizar planos",
+      "stash@{1}: autostash",
+      "stash@{2}: On possebon: backup local antes da cerca virtual"
     ],
-    "committed_plan_change": {
-      "commit": "d46f9b8",
-      "message": "Finaliza origem e replanejamento dos Planos de Ação",
-      "files": [
-        "lib/features/seguranca_operacional/presentation/planos_acao_screen.dart",
-        "lib/features/seguranca_operacional/data/seguranca_operacional_repository.dart",
-        "lib/services/api_service.dart"
-      ],
-      "stats": "3 files changed, 296 insertions, 54 deletions",
-      "validation": "flutter analyze: 24 issues, apenas info/warning, nenhum error; git diff --cached --check sem saída antes do commit."
+    "working_tree": "clean após commit/push do registro Windows, conforme saída do usuário",
+    "stash0_classification": {
+      "minha_ronda_gerencial_screen.dart": "mudança funcional importante: expõe classes/drafts/editores compartilháveis da Minha Ronda; preservar para a etapa de unificação com Dono de Área",
+      "pubspec.lock": "não restaurar automaticamente: diff observado contém downgrade de dependências transientes sem relação direta com Planos",
+      "windows_generated_plugins": "já consolidados separadamente no commit 40408bf",
+      "gradle_fileHashes_lock": "ruído de ambiente; não versionar"
     },
-    "other_local_changes_present_after_commit": [
-      "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
-      "pubspec.lock",
-      "windows/flutter/generated_plugin_registrant.cc",
-      "windows/flutter/generated_plugins.cmake",
-      ".possebon_update_backups/.../fileHashes.lock",
-      "tooling/etapa2_corrige_replanejamento_v3_20260916.py",
-      "tooling/etapa2_planos_origem_replanejar_v2_20260916.py"
-    ],
-    "safety_rule": "Não usar reset --hard, stash pop/drop, restore em massa ou pull com autostash enquanto as mudanças paralelas não forem preservadas e inspecionadas."
+    "safety_rule": "Não usar stash pop/drop; extrair apenas arquivos intencionais de stash com inspeção e manter backups até validação."
   },
   "modules": {
     "session": {
@@ -59,7 +49,7 @@
     },
     "security_operational": {
       "status": "attention",
-      "summary": "Família funcional em evolução. Minha Ronda é referência. Dono de Área ainda exige validação de paridade funcional/visual.",
+      "summary": "Minha Ronda é referência. Dono de Área ainda exige validação de paridade funcional/visual; há uma mudança de compartilhamento da Ronda preservada em stash, ainda não integrada.",
       "ronda": "stable/reference",
       "dono_area": "attention",
       "audicomp": "active",
@@ -68,27 +58,23 @@
     },
     "plans": {
       "status": "active",
-      "flutter_commit": "d46f9b8",
+      "flutter_commit": "ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb",
+      "published": true,
       "flutter_analyze": {
-        "captured_at": "2026-09-17T02:20:26-03:00",
-        "result": "24 issues found; apenas info/warning, nenhum error.",
-        "interpretation": "A implementação Flutter de origem/replanejamento está protegida em commit local e passou na análise estática. Ainda falta sincronização com o remoto e validação funcional/backend."
+        "result_after_rebase": "22 issues found; apenas info/warning, nenhum error.",
+        "interpretation": "Implementação Flutter publicada e sem erro de análise estática. Ainda não declarar fluxo concluído sem validar backend e aparelho."
       },
-      "implemented_in_local_commit": [
-        "rótulo neutro 'Abrir registro de origem'",
-        "_abrirOrigem usa origem_relatorio_pdf + ApiService.montarUrlArquivo + launchUrl",
-        "bloco Não conformidade/Ação tratativa foi substituído por Registro de origem",
-        "evidência da ocorrência pode ser exibida no detalhe do plano",
-        "replanejamento começa por botão explícito",
-        "bottom sheet de replanejamento com nova data",
-        "motivo de replanejamento obrigatório na UI",
-        "novo responsável pesquisável e opcional",
-        "repository.replanejarPlano recebe motivo e responsavelId opcional",
-        "ApiService envia motivo e responsavel_id opcional para /api/app/seguranca/plano/replanejar",
+      "implemented": [
+        "rótulo neutro Abrir registro de origem",
+        "abertura do PDF oficial via origem_relatorio_pdf",
+        "evidência da ocorrência no detalhe quando disponível",
+        "replanejamento iniciado por botão explícito",
+        "nova data + motivo obrigatório",
+        "troca opcional de responsável pesquisável",
+        "repository/API enviam motivo e responsavel_id opcional",
         "nota_execucao apresentada como histórico quando disponível"
       ],
-      "backend_application_state": "Correções recentes de origem PDF/replanejamento foram fornecidas, mas o estado aplicado no backend deve ser reconfirmado antes de declarar o fluxo concluído.",
-      "next_action": "Preservar mudanças locais paralelas em stash nomeado, rebasear o commit d46f9b8 sobre origin/possebon, restaurar as mudanças paralelas com inspeção e então validar o fluxo no aparelho/backend.",
+      "backend_application_state": "Ainda precisa ser reconfirmado no backend real. Não considerar pacotes de origem/replanejamento aplicados apenas porque foram preparados anteriormente.",
       "next_validation": [
         "Ronda -> Plano -> abrir origem",
         "Dono -> Plano -> abrir origem",
@@ -98,6 +84,11 @@
         "replanejar trocando responsável",
         "histórico após múltiplos replanejamentos"
       ]
+    },
+    "windows_plugins": {
+      "status": "stable",
+      "commit": "40408bf",
+      "summary": "generated_plugin_registrant.cc e generated_plugins.cmake passaram a registrar permission_handler_windows e foram publicados separadamente."
     },
     "rdo": {
       "status": "active",
@@ -110,12 +101,7 @@
     },
     "transport": {
       "status": "active",
-      "summary": "Rotas, tracking, mapa, monitor/motorista e presença estão integrados.",
-      "watch": [
-        "não interromper tracking por sessão",
-        "início de rota/notificações",
-        "ocultar ações de ponto quando não houver percurso"
-      ]
+      "summary": "Rotas, tracking, mapa, monitor/motorista e presença estão integrados."
     },
     "geofence": {
       "status": "active",
@@ -124,11 +110,7 @@
     },
     "notifications": {
       "status": "active",
-      "watch": [
-        "FCM coerente com sessão salva",
-        "navegação correta ao abrir push",
-        "não misturar unidade/contexto"
-      ]
+      "summary": "FCM e navegação contextual integrados; manter coerência com sessão/unidade."
     },
     "performance": {
       "status": "attention",
@@ -154,13 +136,12 @@
   },
   "repo_cleanup": {
     "status": "stable",
-    "summary": "A memória neural existe somente no repositório possebon-neural-memory. O arquivo duplicado project_brain/project_brain.json foi removido do repositório do app no commit 70fa6a6ebd2d7cb92ef7dd2f5cd33c66aafa895e."
+    "summary": "A memória neural existe somente no repositório possebon-neural-memory; duplicatas no app foram removidas."
   },
   "do_not_forget": [
-    "Usuário trabalha na branch local possebon e prefere receber tudo integrado nela.",
-    "Flutter GitHub é fonte operacional do app, mas o working tree local pode conter mudanças testadas ainda não publicadas; conferir antes de sobrescrever.",
+    "Flutter GitHub é fonte operacional do app, mas stashes locais podem conter trabalho funcional ainda não integrado.",
     "Backend exige baseline validado separado.",
-    "Nunca apagar stash/local changes sem inspeção quando houver conflito Git.",
+    "Nunca apagar stash/local changes sem inspeção.",
     "Equipe opcional na Segurança Operacional.",
     "Encarregado não participa dos filtros do Quadro de Avisos.",
     "Unidade é fronteira rígida.",
