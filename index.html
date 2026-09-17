@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#06151d" />
-  <meta name="description" content="Mapa neural e memória viva do POSSEBON App" />
+  <meta name="description" content="Mapa neural, memória viva e estado operacional do POSSEBON App" />
   <title>POSSEBON Neural Memory</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -12,26 +12,32 @@
   <header class="topbar">
     <div class="brand">
       <strong>POSSEBON Neural Memory</strong>
-      <span>memória viva + mapa estrutural do app</span>
+      <span>memória viva + mapa estrutural + estado operacional</span>
     </div>
     <div class="actions">
-      <input id="search" type="search" placeholder="Buscar tela, módulo, regra, arquivo..." autocomplete="off" />
+      <input id="search" type="search" placeholder="Buscar tela, regra, arquivo, backend..." autocomplete="off" />
+      <button id="stateBtn" type="button">Estado atual</button>
       <button id="focusBtn" type="button">Foco atual</button>
-      <button id="centerBtn" type="button">Centralizar</button>
+      <button id="fitBtn" type="button">Ver tudo</button>
+      <button id="centerBtn" type="button">Núcleo</button>
       <button id="resetBtn" type="button">100%</button>
     </div>
   </header>
 
-  <aside class="legend">
-    <span><i class="dot stable"></i> estável</span>
-    <span><i class="dot active"></i> em evolução</span>
-    <span><i class="dot attention"></i> atenção</span>
-    <span><i class="dot planned"></i> planejado</span>
+  <aside class="legend" aria-label="Legenda de estados">
+    <button class="legend-filter" data-status="stable"><i class="dot stable"></i> estável</button>
+    <button class="legend-filter" data-status="active"><i class="dot active"></i> em evolução</button>
+    <button class="legend-filter" data-status="attention"><i class="dot attention"></i> atenção</button>
+    <button class="legend-filter" data-status="planned"><i class="dot planned"></i> planejado</button>
+    <button class="legend-filter" data-status="blocked"><i class="dot blocked"></i> bloqueado</button>
+    <button id="clearFilter" class="legend-filter muted">todos</button>
   </aside>
+
+  <section id="summaryBar" class="summary-bar" aria-label="Resumo do projeto"></section>
 
   <main id="viewport" class="viewport" aria-label="Mapa neural infinito do POSSEBON">
     <div id="world" class="world">
-      <svg id="edges" class="edges" width="7600" height="5200" viewBox="0 0 7600 5200"></svg>
+      <svg id="edges" class="edges" width="7600" height="5600" viewBox="0 0 7600 5600"></svg>
       <div id="nodes" class="nodes"></div>
     </div>
   </main>
@@ -41,15 +47,21 @@
     <div id="inspectorContent"></div>
   </aside>
 
-  <aside id="focusPanel" class="focus-panel hidden">
+  <aside id="focusPanel" class="side-panel hidden">
     <button id="closeFocus" class="close" aria-label="Fechar">×</button>
     <h2>Foco atual</h2>
     <div id="focusContent"></div>
   </aside>
 
+  <aside id="statePanel" class="side-panel wide hidden">
+    <button id="closeState" class="close" aria-label="Fechar">×</button>
+    <h2>Estado operacional</h2>
+    <div id="stateContent"></div>
+  </aside>
+
   <footer class="hud">
     <span id="zoomLabel">100%</span>
-    <span>arraste para mover • roda do mouse para zoom • clique em um nó para detalhes</span>
+    <span>arraste para mover • roda do mouse para zoom • clique em um nó para detalhes • Enter na busca foca o primeiro resultado</span>
   </footer>
 
   <script src="./app.js" defer></script>
