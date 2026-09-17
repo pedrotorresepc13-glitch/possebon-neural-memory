@@ -2,89 +2,107 @@
 
 Atualizado em 17/09/2026.
 
-Este arquivo é um resumo humano. O snapshot estruturado autoritativo está em `data/current-state.json`.
+O snapshot estruturado autoritativo está em `data/current-state.json`.
 
 ## Fontes de verdade
 
-- Flutter: `pedrotorresepc13-glitch/possebon`, branch `possebon`, HEAD confirmado `c35188f865dafa502fef0bfe5302ca9c5c8c137a`.
+- Flutter: `pedrotorresepc13-glitch/possebon`, branch `possebon`.
+- HEAD Flutter confirmado: `19fcb0f563aa76c90ffd5fffa84c3f8b9165581a` — `Seguranca/RDO: Audicomp oficial, plano obrigatorio e supervisao`.
 - Backend MAD Builder analisado: `possebon_web-17-09-2026-14-55-37.zip`.
 - Para PHP exato do MAD Builder, o ZIP/arquivo mais recente enviado pelo usuário prevalece sobre GitHub Web.
 
 ## Regra de edição MAD Builder
 
-Priorizar, nesta ordem:
-1. recursos nativos do Designer/MAD Builder;
-2. `app/custom`;
-3. `app/routes` e `app/controller` quando a integração exigir;
-4. código em pontos Custom Code explicitamente permitidos pelo Designer.
+Priorizar Designer/MAD Builder, `app/custom`, depois `app/routes`/`app/controller` quando necessário. Não sobrescrever manualmente `app/model` nem páginas `app/control` geradas por inteiro.
 
-Não sobrescrever manualmente classes geradas em `app/model` nem páginas `app/control` inteiras. Se uma DBQuery/model gerada precisar mudar, alterar sua consulta pelo Designer/MAD Builder mantendo o mesmo nome.
+## Dono de Área — VALIDADO EM RUNTIME
 
-## Segurança Operacional — aplicado pelo usuário em 17/09
+O usuário confirmou em 17/09 que o Dono de Área está funcionando perfeitamente. Preservar esse fluxo como baseline.
 
-O usuário confirmou que já aplicou estes três arquivos:
+Correções já aplicadas/confirmadas no custom:
+- `Pessoa.fone` no lugar de `Pessoa.telefone` para o PDF;
+- `audicomp_auditor` grava `unit_id`, `criado_por` e `criado_em`, tornando o auditor visível no MAD Builder;
+- PhotoReport/PDF/nota do fluxo atual preservados.
 
+## Novo pacote backend — preparado, ainda não confirmado como aplicado
+
+`POSSEBON_AJUSTES_SEGURANCA_RDO_17-09-2026.zip`
+
+Contém somente:
 - `app/custom/SegurancaOperacionalAppApiTrait.php`
 - `app/custom/RondaGerencialAppApiTrait.php`
-- `app/custom/AmigoPeitoAppApiTrait.php`
+- `app/custom/RdoAppApiTrait.php`
 
-`ApiAppController.php` já requer/usa esses traits e `app/routes/api.php` já possui as rotas necessárias de Segurança, Ronda, Planos e Amigo do Peito. Portanto não há mudança adicional de routes/controller necessária para a correção atual.
+Não altera Model, Control, Routes ou Controller.
 
-Esses traits implementam o fluxo de API necessário para:
-- Dono/Audicomp trabalhar com `tipologia C/N/A`;
-- gravar `result`, `escore`, `deviations` e `not_applicable` no cabeçalho;
-- regra de nota `C / (C + N) * 100`, ignorando N/A;
-- PhotoReport para `AudicompItem`, `CondicaoInsegura`, `ReconhecimentoSeguro` e `PlanoAcao`;
-- PDF completo do fluxo Dono/Audicomp criado pelo app, incluindo avaliação, não conformidades, tratativa, condições inseguras, planos, reconhecimentos, imagens e observação;
-- Dono da Área e Técnico de Segurança da `SafetyArea` no final do PDF, usando dados da Pessoa;
-- Ronda com reconhecimento seguro em PhotoReport/PDF;
-- Amigo do Peito com evidência no PhotoReport;
-- múltiplas imagens de conclusão de Plano de Ação.
+Validação: `php -l` nos três arquivos OK e composição dos traits OK.
 
-## Importante — pacote anterior de 8 arquivos
+### Condição insegura
 
-O pacote `POSSEBON_CORRECAO_DONO_PHOTOREPORT_PDF_17-09-2026.zip` continha também quatro Models gerados e a página `SmsDonoDeAreaDashboard.php`.
+Toda condição insegura deve possuir pelo menos um Plano de Ação. A validação está no Flutter compartilhado e é revalidada pelo backend para Dono/Audicomp/Ronda.
 
-Esses cinco arquivos **não devem ser aplicados manualmente**:
+### PDF Dono de Área
+
+Mantém o relatório completo já validado e acrescenta no final, dentro do próprio custom:
+- quadro `Dono de Área por Área e mês`: Área, Dono da Área, Técnico Segurança e Sem 1..5;
+- quadro `Avaliação de Área`: categorias AC.1..AC.9 e percentuais Sem 1..5.
+
+Isso não exige sobrescrever DBQuery/Model/Control gerado para o PDF.
+
+### Audicomp
+
+O formulário oficial nativo é quantitativo, não um checklist Sim/Não/N/A. O app/backend passam a trabalhar com as subcategorias oficiais A.1 até F.3, IDs:
+`1,2,3,4,6-13,15-21,23-25,27-29,31-33`.
+
+O usuário registra ocorrência, quantidade, tipo de desvio, descrição/tratativa e evidência.
+
+### Meu RDO
+
+Regra preparada:
+- usuário comum vê somente RDOs criados por ele;
+- supervisor vê os próprios e os RDOs criados por colaboradores ativos das equipes em que ele é `supervisor_id`;
+- RDO de subordinado é somente leitura;
+- somente RDO próprio em status `E` (Emissão) pode editar;
+- card mostra lápis quando `pode_editar = true`;
+- ao ver RDO de subordinado, mostra o criador;
+- prioridade 4 de edição por `rdo_id` e preservação de IDs/anexos de paralisações continua mantida.
+
+## Flutter — novo HEAD validado estaticamente
+
+Commit: `19fcb0f563aa76c90ffd5fffa84c3f8b9165581a`.
+
+O workflow `POSSEBON Ajustes Seguranca e RDO 17-09` passou:
+- aplicação do patch;
+- `flutter pub get`;
+- `dart format`;
+- `flutter analyze --no-fatal-warnings --no-fatal-infos`;
+- commit/push.
+
+Alterações Flutter:
+- Plano obrigatório no editor compartilhado de condição insegura;
+- Audicomp oficial quantitativo;
+- Meu RDO com lápis, diferenciação próprio/subordinado e equipes supervisionadas.
+
+## Minha Ronda Gerencial
+
+Preservada. Continua aparecendo somente quando o usuário possui participação. A única mudança nova é a exigência de Plano de Ação ao cadastrar condição insegura.
+
+## Não aplicar manualmente
+
+Continuam proibidos os Models/Control do pacote antigo de 8 arquivos:
 - `app/model/EdDonoAreaPorAreaMes.php`
 - `app/model/EdAvaliacaoArea.php`
 - `app/model/EdAvaliacaoAreaGrafico.php`
 - `app/model/EdDonoAreaGraficoSem.php`
 - `app/control/sms/SmsDonoDeAreaDashboard.php`
 
-A ideia técnica das consultas continua válida, mas deve ser aplicada pelo Designer/DBQuery do MAD Builder.
+## Próximos testes
 
-## Dashboard Dono de Área — pendente no Designer
-
-`SmsDonoDeAreaDashboard` usa estas quatro DBQuery:
-- `EdDonoAreaPorAreaMes`
-- `EdAvaliacaoArea`
-- `EdAvaliacaoAreaGrafico`
-- `EdDonoAreaGraficoSem`
-
-Problema das consultas atuais: elas contam `audicomp_item.descricao = 'Sim'/'N/A'`, enquanto o app moderno grava o resultado em `audicomp_item.tipologia` (`C`, `N`, `A`). Também precisam ignorar registros com `audicomp.deletado_em` ou `audicomp_item.deletado_em` preenchidos.
-
-Regra da consulta nova:
-- se `tipologia` for `C`, `N` ou `A`, ela é a fonte principal;
-- para legado, `descricao = 'Sim'` vira `C`, `descricao = 'N/A'` vira `A`, demais viram `N`;
-- excluir logicamente apagados;
-- nota = `C / (C + N) * 100`.
-
-A página também possui transformers com `intval($value)`, o que transforma 96,43 em 96. Esse ajuste deve ser feito apenas pelo Designer/Custom Code editável correspondente, nunca substituindo a página inteira.
-
-## Flutter prioridades
-
-- Prioridade 1 Planos: aplicada.
-- Prioridade 2 Segurança: aplicada.
-- Prioridade 3 Performance: aplicada estaticamente, runtime pendente.
-- Prioridade 4 RDO: aplicada estaticamente, runtime pendente.
-
-## Próximo passo
-
-1. Não aplicar os Models/Control do pacote anterior.
-2. Manter os três traits custom já instalados.
-3. Testar Dono criado pelo app: nota, PDF completo e PhotoReport.
-4. Corrigir as quatro DBQuery pelo próprio MAD Builder/Designer, uma de cada vez.
-5. Ajustar a exibição decimal do dashboard apenas no ponto Custom Code/Designer permitido.
-6. Validar Ronda e Amigo do Peito.
-7. Depois validar RDO runtime e retomar sessão permanente + Cerca Virtual.
+1. Aplicar somente os 3 arquivos `app/custom` do novo pacote.
+2. Atualizar Flutter local para `19fcb0f...`.
+3. Dono: condição sem plano deve bloquear; com plano deve salvar; conferir os dois quadros novos no final do PDF.
+4. Audicomp: validar categorias A-F, ocorrências e quantidades.
+5. Meu RDO comum: somente próprios.
+6. Meu RDO supervisor: próprios + subordinados; subordinado somente leitura; lápis só no próprio em Emissão.
+7. Confirmar Minha Ronda continua filtrada por participação.
+8. Depois retomar sessão permanente + Cerca Virtual.
