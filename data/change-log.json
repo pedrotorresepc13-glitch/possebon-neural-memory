@@ -1,6 +1,24 @@
 {
-  "updated_at": "2026-09-16T22:36:00-03:00",
+  "updated_at": "2026-09-17T07:04:36-03:00",
   "entries": [
+    {
+      "date": "2026-09-17",
+      "area": "Planos de Ação / Flutter",
+      "status": "active",
+      "summary": "Mudanças de origem neutra/PDF e replanejamento foram consolidadas, rebaseadas e publicadas no commit ec0d6c9a6b255cf59e8d1a34b6fc527ce2d016bb. flutter analyze após rebase: 22 issues, apenas info/warning, 0 errors. Falta validação funcional/backend antes de marcar stable."
+    },
+    {
+      "date": "2026-09-17",
+      "area": "Flutter / Windows plugins",
+      "status": "stable",
+      "summary": "generated_plugin_registrant.cc e generated_plugins.cmake foram atualizados para permission_handler_windows e publicados no commit 40408bf."
+    },
+    {
+      "date": "2026-09-17",
+      "area": "Git / preservação local",
+      "status": "active",
+      "summary": "Working tree ficou limpo após push. Três stashes permanecem preservados; stash mais recente contém mudança funcional de compartilhamento da Minha Ronda e também arquivos ambientais que não devem ser restaurados em bloco."
+    },
     {
       "date": "2026-09-16",
       "area": "Memória Neural",
@@ -17,13 +35,7 @@
       "date": "2026-09-16",
       "area": "Memória Neural / Validação",
       "status": "active",
-      "summary": "Adicionados validador Python e workflow GitHub Actions para validar JSON, nós, arestas e arquivos obrigatórios. A execução do workflow ainda deve ser confirmada após o primeiro run."
-    },
-    {
-      "date": "2026-09-16",
-      "area": "Planos de Ação",
-      "status": "attention",
-      "summary": "Em validação: abrir registro/PDF oficial de origem independentemente de autoria e replanejamento com motivo, histórico acumulativo e troca opcional de responsável. Estado real do backend mais recente deve ser reconfirmado antes da próxima alteração."
+      "summary": "Adicionados validador Python e workflow GitHub Actions para validar JSON, nós, arestas e arquivos obrigatórios."
     },
     {
       "date": "2026-09-16",
