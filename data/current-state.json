@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T07:04:36-03:00",
+  "updated_at": "2026-09-17T07:10:00-03:00",
   "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
   "source_snapshot": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -12,7 +12,8 @@
     "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
   },
   "active_focus_order": [
-    "Validar no backend real o PDF/registro de origem e o replanejamento completo de Meus Planos de Ação",
+    "Aplicar e validar o pacote backend final de Meus Planos de Ação",
+    "Validar PDF/registro de origem e replanejamento completo no aparelho",
     "Preservar a alteração funcional de Minha Ronda existente em stash e só integrá-la junto com a unificação real do Dono de Área",
     "Performance do app: diagnosticar teclado/IME e abertura lenta de telas",
     "Meu RDO: edição somente em Emissão e arquivado somente leitura",
@@ -74,7 +75,24 @@
         "repository/API enviam motivo e responsavel_id opcional",
         "nota_execucao apresentada como histórico quando disponível"
       ],
-      "backend_application_state": "Ainda precisa ser reconfirmado no backend real. Não considerar pacotes de origem/replanejamento aplicados apenas porque foram preparados anteriormente.",
+      "backend_package_prepared": {
+        "status": "prepared_not_applied",
+        "name": "POSSEBON_ETAPA2_PLANOS_BACKEND_FINAL.zip",
+        "base": "RondaGerencialAppApiTrait.php do ETAPA1_SEGURANCA_MADBUILDER confirmado + SegurancaOperacionalAppApiTrait.php do ETAPA1_AJUSTES_16-09-2026 confirmado",
+        "files": [
+          "app/custom/RondaGerencialAppApiTrait.php",
+          "app/custom/SegurancaOperacionalAppApiTrait.php"
+        ],
+        "changes": [
+          "meus-planos devolve active_record, primary_key, origem_registro_id, origem_relatorio_pdf e evidencia",
+          "replanejamento exige motivo e aceita novo responsavel opcional na mesma unidade",
+          "historico de replanejamento e execucao passa a ser acumulativo",
+          "contexto carrega chapa para historico"
+        ],
+        "validation": "php -l OK nos dois arquivos e ZIP validado sem erro",
+        "does_not_change": ["api.php", "ApiAppController.php", "schema", "AmigoPeitoAppApiTrait.php", "sessao permanente"]
+      },
+      "backend_application_state": "Pacote final preparado e validado sintaticamente, mas AINDA NAO APLICADO. Somente marcar aplicado depois de confirmacao do usuario.",
       "next_validation": [
         "Ronda -> Plano -> abrir origem",
         "Dono -> Plano -> abrir origem",
@@ -132,7 +150,7 @@
     "session_v2": "Aplicada e confirmada anteriormente: sessão permanente usando app_dispositivo e rotas ativar/refresh/revogar.",
     "security_first_package": "Aplicado e confirmado anteriormente: traits de Segurança/Ronda/Amigo + controller/routes compatíveis com sessão.",
     "security_post_test_adjustment": "Aplicado e confirmado anteriormente: correções Dono IDs 35..62/equipe opcional e Amigo Gerente SMS/+7 dias.",
-    "later_photo_and_plan_packages": "Não assumir aplicados sem nova verificação."
+    "later_photo_and_plan_packages": "Nao assumir aplicados sem nova verificacao."
   },
   "repo_cleanup": {
     "status": "stable",
