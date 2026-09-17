@@ -1,14 +1,15 @@
 {
-  "updated_at": "2026-09-16T22:36:00-03:00",
+  "updated_at": "2026-09-16T23:02:00-03:00",
   "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
   "source_snapshot": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
     "remote_head_observed": "23d7bbb8d2ffad5eef3405b211bcd20ea5006bf7",
-    "remote_head_note": "Commit de remoção da antiga pasta neural do repositório do app. Antes da próxima alteração Flutter, conferir se o working tree local possui mudanças ainda não publicadas.",
+    "remote_head_note": "HEAD remoto atual observado após remoção da antiga pasta neural do app.",
     "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
   },
   "active_focus_order": [
+    "Sincronizar com segurança o estado local Flutter para que o Git represente o app realmente testado",
     "Meus Planos de Ação: concluir origem do registro/PDF e replanejamento",
     "Performance do app: diagnosticar teclado/IME e abertura lenta de telas",
     "Meu RDO: edição somente em Emissão e arquivado somente leitura",
@@ -16,7 +17,7 @@
   ],
   "modules": {
     "session": {
-      "status": "active",
+      "status": "stable",
       "validated": true,
       "summary": "Sessão permanente com access token curto, refresh token seguro e renovação silenciosa está implementada como arquitetura-base.",
       "must_preserve": [
@@ -37,16 +38,24 @@
     },
     "plans": {
       "status": "attention",
-      "remote_flutter_state": "A branch remota observada ainda pode não conter todas as alterações locais testadas recentemente na tela de Planos; conferir arquivo real antes de editar.",
+      "remote_flutter_state": "CONFIRMADO EM 2026-09-16 23:02 - o Git remoto ainda contém a tela antiga de Planos: mostra Não conformidade/Ação tratativa diretamente, replanejamento com campo de data já aberto e repository/API aceitam apenas id + data no replanejamento. Logo as mudanças locais testadas recentemente (origem neutra/PDF e novo fluxo de replanejamento) ainda não estão representadas no Git remoto.",
+      "remote_files_checked": [
+        "lib/features/seguranca_operacional/presentation/planos_acao_screen.dart",
+        "lib/features/seguranca_operacional/data/seguranca_operacional_repository.dart",
+        "lib/services/api_service.dart"
+      ],
       "confirmed_requirements": [
         "responsável atual do plano não é necessariamente autor da origem",
         "abrir registro/PDF oficial de origem pelo vínculo do plano",
-        "não depender da lista 'Minha Ronda' do executor",
+        "não depender da lista Minha Ronda do executor",
+        "rótulo de origem deve ser neutro, por exemplo Abrir registro de origem",
+        "replanejamento começa por botão explícito",
         "replanejamento exige motivo",
         "troca de responsável é opcional",
         "histórico deve ser acumulativo"
       ],
-      "backend_application_state": "Há correções preparadas/fornecidas recentemente para origem PDF e replanejamento; tratar como não confirmadas até verificar os arquivos efetivamente aplicados no backend atual.",
+      "backend_application_state": "Correções recentes de origem PDF/replanejamento foram preparadas/fornecidas, mas não devem ser consideradas aplicadas sem verificar o backend real atual.",
+      "next_action": "Antes de alterar o Git remoto, capturar git status e diffs locais dos três arquivos de Planos para preservar as mudanças que já foram testadas no PC do usuário.",
       "next_validation": [
         "Ronda -> Plano -> abrir origem",
         "Dono -> Plano -> abrir origem",
@@ -112,7 +121,8 @@
   },
   "do_not_forget": [
     "Usuário trabalha na branch local possebon e prefere receber tudo integrado nela.",
-    "Flutter GitHub é fonte operacional do app; backend exige baseline validado separado.",
+    "Flutter GitHub é fonte operacional do app, mas o working tree local pode conter mudanças testadas ainda não publicadas; conferir antes de sobrescrever.",
+    "Backend exige baseline validado separado.",
     "Nunca apagar stash/local changes sem inspeção quando houver conflito Git.",
     "Equipe opcional na Segurança Operacional.",
     "Encarregado não participa dos filtros do Quadro de Avisos.",
