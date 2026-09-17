@@ -2,50 +2,151 @@
 
 Atualizado em 2026-09-16.
 
-## Fonte operacional
+## Fontes operacionais
 
-- Flutter: repositório `pedrotorresepc13-glitch/possebon`, branch `possebon`.
-- Backend/MAD Builder: usar ZIP/arquivo mais recente validado e enviado no trabalho corrente. O GitHub Web não é fonte operacional do backend.
-- Esta memória: repositório `possebon-neural-memory`.
+- **Flutter:** `pedrotorresepc13-glitch/possebon`, branch `possebon`.
+- **Backend/MAD Builder:** ZIP/arquivo mais recente explicitamente validado no trabalho corrente. GitHub Web não é baseline autoritativo do backend.
+- **Memória estrutural:** `pedrotorresepc13-glitch/possebon-neural-memory`.
 
-## Eixos arquiteturais
+A memória guarda contexto, regras e pontos de alteração. O código real continua sendo verificado antes de qualquer edição.
 
-### Sessão
+## Camadas do app
 
-A sessão permanente usa access token curto, refresh token persistido de forma segura e renovação silenciosa. O app não deve transformar indisponibilidade de rede em logout.
+### 1. Apresentação
 
-### Unidade
+- `lib/screens/` para telas gerais;
+- `lib/features/*/presentation/` para domínios estruturados;
+- `lib/core/ui/` para componentes compartilhados;
+- `lib/core/theme/` para design system.
 
-`unit_id` é fronteira rígida de contexto. Conteúdo funcional, módulos, vaga, avisos, transporte, RDO, segurança e demais dados contextuais devem respeitar a unidade atual.
+Objetivo evolutivo: reduzir telas monolíticas, localizar rebuilds e reutilizar componentes equivalentes.
+
+### 2. Domínio / feature
+
+Domínios já explícitos incluem:
+
+- Segurança Operacional;
+- Transporte;
+- Controle de Acesso.
+
+Outras áreas ainda usam estrutura mais legada em `screens`, `repositories` e `services`.
+
+### 3. Repositórios / offline
+
+- repositórios encapsulam cache/API em áreas selecionadas;
+- Drift/SQLite armazena contexto e filas locais;
+- cache deve ser isolado por Pessoa + Unidade;
+- erro de negócio/permissão não pode ser mascarado por cache velho;
+- outbox do RDO só remove item após confirmação do servidor.
+
+### 4. Rede / sessão
+
+Há coexistência entre:
+
+- `ApiService` legado/central;
+- `ApiClient` novo em `core/network`.
+
+Migração deve ser gradual. Não duplicar lógica de token.
+
+A autenticação permanente é centralizada em `AuthSessionManager` + `SessionStorage` + `SessionService`.
+
+### 5. Backend
+
+MAD Builder/Adianti/PHP/PostgreSQL. O app usa API REST e traits/controllers customizados onde necessário, preservando o padrão nativo do MAD Builder sempre que possível.
+
+## Eixos arquiteturais obrigatórios
+
+### Sessão permanente
+
+- access token curto;
+- refresh token seguro;
+- renovação silenciosa;
+- single-flight para refresh;
+- falha de rede não apaga sessão;
+- revogação real/logout explícito continuam válidos.
+
+### Unidade como fronteira
+
+`unit_id` define contexto operacional rígido.
+
+A regra vale para:
+
+- conteúdo;
+- vínculo funcional mostrado;
+- Segurança;
+- RDO;
+- Transporte;
+- Cerca;
+- Quadro de Avisos;
+- Processo admissional;
+- treinamentos/contextos;
+- demais módulos funcionais.
 
 ### Pessoa e vínculos
 
-Pessoa representa a identidade única. Colaborador, candidato e demais relações são vínculos/contextos. A contratação deve promover a mesma Pessoa para Colaborador sem duplicação.
-
-### Offline
-
-O app já usa cache local e Drift/SQLite em áreas selecionadas. Cache deve ser isolado por Pessoa + Unidade. Erro de negócio/permissão não deve ser mascarado por cache antigo.
+- Pessoa = identidade única;
+- Colaborador = vínculo funcional;
+- Candidato = contexto/vínculo;
+- contratação promove a mesma Pessoa, sem duplicar cadastro.
 
 ### Segurança Operacional
 
-Minha Ronda Gerencial é a referência visual/funcional. Dono de Área, Audicomp e fluxos relacionados devem reutilizar o padrão sempre que a regra for equivalente, alterando apenas conteúdo/regra específicos.
+Minha Ronda Gerencial é a referência oficial de comportamento e UX quando a função é equivalente.
+
+Dono de Área e Audicomp devem reutilizar padrão/elementos compartilhados, alterando conteúdo e regras próprias.
 
 ### Planos de Ação
 
-O Plano pertence ao responsável atual, mas o registro que o originou pode ter sido criado por outra pessoa. O vínculo com a origem deve ser feito por referências do plano, não pela identidade do executor.
+Plano e origem são relações independentes:
+
+- `responsavel_id` define quem executa/recebe o plano;
+- `active_record + primary_key` identifica o registro que originou o plano;
+- autor da origem pode ser outra pessoa;
+- PDF oficial da origem deve ser reutilizado quando existir.
 
 ### RDO
 
-Fluxo offline-first com fila local. Próxima evolução: edição controlada somente enquanto status estiver em Emissão; arquivados permanecem somente leitura.
+Offline-first. Sincronização protegida contra concorrência. Evolução planejada: editar apenas Emissão; arquivado somente leitura.
 
 ### Transporte e Cerca Virtual
 
-Ambos participam do controle de presença. Tracking e contexto de unidade não podem ser perdidos por expiração comum de sessão.
+Ambos participam de presença/controle de acesso e dependem de sessão persistente e contexto correto de unidade.
 
-## Princípios
+### Notificações
 
-- regra compartilhada deve virar componente/serviço compartilhado;
-- evitar telas monolíticas e `setState` de árvore inteira para mudanças pequenas;
-- estado de negócio e UI devem ser separáveis;
-- cada mudança relevante deve atualizar a memória neural depois de validada;
-- nunca armazenar segredos ou dados pessoais neste repositório.
+FCM integra comunicação e navegação contextual. Token e sessão precisam permanecer coerentes com o dispositivo atual.
+
+## Design system
+
+Arquivos-base:
+
+- `lib/core/theme/app_theme.dart`;
+- `lib/core/theme/app_colors.dart`;
+- widgets compartilhados em `lib/core/ui/`;
+- widgets compartilhados de Segurança em `lib/features/seguranca_operacional/presentation/widgets/`.
+
+Regra: evitar paleta e padrões próprios por tela quando já existe solução compartilhada.
+
+## Performance
+
+Problema atual conhecido: teclado/IME e algumas aberturas de tela lentas.
+
+Arquitetura deve caminhar para:
+
+- menor subtree reagindo ao teclado;
+- estados localizados;
+- menos `setState` globais;
+- widgets const/reutilizáveis;
+- `RepaintBoundary` em áreas pesadas quando medição justificar;
+- imagens dimensionadas/cacheadas;
+- polling/tracking isolados;
+- medição em profile antes/depois.
+
+## Princípios de evolução
+
+- regra compartilhada → componente/serviço compartilhado;
+- diferença funcional real → comportamento específico explícito;
+- sem duplicação silenciosa;
+- sem mudança estrutural em massa sem teste incremental;
+- sem declaração de sucesso sem evidência;
+- toda mudança validada atualiza a memória neural.
