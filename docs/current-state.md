@@ -1,189 +1,128 @@
-# Estado atual conhecido — POSSEBON App
+# Estado atual conhecido — POSSEBON App/Web
 
-Atualizado em 2026-09-17.
+Atualizado em 17/09/2026.
 
-Este arquivo separa estado **confirmado**, **implementado sem confirmação** e **planejado**. Não reinterpretar essas categorias.
+Este arquivo é um resumo humano do estado operacional. O snapshot estruturado autoritativo está em `data/current-state.json`. Não marcar nada como aplicado em produção sem confirmação/teste do usuário.
 
-## Prioridade atual
+## Fontes de verdade atuais
 
-1. Finalizar Meus Planos de Ação.
-2. Corrigir/medir performance do app, principalmente teclado/IME e abertura de telas.
-3. Depois seguir para edição controlada do Meu RDO.
+- Flutter: `pedrotorresepc13-glitch/possebon`, branch `possebon`.
+- HEAD Flutter confirmado: `c35188f865dafa502fef0bfe5302ca9c5c8c137a`.
+- Backend MAD Builder atual analisado: `possebon_web-17-09-2026-14-55-37.zip`, enviado pelo usuário.
+- GitHub Web não é fonte autoritativa do PHP do MAD Builder quando houver ZIP/backend mais recente enviado pelo usuário.
 
-## Flutter remoto
+## Flutter — prioridades 1 a 4
 
-- Repositório: `pedrotorresepc13-glitch/possebon`
-- Branch: `possebon`
-- HEAD observado em 2026-09-17: `23d7bbb8d2ffad5eef3405b211bcd20ea5006bf7`
-- Esse HEAD contém commits administrativos de inclusão/remoção temporária do mapa neural; o código Flutter não foi alterado por essa limpeza.
+- Prioridade 1 Planos: aplicada no Flutter.
+- Prioridade 2 Segurança Operacional: aplicada no Flutter.
+- Prioridade 3 Performance teclado/telas: aplicada e validada estaticamente; runtime pendente.
+- Prioridade 4 RDO: aplicada e validada estaticamente; runtime pendente.
 
-### Atenção: Flutter local x remoto
+Commits confirmados relevantes:
+- Segurança unificada: `12da8bc83a322954d3bca783e556b98ce142c3e3`.
+- Performance: `718ee93a`.
+- RDO edição: `c35188f865dafa502fef0bfe5302ca9c5c8c137a`.
 
-Durante o trabalho de Planos de Ação houve alterações locais/staged e um autostash. A árvore remota ainda mostra `planos_acao_screen.dart` na versão antiga observada pelo blob `ea868785f44f60a37feef9e4c63dfdd92f855a64`.
+## Backend — correção preparada em 17/09
 
-Portanto:
-- não assumir que mudanças locais de origem PDF/replanejamento já estão consolidadas no GitHub do app;
-- antes de novo patch nesse módulo, inspecionar `git status` e diffs locais;
-- não apagar mudanças locais com reset amplo;
-- não aplicar `stash pop` cegamente.
+Pacote atual preparado, **ainda não confirmado como aplicado**:
 
-## Sessão permanente — CONFIRMADO NO BACKEND
+`POSSEBON_CORRECAO_DONO_PHOTOREPORT_PDF_17-09-2026.zip`
 
-Arquitetura confirmada/aplicada:
-- `AppDispositivo.php`
-- `AppSessaoApiTrait.php`
-- `ApiAppController.php`
-- `AppApiBearerMiddleware.php`
-- `api.php`
+Base exata usada para produzi-lo:
 
-Rotas conhecidas:
-- `POST /api/app/sessao/ativar` — bearer
-- `POST /api/app/sessao/refresh` — refresh token
-- `POST /api/app/sessao/revogar` — refresh token
+`possebon_web-17-09-2026-14-55-37.zip`
 
-Banco reaproveita `app_dispositivo`; não criar tabela paralela. Campos conhecidos adicionados/ajustados: `unit_id`, `dispositivo_uid`, `refresh_token_hash`, `sessao_ativa`; `fcm_token` pode ser nulo.
-
-Flutter usa `AuthSessionManager`, `SessionStorage` e `SessionService`, com refresh single-flight.
-
-## Segurança Operacional — BACKEND CONFIRMADO
-
-### Pacote base da Etapa 1 — aplicado
-
-Arquivos confirmados:
+Arquivos alterados:
 - `app/custom/SegurancaOperacionalAppApiTrait.php`
 - `app/custom/RondaGerencialAppApiTrait.php`
 - `app/custom/AmigoPeitoAppApiTrait.php`
-- `app/controller/ApiAppController.php`
-- `app/routes/api.php`
+- `app/model/EdDonoAreaPorAreaMes.php`
+- `app/model/EdAvaliacaoArea.php`
+- `app/model/EdAvaliacaoAreaGrafico.php`
+- `app/model/EdDonoAreaGraficoSem.php`
+- `app/control/sms/SmsDonoDeAreaDashboard.php`
 
-Esse conjunto adicionou/ajustou rotas e traits necessários para a família Segurança Operacional e Amigo do Peito.
+Validação estática concluída:
+- `php -l` nos 8 arquivos: OK;
+- composição `SegurancaOperacionalAppApiTrait + RondaGerencialAppApiTrait + AmigoPeitoAppApiTrait`: OK;
+- contrato Flutter de múltiplas evidências da conclusão do Plano: conferido;
+- vínculos PhotoReport `AudicompItem`, `CondicaoInsegura`, `ReconhecimentoSeguro` e `PlanoAcao`: conferidos;
+- fórmula de referência 27 conformes + 1 não conforme = 96,43%: conferida.
 
-### Ajuste pós-teste de 16/09 — aplicado
+## Dono de Área — regra de cálculo
 
-Arquivos confirmados:
-- `app/custom/SegurancaOperacionalAppApiTrait.php`
-- `app/custom/AmigoPeitoAppApiTrait.php`
+Regra oficial preservada:
 
-Regras incorporadas:
-- Dono de Área usa subcategorias oficiais 35–62;
-- equipe nullable/opcional;
-- Amigo do Peito permite colaborador válido no contexto;
-- Gerente SMS automático;
-- prazo +7 dias;
-- plano automático somente quando não resolvido.
+`Resultado = SIM / (SIM + NÃO) * 100`
 
-## Segurança Operacional — NÃO TRATAR COMO APLICADO SEM NOVA CONFIRMAÇÃO
+N/A não entra no denominador.
 
-Foram preparados, mas não há confirmação suficiente nesta memória de que estejam em produção:
-- pacote de correção de fotos/evidências e unificação Dono/Ronda;
-- pacote isolado de origem PDF de Planos;
-- correção posterior do endpoint real `/api/app/seguranca/meus-planos` no `RondaGerencialAppApiTrait.php`;
-- pacote V2 de Planos/replanejamento gerado depois;
-- scripts Flutter de origem PDF, replanejamento e rótulo neutro, enquanto não houver commit/push ou confirmação explícita.
+O app moderno grava `tipologia`:
+- `C` = Conforme/Sim;
+- `N` = Não conforme/Não;
+- `A` = N/A.
 
-Se o usuário disser que algum desses arquivos foi aplicado, atualizar este documento imediatamente.
+As consultas do MAD Builder foram preparadas para usar `tipologia` e manter compatibilidade com registros antigos em que `descricao` continha `Sim`/`N/A`/outros valores. Também passam a ignorar `audicomp` e `audicomp_item` excluídos logicamente.
 
-## Minha Ronda Gerencial
+O Dashboard deixa de truncar percentuais decimais; exemplo: 96,43% não deve virar 96%.
 
-Status: referência funcional/visual aprovada.
+## PDF Dono/Audicomp/Amigo
 
-Regras vigentes:
-- equipe opcional;
-- lista própria do usuário;
-- PDF gerado e reaberto ao tocar no registro;
-- serve de padrão para etapas equivalentes de Dono de Área/Audicomp.
-
-## Dono de Área
-
-Status: `attention`.
-
-Problemas históricos recentes:
-- divergência visual/funcional em relação à Minha Ronda;
-- condições/reconhecimentos com erros;
-- subcategoria incompatível no salvamento;
-- editor de texto em dialog apresentou problema.
-
-Correções de regra já confirmadas no backend: subcategorias 35–62 e equipe opcional. A unificação completa de fluxo deve ser validada no app antes de marcar estável.
-
-## Meu Amigo do Peito
-
-Status: `validated/active` no fluxo principal, com pendência de evidência/foto do Plano de Ação.
-
-Fluxo esperado:
+O backend preparado gera o relatório com os dados disponíveis no registro:
 - identificação;
-- informar se foi resolvido no local;
-- resolvido = finaliza;
-- não resolvido = gera plano automático;
-- responsável = Gerente SMS;
-- prazo = +7 dias;
-- sem editor manual de plano intermediário.
+- avaliação;
+- não conformidades;
+- tipo e quantidade;
+- ação/tratativa;
+- evidência da ocorrência;
+- Planos de Ação;
+- responsável, planejado/replanejado, status e histórico/execução;
+- imagens de conclusão do Plano;
+- Condições Inseguras com imagens e 0..N planos;
+- Reconhecimentos Seguros com imagens;
+- observação geral;
+- no final, Dono da Área e Técnico de Segurança da `SafetyArea`, com dados da Pessoa quando disponíveis.
 
-## Meus Planos de Ação
+## PhotoReport — regra preparada
 
-Status: `attention` / foco atual.
+Toda imagem operacional desses fluxos deve possuir vínculo oficial no `photo_report`:
+- item/não conformidade: `active_record = AudicompItem`;
+- condição insegura: `active_record = CondicaoInsegura`;
+- reconhecimento seguro: `active_record = ReconhecimentoSeguro`;
+- conclusão do Plano de Ação: `active_record = PlanoAcao`, `primary_key = plano_acao.id`.
 
-Regra desejada confirmada:
-- lista = planos atribuídos ao responsável atual;
-- executor pode não ser autor da origem;
-- ficha não deve duplicar “Não conformidade” e “Ação/tratativa” quando o registro original já contém esses dados;
-- mostrar bloco “Registro de origem” e ação neutra “Abrir registro de origem”;
-- abrir o PDF já existente do registro que originou o plano;
-- sem crash quando PDF estiver ausente;
-- replanejamento começa por botão;
-- nova data obrigatória;
-- motivo obrigatório;
-- responsável novo opcional;
-- histórico acumulativo, nunca sobrescrito.
+A conclusão aceita até 10 imagens. O caminho legado em `audicomp_item.evidencia` é mantido como espelho quando necessário para compatibilidade.
 
-Ponto técnico conhecido do backend:
-- `PlanoAcao` possui `active_record` e `primary_key` para localizar origem;
-- origens de Segurança conhecidas podem resolver por `AudicompItem`/`CondicaoInsegura` até `audicomp.arquivo`;
-- confirmar todas as origens atuais antes de consolidar uma implementação final.
+Meu Amigo do Peito também passa a registrar sua evidência de item no PhotoReport.
 
-## Performance
+## Ronda Gerencial
 
-Status: `attention`.
+Minha Ronda continua como referência funcional/visual.
 
-Sintoma informado:
-- teclado/IME abrindo muito lentamente;
-- algumas telas demorando para abrir.
+No backend preparado:
+- reconhecimento seguro mantém ID durante edição;
+- imagem de reconhecimento vai ao PhotoReport;
+- PDF mostra imagem do reconhecimento;
+- PDF mostra histórico e imagens de conclusão dos Planos de Ação.
 
-Achados iniciais:
-- telas grandes/stateful;
-- `setState` amplo em listeners;
-- Home concentra muitas responsabilidades;
-- mapas/tracking usam atualizações frequentes;
-- uso de `MediaQuery.viewInsets` em árvore grande pode amplificar rebuild durante animação do teclado.
+Ao concluir/replanejar Plano ligado a `AudicompItem` ou `CondicaoInsegura`, o PDF da origem é regenerado para refletir o estado atual quando a origem for D/A/P/R.
 
-Regra: medir em `flutter run --profile` antes/depois de cada otimização relevante.
+## RDO
 
-## Meu RDO
+Flutter da prioridade 4 continua aplicado/validado estaticamente. Este novo pacote de Segurança não altera `RdoAppApiTrait.php`; validar RDO separadamente no baseline atual antes de qualquer novo patch.
 
-Status: `active`; próxima etapa depois de Planos/performance.
+## Sessão permanente / background
 
-Regras futuras já decididas:
-- somente RDO do usuário atual;
-- Emissão = editável;
-- Arquivado = somente leitura;
-- manter offline/outbox e confirmação do servidor.
+Ainda é pendência crítica depois de fechar prioridades atuais. Problema conhecido observado em produção: `dispositivo_uid`, `refresh_token_hash` e `sessao_ativa` não estavam sendo preenchidos de forma suficiente para considerar sessão permanente/geofence estáveis.
 
-## Quadro de Avisos
+## Próximo passo
 
-Status: ativo.
-
-Regras consolidadas:
-- unidade rígida;
-- C = candidatos;
-- F = colaboradores com filtros funcionais;
-- Encarregado excluído;
-- população de funcionários = colaboradores ativos;
-- app recebe destinatários já resolvidos pelo backend.
-
-Pendência histórica a verificar em ciclo futuro:
-- atualização de FCM token em startup de sessão salva, `onTokenRefresh` e desvinculação no logout.
-
-## Fonte backend conhecida
-
-Baseline autoritativo conhecido: `possebon_web-15-09-2026-11-23-26.zip` + alterações manualmente confirmadas acima.
-
-Nunca reconstruir PHP atual somente a partir desta memória se a tarefa exigir código exato. Usar o ZIP/arquivo atual correspondente.
+1. Aplicar somente os 8 arquivos do pacote `POSSEBON_CORRECAO_DONO_PHOTOREPORT_PDF_17-09-2026.zip`.
+2. Rodar `php -l` nos 8 arquivos no servidor.
+3. Testar Dono com C/N/A, condição + imagem + planos, reconhecimento + imagem e observação.
+4. Conferir os registros na `PhotoReportList`.
+5. Concluir um Plano com 2+ imagens e confirmar PhotoReport + PDF regenerado.
+6. Testar Ronda e Amigo do Peito.
+7. Só depois marcar o backend como estável/aplicado.
+8. Validar RDO runtime e então retomar sessão permanente + Cerca Virtual.
