@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T02:04:00-03:00",
+  "updated_at": "2026-09-17T02:18:00-03:00",
   "purpose": "Snapshot operacional para retomar o projeto sem reconstruir o histórico.",
   "source_snapshot": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -10,14 +10,15 @@
     "backend_source_rule": "Usar ZIP/arquivo backend mais recente validado no trabalho corrente; não assumir GitHub Web como baseline do backend."
   },
   "active_focus_order": [
-    "Preservar e consolidar as alterações locais corretas de Meus Planos de Ação sem perder mudanças staged/unstaged",
-    "Meus Planos de Ação: validar origem do registro/PDF e replanejamento completo",
+    "Consolidar as alterações locais corretas de Meus Planos de Ação em commit seletivo",
+    "Preservar separadamente as demais mudanças locais antes de sincronizar com origin/possebon",
+    "Meus Planos de Ação: validar origem do registro/PDF e replanejamento completo contra backend real",
     "Performance do app: diagnosticar teclado/IME e abertura lenta de telas",
     "Meu RDO: edição somente em Emissão e arquivado somente leitura",
     "Manter memória neural sincronizada com mudanças validadas"
   ],
   "local_git_state": {
-    "captured_at": "2026-09-17T02:04:00-03:00",
+    "captured_at": "2026-09-17T02:16:54-03:00",
     "stashes": [
       "stash@{0}: autostash",
       "stash@{1}: backup local antes da cerca virtual"
@@ -36,6 +37,7 @@
       "windows/flutter/generated_plugins.cmake",
       ".possebon_update_backups/.../fileHashes.lock"
     ],
+    "staging_after_last_command": "vazio; o usuário executou git restore --staged . após o analyze.",
     "safety_rule": "Não usar reset --hard, stash pop/drop, restore em massa ou pull com autostash até separar e preservar as mudanças relevantes."
   },
   "modules": {
@@ -61,6 +63,11 @@
     },
     "plans": {
       "status": "attention",
+      "flutter_analyze": {
+        "captured_at": "2026-09-17T02:16:54-03:00",
+        "result": "24 issues found; apenas info/warning, nenhum error.",
+        "interpretation": "As mudanças locais atuais de Planos compilam para análise estática sem erro de Dart. Ainda falta commit/sincronização e validação funcional contra backend."
+      },
       "remote_flutter_state": "A branch remota ainda contém a implementação antiga da tela/repository/API de Planos.",
       "local_flutter_state": "CONFIRMADO POR DIFF LOCAL: existem mudanças não commitadas implementando abertura do PDF de origem, evidência da ocorrência, botão explícito de replanejamento, motivo obrigatório e troca opcional de responsável.",
       "local_changes_confirmed": [
@@ -76,7 +83,7 @@
       ],
       "known_ui_problem": "O texto local ainda usa rótulo 'Abrir $origemNome em PDF'; regra aprovada é rótulo neutro como 'Abrir registro de origem' para não sugerir autoria do executor.",
       "backend_application_state": "Correções recentes de origem PDF/replanejamento foram fornecidas, mas o estado aplicado no backend deve ser reconfirmado antes de declarar o fluxo concluído.",
-      "next_action": "Validar o Flutter local atual com analyze; depois criar commit seletivo apenas das mudanças corretas de Planos, sem incluir arquivos gerados/junk, e só então sincronizar com o remoto.",
+      "next_action": "Aplicar o rótulo neutro, fazer commit seletivo somente dos três arquivos de Planos, guardar temporariamente as demais mudanças locais, rebasear no origin/possebon e restaurar as mudanças paralelas com inspeção.",
       "next_validation": [
         "Ronda -> Plano -> abrir origem",
         "Dono -> Plano -> abrir origem",
