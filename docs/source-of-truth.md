@@ -10,7 +10,7 @@ Fonte operacional oficial:
 - Branch: `possebon`
 - Package Android: `br.com.possebon.app`
 
-Snapshot remoto observado em 2026-09-17: `23d7bbb8d2ffad5eef3405b211bcd20ea5006bf7`.
+Snapshot remoto confirmado em 2026-09-18: `e87b39e36b6f3a2ee79beed6e6eaf34a36ea8d5f`.
 
 Esse SHA é somente um ponto de referência. Antes de qualquer edição deve ser consultado o HEAD atual da branch e, quando o trabalho ocorrer no PC do usuário, também `git status`, porque a árvore local pode conter mudanças ainda não enviadas.
 
@@ -30,7 +30,7 @@ Fonte operacional = ZIP/arquivo mais recente enviado e confirmado pelo usuário,
 
 Baseline conhecido mais recente nesta memória:
 
-`possebon_web-15-09-2026-11-23-26.zip`
+`possebon_web-17-09-2026-14-55-37.zip`
 
 Essa referência não deve ser assumida eterna. Se o usuário informar ou enviar versão posterior, atualizar esta memória.
 
