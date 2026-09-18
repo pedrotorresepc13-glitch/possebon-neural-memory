@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T20:25:00-03:00",
+  "updated_at": "2026-09-18T11:03:48-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -14,12 +14,17 @@
   },
   "runtime_confirmed": {
     "dono_area": "validado pelo usuário em 17/09/2026 como funcionando perfeitamente",
-    "dono_percentual": "funcionando no app e gravação atual validada",
+    "condicao_plano_obrigatorio": "validado pelo usuário em runtime em 18/09/2026",
+    "audicomp_oficial": "validado pelo usuário em runtime em 18/09/2026",
+    "meu_rdo": "validado pelo usuário em runtime em 18/09/2026, incluindo edição/lápis e regra de visibilidade",
+    "minha_ronda": "validada pelo usuário em runtime em 18/09/2026, preservando visibilidade por participação",
+    "dono_pdf_tabelas": "os quadros Dono de Área por Área/mês e Avaliação de Área aparecem no PDF",
+    "dono_pdf_pendente": "falta Avanço Mensal e melhorar paginação/tamanho das evidências; usuário relatou página praticamente só para uma imagem",
     "auditor_fix": "SegurancaOperacionalAppApiTrait corrigido para audicomp_auditor com unit_id/criado_por/criado_em",
     "pessoa_phone_fix": "PDF usa pessoa.fone, não pessoa.telefone"
   },
   "flutter": {
-    "status": "new_adjustments_static_validated_runtime_pending",
+    "status": "runtime_validated_for_security_and_rdo_adjustments",
     "head": "19fcb0f563aa76c90ffd5fffa84c3f8b9165581a",
     "head_message": "Seguranca/RDO: Audicomp oficial, plano obrigatorio e supervisao",
     "ci_validation": "workflow POSSEBON Ajustes Seguranca e RDO 17-09 passou patch, flutter pub get, dart format, flutter analyze e push",
@@ -37,24 +42,27 @@
       "app/custom/RondaGerencialAppApiTrait.php da etapa anterior",
       "app/custom/AmigoPeitoAppApiTrait.php"
     ],
-    "base": "possebon_web-17-09-2026-14-55-37.zip"
+    "base": "possebon_web-17-09-2026-14-55-37.zip",
+    "user_confirmed_on_2026_09_18": [
+      "POSSEBON_AJUSTES_SEGURANCA_RDO_17-09-2026.zip aplicado em runtime",
+      "Condição insegura com Plano obrigatório funcionando",
+      "Audicomp oficial funcionando",
+      "Meu RDO comum/supervisor funcionando",
+      "Minha Ronda preservada e funcionando"
+    ]
   },
   "backend_prepared_not_applied": {
-    "package": "POSSEBON_AJUSTES_SEGURANCA_RDO_17-09-2026.zip",
+    "package": "POSSEBON_FIX_PDF_DONO_GRAFICO_LAYOUT_18-09-2026.zip",
     "files_only": [
-      "app/custom/SegurancaOperacionalAppApiTrait.php",
-      "app/custom/RondaGerencialAppApiTrait.php",
-      "app/custom/RdoAppApiTrait.php"
+      "app/custom/SegurancaOperacionalAppApiTrait.php"
     ],
     "validation": [
-      "php -l nos 3 arquivos OK",
-      "composição SegurancaOperacional + RondaGerencial + AmigoPeito + Rdo OK"
+      "php -l OK"
     ],
     "changes": {
-      "condicao_insegura": "backend revalida >=1 Plano de Ação para Dono/Audicomp/Ronda",
-      "dono_pdf": "mantém PDF validado e acrescenta no final quadro Dono de Área por Área/mês e Avaliação de Área por semana, gerados dentro do custom sem depender de Model/Control gerado",
-      "audicomp": "usa apenas subcategorias oficiais IDs 1,2,3,4,6-13,15-21,23-25,27-29,31-33 e modelo quantitativo",
-      "rdo": "usuário comum vê próprios; supervisor vê próprios + subordinados ativos das equipes que supervisiona; subordinado somente leitura; só próprio em Emissão edita"
+      "dono_pdf_grafico": "adiciona Avanço Mensal ao fechamento gerencial usando as mesmas notas semanais",
+      "dono_pdf_layout": "remove ocorrência como bloco indivisível e compacta evidências para até 47% da largura e 45mm de altura, reduzindo páginas desperdiçadas",
+      "scope": "não altera Flutter, models, controls, routes, controller, Ronda ou RDO"
     }
   },
   "rdo_rules_now": [
@@ -78,12 +86,11 @@
     "app/control/sms/SmsDonoDeAreaDashboard.php do pacote antigo"
   ],
   "next": [
-    "Usuário aplicar somente os 3 app/custom do pacote POSSEBON_AJUSTES_SEGURANCA_RDO_17-09-2026.zip.",
-    "Atualizar Flutter local para HEAD 19fcb0f563aa76c90ffd5fffa84c3f8b9165581a.",
-    "Testar Dono: condição sem plano bloqueia; PDF final contém os dois quadros semanais solicitados.",
-    "Testar Audicomp oficial A-F por quantidade/ocorrência.",
-    "Testar Meu RDO comum e supervisor, lápis somente no próprio em Emissão e subordinado somente leitura.",
-    "Confirmar Minha Ronda continua limitada à participação do usuário.",
-    "Depois retomar sessão permanente + Cerca Virtual."
+    "Aplicar somente app/custom/SegurancaOperacionalAppApiTrait.php do pacote POSSEBON_FIX_PDF_DONO_GRAFICO_LAYOUT_18-09-2026.zip.",
+    "Gerar um NOVO PDF do Dono e validar o Avanço Mensal, as duas tabelas finais e a paginação compacta das imagens.",
+    "Se o PDF passar, marcar Segurança Operacional + RDO como estáveis em runtime.",
+    "Retomar P0 de sessão permanente: ativar/renovar/revogar sessão e comprovar refresh_token/dispositivo_uid/sessao_ativa no backend.",
+    "Validar Cerca Virtual e transporte em background após expiração do access token, sem exigir novo login.",
+    "Adicionar testes automatizados do ciclo de sessão e corrigir registro FCM de plataforma hardcoded quando retomarmos autenticação/background."
   ]
 }
