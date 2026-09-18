@@ -13,7 +13,7 @@ O usuário confirmou em teste real que estão funcionando:
 - Meu RDO, incluindo edição/lápis e visibilidade;
 - Minha Ronda Gerencial preservando a regra de participação.
 
-Flutter validado para este bloco: `19fcb0f563aa76c90ffd5fffa84c3f8b9165581a`.
+Flutter validado para este bloco e para a nova visão Minha Área: `77e2f54cd00e27660e29456857a34b5af255ad74`.
 
 ## PDF do Dono de Área — única pendência atual deste bloco
 
@@ -51,3 +51,29 @@ Assim que o novo PDF passar no teste runtime:
 4. validar Cerca Virtual e transporte em background depois da expiração do access token, sem novo login;
 5. criar testes automatizados do ciclo da sessão;
 6. corrigir o registro FCM de plataforma hardcoded quando retomarmos autenticação/background.
+
+
+## Minha Área — Dono de Área
+
+Preparado em 18/09/2026 e validado estaticamente no Flutter.
+
+Comportamento:
+- em Meu Dono de Área, usuários vinculados como `safety_area.owner_id` ou `safety_area.technician_id` recebem a opção lateral `Minha Área`;
+- `Minhas avaliações` continua pessoal e independente;
+- `Minha Área` mostra área, papel do usuário, Dono, Técnico, mês e gráfico semanal;
+- múltiplas áreas são suportadas por seletor;
+- o botão de relatório chama o mesmo `SafetyAreaDonoDeAreaDocument` usado pelo `SmsDonoDeAreaDashboard`;
+- o backend revalida `unit_id` e vínculo owner/technician antes de mostrar a área ou gerar o relatório;
+- o PDF individual do Dono volta a ser somente da avaliação, sem fechamento gerencial mensal/gráfico extra.
+
+Backend preparado: `POSSEBON_MINHA_AREA_DONO_18-09-2026.zip`.
+
+Aplicação necessária:
+- substituir somente `app/custom/SegurancaOperacionalAppApiTrait.php`;
+- adicionar em `app/routes/api.php`:
+  - `GET /seguranca/dono/minha-area`;
+  - `POST /seguranca/dono/minha-area/relatorio`;
+- nenhum ajuste em Model/Control gerado;
+- nenhum ajuste em `ApiAppController.php`.
+
+Status: runtime pendente.
