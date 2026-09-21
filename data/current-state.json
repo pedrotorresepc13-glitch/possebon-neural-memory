@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T15:31:00-03:00",
+  "updated_at": "2026-09-21T07:58:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -88,12 +88,48 @@
     "app/control/sms/SmsDonoDeAreaDashboard.php do pacote antigo"
   ],
   "next": [
-    "Aplicar app/custom/SegurancaOperacionalAppApiTrait.php de POSSEBON_FIX_MINHA_AREA_FINAL_18-09-2026.zip.",
-    "Garantir que as duas rotas Minha Área existam no grupo autenticado /api/app; o pacote inclui ROTAS_CONFERENCIA.txt, mas não sobrescreve api.php.",
-    "Atualizar Flutter para 5f6d28f3422da374c6c0455d574973fb7b7540cd.",
-    "Testar Técnico/Dono: Minha Área deve aparecer após a resposta e permanecer.",
-    "Se houver falha de rota/API, a tela agora mostrará a mensagem exata em vez de esconder o botão.",
-    "Depois validar gráfico e relatório mensal.",
-    "Sessão permanente continua com persistência confirmada em app_dispositivo; falta teste após expiração e background."
-  ]
+    "Não alterar módulos validados de Segurança/RDO/Ronda.",
+    "Separar AccessPresenceAutomationService do ciclo da Home e inicializá-lo no startup do app de forma idempotente, mantendo a chamada da Home como redundância segura.",
+    "Preservar imagem_local anterior quando a imagem remota é a mesma e o novo download falha.",
+    "Na Splash, distinguir sessão permanentemente revogada de falha temporária; não abrir Home quebrada quando autenticação foi realmente invalidada.",
+    "Trocar o gráfico CustomPainter de Minha Área por PNG gerado no backend usando o mesmo gerador visual do relatório oficial.",
+    "Diagnosticar/fortalecer o endpoint do relatório mensal sem modificar SafetyAreaDonoDeAreaDocument gerado por inteiro.",
+    "Depois rodar CI e testar separadamente: foto offline/reabertura, geofence após cold start, relatório e gráfico."
+  ],
+  "diagnostics_2026_09_21": {
+    "report_dono": {
+      "status": "confirmed_design_mismatch_and_open_error_pending_exact_http_message",
+      "findings": [
+        "Minha Área usa gráfico próprio em Flutter via CustomPainter, portanto não é o mesmo gráfico do SafetyAreaDonoDeAreaDocument.",
+        "SafetyAreaDonoDeAreaDocument já possui gerador GD próprio com linha azul, pontos vermelhos, escala 0-100 e indicadores por faixa.",
+        "endpoint do relatório tenta chamar SafetyAreaDonoDeAreaDocument::onGenerate(returnFile=true); aplicação efetiva da rota POST ainda não foi confirmada no estado persistente.",
+        "documento gerado ainda referencia pessoa.telefone enquanto o campo real conhecido é pessoa.fone; isso deve ser tratado sem sobrescrever a página gerada."
+      ]
+    },
+    "profile_photo": {
+      "status": "confirmed_cache_resilience_bug",
+      "findings": [
+        "AppRepository.buscarMeusDados baixa imagem via OfflineFileService.cachePerfilRemoto.",
+        "se download da imagem falha, cachePerfilRemoto retorna null e o repositório salva meus_dados remoto sem preservar imagem_local anterior.",
+        "Avatar prioriza imagem_local, depois URL remota; sem imagem_local e com falha temporária da URL, exibe apenas inicial."
+      ]
+    },
+    "geofence": {
+      "status": "confirmed_lifecycle_coupling_bug",
+      "findings": [
+        "AccessPresenceAutomationService é inicializado pela Home somente depois de reconstruir dados remotos e confirmar ehColaborador.",
+        "Cerca Virtual/background não deveria depender do ciclo da Home.",
+        "controle_acesso mostrado pelo usuário em 21/09 não contém registro de hoje para pessoa 643/unit 3; últimos registros visíveis são 14/09 e 15/09.",
+        "backend da cerca mantém validação correta de colaborador ativo na unidade, janela de horário, raio e uma presença por dia."
+      ]
+    },
+    "session": {
+      "status": "backend_refresh_flow_reviewed_no_change_yet",
+      "findings": [
+        "AuthSessionManager usa refresh token persistido e AppSessaoApiTrait valida app_dispositivo.sessao_ativa, pessoa, usuário e unidade antes de emitir novo JWT.",
+        "não alterar regra de refresh do backend sem evidência de defeito.",
+        "Splash lê sessão local antes de forçar validação/refresh; falha posterior pode abrir Home em estado parcial."
+      ]
+    }
+  }
 }
