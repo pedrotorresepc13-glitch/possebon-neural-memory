@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-23T16:38:00-03:00",
+  "updated_at": "2026-09-23T16:50:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -149,5 +149,31 @@
       "validation": "bloco inserido em cópia do baseline MeuRdoForm.php e php -l OK",
       "behavior": "mantém ferramentas/regras e converte wheel do mouse em scroll horizontal quando houver overflow"
     }
+  },
+  "backend_duplicate_trait_diagnostic_2026_09_23": {
+    "current_uploaded_trait": {
+      "source_name": "Texto colado(20260923-194946).txt",
+      "lines": 3559,
+      "role": "baseline atual antes do pacote de gráfico/relatório",
+      "fingerprints": [
+        "SEG_AUDICOMP_SUBCATEGORIAS presente",
+        "SEG_ORIGEM_POR_TIPO inclui P => AP",
+        "minhaAreaDonoSegurancaOperacional presente",
+        "relatorioMinhaAreaDonoSegurancaOperacional presente",
+        "PhotoReport/correções modernas presentes"
+      ]
+    },
+    "obsolete_uploaded_trait": {
+      "source_name": "Texto colado (2)(8).txt",
+      "lines": 1831,
+      "role": "versão antiga; não usar como base nem sobrescrever a atual",
+      "missing": [
+        "SEG_AUDICOMP_SUBCATEGORIAS",
+        "Minha Área",
+        "relatório Minha Área",
+        "correções modernas PhotoReport"
+      ]
+    },
+    "package_relation": "POSSEBON_FIX_MINHA_AREA_RELATORIO_GRAFICO_23-09-2026.zip foi construído sobre o trait atual de 3559 linhas e gera trait de 3923 linhas; não deve ser aplicado sobre a versão antiga de 1831 linhas como fonte de verdade."
   }
 }
