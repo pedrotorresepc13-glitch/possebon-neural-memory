@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-21T07:58:00-03:00",
+  "updated_at": "2026-09-23T16:21:51-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -22,7 +22,8 @@
     "dono_pdf_pendente": "falta Avanço Mensal e melhorar paginação/tamanho das evidências; usuário relatou página praticamente só para uma imagem",
     "auditor_fix": "SegurancaOperacionalAppApiTrait corrigido para audicomp_auditor com unit_id/criado_por/criado_em",
     "pessoa_phone_fix": "PDF usa pessoa.fone, não pessoa.telefone",
-    "login_persistent_storage": "CSV app_dispositivo de 18/09 mostra linhas recentes com unit_id, dispositivo_uid, refresh_token_hash e sessao_ativa=1; sessão permanente aparenta estar gravando corretamente, ainda falta teste após expiração/tempo/background"
+    "login_persistent_storage": "CSV app_dispositivo de 18/09 mostra linhas recentes com unit_id, dispositivo_uid, refresh_token_hash e sessao_ativa=1; sessão permanente aparenta estar gravando corretamente, ainda falta teste após expiração/tempo/background",
+    "meu_rdo_web": "validado pelo usuário em 23/09/2026 como correto nas regras e funcionamento; única pendência relatada é navegação horizontal das ferramentas no desktop com mouse"
   },
   "flutter": {
     "status": "minha_area_error_visibility_static_validated_runtime_pending",
@@ -88,10 +89,10 @@
     "app/control/sms/SmsDonoDeAreaDashboard.php do pacote antigo"
   ],
   "next": [
-    "Não alterar módulos validados de Segurança/RDO/Ronda.",
-    "Separar AccessPresenceAutomationService do ciclo da Home e inicializá-lo no startup do app de forma idempotente, mantendo a chamada da Home como redundância segura.",
+    "Corrigir somente a navegação horizontal das ferramentas do Meu RDO Web no desktop, sem alterar regras funcionais já validadas.",
     "Preservar imagem_local anterior quando a imagem remota é a mesma e o novo download falha.",
-    "Na Splash, distinguir sessão permanentemente revogada de falha temporária; não abrir Home quebrada quando autenticação foi realmente invalidada.",
+    "Separar AccessPresenceAutomationService do ciclo da Home e inicializá-lo no startup do app de forma idempotente.",
+    "Na Splash, distinguir sessão permanentemente revogada de falha temporária para não abrir Home em estado parcial.",
     "Trocar o gráfico CustomPainter de Minha Área por PNG gerado no backend usando o mesmo gerador visual do relatório oficial.",
     "Diagnosticar/fortalecer o endpoint do relatório mensal sem modificar SafetyAreaDonoDeAreaDocument gerado por inteiro.",
     "Depois rodar CI e testar separadamente: foto offline/reabertura, geofence após cold start, relatório e gráfico."
@@ -130,6 +131,13 @@
         "não alterar regra de refresh do backend sem evidência de defeito.",
         "Splash lê sessão local antes de forçar validação/refresh; falha posterior pode abrir Home em estado parcial."
       ]
+    }
+  },
+  "diagnostics_2026_09_23": {
+    "rdo_web_toolbar": {
+      "status": "runtime_confirmed_functional_ui_pending",
+      "finding": "no desktop com mouse não é possível avançar horizontalmente pelas ferramentas além da primeira faixa/página; conteúdo funcional está correto",
+      "desired_fix": "manter layout e adicionar navegação desktop por botões/setas e/ou wheel-to-horizontal/drag sem alterar regras de RDO"
     }
   }
 }
