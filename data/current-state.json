@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-23T16:59:00-03:00",
+  "updated_at": "2026-09-25T15:24:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "flutter_head_confirmed": "d70a8e2774edeecf53b4cf03c4f9e81edb75f839",
+    "flutter_head_confirmed": "2d78b5034c01ff91c1e07f2d95c0cfda0b6f2751",
     "backend_baseline": "possebon_web-17-09-2026-14-55-37.zip enviado pelo usuário em 17/09/2026",
     "backend_rule": "GitHub Web não é fonte autoritativa do backend MAD Builder; para PHP exato usar o ZIP/arquivo mais recente enviado pelo usuário."
   },
@@ -13,7 +13,7 @@
     "generated_files": "não substituir app/model nem páginas app/control geradas por inteiro; usar pontos Custom Code/Designer quando existirem"
   },
   "runtime_confirmed": {
-    "dono_area": "validado pelo usuário em 17/09/2026 como funcionando perfeitamente",
+    "dono_area": "VALIDACAO ANTERIOR SUPERADA em 25/09/2026: usuário reportou funcionamento incorreto; módulo está em auditoria/correção e não deve ser chamado de estável até novo teste runtime.",
     "condicao_plano_obrigatorio": "validado pelo usuário em runtime em 18/09/2026",
     "audicomp_oficial": "validado pelo usuário em runtime em 18/09/2026",
     "meu_rdo": "validado pelo usuário em runtime em 18/09/2026, incluindo edição/lápis e regra de visibilidade",
@@ -27,14 +27,19 @@
   },
   "flutter": {
     "status": "foto_sessao_cerca_grafico_static_validated_runtime_pending",
-    "head": "d70a8e2774edeecf53b4cf03c4f9e81edb75f839",
-    "head_message": "Home Web: ajusta suporte ao mouse no carrossel",
+    "head": "2d78b5034c01ff91c1e07f2d95c0cfda0b6f2751",
+    "head_message": "Dono de Area: normaliza compatibilidade de desvio",
     "ci_validation": "workflow POSSEBON Validar Minha Area Dono 18-09 executou flutter pub get, dart format e flutter analyze com sucesso em 90fd5c13; o próprio CI gerou e003ede apenas com formatação do arquivo Minha Área",
     "changes": [
       "perfil preserva imagem_local anterior quando a mesma foto remota existe e o novo download falha temporariamente",
       "AccessPresenceAutomationService inicia em paralelo no startup do app, sem depender da Home; Home permanece como redundância",
       "Splash valida/renova sessão autenticada antes da Home e volta ao acesso somente em AuthSessionExpiredException; fluxo de candidato sem JWT foi preservado",
       "Minha Área deixa de desenhar gráfico próprio com CustomPainter e passa a exibir grafico_png oficial fornecido pelo backend"
+    ],
+    "dono_official_alignment": [
+      "ScoreCard agora usa faixas oficiais 0-59 ruim, 60-79 bom, 80-100 ótimo.",
+      "Registros T=Sistêmico vindos do Web são normalizados para S no Flutter.",
+      "flutter analyze passou no workflow; workflow fica vermelho apenas no passo final de auto-commit da formatação."
     ]
   },
   "backend_confirmed_applied": {
@@ -53,21 +58,17 @@
     ]
   },
   "backend_prepared_not_applied": {
-    "package": "POSSEBON_FIX_MINHA_AREA_RELATORIO_GRAFICO_23-09-2026.zip",
+    "package": "POSSEBON_FIX_DONO_QUESTOES_OFICIAIS_25-09-2026.zip",
     "files_only": [
       "app/custom/SegurancaOperacionalAppApiTrait.php"
     ],
-    "route_change": "nenhuma rota nova além das duas rotas Minha Área já previstas; continuar conferindo GET /seguranca/dono/minha-area e POST /seguranca/dono/minha-area/relatorio",
-    "controller_change": "nenhum",
+    "base": "POSSEBON_FIX_MINHA_AREA_RELATORIO_GRAFICO_23-09-2026",
     "validation": [
-      "php -l OK"
+      "php -l OK",
+      "Dono 28/28 perguntas comparadas automaticamente com DonoDeAreaPublicForm",
+      "Audicomp 28/28 ocorrências comparadas automaticamente com AudicompPublicForm"
     ],
-    "changes": [
-      "Minha Área devolve grafico_png em app/output/seguranca_operacional",
-      "gráfico replica estilo visual do SafetyAreaDonoDeAreaDocument: linha azul, pontos vermelhos, eixos 0-100, Sem 1..5 e ícones ótimo/bom/ruim",
-      "nome do PNG contém hash dos valores para evitar cache antigo no aparelho",
-      "relatório mensal espelha temporariamente userunitid, userunitids e userid da sessão Bearer antes de chamar SafetyAreaDonoDeAreaDocument::onGenerate(returnFile=true), restaurando ao final"
-    ]
+    "runtime": "pending"
   },
   "rdo_rules_now": [
     "criação permanece restrita às equipes em que o usuário possui vínculo de criação",
@@ -90,14 +91,14 @@
     "app/control/sms/SmsDonoDeAreaDashboard.php do pacote antigo"
   ],
   "next": [
-    "Atualizar Flutter para d70a8e2774edeecf53b4cf03c4f9e81edb75f839 e testar Home Web: arrastar com mouse, setas e indicadores entre Menu 1 e Menu 2.",
-    "NÃO aplicar RDO_WEB_NAVEGACAO_MOUSE_23-09-2026.txt; Meu RDO está validado e não deve ser alterado.",
-    "Aplicar app/custom/SegurancaOperacionalAppApiTrait.php do pacote POSSEBON_FIX_MINHA_AREA_RELATORIO_GRAFICO_23-09-2026.zip.",
-    "Testar foto após fechar/reabrir e durante falha temporária de rede.",
-    "Testar sessão após access token expirar sem logout manual.",
-    "Testar Cerca Virtual após cold start e conferir novo registro C em controle_acesso.",
-    "Testar Minha Área: gráfico oficial e Abrir relatório.",
-    "Não alterar regras já validadas de RDO, Ronda, Audicomp e Dono normal."
+    "Aplicar somente app/custom/SegurancaOperacionalAppApiTrait.php do pacote POSSEBON_FIX_DONO_QUESTOES_OFICIAIS_25-09-2026.zip no backend atual.",
+    "Atualizar Flutter para 2d78b5034c01ff91c1e07f2d95c0cfda0b6f2751.",
+    "Testar Dono: devem aparecer 9 grupos e 28 perguntas oficiais, todas iniciando N/A.",
+    "Marcar Sim/Não/N/A e validar nota com cortes oficiais 60/80.",
+    "Editar registro Web antigo com tipo_desvio T e confirmar que App mostra Sistêmico sem erro.",
+    "Testar Audicomp sem regressão: 6 grupos/28 ocorrências quantitativas.",
+    "Não alterar Minha Ronda, Meu RDO ou Meu Amigo do Peito.",
+    "Depois do runtime, decidir separadamente se Local/Pessoas observadas devem continuar obrigatórios no App ou seguir estritamente o PublicForm."
   ],
   "diagnostics_2026_09_21": {
     "report_dono": {
@@ -187,5 +188,38 @@
       ]
     },
     "package_relation": "POSSEBON_FIX_MINHA_AREA_RELATORIO_GRAFICO_23-09-2026.zip foi construído sobre o trait atual de 3559 linhas e gera trait de 3923 linhas; não deve ser aplicado sobre a versão antiga de 1831 linhas como fonte de verdade."
+  },
+  "diagnostics_2026_09_25": {
+    "dono_area": {
+      "status": "root_causes_confirmed_fix_prepared_runtime_pending",
+      "official_source": "app/control/sms/DonoDeAreaPublicForm.php do baseline possebon_web-17-09-2026-14-55-37.zip",
+      "official_structure": "9 grupos, 28 perguntas, subcategoria IDs 35..62",
+      "findings": [
+        "Flutter não hardcodeia perguntas: renderiza categorias/subcategorias devolvidas pela API.",
+        "Backend selecionava IDs 35..62 corretamente, mas usava codigo/nome/descricao históricos de categoria_desvio/subcategoria_desvio; isso podia exibir categorias/perguntas divergentes do DonoDeAreaPublicForm.",
+        "DonoDeAreaPublicForm usa T=Sistêmico; API/Flutter usavam S=Sistêmico.",
+        "Nota numérica C/(C+N)*100 ignorando N/A estava correta, porém Flutter classificava visualmente com cortes 70/90 em vez dos cortes oficiais 60/80.",
+        "Equipe continua opcional no app/backend, conforme decisão anterior.",
+        "App/backend exigem Local e Pessoas observadas; o PublicForm declara obrigatórios explicitamente Área/Início/Término e auditor, portanto essa diferença foi mantida por cautela e não alterada sem decisão de negócio."
+      ],
+      "fix_backend_package": "POSSEBON_FIX_DONO_QUESTOES_OFICIAIS_25-09-2026.zip",
+      "fix_backend": [
+        "catálogo Dono determinístico com os 9 grupos e 28 textos exatos do DonoDeAreaPublicForm, mantendo IDs 35..62",
+        "catálogo Audicomp determinístico com 6 grupos e 28 ocorrências exatas do AudicompPublicForm",
+        "detalhe/edição/PDF recebem os mesmos rótulos oficiais",
+        "API aceita T ou S; Dono/Audicomp persistem T no padrão dos PublicForm e devolvem S ao Flutter",
+        "baseado no pacote 23/09, preservando Minha Área, gráfico, relatório e PhotoReport",
+        "php -l OK; comparação automática confirmou 28/28 textos Dono e 28/28 Audicomp idênticos aos formulários oficiais"
+      ]
+    },
+    "audicomp": {
+      "status": "official_occurrence_set_verified_compatibility_fix_prepared",
+      "official_structure": "6 grupos, 28 ocorrências, IDs 1,2,3,4,6-13,15-21,23-25,27-29,31-33",
+      "note": "modelo quantitativo permanece; não converter para Sim/Não/N/A"
+    },
+    "ronda": {
+      "status": "separate_flow_preserved",
+      "note": "Minha Ronda usa tela/trait separados; não foi alterada pela correção Dono/Audicomp."
+    }
   }
 }
