@@ -10,7 +10,7 @@ Fonte operacional oficial:
 - Branch: `possebon`
 - Package Android: `br.com.possebon.app`
 
-Snapshot remoto confirmado em 2026-09-23: `e003ede39c211251ca37c8af124cb65536ca805c`.
+Snapshot remoto confirmado em 2026-09-25: `2d78b5034c01ff91c1e07f2d95c0cfda0b6f2751`.
 
 Esse SHA é somente um ponto de referência. Antes de qualquer edição deve ser consultado o HEAD atual da branch e, quando o trabalho ocorrer no PC do usuário, também `git status`, porque a árvore local pode conter mudanças ainda não enviadas.
 
