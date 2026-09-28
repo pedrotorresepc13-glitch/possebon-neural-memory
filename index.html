@@ -3,43 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#06151d" />
-  <meta name="description" content="Mapa neural, memória viva e estado operacional do POSSEBON App" />
-  <title>POSSEBON Neural Memory</title>
+  <meta name="theme-color" content="#040d14" />
+  <meta name="description" content="Cérebro visual, memória viva e mapa cognitivo do POSSEBON App" />
+  <title>POSSEBON Project Brain</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <strong>POSSEBON Neural Memory</strong>
-      <span>memória viva + mapa estrutural + estado operacional</span>
+      <div class="brain-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div>
+        <strong>POSSEBON Project Brain</strong>
+        <span>mapa vivo do app • arquitetura • regras • impacto</span>
+      </div>
     </div>
+
+    <nav class="mode-switch" aria-label="Modo de visualização">
+      <button class="mode-btn selected" data-mode="visual" type="button">
+        <b>Visual</b><small>Telas e navegação</small>
+      </button>
+      <button class="mode-btn" data-mode="technical" type="button">
+        <b>Técnico</b><small>Código e dependências</small>
+      </button>
+      <button class="mode-btn" data-mode="impact" type="button">
+        <b>Impacto</b><small>O que pode quebrar</small>
+      </button>
+    </nav>
+
     <div class="actions">
-      <input id="search" type="search" placeholder="Buscar tela, regra, arquivo, backend..." autocomplete="off" />
-      <button id="stateBtn" type="button">Estado atual</button>
-      <button id="focusBtn" type="button">Foco atual</button>
+      <input id="search" type="search" placeholder="Buscar tela, regra, arquivo, API..." autocomplete="off" />
+      <button id="healthBtn" type="button">Saúde</button>
+      <button id="stateBtn" type="button">Estado</button>
+      <button id="focusBtn" type="button">Foco</button>
       <button id="fitBtn" type="button">Ver tudo</button>
-      <button id="centerBtn" type="button">Núcleo</button>
-      <button id="resetBtn" type="button">100%</button>
     </div>
   </header>
 
   <aside class="legend" aria-label="Legenda de estados">
-    <button class="legend-filter" data-status="stable"><i class="dot stable"></i> estável</button>
+    <span class="legend-title">CONFIANÇA</span>
+    <button class="legend-filter" data-status="stable"><i class="dot stable"></i> confirmado</button>
     <button class="legend-filter" data-status="active"><i class="dot active"></i> em evolução</button>
-    <button class="legend-filter" data-status="attention"><i class="dot attention"></i> atenção</button>
+    <button class="legend-filter" data-status="attention"><i class="dot attention"></i> revisar</button>
     <button class="legend-filter" data-status="planned"><i class="dot planned"></i> planejado</button>
     <button class="legend-filter" data-status="blocked"><i class="dot blocked"></i> bloqueado</button>
     <button id="clearFilter" class="legend-filter muted">todos</button>
   </aside>
 
-  <section id="summaryBar" class="summary-bar" aria-label="Resumo do projeto"></section>
+  <section id="summaryBar" class="summary-bar" aria-label="Resumo do cérebro"></section>
 
-  <main id="viewport" class="viewport" aria-label="Mapa neural infinito do POSSEBON">
+  <main id="viewport" class="viewport" aria-label="Mapa visual do POSSEBON">
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
     <div id="world" class="world">
       <svg id="edges" class="edges" width="7600" height="5600" viewBox="0 0 7600 5600"></svg>
       <div id="nodes" class="nodes"></div>
     </div>
+    <div id="impactHint" class="impact-hint hidden">Clique em qualquer tela ou serviço para iluminar o impacto direto.</div>
   </main>
 
   <aside id="inspector" class="inspector hidden">
@@ -49,19 +68,29 @@
 
   <aside id="focusPanel" class="side-panel hidden">
     <button id="closeFocus" class="close" aria-label="Fechar">×</button>
+    <div class="panel-eyebrow">PRIORIDADES</div>
     <h2>Foco atual</h2>
     <div id="focusContent"></div>
   </aside>
 
   <aside id="statePanel" class="side-panel wide hidden">
     <button id="closeState" class="close" aria-label="Fechar">×</button>
+    <div class="panel-eyebrow">RUNTIME + MEMÓRIA</div>
     <h2>Estado operacional</h2>
     <div id="stateContent"></div>
   </aside>
 
+  <aside id="healthPanel" class="side-panel wide hidden">
+    <button id="closeHealth" class="close" aria-label="Fechar">×</button>
+    <div class="panel-eyebrow">PROJECT BRAIN</div>
+    <h2>Saúde do cérebro</h2>
+    <div id="healthContent"></div>
+  </aside>
+
   <footer class="hud">
     <span id="zoomLabel">100%</span>
-    <span>arraste para mover • roda do mouse para zoom • clique em um nó para detalhes • Enter na busca foca o primeiro resultado</span>
+    <span id="modeLabel">modo visual</span>
+    <span>arraste para mover • roda do mouse para zoom • clique para abrir • duplo clique para focar</span>
   </footer>
 
   <script src="./app.js" defer></script>
