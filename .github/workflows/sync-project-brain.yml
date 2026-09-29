@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/build_app_inventory.py'
+      - 'scripts/enrich_app_flow.py'
       - '.github/workflows/sync-project-brain.yml'
 
 permissions:
@@ -60,6 +61,9 @@ jobs:
             --app-root _source/possebon \
             --output data/app-inventory.json \
             --status-output data/brain-status.json
+          python scripts/enrich_app_flow.py \
+            --app-root _source/possebon \
+            --inventory data/app-inventory.json
 
       - name: Mark cross-repo sync as waiting for credential
         if: steps.source_auth.outputs.available != 'true'
@@ -88,6 +92,16 @@ jobs:
           python -m json.tool data/brain-status.json > /dev/null
           if [ -f data/app-inventory.json ]; then
             python -m json.tool data/app-inventory.json > /dev/null
+            python - <<'PY'
+          import json
+          data = json.load(open('data/app-inventory.json', encoding='utf-8'))
+          if data.get('sync') is None:
+              pass
+          if data.get('modules') is not None:
+              assert all(m.get('screens') for m in data['modules'])
+              assigned = [sid for m in data['modules'] for sid in m['screens']]
+              assert len(assigned) == len(set(assigned)), 'screen assigned to multiple modules'
+          PY
           fi
 
       - name: Commit knowledge drift when source changed
