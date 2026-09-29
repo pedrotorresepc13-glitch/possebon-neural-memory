@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-09-29T12:55:36.323087+00:00",
+  "generated_at": "2026-09-29T18:39:12.589065+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "65b91a0a7a8a6178659f61af3802100aa0922f20"
+    "head": "85d13030d564eb4cb4070cc90ce7b7fb999edea0"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -17,7 +17,7 @@
   "stats": {
     "dart_files": 102,
     "screens": 40,
-    "navigation_edges": 55,
+    "navigation_edges": 59,
     "domains": 10,
     "screens_with_layout": 40,
     "modules": 24,
@@ -30,7 +30,7 @@
       "title": "Amigo Peito",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart",
-      "source_hash": "bfa404bbadaaa5f5",
+      "source_hash": "7f5e7f6bc39ba1fd",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -248,7 +248,7 @@
       "title": "Amigo Peito Form",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart",
-      "source_hash": "bfa404bbadaaa5f5",
+      "source_hash": "7f5e7f6bc39ba1fd",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -465,7 +465,7 @@
       "title": "Amigo Peito Detalhe",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart",
-      "source_hash": "bfa404bbadaaa5f5",
+      "source_hash": "7f5e7f6bc39ba1fd",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -681,7 +681,7 @@
       "title": "Dono Area",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/dono_area_screen.dart",
-      "source_hash": "9b5b3d5dcc82c841",
+      "source_hash": "6d5bc1d5c5e29806",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -915,7 +915,7 @@
       "title": "Dono Area Detalhe",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/dono_area_screen.dart",
-      "source_hash": "9b5b3d5dcc82c841",
+      "source_hash": "6d5bc1d5c5e29806",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1151,7 +1151,7 @@
       "title": "Dono Area Form",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/dono_area_screen.dart",
-      "source_hash": "9b5b3d5dcc82c841",
+      "source_hash": "6d5bc1d5c5e29806",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1387,7 +1387,7 @@
       "title": "Minha Ronda Gerencial",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
-      "source_hash": "ce743df752068e6c",
+      "source_hash": "5c640541134ef0cb",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1399,7 +1399,7 @@
           "Wrap": 8,
           "Padding": 11,
           "Container": 21,
-          "SizedBox": 80,
+          "SizedBox": 81,
           "Center": 6,
           "Expanded": 18,
           "ListTile": 19,
@@ -1417,7 +1417,7 @@
           "Chip": 1,
           "CircularProgressIndicator": 4,
           "Icon": 51,
-          "Text": 112
+          "Text": 115
         },
         "layout": [
           {
@@ -1619,7 +1619,7 @@
       "title": "Detalhe Minha Ronda Gerencial",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
-      "source_hash": "ce743df752068e6c",
+      "source_hash": "5c640541134ef0cb",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1631,7 +1631,7 @@
           "Wrap": 8,
           "Padding": 11,
           "Container": 21,
-          "SizedBox": 80,
+          "SizedBox": 81,
           "Center": 6,
           "Expanded": 18,
           "ListTile": 19,
@@ -1649,7 +1649,7 @@
           "Chip": 1,
           "CircularProgressIndicator": 4,
           "Icon": 51,
-          "Text": 112
+          "Text": 115
         },
         "layout": [
           {
@@ -1849,7 +1849,7 @@
       "title": "Nova Ronda Gerencial",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
-      "source_hash": "ce743df752068e6c",
+      "source_hash": "5c640541134ef0cb",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1861,7 +1861,7 @@
           "Wrap": 8,
           "Padding": 11,
           "Container": 21,
-          "SizedBox": 80,
+          "SizedBox": 81,
           "Center": 6,
           "Expanded": 18,
           "ListTile": 19,
@@ -1879,7 +1879,7 @@
           "Chip": 1,
           "CircularProgressIndicator": 4,
           "Icon": 51,
-          "Text": 112
+          "Text": 115
         },
         "layout": [
           {
@@ -2080,7 +2080,7 @@
       "title": "Planos Acao",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/planos_acao_screen.dart",
-      "source_hash": "9d9be6f382aba534",
+      "source_hash": "0cd6be824ef17b2e",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2276,7 +2276,7 @@
       "title": "Seguranca Operacional",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "66e5852ae0f6ece3",
+      "source_hash": "6c63c784d0486300",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2288,7 +2288,7 @@
           "Wrap": 5,
           "Padding": 11,
           "Container": 12,
-          "SizedBox": 83,
+          "SizedBox": 85,
           "Center": 8,
           "Align": 1,
           "Expanded": 15,
@@ -2306,7 +2306,7 @@
           "Chip": 5,
           "CircularProgressIndicator": 7,
           "Icon": 40,
-          "Text": 97
+          "Text": 100
         },
         "layout": [
           {
@@ -2470,6 +2470,7 @@
       ],
       "navigation_out": [
         "naoconformidadeeditorscreen",
+        "segurancaoperacionaldetalhescreen",
         "segurancaoperacionalformscreen"
       ],
       "evidence": {
@@ -2496,7 +2497,7 @@
       "title": "Seguranca Operacional Detalhe",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "66e5852ae0f6ece3",
+      "source_hash": "6c63c784d0486300",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2508,7 +2509,7 @@
           "Wrap": 5,
           "Padding": 11,
           "Container": 12,
-          "SizedBox": 83,
+          "SizedBox": 85,
           "Center": 8,
           "Align": 1,
           "Expanded": 15,
@@ -2526,7 +2527,7 @@
           "Chip": 5,
           "CircularProgressIndicator": 7,
           "Icon": 40,
-          "Text": 97
+          "Text": 100
         },
         "layout": [
           {
@@ -2697,15 +2698,20 @@
         "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
         "confidence": 0.96
       },
-      "navigation_in": [],
+      "navigation_in": [
+        "naoconformidadeeditorscreen",
+        "segurancaoperacionalformscreen",
+        "segurancaoperacionalscreen",
+        "segurancatextoeditorscreen"
+      ],
       "declared_steps": [],
       "module": {
         "id": "seguranca-operacional",
         "title": "Seguranca Operacional",
         "domain": "Seguranca Operacional",
         "entry": false,
-        "position": 3,
-        "flow_depth": 0
+        "position": 5,
+        "flow_depth": 1
       }
     },
     {
@@ -2714,7 +2720,7 @@
       "title": "Seguranca Operacional Form",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "66e5852ae0f6ece3",
+      "source_hash": "6c63c784d0486300",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2726,7 +2732,7 @@
           "Wrap": 5,
           "Padding": 11,
           "Container": 12,
-          "SizedBox": 83,
+          "SizedBox": 85,
           "Center": 8,
           "Align": 1,
           "Expanded": 15,
@@ -2744,7 +2750,7 @@
           "Chip": 5,
           "CircularProgressIndicator": 7,
           "Icon": 40,
-          "Text": 97
+          "Text": 100
         },
         "layout": [
           {
@@ -2907,7 +2913,8 @@
         "/api/app/unidades"
       ],
       "navigation_out": [
-        "naoconformidadeeditorscreen"
+        "naoconformidadeeditorscreen",
+        "segurancaoperacionaldetalhescreen"
       ],
       "evidence": {
         "kind": "code-derived",
@@ -2926,7 +2933,7 @@
         "title": "Seguranca Operacional",
         "domain": "Seguranca Operacional",
         "entry": false,
-        "position": 4,
+        "position": 3,
         "flow_depth": 1
       }
     },
@@ -2936,7 +2943,7 @@
       "title": "_ Nao Conformidade Editor",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "66e5852ae0f6ece3",
+      "source_hash": "6c63c784d0486300",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2948,7 +2955,7 @@
           "Wrap": 5,
           "Padding": 11,
           "Container": 12,
-          "SizedBox": 83,
+          "SizedBox": 85,
           "Center": 8,
           "Align": 1,
           "Expanded": 15,
@@ -2966,7 +2973,7 @@
           "Chip": 5,
           "CircularProgressIndicator": 7,
           "Icon": 40,
-          "Text": 97
+          "Text": 100
         },
         "layout": [
           {
@@ -3129,6 +3136,7 @@
         "/api/app/unidades"
       ],
       "navigation_out": [
+        "segurancaoperacionaldetalhescreen",
         "segurancaoperacionalformscreen"
       ],
       "evidence": {
@@ -3148,7 +3156,7 @@
         "title": "Seguranca Operacional",
         "domain": "Seguranca Operacional",
         "entry": false,
-        "position": 5,
+        "position": 4,
         "flow_depth": 1
       }
     },
@@ -3158,7 +3166,7 @@
       "title": "_ Seguranca Texto Editor",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "66e5852ae0f6ece3",
+      "source_hash": "6c63c784d0486300",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -3170,7 +3178,7 @@
           "Wrap": 5,
           "Padding": 11,
           "Container": 12,
-          "SizedBox": 83,
+          "SizedBox": 85,
           "Center": 8,
           "Align": 1,
           "Expanded": 15,
@@ -3188,7 +3196,7 @@
           "Chip": 5,
           "CircularProgressIndicator": 7,
           "Icon": 40,
-          "Text": 97
+          "Text": 100
         },
         "layout": [
           {
@@ -3352,6 +3360,7 @@
       ],
       "navigation_out": [
         "naoconformidadeeditorscreen",
+        "segurancaoperacionaldetalhescreen",
         "segurancaoperacionalformscreen"
       ],
       "evidence": {
@@ -10115,6 +10124,13 @@
     },
     {
       "from": "segurancaoperacionalscreen",
+      "to": "segurancaoperacionaldetalhescreen",
+      "type": "navigation",
+      "confidence": 0.96,
+      "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+    },
+    {
+      "from": "segurancaoperacionalscreen",
       "to": "segurancaoperacionalformscreen",
       "type": "navigation",
       "confidence": 0.96,
@@ -10143,6 +10159,13 @@
     },
     {
       "from": "segurancaoperacionalformscreen",
+      "to": "segurancaoperacionaldetalhescreen",
+      "type": "navigation",
+      "confidence": 0.96,
+      "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+    },
+    {
+      "from": "segurancaoperacionalformscreen",
       "to": "naoconformidadeeditorscreen",
       "type": "navigation",
       "confidence": 0.96,
@@ -10150,7 +10173,21 @@
     },
     {
       "from": "naoconformidadeeditorscreen",
+      "to": "segurancaoperacionaldetalhescreen",
+      "type": "navigation",
+      "confidence": 0.96,
+      "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+    },
+    {
+      "from": "naoconformidadeeditorscreen",
       "to": "segurancaoperacionalformscreen",
+      "type": "navigation",
+      "confidence": 0.96,
+      "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+    },
+    {
+      "from": "segurancatextoeditorscreen",
+      "to": "segurancaoperacionaldetalhescreen",
       "type": "navigation",
       "confidence": 0.96,
       "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
@@ -10979,11 +11016,18 @@
       "screens": [
         "segurancaoperacionalscreen",
         "segurancatextoeditorscreen",
-        "segurancaoperacionaldetalhescreen",
         "segurancaoperacionalformscreen",
-        "naoconformidadeeditorscreen"
+        "naoconformidadeeditorscreen",
+        "segurancaoperacionaldetalhescreen"
       ],
       "flow_edges": [
+        {
+          "from": "segurancaoperacionalscreen",
+          "to": "segurancaoperacionaldetalhescreen",
+          "type": "navigation",
+          "confidence": 0.96,
+          "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+        },
         {
           "from": "segurancaoperacionalscreen",
           "to": "segurancaoperacionalformscreen",
@@ -11014,6 +11058,13 @@
         },
         {
           "from": "segurancaoperacionalformscreen",
+          "to": "segurancaoperacionaldetalhescreen",
+          "type": "navigation",
+          "confidence": 0.96,
+          "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+        },
+        {
+          "from": "segurancaoperacionalformscreen",
           "to": "naoconformidadeeditorscreen",
           "type": "navigation",
           "confidence": 0.96,
@@ -11021,7 +11072,21 @@
         },
         {
           "from": "naoconformidadeeditorscreen",
+          "to": "segurancaoperacionaldetalhescreen",
+          "type": "navigation",
+          "confidence": 0.96,
+          "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+        },
+        {
+          "from": "naoconformidadeeditorscreen",
           "to": "segurancaoperacionalformscreen",
+          "type": "navigation",
+          "confidence": 0.96,
+          "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+        },
+        {
+          "from": "segurancatextoeditorscreen",
+          "to": "segurancaoperacionaldetalhescreen",
           "type": "navigation",
           "confidence": 0.96,
           "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
