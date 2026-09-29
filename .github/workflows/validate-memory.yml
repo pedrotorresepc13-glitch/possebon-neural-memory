@@ -24,6 +24,9 @@ jobs:
       - name: Validate memory graph and JSON
         run: python scripts/validate_memory.py
 
+      - name: Validate Project Brain JavaScript
+        run: node --check app.js
+
       - name: Check required files
         run: |
           test -f README.md
