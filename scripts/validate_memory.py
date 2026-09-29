@@ -57,8 +57,31 @@ def main() -> int:
 
     if not state.get("updated_at"):
         fail("current-state.json precisa de updated_at")
-    if not isinstance(state.get("modules"), dict) or not state["modules"]:
-        fail("current-state.json precisa de modules")
+
+    # A memória operacional evoluiu além do primeiro schema baseado apenas em `modules`.
+    # Aceitamos o formato antigo e o formato atual, desde que exista conteúdo operacional real.
+    recognized_state = any(
+        isinstance(state.get(key), dict) and bool(state.get(key))
+        for key in (
+            "modules",
+            "runtime_confirmed",
+            "flutter",
+            "source_of_truth",
+            "backend_confirmed_applied",
+        )
+    )
+    if not recognized_state:
+        fail("current-state.json precisa conter um bloco de estado operacional reconhecido")
+
+    # Se o snapshot ainda usar `modules`, valida os estados conhecidos sem obrigar esse formato.
+    modules = state.get("modules")
+    if isinstance(modules, dict):
+        for module_id, module in modules.items():
+            if not isinstance(module, dict):
+                fail(f"module inválido em current-state.json: {module_id}")
+            module_status = module.get("status")
+            if module_status is not None and module_status not in allowed:
+                fail(f"status inválido em current-state.json/{module_id}: {module_status}")
 
     forbidden_keys = {
         "password",
@@ -73,7 +96,12 @@ def main() -> int:
         text = path.read_text(encoding="utf-8").lower()
         # Permite menções documentais a nomes de campos/segredos, mas bloqueia padrões óbvios de atribuição.
         for key in forbidden_keys:
-            for marker in (f'"{key}": "ey', f'"{key}": "sk-', f'"{key}": "ghp_', f'"{key}": "github_pat_'):
+            for marker in (
+                f'"{key}": "ey',
+                f'"{key}": "sk-',
+                f'"{key}": "ghp_',
+                f'"{key}": "github_pat_',
+            ):
                 if marker in text:
                     fail(f"possível segredo em {path.name}: {key}")
 
