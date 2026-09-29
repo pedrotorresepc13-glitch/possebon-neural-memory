@@ -32,34 +32,73 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Check source-repository credential
+        id: source_auth
+        env:
+          SOURCE_TOKEN: ${{ secrets.POSSEBON_SOURCE_TOKEN }}
+        run: |
+          if [ -z "$SOURCE_TOKEN" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "POSSEBON_SOURCE_TOKEN não configurado; sincronização cross-repo ficará em attention."
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout current POSSEBON Flutter source
+        if: steps.source_auth.outputs.available == 'true'
+        env:
+          SOURCE_TOKEN: ${{ secrets.POSSEBON_SOURCE_TOKEN }}
         run: |
           rm -rf _source
           mkdir -p _source
-          git clone --depth 1 --branch possebon https://github.com/pedrotorresepc13-glitch/possebon.git _source/possebon
+          git clone --depth 1 --branch possebon "https://x-access-token:${SOURCE_TOKEN}@github.com/pedrotorresepc13-glitch/possebon.git" _source/possebon
 
       - name: Build live app inventory
+        if: steps.source_auth.outputs.available == 'true'
         run: |
           python scripts/build_app_inventory.py \
             --app-root _source/possebon \
             --output data/app-inventory.json \
             --status-output data/brain-status.json
 
-      - name: Validate generated JSON
+      - name: Mark cross-repo sync as waiting for credential
+        if: steps.source_auth.outputs.available != 'true'
         run: |
-          python -m json.tool data/app-inventory.json > /dev/null
+          python - <<'PY'
+          import json, pathlib
+          from datetime import datetime, timezone
+          p = pathlib.Path('data/brain-status.json')
+          data = json.loads(p.read_text(encoding='utf-8')) if p.exists() else {'schema_version': 2}
+          data['updated_at'] = datetime.now(timezone.utc).isoformat()
+          data['sync'] = {
+              'state': 'attention',
+              'method': 'github-actions-static-index',
+              'reason': 'POSSEBON_SOURCE_TOKEN not configured'
+          }
+          data.setdefault('warnings', [])
+          warning = 'Sincronização automática do Flutter aguarda POSSEBON_SOURCE_TOKEN com acesso de leitura ao repositório fonte.'
+          if warning not in data['warnings']:
+              data['warnings'].append(warning)
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Validate generated status/inventory
+        run: |
+          test -f data/brain-status.json
           python -m json.tool data/brain-status.json > /dev/null
+          if [ -f data/app-inventory.json ]; then
+            python -m json.tool data/app-inventory.json > /dev/null
+          fi
 
       - name: Commit knowledge drift when source changed
         run: |
           rm -rf _source
-          if git diff --quiet -- data/app-inventory.json data/brain-status.json; then
-            echo 'Project Brain already synchronized.'
+          if [ -z "$(git status --porcelain -- data/app-inventory.json data/brain-status.json)" ]; then
+            echo 'Project Brain already synchronized for the available evidence.'
             exit 0
           fi
           git config user.name 'possebon-project-brain[bot]'
           git config user.email 'actions@users.noreply.github.com'
-          git add data/app-inventory.json data/brain-status.json
-          SOURCE_HEAD=$(python -c "import json; print(json.load(open('data/app-inventory.json'))['source']['head'][:12])")
-          git commit -m "brain: sync Flutter source ${SOURCE_HEAD}"
+          git add data/app-inventory.json data/brain-status.json 2>/dev/null || true
+          git commit -m "brain: refresh source synchronization status"
           git push
