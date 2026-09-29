@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-09-29T00:18:30Z",
+  "source": {
+    "repository": "pedrotorresepc13-glitch/possebon",
+    "branch": "possebon",
+    "head": "65b91a0a7a8a6178659f61af3802100aa0922f20",
+    "head_verified": true,
+    "verified_via": "GitHub connector"
+  },
+  "sync": {
+    "state": "attention",
+    "method": "connector-seed + GitHub Actions static index",
+    "automatic_ready": true,
+    "automatic_blocker": "POSSEBON_SOURCE_TOKEN not configured in neural-memory repository"
+  },
+  "coverage": {
+    "screens_indexed": 26,
+    "navigation_edges_verified": 18,
+    "source_head_known": true,
+    "runtime_visuals": false,
+    "backend_madbuilder_live_index": false
+  },
+  "evidence": {
+    "screen_files": "verified from current Flutter tree",
+    "core_navigation": "verified by reading Splash/Acesso/Home code",
+    "screen_previews": "wireframes derived from screen role and available widget evidence",
+    "runtime": "not verified by this index",
+    "backend": "continues to use the separately confirmed MAD Builder baseline"
+  },
+  "warnings": [
+    "A primeira carga do inventário foi construída com acesso direto ao repositório e relações de navegação só foram gravadas quando confirmadas no código lido.",
+    "A atualização automática cross-repo aguarda um segredo POSSEBON_SOURCE_TOKEN com permissão somente de leitura no repositório pedrotorresepc13-glitch/possebon.",
+    "Wireframes são representações estruturais e não screenshots de runtime.",
+    "Backend MAD Builder continua dependente da fonte operacional autoritativa confirmada separadamente."
+  ]
+}
