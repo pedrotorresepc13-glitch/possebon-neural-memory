@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-09-29T12:17:00-03:00",
+  "updated_at": "2026-09-29T12:23:00-03:00",
   "entries": [
     {
       "date": "2026-09-29",
       "area": "Dono de Área / Relatórios / Flutter",
-      "status": "in_progress",
-      "summary": "Diagnóstico confirmou PDFs individuais e mensal válidos no backend e servidos por HTTPS padrão. Correção planejada no app: usar origin público de arquivos para PDFs do Dono e abrir o detalhe existente ao tocar na avaliação; Ronda/Audicomp permanecem intactos."
+      "status": "implemented_unverified",
+      "summary": "Diagnóstico confirmou PDFs válidos no backend e servidos por HTTPS padrão. Implementado no app: origem pública específica para PDFs do Dono; toque em avaliação abre a tela de detalhe existente; relatório mensal/individual do Dono usa a origem pública. Commits 2f766ef e 1df823a. Aguardando workflow analyze e teste runtime antes de marcar stable."
     },
     {
       "date": "2026-09-17",
