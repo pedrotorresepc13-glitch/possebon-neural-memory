@@ -3,35 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#040d14" />
-  <meta name="description" content="Cérebro visual, memória viva e mapa cognitivo do POSSEBON App" />
-  <title>POSSEBON Project Brain</title>
+  <meta name="theme-color" content="#06131d" />
+  <meta name="description" content="POSSEBON Project Brain — mapa cognitivo vivo do aplicativo" />
+  <title>POSSEBON Project Brain V2</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <div class="brain-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="brain-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
       <div>
-        <strong>POSSEBON Project Brain</strong>
-        <span>mapa vivo do app • arquitetura • regras • impacto</span>
+        <strong>POSSEBON Project Brain <em>V2</em></strong>
+        <span>gêmeo cognitivo • telas • código • regras • impacto</span>
       </div>
     </div>
 
     <nav class="mode-switch" aria-label="Modo de visualização">
-      <button class="mode-btn selected" data-mode="visual" type="button">
-        <b>Visual</b><small>Telas e navegação</small>
-      </button>
-      <button class="mode-btn" data-mode="technical" type="button">
-        <b>Técnico</b><small>Código e dependências</small>
-      </button>
-      <button class="mode-btn" data-mode="impact" type="button">
-        <b>Impacto</b><small>O que pode quebrar</small>
-      </button>
+      <button class="mode-btn selected" data-mode="visual" type="button"><b>Visual</b><small>Telas e fluxos</small></button>
+      <button class="mode-btn" data-mode="technical" type="button"><b>Técnico</b><small>Código e dependências</small></button>
+      <button class="mode-btn" data-mode="impact" type="button"><b>Impacto</b><small>O que pode quebrar</small></button>
     </nav>
 
     <div class="actions">
-      <input id="search" type="search" placeholder="Buscar tela, regra, arquivo, API..." autocomplete="off" />
+      <input id="search" type="search" placeholder="Buscar tela, arquivo, regra, API..." autocomplete="off" />
+      <select id="domainFilter" aria-label="Filtrar domínio"><option value="">Todos os domínios</option></select>
       <button id="healthBtn" type="button">Saúde</button>
       <button id="stateBtn" type="button">Estado</button>
       <button id="focusBtn" type="button">Foco</button>
@@ -39,31 +34,37 @@
     </div>
   </header>
 
-  <aside class="legend" aria-label="Legenda de estados">
-    <span class="legend-title">CONFIANÇA</span>
-    <button class="legend-filter" data-status="stable"><i class="dot stable"></i> confirmado</button>
-    <button class="legend-filter" data-status="active"><i class="dot active"></i> em evolução</button>
-    <button class="legend-filter" data-status="attention"><i class="dot attention"></i> revisar</button>
-    <button class="legend-filter" data-status="planned"><i class="dot planned"></i> planejado</button>
-    <button class="legend-filter" data-status="blocked"><i class="dot blocked"></i> bloqueado</button>
-    <button id="clearFilter" class="legend-filter muted">todos</button>
+  <aside class="legend" aria-label="Legenda">
+    <span class="legend-title">EVIDÊNCIA</span>
+    <span class="legend-item"><i class="dot verified"></i> código confirmado</span>
+    <span class="legend-item"><i class="dot inferred"></i> estrutura confirmada / visual inferido</span>
+    <span class="legend-item"><i class="dot attention"></i> requer revalidação</span>
   </aside>
 
   <section id="summaryBar" class="summary-bar" aria-label="Resumo do cérebro"></section>
+  <div id="sourceBadge" class="source-badge"></div>
 
-  <main id="viewport" class="viewport" aria-label="Mapa visual do POSSEBON">
+  <main id="viewport" class="viewport" aria-label="Mapa cognitivo do POSSEBON">
     <div class="ambient ambient-a"></div>
     <div class="ambient ambient-b"></div>
     <div id="world" class="world">
-      <svg id="edges" class="edges" width="7600" height="5600" viewBox="0 0 7600 5600"></svg>
+      <svg id="edges" class="edges" width="9000" height="7000" viewBox="0 0 9000 7000"></svg>
       <div id="nodes" class="nodes"></div>
     </div>
-    <div id="impactHint" class="impact-hint hidden">Clique em qualquer tela ou serviço para iluminar o impacto direto.</div>
+    <div id="impactHint" class="impact-hint hidden">Selecione uma tela para calcular o impacto em cadeia.</div>
+    <div id="emptyState" class="empty-state hidden">Nenhum nó corresponde aos filtros atuais.</div>
   </main>
 
   <aside id="inspector" class="inspector hidden">
     <button id="closeInspector" class="close" aria-label="Fechar">×</button>
     <div id="inspectorContent"></div>
+  </aside>
+
+  <aside id="contextPanel" class="side-panel context-panel hidden">
+    <button id="closeContext" class="close" aria-label="Fechar">×</button>
+    <div class="panel-eyebrow">CONTEXTO PARA IA</div>
+    <h2>Context Pack</h2>
+    <div id="contextContent"></div>
   </aside>
 
   <aside id="focusPanel" class="side-panel hidden">
@@ -75,8 +76,8 @@
 
   <aside id="statePanel" class="side-panel wide hidden">
     <button id="closeState" class="close" aria-label="Fechar">×</button>
-    <div class="panel-eyebrow">RUNTIME + MEMÓRIA</div>
-    <h2>Estado operacional</h2>
+    <div class="panel-eyebrow">ESTADO OPERACIONAL</div>
+    <h2>Memória do projeto</h2>
     <div id="stateContent"></div>
   </aside>
 
@@ -90,7 +91,7 @@
   <footer class="hud">
     <span id="zoomLabel">100%</span>
     <span id="modeLabel">modo visual</span>
-    <span>arraste para mover • roda do mouse para zoom • clique para abrir • duplo clique para focar</span>
+    <span>arraste para mover • roda para zoom • clique abre a ficha • duplo clique centraliza</span>
   </footer>
 
   <script src="./app.js" defer></script>
