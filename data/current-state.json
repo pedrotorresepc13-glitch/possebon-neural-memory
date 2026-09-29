@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-29T12:16:00-03:00",
+  "updated_at": "2026-09-29T12:22:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "flutter_head_confirmed": "65b91a0a7a8a6178659f61af3802100aa0922f20",
+    "flutter_head_confirmed": "1df823a0c7c03a3d875c754574c371f6508ee34f",
     "backend_baseline": "possebon_web-27-09-2026-23-21-36.zip enviado pelo usuário em 28/09/2026; fonte atual do MAD Builder/Web",
     "backend_rule": "GitHub Web não é fonte autoritativa do backend MAD Builder; para PHP exato usar o ZIP/arquivo mais recente enviado pelo usuário."
   },
@@ -27,8 +27,8 @@
   },
   "flutter": {
     "status": "foto_sessao_cerca_grafico_static_validated_runtime_pending",
-    "head": "65b91a0a7a8a6178659f61af3802100aa0922f20",
-    "head_message": "Audicomp: corrige resumo de ocorrencias",
+    "head": "1df823a0c7c03a3d875c754574c371f6508ee34f",
+    "head_message": "Dono de Area: abre detalhe e corrige relatorios",
     "ci_validation": "workflow POSSEBON Validar Minha Area Dono 18-09 executou flutter pub get, dart format e flutter analyze com sucesso em 90fd5c13; o próprio CI gerou e003ede apenas com formatação do arquivo Minha Área",
     "changes": [
       "perfil preserva imagem_local anterior quando a mesma foto remota existe e o novo download falha temporariamente",
@@ -243,7 +243,7 @@
   },
   "diagnostics_2026_09_29": {
     "dono_area_relatorios": {
-      "status": "root_cause_app_file_origin_confirmed_fix_in_progress",
+      "status": "implemented_unverified",
       "findings": [
         "Registros Dono recentes estão consistentes: tipologia C/N/A acompanha descricao Sim/N/A quando aplicável; não corrigir esses dados.",
         "PDF individual Dono 2889 é PDF 1.7 completo, termina em %%EOF e possui 4 objetos Page; o aviso do utilitário file '0 pages' é falso positivo.",
@@ -258,7 +258,19 @@
         "Aplicar a URL pública somente aos PDFs do Dono nesta correção para não alterar Ronda/Audicomp já funcionais.",
         "No Dono, tocar na avaliação deve abrir a tela de detalhe existente; PDF fica como ação explícita dentro do detalhe.",
         "Relatório mensal Minha Área deve usar a mesma URL pública."
-      ]
+      ],
+      "implementation": {
+        "commits": [
+          "2f766ef5fc4db210a338bb311f246a65d6aeea9c - ApiService: origem pública específica para relatórios",
+          "1df823a0c7c03a3d875c754574c371f6508ee34f - Dono: detalhe no toque e relatório mensal/individual pela origem pública"
+        ],
+        "files": [
+          "lib/services/api_service.dart",
+          "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+        ],
+        "scope": "somente comportamento de PDF/abertura do Dono; Ronda/Audicomp preservados",
+        "validation": "workflow POSSEBON Validar Minha Area Dono 18-09 em execução; não marcar stable antes de analyze + teste runtime"
+      }
     },
     "resolvido_no_local": {
       "status": "planned_after_dono_report_fix",
