@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-29T00:19:00Z",
+  "invariants": [
+    {
+      "id": "SOURCE-001",
+      "severity": "critical",
+      "scope": "global",
+      "rule": "A memória não substitui o código-fonte atual. Quando memória e fonte operacional divergem, a fonte atual prevalece e a memória deve ser revalidada.",
+      "verification": "compare source HEAD and evidence paths before change"
+    },
+    {
+      "id": "EVIDENCE-001",
+      "severity": "critical",
+      "scope": "brain",
+      "rule": "Hipótese, proposta ou código preparado não pode ser marcado como aplicado ou stable sem evidência objetiva.",
+      "verification": "require evidence/status transition"
+    },
+    {
+      "id": "UNIT-001",
+      "severity": "critical",
+      "scope": "data",
+      "rule": "Contexto de unidade deve ser respeitado onde a regra funcional exige Pessoa + unit_id, incluindo validação no backend quando aplicável.",
+      "verification": "impact review on unit-scoped changes"
+    },
+    {
+      "id": "SESSION-001",
+      "severity": "critical",
+      "scope": "authentication",
+      "rule": "Falha transitória de rede não equivale a sessão revogada e não deve provocar logout por si só.",
+      "verification": "session flow review and regression test"
+    },
+    {
+      "id": "CHANGE-001",
+      "severity": "high",
+      "scope": "development",
+      "rule": "Antes de alterar módulo já validado, identificar dependências, comportamento preservado, risco e caminho de rollback.",
+      "verification": "context pack + impact graph"
+    },
+    {
+      "id": "REUSE-001",
+      "severity": "high",
+      "scope": "development",
+      "rule": "Não duplicar componente, serviço ou padrão quando já existir implementação compartilhada adequada no projeto.",
+      "verification": "search existing implementation before create"
+    },
+    {
+      "id": "MAD-001",
+      "severity": "high",
+      "scope": "mad-builder",
+      "rule": "No backend POSSEBON Web, priorizar recursos nativos do MAD Builder/Adianti e pontos oficiais de extensão antes de código manual ou alteração de bloco gerado.",
+      "verification": "source-of-truth + MAD Builder impact review"
+    },
+    {
+      "id": "SECRETS-001",
+      "severity": "critical",
+      "scope": "security",
+      "rule": "A memória guarda estrutura e regras, nunca senhas, tokens, Client Secrets, chaves REST ou dados pessoais operacionais.",
+      "verification": "CI secret-pattern validation"
+    }
+  ]
+}
