@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-29T12:22:00-03:00",
+  "updated_at": "2026-09-29T13:38:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "flutter_head_confirmed": "1df823a0c7c03a3d875c754574c371f6508ee34f",
+    "flutter_head_confirmed": "85d13030d564eb4cb4070cc90ce7b7fb999edea0",
     "backend_baseline": "possebon_web-27-09-2026-23-21-36.zip enviado pelo usuário em 28/09/2026; fonte atual do MAD Builder/Web",
     "backend_rule": "GitHub Web não é fonte autoritativa do backend MAD Builder; para PHP exato usar o ZIP/arquivo mais recente enviado pelo usuário."
   },
@@ -27,8 +27,8 @@
   },
   "flutter": {
     "status": "foto_sessao_cerca_grafico_static_validated_runtime_pending",
-    "head": "1df823a0c7c03a3d875c754574c371f6508ee34f",
-    "head_message": "Dono de Area: abre detalhe e corrige relatorios",
+    "head": "85d13030d564eb4cb4070cc90ce7b7fb999edea0",
+    "head_message": "Seguranca: abre PDFs pela origem publica",
     "ci_validation": "workflow POSSEBON Validar Minha Area Dono 18-09 executou flutter pub get, dart format e flutter analyze com sucesso em 90fd5c13; o próprio CI gerou e003ede apenas com formatação do arquivo Minha Área",
     "changes": [
       "perfil preserva imagem_local anterior quando a mesma foto remota existe e o novo download falha temporariamente",
@@ -273,12 +273,50 @@
       }
     },
     "resolvido_no_local": {
-      "status": "planned_after_dono_report_fix",
+      "status": "implemented_unverified",
       "rule": "Dono de Área, Audicomp e Ronda Gerencial devem oferecer escolha explícita de resolvido/tratado no local; se resolvido, registrar ocorrência/tratativa/evidência sem Plano de Ação; se não resolvido, seguir fluxo de Plano de Ação.",
       "constraints": [
         "Meu Amigo do Peito permanece fora desta alteração porque usuário confirmou que já foi resolvido e está funcionando.",
         "Minha Ronda e Audicomp estão funcionando; alterações devem ser incrementais e sem regressão.",
         "Condição insegura da Ronda hoje exige pelo menos um Plano de Ação e precisará exceção explícita apenas quando marcada como resolvida no local."
+      ],
+      "implementation": {
+        "dono_audicomp": {
+          "commit": "0772a939581b5ee4cd512f86dd5d85c77fcb02f0",
+          "behavior": [
+            "Switch explícito 'A situação foi resolvida na hora?' no editor compartilhado de Não conformidade.",
+            "Sim: exige ação/tratativa, limpa responsável/prazo e envia a NC sem Plano de Ação.",
+            "Não: exige ação/tratativa, responsável e data planejada; mantém criação de Plano de Ação.",
+            "Resumo da NC mostra 'Resolvido no local — sem Plano de Ação' quando aplicável."
+          ]
+        },
+        "ronda": {
+          "commit": "52ce535f62e319a972a9edad1831037a8af982bf",
+          "behavior": [
+            "Mesmo switch no editor de Não conformidade da Ronda.",
+            "Sim: exige tratativa e envia lista de planos vazia.",
+            "Não: exige pelo menos um Plano de Ação.",
+            "Plano concluído/encerrado impede marcar retroativamente como resolvido no local."
+          ]
+        },
+        "scope_note": "Condição insegura ainda não foi alterada nesta etapa porque o backend compartilhado Dono/Audicomp mantém Plano obrigatório; tratar separadamente para evitar regressão."
+      }
+    },
+    "pdf_media_proxy": {
+      "status": "implemented_unverified",
+      "finding": "Screenshot runtime Web mostrou /media/app/output/... retornando {error: Invalid media path}; relatórios PDF não devem usar o proxy de mídia.",
+      "implementation": [
+        "ApiService.montarUrlRelatorio passa a usar https://app.possebon.com.br também no Flutter Web.",
+        "Aberturas de PDF em Amigo do Peito, Minha Ronda, Dono, fluxo compartilhado e origem de Planos usam montarUrlRelatorio.",
+        "Fotos/evidências continuam em montarUrlArquivo e proxy /media."
+      ],
+      "commits": [
+        "256edb2f3ef10c40412190d339b695103253f943",
+        "a58b6b31e11039dcc44458af0767443a0f61b9a5",
+        "979afe51bf0cf65e18c187535fcf3df43dae8cd1",
+        "9e0faf05b5ed71bef7731497c7cd2e68b03e1fec",
+        "347d211d5dd2ee78fae682070a9b9631e60f5ea7",
+        "85d13030d564eb4cb4070cc90ce7b7fb999edea0"
       ]
     }
   }
