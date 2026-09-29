@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at": "2026-09-29T00:18:30Z",
+  "updated_at": "2026-09-29T00:55:39.552516+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
@@ -10,9 +10,8 @@
   },
   "sync": {
     "state": "attention",
-    "method": "connector-seed + GitHub Actions static index",
-    "automatic_ready": true,
-    "automatic_blocker": "POSSEBON_SOURCE_TOKEN not configured in neural-memory repository"
+    "method": "github-actions-static-index",
+    "reason": "POSSEBON_SOURCE_TOKEN not configured"
   },
   "coverage": {
     "screens_indexed": 26,
@@ -32,6 +31,7 @@
     "A primeira carga do inventário foi construída com acesso direto ao repositório e relações de navegação só foram gravadas quando confirmadas no código lido.",
     "A atualização automática cross-repo aguarda um segredo POSSEBON_SOURCE_TOKEN com permissão somente de leitura no repositório pedrotorresepc13-glitch/possebon.",
     "Wireframes são representações estruturais e não screenshots de runtime.",
-    "Backend MAD Builder continua dependente da fonte operacional autoritativa confirmada separadamente."
+    "Backend MAD Builder continua dependente da fonte operacional autoritativa confirmada separadamente.",
+    "Sincronização automática do Flutter aguarda POSSEBON_SOURCE_TOKEN com acesso de leitura ao repositório fonte."
   ]
 }
