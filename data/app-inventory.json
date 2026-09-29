@@ -1,0 +1,70 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-09-29T00:18:00Z",
+  "source": {
+    "repository": "pedrotorresepc13-glitch/possebon",
+    "branch": "possebon",
+    "head": "65b91a0a7a8a6178659f61af3802100aa0922f20"
+  },
+  "method": "connector-seed-with-code-verified-links",
+  "confidence_policy": {
+    "0.99": "arquivo/classe lidos diretamente no código atual",
+    "0.96": "navegação encontrada em Navigator/MaterialPageRoute no código atual",
+    "0.85": "arquivo confirmado no tree; prévia visual derivada do papel da tela",
+    "rule": "ausência de evidência não cria relação"
+  },
+  "stats": {
+    "screens": 26,
+    "navigation_edges": 18,
+    "domains": 10,
+    "source_head_verified": true
+  },
+  "screens": [
+    {"id":"splash-screen","class":"SplashScreen","title":"Splash","domain":"Acesso","path":"lib/screens/splash_screen.dart","preview":{"kind":"splash","widgets":{"Scaffold":1,"Image":1}},"technical_dependencies":["lib/core/session/auth_session_manager.dart","lib/repositories/app_repository.dart","lib/services/api_service.dart","lib/services/app_location_permission_service.dart","lib/services/session_service.dart"],"api_routes":[],"navigation_out":["acesso-screen","foto-oficial-screen","home-screen"],"navigation_in":[],"evidence":{"kind":"code-read","confidence":0.99}},
+    {"id":"acesso-screen","class":"AcessoScreen","title":"Acesso","domain":"Acesso","path":"lib/screens/acesso_screen.dart","preview":{"kind":"form","widgets":{"Scaffold":1,"TextField":3,"Dialog":4}},"technical_dependencies":["lib/repositories/app_repository.dart","lib/services/api_service.dart","lib/services/app_error_service.dart","lib/services/session_service.dart"],"api_routes":[],"navigation_out":["foto-oficial-screen","home-screen"],"navigation_in":["splash-screen","home-screen"],"evidence":{"kind":"code-read","confidence":0.99}},
+    {"id":"home-screen","class":"HomeScreen","title":"Home","domain":"App","path":"lib/screens/home_screen.dart","preview":{"kind":"dashboard","widgets":{"Scaffold":1,"Card":1}},"technical_dependencies":["lib/repositories/app_repository.dart","lib/repositories/quadro_avisos_repository.dart","lib/repositories/rdo_repository.dart","lib/features/access_control/data/access_control_api.dart","lib/services/api_service.dart","lib/services/session_service.dart","lib/services/notification_service.dart","lib/services/transporte_tracking_service.dart"],"api_routes":[],"navigation_out":["processo-documentos-screen","quadro-avisos-screen","minha-ronda-gerencial-screen","seguranca-operacional-screen","amigo-peito-screen","planos-acao-screen","cadastro-cracha-screen","cerca-virtual-admin-screen","meu-rdo-screen","meu-transporte-screen","conteudo-unidade-imagem-screen","manifestacao-screen","meus-dados-screen","acesso-screen"],"navigation_in":["splash-screen","acesso-screen"],"evidence":{"kind":"code-read","confidence":0.99}},
+    {"id":"foto-oficial-screen","class":"FotoOficialScreen","title":"Foto Oficial","domain":"Perfil","path":"lib/screens/foto_oficial_screen.dart","preview":{"kind":"camera","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["splash-screen","acesso-screen"],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"candidato-dados-obrigatorios-screen","title":"Dados Obrigatórios do Candidato","domain":"Admissão","path":"lib/screens/candidato_dados_obrigatorios_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"cadastro-cracha-screen","title":"Cadastro de Crachá","domain":"Crachá","path":"lib/screens/cadastro_cracha_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"cerca-virtual-admin-screen","title":"Cerca Virtual","domain":"Acesso","path":"lib/screens/cerca_virtual_admin_screen.dart","preview":{"kind":"map","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"conteudo-unidade-imagem-screen","title":"Conteúdo da Unidade","domain":"Comunicação","path":"lib/screens/conteudo_unidade_imagem_screen.dart","preview":{"kind":"image","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"documento-imagem-screen","title":"Documento em Imagem","domain":"Documentos","path":"lib/screens/documento_imagem_screen.dart","preview":{"kind":"document","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"login-screen","title":"Login","domain":"Acesso","path":"lib/screens/login_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"manifestacao-screen","title":"Ouvidoria / Manifestação","domain":"Comunicação","path":"lib/screens/manifestacao_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"meu-rdo-screen","title":"Meu RDO","domain":"RDO","path":"lib/screens/meu_rdo_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"meu-transporte-screen","title":"Meu Transporte","domain":"Transporte","path":"lib/screens/meu_transporte_screen.dart","preview":{"kind":"dashboard","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"meus-dados-screen","title":"Meus Dados","domain":"Perfil","path":"lib/screens/meus_dados_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"meus-treinamentos-screen","title":"Meus Treinamentos","domain":"Treinamentos","path":"lib/screens/meus_treinamentos_screen.dart","preview":{"kind":"list","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"processo-documentos-screen","title":"Processo / Documentos","domain":"Admissão","path":"lib/screens/processo_documentos_screen.dart","preview":{"kind":"list","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"qr-cracha-scanner-screen","title":"Leitor QR do Crachá","domain":"Crachá","path":"lib/screens/qr_cracha_scanner_screen.dart","preview":{"kind":"camera","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"quadro-avisos-screen","title":"Quadro de Avisos","domain":"Comunicação","path":"lib/screens/quadro_avisos_screen.dart","preview":{"kind":"list","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"sobre-aplicativo-screen","title":"Sobre o Aplicativo","domain":"App","path":"lib/screens/sobre_aplicativo_screen.dart","preview":{"kind":"document","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"transporte-mapa-screen","title":"Mapa do Transporte","domain":"Transporte","path":"lib/screens/transporte_mapa_screen.dart","preview":{"kind":"map","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"webview-screen","title":"WebView","domain":"App","path":"lib/screens/webview_screen.dart","preview":{"kind":"web","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}},
+    {"id":"amigo-peito-screen","title":"Amigo do Peito","domain":"Segurança Operacional","path":"lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"planos-acao-screen","title":"Planos de Ação","domain":"Segurança Operacional","path":"lib/features/seguranca_operacional/presentation/planos_acao_screen.dart","preview":{"kind":"list","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"minha-ronda-gerencial-screen","title":"Minha Ronda Gerencial","domain":"Segurança Operacional","path":"lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"seguranca-operacional-screen","title":"Segurança Operacional","domain":"Segurança Operacional","path":"lib/features/seguranca_operacional/presentation/seguranca_operacional_screen.dart","preview":{"kind":"dashboard","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":["home-screen"],"evidence":{"kind":"tree-confirmed+home-link","confidence":0.96}},
+    {"id":"dono-area-screen","title":"Dono de Área","domain":"Segurança Operacional","path":"lib/features/seguranca_operacional/presentation/dono_area_screen.dart","preview":{"kind":"form","widgets":{}},"technical_dependencies":[],"api_routes":[],"navigation_out":[],"navigation_in":[],"evidence":{"kind":"tree-confirmed","confidence":0.85}}
+  ],
+  "edges": [
+    {"from":"splash-screen","to":"acesso-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/splash_screen.dart"},
+    {"from":"splash-screen","to":"foto-oficial-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/splash_screen.dart"},
+    {"from":"splash-screen","to":"home-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/splash_screen.dart"},
+    {"from":"acesso-screen","to":"foto-oficial-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/acesso_screen.dart"},
+    {"from":"acesso-screen","to":"home-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/acesso_screen.dart"},
+    {"from":"home-screen","to":"processo-documentos-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"quadro-avisos-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"minha-ronda-gerencial-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"seguranca-operacional-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"amigo-peito-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"planos-acao-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"cadastro-cracha-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"cerca-virtual-admin-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"meu-rdo-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"meu-transporte-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"conteudo-unidade-imagem-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"manifestacao-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"},
+    {"from":"home-screen","to":"meus-dados-screen","type":"navigation","confidence":0.96,"evidence":"lib/screens/home_screen.dart"}
+  ]
+}
