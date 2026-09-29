@@ -1,0 +1,65 @@
+name: Sync Project Brain
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_app_inventory.py'
+      - '.github/workflows/sync-project-brain.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: project-brain-sync
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Project Brain
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Checkout current POSSEBON Flutter source
+        run: |
+          rm -rf _source
+          mkdir -p _source
+          git clone --depth 1 --branch possebon https://github.com/pedrotorresepc13-glitch/possebon.git _source/possebon
+
+      - name: Build live app inventory
+        run: |
+          python scripts/build_app_inventory.py \
+            --app-root _source/possebon \
+            --output data/app-inventory.json \
+            --status-output data/brain-status.json
+
+      - name: Validate generated JSON
+        run: |
+          python -m json.tool data/app-inventory.json > /dev/null
+          python -m json.tool data/brain-status.json > /dev/null
+
+      - name: Commit knowledge drift when source changed
+        run: |
+          rm -rf _source
+          if git diff --quiet -- data/app-inventory.json data/brain-status.json; then
+            echo 'Project Brain already synchronized.'
+            exit 0
+          fi
+          git config user.name 'possebon-project-brain[bot]'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/app-inventory.json data/brain-status.json
+          SOURCE_HEAD=$(python -c "import json; print(json.load(open('data/app-inventory.json'))['source']['head'][:12])")
+          git commit -m "brain: sync Flutter source ${SOURCE_HEAD}"
+          git push
