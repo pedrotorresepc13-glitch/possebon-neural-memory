@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-28T10:13:00-03:00",
+  "updated_at": "2026-09-29T12:16:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "flutter_head_confirmed": "2d78b5034c01ff91c1e07f2d95c0cfda0b6f2751",
+    "flutter_head_confirmed": "65b91a0a7a8a6178659f61af3802100aa0922f20",
     "backend_baseline": "possebon_web-27-09-2026-23-21-36.zip enviado pelo usuário em 28/09/2026; fonte atual do MAD Builder/Web",
     "backend_rule": "GitHub Web não é fonte autoritativa do backend MAD Builder; para PHP exato usar o ZIP/arquivo mais recente enviado pelo usuário."
   },
@@ -27,8 +27,8 @@
   },
   "flutter": {
     "status": "foto_sessao_cerca_grafico_static_validated_runtime_pending",
-    "head": "2d78b5034c01ff91c1e07f2d95c0cfda0b6f2751",
-    "head_message": "Dono de Area: normaliza compatibilidade de desvio",
+    "head": "65b91a0a7a8a6178659f61af3802100aa0922f20",
+    "head_message": "Audicomp: corrige resumo de ocorrencias",
     "ci_validation": "workflow POSSEBON Validar Minha Area Dono 18-09 executou flutter pub get, dart format e flutter analyze com sucesso em 90fd5c13; o próprio CI gerou e003ede apenas com formatação do arquivo Minha Área",
     "changes": [
       "perfil preserva imagem_local anterior quando a mesma foto remota existe e o novo download falha temporariamente",
@@ -238,6 +238,35 @@
         "php -l OK no trait corrigido",
         "regra conferida contra o código atual do MAD Builder 27/09",
         "meses que começam em domingo podem chegar a Semana 6; isso é comportamento do próprio MAD Builder e não deve ser truncado silenciosamente"
+      ]
+    }
+  },
+  "diagnostics_2026_09_29": {
+    "dono_area_relatorios": {
+      "status": "root_cause_app_file_origin_confirmed_fix_in_progress",
+      "findings": [
+        "Registros Dono recentes estão consistentes: tipologia C/N/A acompanha descricao Sim/N/A quando aplicável; não corrigir esses dados.",
+        "PDF individual Dono 2889 é PDF 1.7 completo, termina em %%EOF e possui 4 objetos Page; o aviso do utilitário file '0 pages' é falso positivo.",
+        "PDF Audicomp e PDF Ronda também são válidos pelo mesmo critério, respectivamente 2 e 3 páginas.",
+        "Relatório mensal Dono é efetivamente gerado em app/output/seguranca_operacional; arquivo recente possui 4 páginas.",
+        "Servidor web entrega os quatro PDFs por HTTPS padrão com HTTP 200, Content-Type application/pdf e Content-Length correto.",
+        "Flutter native usa ApiService.montarUrlArquivo, que monta arquivos relativos usando ApiUriBuilder.backendUrl padrão https://app.possebon.com.br:19302; arquivos públicos confirmados estão no origin HTTPS padrão.",
+        "A lista Dono possui SegurancaOperacionalDetalheScreen implementada, mas o toque no card pula a tela de detalhe e abre relatorio_pdf diretamente."
+      ],
+      "planned_fix": [
+        "Criar montagem de URL específica para relatórios/arquivos públicos usando HTTPS padrão sem alterar a origem da API.",
+        "Aplicar a URL pública somente aos PDFs do Dono nesta correção para não alterar Ronda/Audicomp já funcionais.",
+        "No Dono, tocar na avaliação deve abrir a tela de detalhe existente; PDF fica como ação explícita dentro do detalhe.",
+        "Relatório mensal Minha Área deve usar a mesma URL pública."
+      ]
+    },
+    "resolvido_no_local": {
+      "status": "planned_after_dono_report_fix",
+      "rule": "Dono de Área, Audicomp e Ronda Gerencial devem oferecer escolha explícita de resolvido/tratado no local; se resolvido, registrar ocorrência/tratativa/evidência sem Plano de Ação; se não resolvido, seguir fluxo de Plano de Ação.",
+      "constraints": [
+        "Meu Amigo do Peito permanece fora desta alteração porque usuário confirmou que já foi resolvido e está funcionando.",
+        "Minha Ronda e Audicomp estão funcionando; alterações devem ser incrementais e sem regressão.",
+        "Condição insegura da Ronda hoje exige pelo menos um Plano de Ação e precisará exceção explícita apenas quando marcada como resolvida no local."
       ]
     }
   }
