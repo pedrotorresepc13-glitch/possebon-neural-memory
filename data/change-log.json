@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-09-29T12:23:00-03:00",
+  "updated_at": "2026-09-29T13:33:00-03:00",
   "entries": [
+    {
+      "date": "2026-09-29",
+      "area": "Segurança Operacional / Resolvido no local",
+      "status": "in_progress",
+      "summary": "Implementação iniciada para tornar explícita a opção 'A situação foi resolvida na hora?' em Dono de Área, Audicomp e Minha Ronda. Regra: resolvido registra NC/tratativa/evidência sem Plano de Ação; não resolvido mantém o fluxo de Plano de Ação. Amigo do Peito permanece inalterado."
+    },
     {
       "date": "2026-09-29",
       "area": "Dono de Área / Relatórios / Flutter",
