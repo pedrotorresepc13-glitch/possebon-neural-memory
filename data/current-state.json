@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T08:50:00-03:00",
+  "updated_at": "2026-09-30T09:05:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -322,16 +322,24 @@
   },
   "diagnostics_2026_09_30": {
     "audicomp_semana": {
-      "status": "root_cause_confirmed_backend_runtime_patch_pending",
-      "evidence": [
-        "Audicomp #2935, criado em 30/09/2026, foi salvo como Semana 4; pela regra oficial, 30/09/2026 é Semana 5.",
-        "Versão intermediária do SegurancaOperacionalAppApiTrait tinha segSemanaMesDonoArea por domingos apenas para tipo D, enquanto segSemanaMes genérico contava segundas-feiras; em setembro/2026 isso produz Semana 4 em 30/09.",
-        "Versão corrigida posterior unifica segSemanaMes na regra de domingos para todos os tipos e salva mes em dois dígitos."
-      ],
-      "official_rule": "Semana 1 começa no dia 1; cada domingo posterior ao dia 1 inicia a próxima semana. Em setembro/2026: dias 27-30 pertencem à Semana 5.",
-      "required_fix": [
-        "Atualizar a função segSemanaMes do app/custom/SegurancaOperacionalAppApiTrait.php em produção para contar domingos, não segundas-feiras.",
-        "Normalizar audicomp.sem_mes dos registros ativos divergentes após backup."
+      "status": "runtime_confirmed_fixed",
+      "official_rule": "Semana 1 começa no dia 1; cada domingo posterior ao dia 1 inicia a próxima semana.",
+      "runtime_result": {
+        "active_2026_09_28_to_30": "48 Audicomp ativos conferidos com mes='09' e sem_mes=5",
+        "divergencias_periodo": 0,
+        "final_normalization_updates": 2,
+        "audicomp_2935": "soft-deleted; permaneceu fora da normalização por desenho"
+      },
+      "backend_runtime": {
+        "file": "/var/www/html/possebon_app/app/custom/SegurancaOperacionalAppApiTrait.php",
+        "syntax": "php -l OK",
+        "change": "A/D/R/P usam $mes=$termino->format('m') e $semMes=$this->segSemanaMes($termino); segSemanaMes conta domingos posteriores ao dia 1."
+      },
+      "backups": [
+        "backup_audicomp_semana_mes_20260930",
+        "backup_audicomp_sem_mes_v2_20260930",
+        "backup_audicomp_periodo_20260930_090017",
+        "SegurancaOperacionalAppApiTrait.php.bak_periodo_20260930_090008"
       ]
     },
     "pdf_web_ssl": {
