@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-09-29T13:33:00-03:00",
+  "updated_at": "2026-09-30T09:20:00-03:00",
   "entries": [
+    {
+      "date": "2026-09-30",
+      "area": "Segurança Operacional / PDF",
+      "status": "implemented_unverified",
+      "summary": "Comparação com a Minha Ronda funcional confirmou que o caminho estável usa montarUrlArquivo. Audicomp, Dono de Área, Amigo do Peito, Minha Ronda e origem de Plano foram alinhados ao mesmo método. No Web, /media agora aceita PDF; no app nativo, o mesmo helper usa o backend técnico. Análise estática passou; falta validação runtime após deploy."
+    },
     {
       "date": "2026-09-29",
       "area": "Segurança Operacional / Resolvido no local",
