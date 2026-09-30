@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-09-29T13:38:00-03:00",
+  "updated_at": "2026-09-30T08:50:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
-    "flutter_head_confirmed": "85d13030d564eb4cb4070cc90ce7b7fb999edea0",
+    "flutter_head_confirmed": "af08f9f923a12800e4cdcc21464533618d3b9c52",
     "backend_baseline": "possebon_web-27-09-2026-23-21-36.zip enviado pelo usuário em 28/09/2026; fonte atual do MAD Builder/Web",
     "backend_rule": "GitHub Web não é fonte autoritativa do backend MAD Builder; para PHP exato usar o ZIP/arquivo mais recente enviado pelo usuário."
   },
@@ -27,8 +27,8 @@
   },
   "flutter": {
     "status": "foto_sessao_cerca_grafico_static_validated_runtime_pending",
-    "head": "85d13030d564eb4cb4070cc90ce7b7fb999edea0",
-    "head_message": "Seguranca: abre PDFs pela origem publica",
+    "head": "af08f9f923a12800e4cdcc21464533618d3b9c52",
+    "head_message": "Relatorios: usa proxy no Web e backend tecnico no app",
     "ci_validation": "workflow POSSEBON Validar Minha Area Dono 18-09 executou flutter pub get, dart format e flutter analyze com sucesso em 90fd5c13; o próprio CI gerou e003ede apenas com formatação do arquivo Minha Área",
     "changes": [
       "perfil preserva imagem_local anterior quando a mesma foto remota existe e o novo download falha temporariamente",
@@ -318,6 +318,38 @@
         "347d211d5dd2ee78fae682070a9b9631e60f5ea7",
         "85d13030d564eb4cb4070cc90ce7b7fb999edea0"
       ]
+    }
+  },
+  "diagnostics_2026_09_30": {
+    "audicomp_semana": {
+      "status": "root_cause_confirmed_backend_runtime_patch_pending",
+      "evidence": [
+        "Audicomp #2935, criado em 30/09/2026, foi salvo como Semana 4; pela regra oficial, 30/09/2026 é Semana 5.",
+        "Versão intermediária do SegurancaOperacionalAppApiTrait tinha segSemanaMesDonoArea por domingos apenas para tipo D, enquanto segSemanaMes genérico contava segundas-feiras; em setembro/2026 isso produz Semana 4 em 30/09.",
+        "Versão corrigida posterior unifica segSemanaMes na regra de domingos para todos os tipos e salva mes em dois dígitos."
+      ],
+      "official_rule": "Semana 1 começa no dia 1; cada domingo posterior ao dia 1 inicia a próxima semana. Em setembro/2026: dias 27-30 pertencem à Semana 5.",
+      "required_fix": [
+        "Atualizar a função segSemanaMes do app/custom/SegurancaOperacionalAppApiTrait.php em produção para contar domingos, não segundas-feiras.",
+        "Normalizar audicomp.sem_mes dos registros ativos divergentes após backup."
+      ]
+    },
+    "pdf_web_ssl": {
+      "status": "implemented_unverified",
+      "evidence": [
+        "Runtime móvel/Web mostrou ERR_SSL_UNRECOGNIZED_NAME_ALERT ao abrir https://app.possebon.com.br/app/output/...pdf.",
+        "Proxy /media anterior retornava Invalid media path porque api/media.js aceitava somente imagens."
+      ],
+      "implementation": [
+        "api/media.js passa a aceitar PDF, validar application/pdf e usar no-store para PDFs.",
+        "ApiService.montarUrlRelatorio usa /media no Flutter Web e backend técnico https://app.possebon.com.br:19302 no app nativo.",
+        "Fotos continuam usando o comportamento existente."
+      ],
+      "commits": [
+        "eb3e2aa15a74e51e1f053cc1ecaf03e6157c3e8d",
+        "af08f9f923a12800e4cdcc21464533618d3b9c52"
+      ],
+      "validation": "flutter analyze passou no workflow; etapa final de auto-commit pode falhar sem indicar erro de análise."
     }
   }
 }
