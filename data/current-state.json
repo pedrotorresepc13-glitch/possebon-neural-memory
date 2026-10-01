@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T14:22:00-03:00",
+  "updated_at": "2026-10-01T15:02:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -361,7 +361,7 @@
     }
   },
   "rdo_redesign_2026_10_01": {
-    "status": "requirements_confirmed_analysis",
+    "status": "implemented_validation_in_progress",
     "access_model": {
       "primary_rule": "A liberação/autorização do módulo Meu RDO é a regra maior. Hierarquia não concede acesso sozinha; ela define o alcance depois que o usuário está autorizado.",
       "authorized_employee": "Funcionário autorizado pode criar RDO para a própria equipe. diario_obra.criado_por = usuário que lançou; diario_obra.equipe_id = equipe funcional; diario_obra.responsavel_id = encarregado/responsavel_id da equipe.",
@@ -445,6 +445,55 @@
       "PT atual no app somente seleciona work_permit existente; criação pelo app precisa endpoint e UI próprios.",
       "Paralisação atual é registrada por recurso; precisa UX de criação por paralisação + seleção/remover afetados.",
       "RDO atual tem outbox offline para envio, mas não possui rascunho de formulário/etapa separado do envio pendente."
-    ]
+    ],
+    "implementation": {
+      "app": {
+        "repository": "pedrotorresepc13-glitch/possebon",
+        "branch": "possebon",
+        "head": "3fd899261ccab0e62ce0d798e6531b745ae04138",
+        "validation": [
+          "flutter format validation: success",
+          "flutter analyze: success",
+          "flutter tests: success",
+          "flutter web build: success",
+          "android arm64 build: in progress"
+        ],
+        "implemented": [
+          "rascunho local genérico reutilizável por módulo/pessoa/unidade",
+          "lista/continuar/excluir rascunho e restauração da etapa exata",
+          "separação entre rascunho e outbox de envio pendente",
+          "etapa 1 com seleção pesquisável de equipe/frente/área e texto completo",
+          "etapa 2 sem alternância de unidade, presentes pré-selecionados, ausentes vermelhos, busca global por nome/chapa/função",
+          "etapa 3 com equipamentos agrupados pelo cadastro real",
+          "etapa 4 com cadastro PT/LT/PTT no app",
+          "etapa 5 com paralisação única e recursos afetados inicialmente completos, removíveis",
+          "revisão completa com edição por seção",
+          "edição de RDO, abertura/regeneração de PDF e substituição do arquivo oficial",
+          "Home oculta processo de admissão após contratação"
+        ]
+      },
+      "backend": {
+        "repository": "pedrotorresepc13-glitch/possebon_web",
+        "branch": "main",
+        "validated_rdo_head": "5e64ad5a75ebc5bebba4163e28e3a834473c6aed",
+        "current_head": "a053f8e563b5fc7fd709d1d4cb92162f2b8dac43",
+        "rdo_files_unchanged_after_validation": true,
+        "validation": "POSSEBON validar API Meu RDO 01-10: success",
+        "implemented": [
+          "autorização MeuRdoHeaderList obrigatória antes da hierarquia",
+          "funcionário autorizado opera própria equipe; hierarquia amplia escopo",
+          "criado_por identifica lançador e responsavel_id identifica encarregado da equipe",
+          "normal employee vê somente RDOs próprios; encarregado e níveis superiores veem escopo hierárquico",
+          "catálogo de efetivo por data com ausência/presença",
+          "catálogo de equipamentos com grupos reais",
+          "criação de work_permit PT/LT/PTT pelo app",
+          "detalhe completo para edição",
+          "edição reconstrói submódulos mantendo autoria original",
+          "PDF oficial determinístico app/output/rdo_app/rdo_<id>.pdf e substituição atômica em edição",
+          "endpoint para gerar/regenerar PDF",
+          "processo admissional encerrado para colaborador já contratado"
+        ]
+      }
+    }
   }
 }
