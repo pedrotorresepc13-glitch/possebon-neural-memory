@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T15:02:00-03:00",
+  "updated_at": "2026-10-01T15:18:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -361,7 +361,7 @@
     }
   },
   "rdo_redesign_2026_10_01": {
-    "status": "implemented_validation_in_progress",
+    "status": "code_complete_validated",
     "access_model": {
       "primary_rule": "A liberação/autorização do módulo Meu RDO é a regra maior. Hierarquia não concede acesso sozinha; ela define o alcance depois que o usuário está autorizado.",
       "authorized_employee": "Funcionário autorizado pode criar RDO para a própria equipe. diario_obra.criado_por = usuário que lançou; diario_obra.equipe_id = equipe funcional; diario_obra.responsavel_id = encarregado/responsavel_id da equipe.",
@@ -494,6 +494,18 @@
           "processo admissional encerrado para colaborador já contratado"
         ]
       }
+    },
+    "validation_summary": {
+      "app_head": "3fd899261ccab0e62ce0d798e6531b745ae04138",
+      "app_core_validation": [
+        "flutter analyze: success",
+        "flutter test: success",
+        "flutter build web --release: success",
+        "Android arm64: success on RDO-complete commit 6ce635d405ec17c7c4118555c77197ac3411cf44; latest HEAD run still executing Android build, with only Home/CI/format changes after that RDO-complete commit"
+      ],
+      "backend_rdo_head": "5e64ad5a75ebc5bebba4163e28e3a834473c6aed",
+      "backend_validation": "GitHub Actions PHP lint + directed RDO API validation: success",
+      "production_note": "Git repositories are complete; production server/runtime deployment is separate and was not performed by ChatGPT."
     }
   }
 }
