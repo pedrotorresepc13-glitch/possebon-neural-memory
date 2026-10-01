@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-01T14:29:07.889481+00:00",
+  "generated_at": "2026-10-01T20:21:38.915580+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "b2f057a43451a7d38b464845e54f10096c6790a5"
+    "head": "3fd899261ccab0e62ce0d798e6531b745ae04138"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -15,9 +15,9 @@
     "0.96-module": "agrupamento e fluxo derivados de arquivo, raiz funcional e navegação confirmada"
   },
   "stats": {
-    "dart_files": 102,
+    "dart_files": 103,
     "screens": 40,
-    "navigation_edges": 59,
+    "navigation_edges": 57,
     "domains": 10,
     "screens_with_layout": 40,
     "modules": 24,
@@ -194,6 +194,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -412,6 +414,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -629,6 +633,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -862,6 +868,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -1096,6 +1104,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -1332,6 +1342,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -1565,6 +1577,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -1797,6 +1811,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -2027,6 +2043,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -2224,6 +2242,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -2441,6 +2461,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -2662,6 +2684,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -2885,6 +2909,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -3108,6 +3134,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -3331,6 +3359,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -3793,6 +3823,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -3968,6 +4000,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -4397,6 +4431,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -4851,6 +4887,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -5297,7 +5335,7 @@
       "title": "Home",
       "domain": "App",
       "path": "lib/screens/home_screen.dart",
-      "source_hash": "1630936e382ed867",
+      "source_hash": "630e0d83733b5679",
       "preview": {
         "kind": "grid",
         "widgets": {
@@ -5670,6 +5708,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -6258,6 +6298,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -6310,40 +6352,41 @@
       "title": "Meu Rdo",
       "domain": "RDO",
       "path": "lib/screens/meu_rdo_screen.dart",
-      "source_hash": "b796a18171e210b2",
+      "source_hash": "35ad55f7db98986f",
       "preview": {
         "kind": "form",
         "widgets": {
           "Scaffold": 3,
           "AppBar": 3,
           "SafeArea": 1,
-          "SingleChildScrollView": 4,
-          "Column": 24,
-          "Row": 19,
-          "Wrap": 2,
-          "Padding": 14,
-          "Container": 17,
-          "SizedBox": 92,
+          "SingleChildScrollView": 5,
+          "Column": 29,
+          "Row": 23,
+          "Wrap": 3,
+          "Padding": 20,
+          "Container": 18,
+          "SizedBox": 119,
           "Center": 1,
-          "Align": 2,
-          "Expanded": 22,
-          "Card": 5,
-          "ListTile": 5,
-          "TextField": 12,
-          "FilledButton": 14,
+          "Align": 3,
+          "Expanded": 27,
+          "Card": 7,
+          "ListTile": 12,
+          "TextField": 15,
+          "FilledButton": 18,
           "OutlinedButton": 1,
-          "TextButton": 2,
-          "IconButton": 5,
-          "ListView": 2,
+          "TextButton": 4,
+          "IconButton": 8,
+          "ListView": 3,
           "FloatingActionButton": 1,
-          "AlertDialog": 3,
+          "ExpansionTile": 2,
+          "AlertDialog": 4,
           "DropdownButtonFormField": 3,
           "Chip": 1,
-          "Divider": 4,
+          "Divider": 6,
           "LinearProgressIndicator": 1,
           "CircularProgressIndicator": 2,
-          "Icon": 46,
-          "Text": 110
+          "Icon": 63,
+          "Text": 163
         },
         "layout": [
           {
@@ -6419,6 +6462,56 @@
           {
             "type": "widget",
             "widget": "Row",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "edit_note_rounded",
+            "level": 9
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Expanded",
+            "level": 8
+          },
+          {
+            "type": "text",
+            "text": "Rascunhos neste aparelho",
+            "level": 9
+          },
+          {
+            "type": "text",
+            "text": "${_rascunhos.length}",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Padding",
+            "level": 7
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Row",
             "level": 5
           },
           {
@@ -6450,6 +6543,8 @@
         "visible_labels": [
           "Meu RDO",
           "Novo RDO",
+          "Rascunhos neste aparelho",
+          "${_rascunhos.length}",
           "RDOs",
           "${_rdos.length}"
         ],
@@ -6484,18 +6579,73 @@
           "path": "lib/repositories/rdo_repository.dart"
         },
         {
+          "import": "../services/api_service.dart",
+          "path": "lib/services/api_service.dart"
+        },
+        {
+          "import": "../services/local_draft_store.dart",
+          "path": "lib/services/local_draft_store.dart"
+        },
+        {
           "import": "../services/rdo_sync_service.dart",
           "path": "lib/services/rdo_sync_service.dart"
         }
       ],
       "technical_dependencies": [
         "lib/repositories/rdo_repository.dart",
+        "lib/services/api_service.dart",
+        "lib/services/local_draft_store.dart",
         "lib/services/rdo_sync_service.dart"
       ],
-      "api_routes": [],
+      "api_routes": [
+        "/api/app/autenticar",
+        "/api/app/calendario",
+        "/api/app/candidato/atualizar-dados-obrigatorios",
+        "/api/app/candidato/cadastrar",
+        "/api/app/cardapio",
+        "/api/app/cep",
+        "/api/app/conta/exclusao",
+        "/api/app/cracha/acesso",
+        "/api/app/cracha/colaboradores",
+        "/api/app/cracha/identificar-qr",
+        "/api/app/cracha/salvar",
+        "/api/app/dispositivo/registrar",
+        "/api/app/identificar",
+        "/api/app/manifestacao",
+        "/api/app/meu-rdo",
+        "/api/app/meu-rdo/acesso",
+        "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
+        "/api/app/meu-transporte",
+        "/api/app/meus-dados",
+        "/api/app/meus-dados/contato",
+        "/api/app/meus-dados/foto",
+        "/api/app/meus-treinamentos",
+        "/api/app/primeiro-acesso",
+        "/api/app/processo-documentos",
+        "/api/app/processo-documentos/enviar",
+        "/api/app/quadro-avisos",
+        "/api/app/ronda-gerencial/catalogos",
+        "/api/app/ronda-gerencial/colaboradores",
+        "/api/app/ronda-gerencial/detalhe",
+        "/api/app/ronda-gerencial/minhas",
+        "/api/app/ronda-gerencial/salvar",
+        "/api/app/seguranca/acesso",
+        "/api/app/seguranca/catalogos",
+        "/api/app/seguranca/dono/minha-area",
+        "/api/app/seguranca/dono/minha-area/relatorio",
+        "/api/app/seguranca/meus-planos",
+        "/api/app/seguranca/plano/executar",
+        "/api/app/seguranca/plano/replanejar",
+        "/api/app/seguranca/planos",
+        "/api/app/seguranca/registro",
+        "/api/app/seguranca/registro/salvar",
+        "/api/app/seguranca/registros",
+        "/api/app/unidades"
+      ],
       "navigation_out": [
-        "novordoscreen",
-        "rdodetalhescreen"
+        "novordoscreen"
       ],
       "evidence": {
         "kind": "code-derived",
@@ -6521,40 +6671,41 @@
       "title": "Rdo Detalhe",
       "domain": "RDO",
       "path": "lib/screens/meu_rdo_screen.dart",
-      "source_hash": "b796a18171e210b2",
+      "source_hash": "35ad55f7db98986f",
       "preview": {
         "kind": "form",
         "widgets": {
           "Scaffold": 3,
           "AppBar": 3,
           "SafeArea": 1,
-          "SingleChildScrollView": 4,
-          "Column": 24,
-          "Row": 19,
-          "Wrap": 2,
-          "Padding": 14,
-          "Container": 17,
-          "SizedBox": 92,
+          "SingleChildScrollView": 5,
+          "Column": 29,
+          "Row": 23,
+          "Wrap": 3,
+          "Padding": 20,
+          "Container": 18,
+          "SizedBox": 119,
           "Center": 1,
-          "Align": 2,
-          "Expanded": 22,
-          "Card": 5,
-          "ListTile": 5,
-          "TextField": 12,
-          "FilledButton": 14,
+          "Align": 3,
+          "Expanded": 27,
+          "Card": 7,
+          "ListTile": 12,
+          "TextField": 15,
+          "FilledButton": 18,
           "OutlinedButton": 1,
-          "TextButton": 2,
-          "IconButton": 5,
-          "ListView": 2,
+          "TextButton": 4,
+          "IconButton": 8,
+          "ListView": 3,
           "FloatingActionButton": 1,
-          "AlertDialog": 3,
+          "ExpansionTile": 2,
+          "AlertDialog": 4,
           "DropdownButtonFormField": 3,
           "Chip": 1,
-          "Divider": 4,
+          "Divider": 6,
           "LinearProgressIndicator": 1,
           "CircularProgressIndicator": 2,
-          "Icon": 46,
-          "Text": 110
+          "Icon": 63,
+          "Text": 163
         },
         "layout": [
           {
@@ -6630,6 +6781,56 @@
           {
             "type": "widget",
             "widget": "Row",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "edit_note_rounded",
+            "level": 9
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Expanded",
+            "level": 8
+          },
+          {
+            "type": "text",
+            "text": "Rascunhos neste aparelho",
+            "level": 9
+          },
+          {
+            "type": "text",
+            "text": "${_rascunhos.length}",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Padding",
+            "level": 7
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Row",
             "level": 5
           },
           {
@@ -6661,6 +6862,8 @@
         "visible_labels": [
           "Meu RDO",
           "Novo RDO",
+          "Rascunhos neste aparelho",
+          "${_rascunhos.length}",
           "RDOs",
           "${_rdos.length}"
         ],
@@ -6695,15 +6898,71 @@
           "path": "lib/repositories/rdo_repository.dart"
         },
         {
+          "import": "../services/api_service.dart",
+          "path": "lib/services/api_service.dart"
+        },
+        {
+          "import": "../services/local_draft_store.dart",
+          "path": "lib/services/local_draft_store.dart"
+        },
+        {
           "import": "../services/rdo_sync_service.dart",
           "path": "lib/services/rdo_sync_service.dart"
         }
       ],
       "technical_dependencies": [
         "lib/repositories/rdo_repository.dart",
+        "lib/services/api_service.dart",
+        "lib/services/local_draft_store.dart",
         "lib/services/rdo_sync_service.dart"
       ],
-      "api_routes": [],
+      "api_routes": [
+        "/api/app/autenticar",
+        "/api/app/calendario",
+        "/api/app/candidato/atualizar-dados-obrigatorios",
+        "/api/app/candidato/cadastrar",
+        "/api/app/cardapio",
+        "/api/app/cep",
+        "/api/app/conta/exclusao",
+        "/api/app/cracha/acesso",
+        "/api/app/cracha/colaboradores",
+        "/api/app/cracha/identificar-qr",
+        "/api/app/cracha/salvar",
+        "/api/app/dispositivo/registrar",
+        "/api/app/identificar",
+        "/api/app/manifestacao",
+        "/api/app/meu-rdo",
+        "/api/app/meu-rdo/acesso",
+        "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
+        "/api/app/meu-transporte",
+        "/api/app/meus-dados",
+        "/api/app/meus-dados/contato",
+        "/api/app/meus-dados/foto",
+        "/api/app/meus-treinamentos",
+        "/api/app/primeiro-acesso",
+        "/api/app/processo-documentos",
+        "/api/app/processo-documentos/enviar",
+        "/api/app/quadro-avisos",
+        "/api/app/ronda-gerencial/catalogos",
+        "/api/app/ronda-gerencial/colaboradores",
+        "/api/app/ronda-gerencial/detalhe",
+        "/api/app/ronda-gerencial/minhas",
+        "/api/app/ronda-gerencial/salvar",
+        "/api/app/seguranca/acesso",
+        "/api/app/seguranca/catalogos",
+        "/api/app/seguranca/dono/minha-area",
+        "/api/app/seguranca/dono/minha-area/relatorio",
+        "/api/app/seguranca/meus-planos",
+        "/api/app/seguranca/plano/executar",
+        "/api/app/seguranca/plano/replanejar",
+        "/api/app/seguranca/planos",
+        "/api/app/seguranca/registro",
+        "/api/app/seguranca/registro/salvar",
+        "/api/app/seguranca/registros",
+        "/api/app/unidades"
+      ],
       "navigation_out": [
         "novordoscreen"
       ],
@@ -6712,18 +6971,15 @@
         "path": "lib/screens/meu_rdo_screen.dart",
         "confidence": 0.96
       },
-      "navigation_in": [
-        "meurdoscreen",
-        "novordoscreen"
-      ],
+      "navigation_in": [],
       "declared_steps": [],
       "module": {
         "id": "rdo",
         "title": "RDO",
         "domain": "RDO",
         "entry": false,
-        "position": 3,
-        "flow_depth": 1
+        "position": 2,
+        "flow_depth": 0
       }
     },
     {
@@ -6732,40 +6988,41 @@
       "title": "Novo Rdo",
       "domain": "RDO",
       "path": "lib/screens/meu_rdo_screen.dart",
-      "source_hash": "b796a18171e210b2",
+      "source_hash": "35ad55f7db98986f",
       "preview": {
         "kind": "form",
         "widgets": {
           "Scaffold": 3,
           "AppBar": 3,
           "SafeArea": 1,
-          "SingleChildScrollView": 4,
-          "Column": 24,
-          "Row": 19,
-          "Wrap": 2,
-          "Padding": 14,
-          "Container": 17,
-          "SizedBox": 92,
+          "SingleChildScrollView": 5,
+          "Column": 29,
+          "Row": 23,
+          "Wrap": 3,
+          "Padding": 20,
+          "Container": 18,
+          "SizedBox": 119,
           "Center": 1,
-          "Align": 2,
-          "Expanded": 22,
-          "Card": 5,
-          "ListTile": 5,
-          "TextField": 12,
-          "FilledButton": 14,
+          "Align": 3,
+          "Expanded": 27,
+          "Card": 7,
+          "ListTile": 12,
+          "TextField": 15,
+          "FilledButton": 18,
           "OutlinedButton": 1,
-          "TextButton": 2,
-          "IconButton": 5,
-          "ListView": 2,
+          "TextButton": 4,
+          "IconButton": 8,
+          "ListView": 3,
           "FloatingActionButton": 1,
-          "AlertDialog": 3,
+          "ExpansionTile": 2,
+          "AlertDialog": 4,
           "DropdownButtonFormField": 3,
           "Chip": 1,
-          "Divider": 4,
+          "Divider": 6,
           "LinearProgressIndicator": 1,
           "CircularProgressIndicator": 2,
-          "Icon": 46,
-          "Text": 110
+          "Icon": 63,
+          "Text": 163
         },
         "layout": [
           {
@@ -6841,6 +7098,56 @@
           {
             "type": "widget",
             "widget": "Row",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "edit_note_rounded",
+            "level": 9
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Expanded",
+            "level": 8
+          },
+          {
+            "type": "text",
+            "text": "Rascunhos neste aparelho",
+            "level": 9
+          },
+          {
+            "type": "text",
+            "text": "${_rascunhos.length}",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Padding",
+            "level": 7
+          },
+          {
+            "type": "widget",
+            "widget": "SizedBox",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "Row",
             "level": 5
           },
           {
@@ -6872,6 +7179,8 @@
         "visible_labels": [
           "Meu RDO",
           "Novo RDO",
+          "Rascunhos neste aparelho",
+          "${_rascunhos.length}",
           "RDOs",
           "${_rdos.length}"
         ],
@@ -6906,18 +7215,72 @@
           "path": "lib/repositories/rdo_repository.dart"
         },
         {
+          "import": "../services/api_service.dart",
+          "path": "lib/services/api_service.dart"
+        },
+        {
+          "import": "../services/local_draft_store.dart",
+          "path": "lib/services/local_draft_store.dart"
+        },
+        {
           "import": "../services/rdo_sync_service.dart",
           "path": "lib/services/rdo_sync_service.dart"
         }
       ],
       "technical_dependencies": [
         "lib/repositories/rdo_repository.dart",
+        "lib/services/api_service.dart",
+        "lib/services/local_draft_store.dart",
         "lib/services/rdo_sync_service.dart"
       ],
-      "api_routes": [],
-      "navigation_out": [
-        "rdodetalhescreen"
+      "api_routes": [
+        "/api/app/autenticar",
+        "/api/app/calendario",
+        "/api/app/candidato/atualizar-dados-obrigatorios",
+        "/api/app/candidato/cadastrar",
+        "/api/app/cardapio",
+        "/api/app/cep",
+        "/api/app/conta/exclusao",
+        "/api/app/cracha/acesso",
+        "/api/app/cracha/colaboradores",
+        "/api/app/cracha/identificar-qr",
+        "/api/app/cracha/salvar",
+        "/api/app/dispositivo/registrar",
+        "/api/app/identificar",
+        "/api/app/manifestacao",
+        "/api/app/meu-rdo",
+        "/api/app/meu-rdo/acesso",
+        "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
+        "/api/app/meu-transporte",
+        "/api/app/meus-dados",
+        "/api/app/meus-dados/contato",
+        "/api/app/meus-dados/foto",
+        "/api/app/meus-treinamentos",
+        "/api/app/primeiro-acesso",
+        "/api/app/processo-documentos",
+        "/api/app/processo-documentos/enviar",
+        "/api/app/quadro-avisos",
+        "/api/app/ronda-gerencial/catalogos",
+        "/api/app/ronda-gerencial/colaboradores",
+        "/api/app/ronda-gerencial/detalhe",
+        "/api/app/ronda-gerencial/minhas",
+        "/api/app/ronda-gerencial/salvar",
+        "/api/app/seguranca/acesso",
+        "/api/app/seguranca/catalogos",
+        "/api/app/seguranca/dono/minha-area",
+        "/api/app/seguranca/dono/minha-area/relatorio",
+        "/api/app/seguranca/meus-planos",
+        "/api/app/seguranca/plano/executar",
+        "/api/app/seguranca/plano/replanejar",
+        "/api/app/seguranca/planos",
+        "/api/app/seguranca/registro",
+        "/api/app/seguranca/registro/salvar",
+        "/api/app/seguranca/registros",
+        "/api/app/unidades"
       ],
+      "navigation_out": [],
       "evidence": {
         "kind": "code-derived",
         "path": "lib/screens/meu_rdo_screen.dart",
@@ -6933,7 +7296,7 @@
         "title": "RDO",
         "domain": "RDO",
         "entry": false,
-        "position": 2,
+        "position": 3,
         "flow_depth": 1
       }
     },
@@ -7099,6 +7462,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -7469,6 +7834,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -7700,6 +8067,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -7853,6 +8222,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -8367,6 +8738,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -8742,6 +9115,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -9117,6 +9492,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -9353,6 +9730,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -9569,6 +9948,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -9830,6 +10211,8 @@
         "/api/app/meu-rdo",
         "/api/app/meu-rdo/acesso",
         "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
         "/api/app/meu-transporte",
         "/api/app/meus-dados",
         "/api/app/meus-dados/contato",
@@ -10362,13 +10745,6 @@
     },
     {
       "from": "meurdoscreen",
-      "to": "rdodetalhescreen",
-      "type": "navigation",
-      "confidence": 0.96,
-      "evidence": "lib/screens/meu_rdo_screen.dart"
-    },
-    {
-      "from": "meurdoscreen",
       "to": "novordoscreen",
       "type": "navigation",
       "confidence": 0.96,
@@ -10377,13 +10753,6 @@
     {
       "from": "rdodetalhescreen",
       "to": "novordoscreen",
-      "type": "navigation",
-      "confidence": 0.96,
-      "evidence": "lib/screens/meu_rdo_screen.dart"
-    },
-    {
-      "from": "novordoscreen",
-      "to": "rdodetalhescreen",
       "type": "navigation",
       "confidence": 0.96,
       "evidence": "lib/screens/meu_rdo_screen.dart"
@@ -10824,17 +11193,10 @@
       "entry_screen": "meurdoscreen",
       "screens": [
         "meurdoscreen",
-        "novordoscreen",
-        "rdodetalhescreen"
+        "rdodetalhescreen",
+        "novordoscreen"
       ],
       "flow_edges": [
-        {
-          "from": "meurdoscreen",
-          "to": "rdodetalhescreen",
-          "type": "navigation",
-          "confidence": 0.96,
-          "evidence": "lib/screens/meu_rdo_screen.dart"
-        },
         {
           "from": "meurdoscreen",
           "to": "novordoscreen",
@@ -10845,13 +11207,6 @@
         {
           "from": "rdodetalhescreen",
           "to": "novordoscreen",
-          "type": "navigation",
-          "confidence": 0.96,
-          "evidence": "lib/screens/meu_rdo_screen.dart"
-        },
-        {
-          "from": "novordoscreen",
-          "to": "rdodetalhescreen",
           "type": "navigation",
           "confidence": 0.96,
           "evidence": "lib/screens/meu_rdo_screen.dart"
