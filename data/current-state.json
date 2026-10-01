@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30T09:05:00-03:00",
+  "updated_at": "2026-10-01T14:22:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -359,5 +359,92 @@
       ],
       "validation": "flutter analyze passou no workflow; etapa final de auto-commit pode falhar sem indicar erro de análise."
     }
+  },
+  "rdo_redesign_2026_10_01": {
+    "status": "requirements_confirmed_analysis",
+    "access_model": {
+      "primary_rule": "A liberação/autorização do módulo Meu RDO é a regra maior. Hierarquia não concede acesso sozinha; ela define o alcance depois que o usuário está autorizado.",
+      "authorized_employee": "Funcionário autorizado pode criar RDO para a própria equipe. diario_obra.criado_por = usuário que lançou; diario_obra.equipe_id = equipe funcional; diario_obra.responsavel_id = encarregado/responsavel_id da equipe.",
+      "encarregado": "Com autorização, cria RDO da própria equipe e visualiza RDOs da sua equipe, inclusive lançados por subordinados autorizados.",
+      "supervisor": "Com autorização, visualiza e opera as equipes em que é supervisor e seus RDOs.",
+      "coordenador": "Com autorização, visualiza as equipes sob sua coordenação, incluindo equipes dos supervisores vinculados.",
+      "gestor": "Com autorização, possui alcance hierárquico sobre as equipes da sua gerência/gestão; não precisa ser encarregado.",
+      "example": "Alan, funcionário da equipe cujo encarregado é Bruno: se Alan estiver autorizado, Alan lança; criado_por=Alan, equipe_id=equipe de Alan, responsavel_id=Bruno; Bruno visualiza o RDO."
+    },
+    "workflow": {
+      "etapa_1": {
+        "title": "Dados do dia",
+        "requirements": [
+          "Gestor ou nível superior deve selecionar explicitamente equipe e frente de trabalho dentro do seu escopo.",
+          "Textos dos seletores não podem truncar sem possibilidade de ver o valor completo.",
+          "Usuário de uma única equipe pode receber equipe derivada automaticamente."
+        ]
+      },
+      "etapa_2": {
+        "title": "Mão de obra",
+        "requirements": [
+          "Remover opção/botão 'Todas as unidades'.",
+          "Renomear 'Importar presentes' para 'Selecionar todos'.",
+          "Ao entrar, todos os colaboradores da equipe na data do RDO já vêm selecionados, exceto ausentes.",
+          "Ausentes na data do RDO aparecem em vermelho e desmarcados.",
+          "Busca por nome/chapa/função pesquisa em todo o projeto/unidade para inclusão de apoio de outra equipe.",
+          "Remover alternância 'Esta equipe' / 'Todos da unidade'; a equipe atual já fica visível."
+        ]
+      },
+      "etapa_3": {
+        "title": "Equipamentos",
+        "requirements": [
+          "Agrupar catálogo/lista de equipamentos para reduzir uma lista excessivamente longa."
+        ]
+      },
+      "etapa_4": {
+        "title": "Permissões",
+        "requirements": [
+          "Se PT/LT/PTT necessária não existir, permitir cadastrar pelo app usando as regras/tabela WorkPermit, sem obrigar POSSEBON Web."
+        ]
+      },
+      "etapa_5": {
+        "title": "Paralisações",
+        "requirements": [
+          "Usuário informa tipo, hora inicial e hora final.",
+          "Após salvar a paralisação, iniciar com toda mão de obra e equipamentos do RDO como afetados.",
+          "Usuário remove da paralisação somente os recursos que não foram afetados."
+        ]
+      },
+      "etapa_6": {
+        "title": "Revisão",
+        "requirements": [
+          "Revisão vem aberta/detalhada, não apenas contadores.",
+          "Cada seção/item editável possui lápis.",
+          "Editar leva diretamente à etapa correspondente e preserva o restante do preenchimento."
+        ]
+      },
+      "finalizacao": {
+        "requirements": [
+          "Após envio, tocar no RDO abre/gera PDF.",
+          "Ao editar e salvar novamente, gerar novo PDF e substituir/referenciar o novo no lugar do anterior."
+        ]
+      },
+      "drafts": {
+        "requirements": [
+          "Novo RDO é salvo automaticamente como rascunho local durante o preenchimento.",
+          "Rascunho registra última etapa e todo o estado preenchido.",
+          "Ao sair, fechar app ou ocorrer interrupção, o rascunho permanece somente no aparelho/usuário/unidade.",
+          "Tela lista rascunhos com opção Continuar e Excluir.",
+          "Ao continuar, volta exatamente à etapa onde parou.",
+          "Depois de envio confirmado ao servidor, remover o rascunho local.",
+          "Arquitetura de rascunho local deve virar padrão reutilizável para outros workflows do app."
+        ]
+      }
+    },
+    "current_code_gaps": [
+      "RdoAppApiTrait::rdoResolverAcesso hoje concede acesso apenas por hierarquia/equipe; não verifica primeiro autorização do módulo.",
+      "MeuRdoHeaderList Web legado filtra somente equipe.system_users_id; não representa a hierarquia nova.",
+      "Backend já grava criado_por com system user atual e responsavel_id com responsavel_id da equipe selecionada, compatível com o exemplo Alan/Bruno.",
+      "Etapa 2 atual possui 'Importar presentes' e alternância 'Esta equipe/Todos da unidade'; deve ser redesenhada.",
+      "PT atual no app somente seleciona work_permit existente; criação pelo app precisa endpoint e UI próprios.",
+      "Paralisação atual é registrada por recurso; precisa UX de criação por paralisação + seleção/remover afetados.",
+      "RDO atual tem outbox offline para envio, mas não possui rascunho de formulário/etapa separado do envio pendente."
+    ]
   }
 }
