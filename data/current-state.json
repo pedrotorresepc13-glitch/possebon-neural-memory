@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-01T15:18:00-03:00",
+  "updated_at": "2026-10-02T10:43:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -506,6 +506,28 @@
       "backend_rdo_head": "5e64ad5a75ebc5bebba4163e28e3a834473c6aed",
       "backend_validation": "GitHub Actions PHP lint + directed RDO API validation: success",
       "production_note": "Git repositories are complete; production server/runtime deployment is separate and was not performed by ChatGPT."
+    }
+  },
+  "cadastro_cracha_grupo_48": {
+    "status": "implemented_validation_in_progress",
+    "rule": {
+      "permission_group_id": 48,
+      "visibility": "Card Cadastro de Crachá aparece somente para usuário pertencente ao system_group ID 48.",
+      "backend": "Todas as rotas /cracha usam crachaResolverAcesso; fora do grupo 48 a API retorna acesso negado.",
+      "exceptions": "Permissão direta ao programa CadastroCrachaWindow ou outro grupo com o programa não libera o módulo."
+    },
+    "app": {
+      "repository": "pedrotorresepc13-glitch/possebon",
+      "branch": "possebon",
+      "commit": "4f1289b1267d66e8e909eb7d1c18850a029b91af",
+      "change": "Home consulta a autorização de crachá para qualquer sessão e exibe o card somente quando pode_acessar=true; eh_colaborador deixou de ser pré-condição."
+    },
+    "backend": {
+      "repository": "pedrotorresepc13-glitch/possebon_web",
+      "branch": "main",
+      "commit": "6e920d5f22098a60c470de61d478a18a3a1ca943",
+      "ci_commit": "dc15a2f98175b01ad5fe7002fe349d90b8206e9b",
+      "validation": "PHP lint + validação dirigida do grupo 48 concluída com sucesso."
     }
   }
 }
