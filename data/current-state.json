@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-02T10:43:00-03:00",
+  "updated_at": "2026-10-05T08:13:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -529,5 +529,45 @@
       "ci_commit": "dc15a2f98175b01ad5fe7002fe349d90b8206e9b",
       "validation": "PHP lint + validação dirigida do grupo 48 concluída com sucesso."
     }
+  },
+  "security_plan_action_standard_2026_10_05": {
+    "status": "implemented_validation_in_progress",
+    "official_reference": "Minha Ronda Gerencial",
+    "rules": [
+      "A pergunta oficial é 'A situação foi resolvida na hora?'.",
+      "SIM: exibir/exigir somente 'Ação / Tratativa imediata'; não manter Plano de Ação aberto.",
+      "NÃO: Ação / Tratativa imediata fica vazia/não aplicável; exigir Plano de Ação.",
+      "Plano de Ação usa o editor padrão da Ronda: Descrição da ação + Responsável pesquisável + Data planejada.",
+      "Data planejada deve ser posterior à data do registro.",
+      "A seção de Plano de Ação vem antes da evidência.",
+      "Evidência/imagem fica por último.",
+      "O padrão deve ser compartilhado por Ronda, Amigo do Peito, Audicomp, Dono de Área e demais ocorrências equivalentes."
+    ],
+    "app": {
+      "repository": "pedrotorresepc13-glitch/possebon",
+      "branch": "possebon",
+      "shared_editor": "lib/features/seguranca_operacional/presentation/widgets/seguranca_plano_editor.dart",
+      "modules": [
+        "Minha Ronda Gerencial",
+        "Meu Amigo do Peito",
+        "Audicomp",
+        "Dono de Área"
+      ],
+      "latest_source_commit": "cd35f96c789a63bf74ad31e73653b82cf785a8b0",
+      "legacy_amigo_simplification": "disabled; old Etapa 1 workflow is manual-only and tooling no longer rewrites Amigo."
+    },
+    "backend": {
+      "repository": "pedrotorresepc13-glitch/possebon_web",
+      "branch": "main",
+      "generic_commit": "f9202c2e786b5c1fef454d5dd46858ee1e348863",
+      "amigo_commit": "d9a1458b2531d4abdd71c6570b0c801574ceb284",
+      "validation_commit": "53d4edf36b7305ab0d8e8bb5d60952b3555aee33",
+      "validation": "PHP lint + directed validation succeeded",
+      "changes": [
+        "SegurancaOperacionalAppApiTrait separates acao_tratativa (immediate) from plano_acao.descricao_acao (future action).",
+        "AmigoPeitoAppApiTrait no longer assigns Gerente do SMS + 7 days; it validates and persists the plan chosen by the user."
+      ]
+    },
+    "production_note": "Production custom PHP files have not yet been patched for this 05/10 plan-action change; do not overwrite the full generic SegurancaOperacionalAppApiTrait because production also contains runtime week/month fixes."
   }
 }
