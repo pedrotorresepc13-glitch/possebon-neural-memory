@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-14T06:10:20.163835+00:00",
+  "generated_at": "2026-10-14T11:55:06.473390+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "84b0da5568bee26ef894d850a002194426eb25b5"
+    "head": "568ac7da51cb5f7f18225c443e788eddb7d278fd"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -2299,7 +2299,7 @@
       "title": "Seguranca Operacional",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "7284f475b5098e3a",
+      "source_hash": "f911f98f9b36cc26",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2522,7 +2522,7 @@
       "title": "Seguranca Operacional Detalhe",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "7284f475b5098e3a",
+      "source_hash": "f911f98f9b36cc26",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2747,7 +2747,7 @@
       "title": "Seguranca Operacional Form",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "7284f475b5098e3a",
+      "source_hash": "f911f98f9b36cc26",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2972,7 +2972,7 @@
       "title": "_ Nao Conformidade Editor",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "7284f475b5098e3a",
+      "source_hash": "f911f98f9b36cc26",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -3197,7 +3197,7 @@
       "title": "_ Seguranca Texto Editor",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "7284f475b5098e3a",
+      "source_hash": "f911f98f9b36cc26",
       "preview": {
         "kind": "form",
         "widgets": {
