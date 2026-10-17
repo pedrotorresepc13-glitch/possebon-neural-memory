@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-17T17:11:48.401486+00:00",
+  "generated_at": "2026-10-17T19:25:36.604839+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "568ac7da51cb5f7f18225c443e788eddb7d278fd"
+    "head": "5b88baeeced134a0815638294986c3e73a564f68"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -15,12 +15,12 @@
     "0.96-module": "agrupamento e fluxo derivados de arquivo, raiz funcional e navegação confirmada"
   },
   "stats": {
-    "dart_files": 104,
-    "screens": 40,
-    "navigation_edges": 57,
+    "dart_files": 106,
+    "screens": 41,
+    "navigation_edges": 59,
     "domains": 10,
-    "screens_with_layout": 40,
-    "modules": 24,
+    "screens_with_layout": 41,
+    "modules": 25,
     "screens_with_declared_steps": 0
   },
   "screens": [
@@ -3413,6 +3413,306 @@
       }
     },
     {
+      "id": "transportmanagementscreen",
+      "class": "TransportManagementScreen",
+      "title": "Transport Management",
+      "domain": "Transporte",
+      "path": "lib/features/transporte/presentation/transport_management_screen.dart",
+      "source_hash": "e50601d2fa45c67f",
+      "preview": {
+        "kind": "map",
+        "widgets": {
+          "Scaffold": 2,
+          "AppBar": 2,
+          "SafeArea": 2,
+          "Column": 17,
+          "Row": 16,
+          "Wrap": 1,
+          "Padding": 9,
+          "Container": 14,
+          "SizedBox": 64,
+          "Center": 3,
+          "Align": 1,
+          "Expanded": 16,
+          "Flexible": 1,
+          "Card": 1,
+          "ListTile": 9,
+          "TextFormField": 1,
+          "TextField": 1,
+          "FilledButton": 11,
+          "OutlinedButton": 2,
+          "TextButton": 14,
+          "IconButton": 2,
+          "CircleAvatar": 2,
+          "ListView": 9,
+          "GridView": 1,
+          "NavigationBar": 1,
+          "ExpansionTile": 1,
+          "AlertDialog": 11,
+          "Divider": 3,
+          "LinearProgressIndicator": 4,
+          "CircularProgressIndicator": 1,
+          "Icon": 48,
+          "Text": 114
+        },
+        "layout": [
+          {
+            "type": "widget",
+            "widget": "Scaffold",
+            "level": 0
+          },
+          {
+            "type": "widget",
+            "widget": "AppBar",
+            "level": 1
+          },
+          {
+            "type": "text",
+            "text": "Gestão de Transporte",
+            "level": 2
+          },
+          {
+            "type": "widget",
+            "widget": "IconButton",
+            "level": 3
+          },
+          {
+            "type": "tooltip",
+            "text": "Atualizar",
+            "level": 4
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 4
+          },
+          {
+            "type": "icon",
+            "icon": "refresh_rounded",
+            "level": 4
+          },
+          {
+            "type": "widget",
+            "widget": "LinearProgressIndicator",
+            "level": 6
+          },
+          {
+            "type": "widget",
+            "widget": "SafeArea",
+            "level": 1
+          },
+          {
+            "type": "widget",
+            "widget": "NavigationBar",
+            "level": 3
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 7
+          },
+          {
+            "type": "icon",
+            "icon": "dashboard_outlined",
+            "level": 7
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 7
+          },
+          {
+            "type": "icon",
+            "icon": "dashboard_rounded",
+            "level": 7
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 7
+          },
+          {
+            "type": "icon",
+            "icon": "directions_bus_outlined",
+            "level": 7
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 7
+          },
+          {
+            "type": "icon",
+            "icon": "directions_bus_rounded",
+            "level": 7
+          },
+          {
+            "type": "text",
+            "text": "$_pendenciasPessoas",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "person_add_alt_1_outlined",
+            "level": 8
+          },
+          {
+            "type": "text",
+            "text": "$_pendenciasPessoas",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "person_add_alt_1_rounded",
+            "level": 8
+          },
+          {
+            "type": "text",
+            "text": "${_caronasPendentes.length}",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "alt_route_outlined",
+            "level": 8
+          },
+          {
+            "type": "text",
+            "text": "${_caronasPendentes.length}",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "alt_route_rounded",
+            "level": 8
+          }
+        ],
+        "visible_labels": [
+          "Gestão de Transporte",
+          "Atualizar",
+          "$_pendenciasPessoas",
+          "${_caronasPendentes.length}"
+        ],
+        "layout_evidence": "ordered-from-build-source",
+        "layout_confidence": 0.9,
+        "has_app_bar": true,
+        "has_form": true,
+        "has_list": true,
+        "has_grid": true,
+        "has_tabs": false,
+        "has_bottom_nav": true
+      },
+      "imports": [
+        {
+          "import": "../../../core/ui/adaptive_page.dart",
+          "path": "lib/core/ui/adaptive_page.dart"
+        },
+        {
+          "import": "../../../screens/transporte_mapa_screen.dart",
+          "path": "lib/screens/transporte_mapa_screen.dart"
+        },
+        {
+          "import": "../../../services/api_service.dart",
+          "path": "lib/services/api_service.dart"
+        },
+        {
+          "import": "../data/transport_management_api.dart",
+          "path": "lib/features/transporte/data/transport_management_api.dart"
+        }
+      ],
+      "technical_dependencies": [
+        "lib/features/transporte/data/transport_management_api.dart",
+        "lib/services/api_service.dart"
+      ],
+      "api_routes": [
+        "/api/app/autenticar",
+        "/api/app/calendario",
+        "/api/app/candidato/atualizar-dados-obrigatorios",
+        "/api/app/candidato/cadastrar",
+        "/api/app/cardapio",
+        "/api/app/cep",
+        "/api/app/conta/exclusao",
+        "/api/app/cracha/acesso",
+        "/api/app/cracha/colaboradores",
+        "/api/app/cracha/identificar-qr",
+        "/api/app/cracha/salvar",
+        "/api/app/dispositivo/registrar",
+        "/api/app/identificar",
+        "/api/app/manifestacao",
+        "/api/app/meu-rdo",
+        "/api/app/meu-rdo/acesso",
+        "/api/app/meu-rdo/enviar",
+        "/api/app/meu-rdo/pdf",
+        "/api/app/meu-rdo/permissao",
+        "/api/app/meu-transporte",
+        "/api/app/meus-dados",
+        "/api/app/meus-dados/contato",
+        "/api/app/meus-dados/foto",
+        "/api/app/meus-treinamentos",
+        "/api/app/primeiro-acesso",
+        "/api/app/processo-documentos",
+        "/api/app/processo-documentos/enviar",
+        "/api/app/quadro-avisos",
+        "/api/app/ronda-gerencial/catalogos",
+        "/api/app/ronda-gerencial/colaboradores",
+        "/api/app/ronda-gerencial/detalhe",
+        "/api/app/ronda-gerencial/minhas",
+        "/api/app/ronda-gerencial/salvar",
+        "/api/app/seguranca/acesso",
+        "/api/app/seguranca/catalogos",
+        "/api/app/seguranca/dono/minha-area",
+        "/api/app/seguranca/dono/minha-area/relatorio",
+        "/api/app/seguranca/meus-planos",
+        "/api/app/seguranca/plano/executar",
+        "/api/app/seguranca/plano/replanejar",
+        "/api/app/seguranca/planos",
+        "/api/app/seguranca/registro",
+        "/api/app/seguranca/registro/salvar",
+        "/api/app/seguranca/registros",
+        "/api/app/unidades"
+      ],
+      "navigation_out": [
+        "transportemapascreen"
+      ],
+      "evidence": {
+        "kind": "code-derived",
+        "path": "lib/features/transporte/presentation/transport_management_screen.dart",
+        "confidence": 0.96
+      },
+      "navigation_in": [
+        "homescreen"
+      ],
+      "declared_steps": [],
+      "module": {
+        "id": "transport-management",
+        "title": "Transport Management",
+        "domain": "Transporte",
+        "entry": true,
+        "position": 1,
+        "flow_depth": 0
+      }
+    },
+    {
       "id": "acessoscreen",
       "class": "AcessoScreen",
       "title": "Acesso",
@@ -5338,7 +5638,7 @@
       "title": "Home",
       "domain": "App",
       "path": "lib/screens/home_screen.dart",
-      "source_hash": "4019340bc1cb290f",
+      "source_hash": "d3d242bd3bc07de7",
       "preview": {
         "kind": "grid",
         "widgets": {
@@ -5616,6 +5916,14 @@
           "path": "lib/features/access_control/data/access_control_api.dart"
         },
         {
+          "import": "../features/transporte/data/transport_management_api.dart",
+          "path": "lib/features/transporte/data/transport_management_api.dart"
+        },
+        {
+          "import": "../features/transporte/presentation/transport_management_screen.dart",
+          "path": "lib/features/transporte/presentation/transport_management_screen.dart"
+        },
+        {
           "import": "../features/seguranca_operacional/data/amigo_peito_repository.dart",
           "path": "lib/features/seguranca_operacional/data/amigo_peito_repository.dart"
         },
@@ -5671,6 +5979,7 @@
       "technical_dependencies": [
         "lib/features/access_control/data/access_control_api.dart",
         "lib/features/seguranca_operacional/data/amigo_peito_repository.dart",
+        "lib/features/transporte/data/transport_management_api.dart",
         "lib/repositories/app_repository.dart",
         "lib/repositories/quadro_avisos_repository.dart",
         "lib/repositories/rdo_repository.dart",
@@ -5757,6 +6066,7 @@
         "quadroavisosscreen",
         "segurancaoperacionalscreen",
         "sobreaplicativoscreen",
+        "transportmanagementscreen",
         "webviewscreen"
       ],
       "evidence": {
@@ -7309,7 +7619,7 @@
       "title": "Meu Transporte",
       "domain": "Transporte",
       "path": "lib/screens/meu_transporte_screen.dart",
-      "source_hash": "7df967e8a9cfbf2f",
+      "source_hash": "07d52d055dd98dcd",
       "preview": {
         "kind": "map",
         "widgets": {
@@ -7317,29 +7627,29 @@
           "AppBar": 1,
           "SafeArea": 1,
           "SingleChildScrollView": 1,
-          "Column": 15,
-          "Row": 14,
+          "Column": 16,
+          "Row": 15,
           "Wrap": 3,
-          "Padding": 6,
+          "Padding": 7,
           "Container": 12,
-          "SizedBox": 40,
+          "SizedBox": 47,
           "Center": 3,
-          "Expanded": 13,
-          "ListTile": 1,
+          "Expanded": 14,
+          "ListTile": 3,
           "TextFormField": 2,
           "TextField": 2,
           "FilledButton": 7,
-          "OutlinedButton": 2,
-          "TextButton": 4,
+          "OutlinedButton": 4,
+          "TextButton": 6,
           "IconButton": 3,
           "CircleAvatar": 1,
-          "ListView": 2,
-          "AlertDialog": 4,
-          "Divider": 5,
+          "ListView": 4,
+          "AlertDialog": 6,
+          "Divider": 7,
           "LinearProgressIndicator": 2,
           "CircularProgressIndicator": 2,
-          "Icon": 27,
-          "Text": 47
+          "Icon": 34,
+          "Text": 59
         },
         "layout": [
           {
@@ -10250,7 +10560,8 @@
         "confidence": 0.96
       },
       "navigation_in": [
-        "meutransportescreen"
+        "meutransportescreen",
+        "transportmanagementscreen"
       ],
       "declared_steps": [],
       "module": {
@@ -10593,6 +10904,13 @@
       "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
     },
     {
+      "from": "transportmanagementscreen",
+      "to": "transportemapascreen",
+      "type": "navigation",
+      "confidence": 0.96,
+      "evidence": "lib/features/transporte/presentation/transport_management_screen.dart"
+    },
+    {
       "from": "acessoscreen",
       "to": "fotooficialscreen",
       "type": "navigation",
@@ -10644,6 +10962,13 @@
     {
       "from": "homescreen",
       "to": "segurancaoperacionalscreen",
+      "type": "navigation",
+      "confidence": 0.96,
+      "evidence": "lib/screens/home_screen.dart"
+    },
+    {
+      "from": "homescreen",
+      "to": "transportmanagementscreen",
       "type": "navigation",
       "confidence": 0.96,
       "evidence": "lib/screens/home_screen.dart"
@@ -11464,6 +11789,25 @@
           "evidence": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
         }
       ],
+      "evidence": {
+        "kind": "code-derived-module-flow",
+        "confidence": 0.96,
+        "rules": [
+          "same-file-screen-group",
+          "semantic-root",
+          "confirmed-navigation"
+        ]
+      }
+    },
+    {
+      "id": "transport-management",
+      "title": "Transport Management",
+      "domain": "Transporte",
+      "entry_screen": "transportmanagementscreen",
+      "screens": [
+        "transportmanagementscreen"
+      ],
+      "flow_edges": [],
       "evidence": {
         "kind": "code-derived-module-flow",
         "confidence": 0.96,
