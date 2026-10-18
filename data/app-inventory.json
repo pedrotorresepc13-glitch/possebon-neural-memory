@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-18T18:07:00.438858+00:00",
+  "generated_at": "2026-10-18T20:45:11.677985+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "8ab7c026cf8c4c96863346e4b25be3bf0f7dbc9b"
+    "head": "a747471ca836c31dcb1b180b60f8d0239ac0feb8"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -7619,37 +7619,37 @@
       "title": "Meu Transporte",
       "domain": "Transporte",
       "path": "lib/screens/meu_transporte_screen.dart",
-      "source_hash": "e285c73fb77af3c2",
+      "source_hash": "940b18b72529117a",
       "preview": {
         "kind": "map",
         "widgets": {
           "Scaffold": 1,
           "AppBar": 1,
-          "SafeArea": 2,
+          "SafeArea": 3,
           "SingleChildScrollView": 1,
-          "Column": 16,
+          "Column": 17,
           "Row": 13,
           "Wrap": 3,
-          "Padding": 8,
+          "Padding": 9,
           "Container": 11,
-          "SizedBox": 46,
-          "Center": 3,
-          "Expanded": 13,
-          "ListTile": 4,
+          "SizedBox": 50,
+          "Center": 4,
+          "Expanded": 14,
+          "ListTile": 5,
           "TextFormField": 2,
           "TextField": 3,
           "FilledButton": 8,
           "OutlinedButton": 3,
-          "TextButton": 7,
+          "TextButton": 6,
           "IconButton": 4,
-          "CircleAvatar": 3,
-          "ListView": 5,
-          "AlertDialog": 7,
-          "Divider": 7,
+          "CircleAvatar": 4,
+          "ListView": 6,
+          "AlertDialog": 6,
+          "Divider": 8,
           "LinearProgressIndicator": 2,
           "CircularProgressIndicator": 2,
-          "Icon": 34,
-          "Text": 67
+          "Icon": 35,
+          "Text": 70
         },
         "layout": [
           {
@@ -10322,7 +10322,7 @@
       "title": "Transporte Mapa",
       "domain": "Transporte",
       "path": "lib/screens/transporte_mapa_screen.dart",
-      "source_hash": "f1ed6652a6f99527",
+      "source_hash": "e27e0ff8acd2480e",
       "preview": {
         "kind": "map",
         "widgets": {
