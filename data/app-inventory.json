@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-17T22:20:27.194132+00:00",
+  "generated_at": "2026-10-18T01:04:05.343469+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "4c4d94bb18f76a1f9284a6c6a5f0acf31c7f6f82"
+    "head": "eb2ce894b0e2c59ee239f9768852dcbfb223197e"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -7619,7 +7619,7 @@
       "title": "Meu Transporte",
       "domain": "Transporte",
       "path": "lib/screens/meu_transporte_screen.dart",
-      "source_hash": "07d52d055dd98dcd",
+      "source_hash": "b3a20608f95eb725",
       "preview": {
         "kind": "map",
         "widgets": {
@@ -7642,14 +7642,14 @@
           "OutlinedButton": 4,
           "TextButton": 6,
           "IconButton": 3,
-          "CircleAvatar": 1,
+          "CircleAvatar": 2,
           "ListView": 4,
           "AlertDialog": 6,
           "Divider": 7,
           "LinearProgressIndicator": 2,
           "CircularProgressIndicator": 2,
-          "Icon": 34,
-          "Text": 59
+          "Icon": 33,
+          "Text": 60
         },
         "layout": [
           {
