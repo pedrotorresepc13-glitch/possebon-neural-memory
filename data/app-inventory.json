@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-18T14:35:43.998063+00:00",
+  "generated_at": "2026-10-18T18:07:00.438858+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "eb2ce894b0e2c59ee239f9768852dcbfb223197e"
+    "head": "8ab7c026cf8c4c96863346e4b25be3bf0f7dbc9b"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -17,7 +17,7 @@
   "stats": {
     "dart_files": 106,
     "screens": 41,
-    "navigation_edges": 59,
+    "navigation_edges": 60,
     "domains": 10,
     "screens_with_layout": 41,
     "modules": 25,
@@ -3418,7 +3418,7 @@
       "title": "Transport Management",
       "domain": "Transporte",
       "path": "lib/features/transporte/presentation/transport_management_screen.dart",
-      "source_hash": "c5b96f50bb213cbb",
+      "source_hash": "19c0dfaee77711a4",
       "preview": {
         "kind": "map",
         "widgets": {
@@ -3427,10 +3427,10 @@
           "SafeArea": 2,
           "Column": 17,
           "Row": 16,
-          "Wrap": 1,
+          "Wrap": 2,
           "Padding": 10,
           "Container": 14,
-          "SizedBox": 64,
+          "SizedBox": 65,
           "Center": 3,
           "Align": 1,
           "Expanded": 16,
@@ -7619,37 +7619,37 @@
       "title": "Meu Transporte",
       "domain": "Transporte",
       "path": "lib/screens/meu_transporte_screen.dart",
-      "source_hash": "b3a20608f95eb725",
+      "source_hash": "e285c73fb77af3c2",
       "preview": {
         "kind": "map",
         "widgets": {
           "Scaffold": 1,
           "AppBar": 1,
-          "SafeArea": 1,
+          "SafeArea": 2,
           "SingleChildScrollView": 1,
           "Column": 16,
-          "Row": 15,
+          "Row": 13,
           "Wrap": 3,
-          "Padding": 7,
-          "Container": 12,
-          "SizedBox": 47,
+          "Padding": 8,
+          "Container": 11,
+          "SizedBox": 46,
           "Center": 3,
-          "Expanded": 14,
-          "ListTile": 3,
+          "Expanded": 13,
+          "ListTile": 4,
           "TextFormField": 2,
-          "TextField": 2,
-          "FilledButton": 7,
-          "OutlinedButton": 4,
-          "TextButton": 6,
-          "IconButton": 3,
-          "CircleAvatar": 2,
-          "ListView": 4,
-          "AlertDialog": 6,
+          "TextField": 3,
+          "FilledButton": 8,
+          "OutlinedButton": 3,
+          "TextButton": 7,
+          "IconButton": 4,
+          "CircleAvatar": 3,
+          "ListView": 5,
+          "AlertDialog": 7,
           "Divider": 7,
           "LinearProgressIndicator": 2,
           "CircularProgressIndicator": 2,
-          "Icon": 33,
-          "Text": 60
+          "Icon": 34,
+          "Text": 67
         },
         "layout": [
           {
@@ -7805,6 +7805,7 @@
         "/api/app/unidades"
       ],
       "navigation_out": [
+        "qrcrachascannerscreen",
         "transportemapascreen"
       ],
       "evidence": {
@@ -8713,7 +8714,8 @@
         "confidence": 0.96
       },
       "navigation_in": [
-        "cadastrocrachascreen"
+        "cadastrocrachascreen",
+        "meutransportescreen"
       ],
       "declared_steps": [],
       "module": {
@@ -10320,35 +10322,36 @@
       "title": "Transporte Mapa",
       "domain": "Transporte",
       "path": "lib/screens/transporte_mapa_screen.dart",
-      "source_hash": "a5d7c7354adb5d77",
+      "source_hash": "f1ed6652a6f99527",
       "preview": {
         "kind": "map",
         "widgets": {
           "Scaffold": 1,
           "AppBar": 1,
-          "SafeArea": 1,
-          "Column": 2,
-          "Row": 2,
-          "Padding": 4,
-          "Container": 3,
-          "SizedBox": 6,
-          "Center": 1,
+          "SafeArea": 2,
+          "Column": 6,
+          "Row": 5,
+          "Wrap": 1,
+          "Padding": 6,
+          "Container": 6,
+          "SizedBox": 11,
+          "Center": 2,
           "Stack": 2,
-          "Positioned": 7,
-          "Expanded": 2,
+          "Positioned": 8,
+          "Expanded": 5,
           "ListTile": 1,
           "FilledButton": 4,
           "TextButton": 2,
           "IconButton": 2,
-          "CircleAvatar": 1,
-          "ListView": 1,
+          "CircleAvatar": 2,
+          "ListView": 2,
           "FloatingActionButton": 1,
           "AlertDialog": 2,
-          "Divider": 1,
+          "Divider": 3,
           "LinearProgressIndicator": 1,
           "CircularProgressIndicator": 2,
-          "Icon": 11,
-          "Text": 22
+          "Icon": 15,
+          "Text": 33
         },
         "layout": [
           {
@@ -11084,6 +11087,13 @@
       "type": "navigation",
       "confidence": 0.96,
       "evidence": "lib/screens/meu_rdo_screen.dart"
+    },
+    {
+      "from": "meutransportescreen",
+      "to": "qrcrachascannerscreen",
+      "type": "navigation",
+      "confidence": 0.96,
+      "evidence": "lib/screens/meu_transporte_screen.dart"
     },
     {
       "from": "meutransportescreen",
