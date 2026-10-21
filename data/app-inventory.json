@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-21T15:16:44.543850+00:00",
+  "generated_at": "2026-10-21T19:21:48.093655+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "7cbadb4bc2893aafcc3f9dc84146d8063a0093fc"
+    "head": "72fe09bc67d795bc8714887afb5c0c67c25aec60"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -3418,42 +3418,42 @@
       "title": "Transport Management",
       "domain": "Transporte",
       "path": "lib/features/transporte/presentation/transport_management_screen.dart",
-      "source_hash": "19c0dfaee77711a4",
+      "source_hash": "33176ec260d76c1b",
       "preview": {
         "kind": "map",
         "widgets": {
           "Scaffold": 2,
           "AppBar": 2,
           "SafeArea": 2,
-          "Column": 17,
-          "Row": 16,
+          "Column": 19,
+          "Row": 18,
           "Wrap": 2,
-          "Padding": 10,
-          "Container": 14,
-          "SizedBox": 65,
+          "Padding": 11,
+          "Container": 15,
+          "SizedBox": 75,
           "Center": 3,
           "Align": 1,
-          "Expanded": 16,
+          "Expanded": 19,
           "Flexible": 1,
           "Card": 1,
           "ListTile": 9,
           "TextFormField": 1,
-          "TextField": 1,
-          "FilledButton": 11,
-          "OutlinedButton": 2,
-          "TextButton": 14,
-          "IconButton": 2,
-          "CircleAvatar": 2,
-          "ListView": 9,
+          "TextField": 3,
+          "FilledButton": 13,
+          "OutlinedButton": 3,
+          "TextButton": 15,
+          "IconButton": 4,
+          "CircleAvatar": 3,
+          "ListView": 10,
           "GridView": 1,
           "NavigationBar": 1,
           "ExpansionTile": 1,
-          "AlertDialog": 11,
+          "AlertDialog": 12,
           "Divider": 3,
           "LinearProgressIndicator": 4,
           "CircularProgressIndicator": 1,
-          "Icon": 48,
-          "Text": 115
+          "Icon": 58,
+          "Text": 130
         },
         "layout": [
           {
@@ -3578,6 +3578,36 @@
           },
           {
             "type": "text",
+            "text": "${_solicitacoesPassageiros.length}",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "approval_outlined",
+            "level": 8
+          },
+          {
+            "type": "text",
+            "text": "${_solicitacoesPassageiros.length}",
+            "level": 8
+          },
+          {
+            "type": "widget",
+            "widget": "Icon",
+            "level": 8
+          },
+          {
+            "type": "icon",
+            "icon": "approval_rounded",
+            "level": 8
+          },
+          {
+            "type": "text",
             "text": "${_caronasPendentes.length}",
             "level": 8
           },
@@ -3611,6 +3641,7 @@
           "Gestão de Transporte",
           "Atualizar",
           "$_pendenciasPessoas",
+          "${_solicitacoesPassageiros.length}",
           "${_caronasPendentes.length}"
         ],
         "layout_evidence": "ordered-from-build-source",
@@ -5638,25 +5669,25 @@
       "title": "Home",
       "domain": "App",
       "path": "lib/screens/home_screen.dart",
-      "source_hash": "d3d242bd3bc07de7",
+      "source_hash": "5d27c89d5a397da2",
       "preview": {
         "kind": "grid",
         "widgets": {
           "Scaffold": 2,
           "SafeArea": 2,
           "SingleChildScrollView": 2,
-          "Column": 11,
-          "Row": 12,
+          "Column": 12,
+          "Row": 13,
           "Padding": 7,
-          "Container": 10,
-          "SizedBox": 35,
+          "Container": 12,
+          "SizedBox": 40,
           "Center": 2,
           "Align": 1,
           "Stack": 1,
           "Positioned": 1,
-          "Expanded": 11,
+          "Expanded": 12,
           "ListTile": 2,
-          "FilledButton": 3,
+          "FilledButton": 5,
           "TextButton": 4,
           "IconButton": 3,
           "Image": 2,
@@ -5665,9 +5696,9 @@
           "PageView": 1,
           "AlertDialog": 4,
           "Divider": 3,
-          "CircularProgressIndicator": 1,
-          "Icon": 17,
-          "Text": 42
+          "CircularProgressIndicator": 2,
+          "Icon": 18,
+          "Text": 47
         },
         "layout": [
           {
@@ -7619,7 +7650,7 @@
       "title": "Meu Transporte",
       "domain": "Transporte",
       "path": "lib/screens/meu_transporte_screen.dart",
-      "source_hash": "940b18b72529117a",
+      "source_hash": "626ccbf2b2ead680",
       "preview": {
         "kind": "map",
         "widgets": {
@@ -7635,21 +7666,21 @@
           "SizedBox": 50,
           "Center": 4,
           "Expanded": 14,
-          "ListTile": 5,
-          "TextFormField": 2,
+          "ListTile": 8,
+          "TextFormField": 3,
           "TextField": 3,
-          "FilledButton": 8,
+          "FilledButton": 10,
           "OutlinedButton": 3,
-          "TextButton": 6,
+          "TextButton": 8,
           "IconButton": 4,
           "CircleAvatar": 4,
           "ListView": 6,
-          "AlertDialog": 6,
+          "AlertDialog": 8,
           "Divider": 8,
           "LinearProgressIndicator": 2,
           "CircularProgressIndicator": 2,
-          "Icon": 35,
-          "Text": 70
+          "Icon": 40,
+          "Text": 80
         },
         "layout": [
           {
