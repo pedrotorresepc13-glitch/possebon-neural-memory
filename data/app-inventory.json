@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-21T10:10:46.039278+00:00",
+  "generated_at": "2026-10-21T15:16:44.543850+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "a747471ca836c31dcb1b180b60f8d0239ac0feb8"
+    "head": "7cbadb4bc2893aafcc3f9dc84146d8063a0093fc"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -30,7 +30,7 @@
       "title": "Amigo Peito",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart",
-      "source_hash": "d5bfbb135db3c913",
+      "source_hash": "0e160974d4623d98",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -57,7 +57,7 @@
           "DropdownButtonFormField": 1,
           "CircularProgressIndicator": 3,
           "Icon": 20,
-          "Text": 45
+          "Text": 47
         },
         "layout": [
           {
@@ -251,7 +251,7 @@
       "title": "Amigo Peito Form",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart",
-      "source_hash": "d5bfbb135db3c913",
+      "source_hash": "0e160974d4623d98",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -278,7 +278,7 @@
           "DropdownButtonFormField": 1,
           "CircularProgressIndicator": 3,
           "Icon": 20,
-          "Text": 45
+          "Text": 47
         },
         "layout": [
           {
@@ -471,7 +471,7 @@
       "title": "Amigo Peito Detalhe",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart",
-      "source_hash": "d5bfbb135db3c913",
+      "source_hash": "0e160974d4623d98",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -498,7 +498,7 @@
           "DropdownButtonFormField": 1,
           "CircularProgressIndicator": 3,
           "Icon": 20,
-          "Text": 45
+          "Text": 47
         },
         "layout": [
           {
@@ -690,7 +690,7 @@
       "title": "Dono Area",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/dono_area_screen.dart",
-      "source_hash": "9b5b3d5dcc82c841",
+      "source_hash": "e1dde792b676dec7",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -718,7 +718,7 @@
           "DropdownButtonFormField": 1,
           "CircularProgressIndicator": 3,
           "Icon": 25,
-          "Text": 60
+          "Text": 62
         },
         "layout": [
           {
@@ -926,7 +926,7 @@
       "title": "Dono Area Detalhe",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/dono_area_screen.dart",
-      "source_hash": "9b5b3d5dcc82c841",
+      "source_hash": "e1dde792b676dec7",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -954,7 +954,7 @@
           "DropdownButtonFormField": 1,
           "CircularProgressIndicator": 3,
           "Icon": 25,
-          "Text": 60
+          "Text": 62
         },
         "layout": [
           {
@@ -1164,7 +1164,7 @@
       "title": "Dono Area Form",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/dono_area_screen.dart",
-      "source_hash": "9b5b3d5dcc82c841",
+      "source_hash": "e1dde792b676dec7",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1192,7 +1192,7 @@
           "DropdownButtonFormField": 1,
           "CircularProgressIndicator": 3,
           "Icon": 25,
-          "Text": 60
+          "Text": 62
         },
         "layout": [
           {
@@ -1402,7 +1402,7 @@
       "title": "Minha Ronda Gerencial",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
-      "source_hash": "fb169f8ac235fbc1",
+      "source_hash": "12e3be9df2851111",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1636,7 +1636,7 @@
       "title": "Detalhe Minha Ronda Gerencial",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
-      "source_hash": "fb169f8ac235fbc1",
+      "source_hash": "12e3be9df2851111",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -1868,7 +1868,7 @@
       "title": "Nova Ronda Gerencial",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart",
-      "source_hash": "fb169f8ac235fbc1",
+      "source_hash": "12e3be9df2851111",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2299,7 +2299,7 @@
       "title": "Seguranca Operacional",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "f911f98f9b36cc26",
+      "source_hash": "087ed409970f1957",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2522,7 +2522,7 @@
       "title": "Seguranca Operacional Detalhe",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "f911f98f9b36cc26",
+      "source_hash": "087ed409970f1957",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2747,7 +2747,7 @@
       "title": "Seguranca Operacional Form",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "f911f98f9b36cc26",
+      "source_hash": "087ed409970f1957",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -2972,7 +2972,7 @@
       "title": "_ Nao Conformidade Editor",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "f911f98f9b36cc26",
+      "source_hash": "087ed409970f1957",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -3197,7 +3197,7 @@
       "title": "_ Seguranca Texto Editor",
       "domain": "Seguranca Operacional",
       "path": "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart",
-      "source_hash": "f911f98f9b36cc26",
+      "source_hash": "087ed409970f1957",
       "preview": {
         "kind": "form",
         "widgets": {
