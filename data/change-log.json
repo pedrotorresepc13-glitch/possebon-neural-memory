@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-22T07:43:30-03:00",
+  "updated_at": "2026-10-22T07:53:00-03:00",
   "entries": [
     {
       "date": "2026-10-22",
       "area": "Audicomp / Semana do mês",
-      "status": "in_progress",
-      "summary": "Correção iniciada por solicitação do usuário: Audicomp está calculando a semana do mês incorretamente e deve usar exatamente a mesma regra vigente do Dono de Área. Antes de alterar código, comparar a implementação atual do backend vivo e preservar a regra neural confirmada: dia 1 = Semana 1; cada domingo posterior ao dia 1 inicia a próxima semana; usar termno_em como data de referência."
+      "status": "implemented_unverified",
+      "summary": "Backend vivo 22/10 analisado: Audicomp (tipo A) estava usando segSemanaMes() legado por segunda-feira, enquanto Dono de Área (tipo D) e AudicompPublicForm usam a regra oficial por domingo. Patch preparado no SegurancaOperacionalAppApiTrait.php para D/A compartilharem o mesmo cálculo; php -l OK; runtime ainda pendente. SQL opcional preparado para normalizar registros A já gravados."
     },
     {
       "date": "2026-10-22",
