@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-22T09:01:00-03:00",
+  "updated_at": "2026-10-22T16:20:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-22",
+      "area": "APP POSSEBON / auditoria iOS, PWA e notificações",
+      "status": "in_progress",
+      "summary": "Solicitação de auditoria profunda, análise de causas e aprendizagem. Revisar source atual branch possebon (iOS capabilities/entitlements/FCM/APNs, web service worker, loading/performance, session/proxy/deploy), estado backend vivo, evidências de produção e plataforma. Sem alterar código produtivo nesta fase; distinguir problemas comprovados de hipóteses e registrar achados e plano de testes."
+    },
     {
       "date": "2026-10-22",
       "area": "Vercel / redeploy manual do APP POSSEBON",
