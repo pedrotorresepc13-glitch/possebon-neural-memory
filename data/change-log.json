@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-22T08:28:00-03:00",
+  "updated_at": "2026-10-22T08:31:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-22",
+      "area": "Meu Transporte / robustez GPS, offline e notificações",
+      "status": "in_progress",
+      "summary": "Usuário ampliou o escopo da correção do Transporte: garantir PUSH também no navegador/PWA, GPS/trajeto confiáveis, continuidade durante tela apagada/segundo plano no app nativo e tolerância a curtas perdas de conexão com sincronização posterior. Antes de alterar, revisar implementação atual de tracking, lifecycle/background, fila offline, Firebase Messaging/service worker e limitações reais de Web/PWA."
+    },
     {
       "date": "2026-10-22",
       "area": "Meu Transporte / paradas do monitor",
