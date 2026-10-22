@@ -1,22 +1,28 @@
 {
-  "updated_at": "2026-10-22T08:31:00-03:00",
+  "updated_at": "2026-10-22T08:45:00-03:00",
   "entries": [
     {
       "date": "2026-10-22",
+      "area": "Meu Transporte / pacote completo 22-10",
+      "status": "implemented_unverified",
+      "summary": "Flutter branch possebon atualizado até HEAD 456d2978624528a3f7e67661d1b724a40cfd22ae com robustez GPS/offline, iOS background e roteamento de push. Backend preparado no pacote POSSEBON_FIX_TRANSPORTE_COMPLETO_22-10-2026.zip: workflow sem Firebase Storage, paradas S/E e solicitações Q em app_transporte, decisão do gestor com transferência/recusa e PUSH, mais Web Push link. Backend ainda não aplicado no MAD Builder e runtime ainda não validado."
+    },
+    {
+      "date": "2026-10-22",
       "area": "Meu Transporte / robustez GPS, offline e notificações",
-      "status": "in_progress",
+      "status": "implemented_unverified",
       "summary": "Usuário ampliou o escopo da correção do Transporte: garantir PUSH também no navegador/PWA, GPS/trajeto confiáveis, continuidade durante tela apagada/segundo plano no app nativo e tolerância a curtas perdas de conexão com sincronização posterior. Antes de alterar, revisar implementação atual de tracking, lifecycle/background, fila offline, Firebase Messaging/service worker e limitações reais de Web/PWA."
     },
     {
       "date": "2026-10-22",
       "area": "Meu Transporte / paradas do monitor",
-      "status": "in_progress",
+      "status": "implemented_unverified",
       "summary": "Correção específica iniciada após evidência visual do usuário: mapa mostra 2 paradas, mas o modal 'Paradas de embarque' retorna vazio. Backend vivo 22/10 confirmado: mapa usa app_transporte S/E via TransporteAppApiTrait, enquanto acao=monitor_paradas e ações *_v2 são interceptadas pelo TransporteWorkflowFirebaseTrait e usam Firebase Storage. Patch será mínimo: somente paradas passam a usar a fonte POSSEBON/app_transporte, com migração idempotente de E legados para S; não tocar /api/app/unidades nem fluxo global. Solicitações monitor->gestor ficam para etapa separada após validar paradas."
     },
     {
       "date": "2026-10-22",
       "area": "Meu Transporte / correção sistêmica",
-      "status": "in_progress",
+      "status": "implemented_unverified",
       "summary": "Usuário autorizou iniciar a correção dos problemas do Transporte. Ordem de trabalho: 1) diagnosticar e recuperar /api/app/unidades/PWA se ainda afetado; 2) revisar o backend vivo 22/10/2026 e o Flutter atual; 3) eliminar a dupla fonte Firebase Storage x POSSEBON; 4) alinhar paradas/lista/mapa; 5) validar solicitação monitor->gestor e aprovação; 6) preservar presença manual, unit_id e grupo 33. Nenhuma mudança deve ser considerada estável sem validação runtime."
     },
     {
