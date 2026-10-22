@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-22T08:20:00-03:00",
+  "updated_at": "2026-10-22T08:28:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-22",
+      "area": "Meu Transporte / paradas do monitor",
+      "status": "in_progress",
+      "summary": "Correção específica iniciada após evidência visual do usuário: mapa mostra 2 paradas, mas o modal 'Paradas de embarque' retorna vazio. Backend vivo 22/10 confirmado: mapa usa app_transporte S/E via TransporteAppApiTrait, enquanto acao=monitor_paradas e ações *_v2 são interceptadas pelo TransporteWorkflowFirebaseTrait e usam Firebase Storage. Patch será mínimo: somente paradas passam a usar a fonte POSSEBON/app_transporte, com migração idempotente de E legados para S; não tocar /api/app/unidades nem fluxo global. Solicitações monitor->gestor ficam para etapa separada após validar paradas."
+    },
     {
       "date": "2026-10-22",
       "area": "Meu Transporte / correção sistêmica",
