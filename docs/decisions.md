@@ -129,3 +129,13 @@ Este arquivo registra decisões que **não devem ser reinterpretadas a cada conv
 - Comunicação gestor→monitor pode reutilizar `AppMensagem` com tipo destinatário `T = Transporte`; esta direção está **planned**, não implementada/validada.
 - Lista de paradas e mapa devem consumir o mesmo estado.
 - Monitor solicita inclusão/transferência; gestor aprova/recusa antes da alteração permanente de rota.
+
+
+## 2026-10-22 — Transporte: solicitação permanente de passageiro
+
+- O fluxo monitor→gestor para incluir/transferir passageiro deve seguir o mesmo padrão decisório da carona, mas com efeito permanente somente após aprovação.
+- Ao solicitar, nenhuma alteração é feita em `colaborador.rota_transporte_id`.
+- Aprovação do gestor: validar rota/assento/capacidade, transferir o colaborador para a rota de destino, limpar o ponto de embarque antigo para que o monitor da nova rota vincule a pessoa a uma parada válida, marcar a solicitação aprovada e enviar PUSH/notificação aos envolvidos.
+- Recusa do gestor: não alterar rota/assento/ponto do colaborador, marcar a solicitação recusada e enviar PUSH/notificação.
+- O monitor da rota de destino é quem vincula o passageiro a uma das paradas reutilizáveis da rota.
+- As solicitações permanentes serão persistidas no POSSEBON; Firebase Storage não participa deste fluxo. No schema atual, `app_transporte.tipo_registro` é `char(1)` sem constraint de domínio e a letra `Q` não é usada pelo backend vivo, portanto `Q = solicitação permanente de inclusão/transferência` fica formalizada como novo tipo operacional do Transporte.
