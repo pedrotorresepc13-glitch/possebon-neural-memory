@@ -139,3 +139,24 @@ Este arquivo registra decisões que **não devem ser reinterpretadas a cada conv
 - Recusa do gestor: não alterar rota/assento/ponto do colaborador, marcar a solicitação recusada e enviar PUSH/notificação.
 - O monitor da rota de destino é quem vincula o passageiro a uma das paradas reutilizáveis da rota.
 - As solicitações permanentes serão persistidas no POSSEBON; Firebase Storage não participa deste fluxo. No schema atual, `app_transporte.tipo_registro` é `char(1)` sem constraint de domínio e a letra `Q` não é usada pelo backend vivo, portanto `Q = solicitação permanente de inclusão/transferência` fica formalizada como novo tipo operacional do Transporte.
+
+
+## 2026-10-22 — Auditoria iOS, PWA, FCM e travamentos
+
+**Status: auditoria estática confirmada, runtime/aparelhos pendente. Não declarar corrigido.**
+
+Achados verificados no Flutter branch `possebon` HEAD `73bedbb350b762327d8bfd353997aafc3600ed3f`:
+
+1. `lib/screens/acesso_screen.dart::_registrarDispositivo` envia `plataforma: 'android'` incondicionalmente, inclusive em iOS nativo. O backend aceita `android`, `ios`, `web`. Falha de cadastro é capturada, e login prossegue silenciosamente. Corrigir identificação de plataforma, registro FCM e observabilidade.
+2. `lib/services/notification_service.dart::mostrarNotificacao` constrói `NotificationDetails(android: ...)` mesmo no iOS; não fornece `DarwinNotificationDetails` para foreground. Investigar permissões/APNs e apresentação remota iOS; não inferir entrega pelo Firebase só por existir token.
+3. `ios/Runner.xcodeproj/project.pbxproj` ainda usa `PRODUCT_BUNDLE_IDENTIFIER = com.example.possebon`; `firebase_options.dart` iOS também usa `com.example.possebon`. A árvore Git iOS não contém Runner.entitlements com `aps-environment` nem configuração `CODE_SIGN_ENTITLEMENTS` no pbxproj. Isto não prova o estado do projeto Xcode distribuído ou APNs do Firebase, que devem ser verificados no arquivo de build/Apple Developer.
+4. `lib/main.dart` espera `Firebase.initializeApp` e `NotificationService.inicializar` antes de `runApp`, sem tratamento de falha. Erro ou hang de push/bootstrap pode impedir renderização; `NotificationService._inicializado` vira true antes de operações assíncronas terminarem.
+5. `web/index.html` registra worker FCM; `web/firebase-messaging-sw.js` possui apenas `onBackgroundMessage` com console.debug (sem lógica própria de clique/exibição). `home_screen.dart` recebeu snackbar somente no foreground Web. Inspecionar entrega background, actions click, e não duplicar notificação quando payload `notification` é usado.
+6. `web/ios_webkit_touch_recovery.js` implementa workaround por pointercancel sintetizado; compara `PointerEvent.pointerId` contra `Touch.identifier` diretamente e despacha eventos sintéticos. A equivalência não é garantida; avaliar se provoca cancels falsos/travas de interação. Testar nos devices antes de substituir.
+7. `lib/core/network/api_uri_builder.dart` Web usa `/backend/api/...`, que `vercel.json` redireciona diretamente para origem técnica `:19302`; `api/proxy.js` injeta Basic auth mas não é usado pelo fluxo principal. Risco de inconsistência HTTP/erros; origem de `/api/app/unidades` não confirmada como causa. `AppRepository` Web não persiste cache de unidades e `AcessoScreen` esconde status/body sob mensagem genérica de internet.
+8. `lib/core/observability/app_log_service.dart` tem reporter opcional mas não foi confirmado instalado. Ausência de logs persistentes impede investigação de falhas em dispositivos.
+9. `TransporteTrackingService` filtra precisão, reenvia posição mais recente na reconexão e salva trajeto em modo aprendizado, mas NÃO tem fila durável de todos os pontos GPS a serem enviados ao backend; não declarar resiliência offline completa. Em iOS Web/PWA tela bloqueada, GPS contínuo não pode ser garantido.
+10. O pacote preparado `FirebaseNotificationTrait.php` envia `notification`+`data` via FCM e `webpush.fcm_options.link` para a URL raiz. Precisa validar roteamento conforme estado de app e entrega APNs/FCM real, além da implantação efetiva no MAD Builder.
+11. Deploy Vercel `possebon.vercel.app` foi confirmado READY para HEAD `73bedbb...` na inspeção de deployment, mas logs de runtime deram 403 (sem acesso). Status READY não valida funcionamento. Não assumir publicação do pacote PHP.
+
+Próximo quality gate: confirmar app iOS nativo vs PWA instalado, APNs Apple Developer e capacidades iOS (push+background), FCM token por plataforma (não armazenar token em brain), worker e permissão por navegador, logs HTTP status/body para unidades e sessão, testes iPhone Safari/Home Screen, Android e Chrome desktop, benchmark de startup/reload, GPS offline, registros de entrega e clique. Preferir correções isoladas, testes regressão e implantação gradativa.
