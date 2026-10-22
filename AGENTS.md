@@ -80,3 +80,24 @@ Registrar nomes de classes, tabelas, campos, rotas e regras é permitido quando 
 Antes de afirmar que algo está aplicado, verificar `data/current-state.json` e a fonte operacional. Se a memória disser `unconfirmed`, dizer explicitamente que não há confirmação de implantação.
 
 Antes de pedir ao usuário para reenviar informação estrutural, consultar este repositório. Pedir arquivo novamente apenas quando a tarefa exigir o conteúdo exato de uma fonte operacional que não esteja acessível ou quando existir versão mais nova que a registrada.
+
+## HARD GATE — alteração do APP
+
+Regra confirmada pelo usuário em 22/10/2026:
+
+**É proibido alterar o POSSEBON App sem usar primeiro este cérebro.**
+
+Antes de qualquer edição, commit, patch, artefato para MAD Builder/Vercel ou mudança de contrato:
+
+1. ler `data/current-state.json` e `data/project-memory.json`;
+2. ler regras/decisões do domínio afetado;
+3. registrar a mudança como `planned` ou `in_progress`;
+4. conferir o Flutter atual na branch `possebon`;
+5. conferir o backend vivo/arquivo mais recente confirmado pelo usuário;
+6. somente então modificar código;
+7. validar;
+8. atualizar esta memória com o estado real.
+
+Se os passos 1–5 não tiverem sido cumpridos, **parar antes de editar**.
+
+O GitHub `possebon_web` não pode substituir silenciosamente o backend vivo do MAD Builder.
