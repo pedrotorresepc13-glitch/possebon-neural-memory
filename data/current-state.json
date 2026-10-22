@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T07:53:00-03:00",
+  "updated_at": "2026-10-22T08:11:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -673,6 +673,14 @@
     ],
     "artifact": "POSSEBON_FIX_AUDICOMP_SEMANA_22-10-2026.zip",
     "normalization_sql": "NORMALIZAR_AUDICOMP_SEMANA.sql preparado para corrigir apenas registros tipo A ativos com termno_em e validar divergencias_restantes=0.",
-    "runtime": "pending"
+    "runtime": "pending",
+    "runtime_diagnosis": {
+      "status": "confirmed",
+      "checked_at": "2026-10-22",
+      "divergent_rows": 48,
+      "scope": "audicomp tipo A ativos com termno_em",
+      "observation": "47 registros recentes de outubro estavam uma semana abaixo do correto e o registro 3340 estava uma semana acima; todos devem ser recalculados pela regra oficial baseada em domingos.",
+      "update_status": "not_executed_yet"
+    }
   }
 }
