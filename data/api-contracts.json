@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-16",
+  "updated_at": "2026-10-22",
   "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
   "auth": {
     "session_activate": {
@@ -7,7 +7,10 @@
       "path": "/api/app/sessao/ativar",
       "auth": "Bearer",
       "purpose": "Ativar sessão permanente do dispositivo e emitir access + refresh token.",
-      "known_body": ["plataforma", "dispositivo_uid"]
+      "known_body": [
+        "plataforma",
+        "dispositivo_uid"
+      ]
     },
     "session_refresh": {
       "method": "POST",
@@ -23,15 +26,36 @@
     }
   },
   "core": {
-    "units": {"path": "/api/app/unidades", "purpose": "Listar unidades disponíveis."},
-    "identify": {"path": "/api/app/identificar", "purpose": "Identificar Pessoa no contexto do fluxo de acesso; confirmar rota exata no backend vigente."},
-    "authenticate": {"path": "/api/app/autenticar", "purpose": "Autenticação do app; confirmar rota/payload no backend vigente."},
-    "my_data": {"path": "/api/app/meus-dados", "purpose": "Dados da Pessoa/Colaborador no contexto da unidade."},
-    "training": {"path": "/api/app/meus-treinamentos", "purpose": "Treinamentos da Pessoa/contexto."},
-    "process_documents": {"path": "/api/app/processo-documentos", "purpose": "Processo/vaga/documentos da Pessoa + unidade."}
+    "units": {
+      "path": "/api/app/unidades",
+      "purpose": "Listar unidades disponíveis."
+    },
+    "identify": {
+      "path": "/api/app/identificar",
+      "purpose": "Identificar Pessoa no contexto do fluxo de acesso; confirmar rota exata no backend vigente."
+    },
+    "authenticate": {
+      "path": "/api/app/autenticar",
+      "purpose": "Autenticação do app; confirmar rota/payload no backend vigente."
+    },
+    "my_data": {
+      "path": "/api/app/meus-dados",
+      "purpose": "Dados da Pessoa/Colaborador no contexto da unidade."
+    },
+    "training": {
+      "path": "/api/app/meus-treinamentos",
+      "purpose": "Treinamentos da Pessoa/contexto."
+    },
+    "process_documents": {
+      "path": "/api/app/processo-documentos",
+      "purpose": "Processo/vaga/documentos da Pessoa + unidade."
+    }
   },
   "security": {
-    "access": {"path": "/api/app/seguranca/acesso", "purpose": "Capabilities dos módulos de Segurança Operacional; conferir nome exato no api.php atual."},
+    "access": {
+      "path": "/api/app/seguranca/acesso",
+      "purpose": "Capabilities dos módulos de Segurança Operacional; conferir nome exato no api.php atual."
+    },
     "my_plans": {
       "method": "GET",
       "path": "/api/app/seguranca/meus-planos",
@@ -58,18 +82,96 @@
     }
   },
   "access_control": {
-    "geofence_admin_access": {"method": "GET", "path": "/api/app/cerca-virtual/acesso"},
-    "active_geofence": {"method": "GET", "path": "/api/app/cerca-virtual"},
-    "save_geofence": {"method": "POST", "path": "/api/app/cerca-virtual/salvar"},
-    "geofence_presence": {"method": "POST", "path": "/api/app/controle-acesso/cerca", "source_code": "C"},
-    "transport_status": {"method": "GET", "path": "/api/app/controle-acesso/transporte/status"},
-    "transport_presence": {"method": "POST", "path": "/api/app/controle-acesso/transporte", "source_code": "T"}
+    "geofence_admin_access": {
+      "method": "GET",
+      "path": "/api/app/cerca-virtual/acesso"
+    },
+    "active_geofence": {
+      "method": "GET",
+      "path": "/api/app/cerca-virtual"
+    },
+    "save_geofence": {
+      "method": "POST",
+      "path": "/api/app/cerca-virtual/salvar"
+    },
+    "geofence_presence": {
+      "method": "POST",
+      "path": "/api/app/controle-acesso/cerca",
+      "source_code": "C"
+    },
+    "transport_status": {
+      "method": "GET",
+      "path": "/api/app/controle-acesso/transporte/status"
+    },
+    "transport_presence": {
+      "method": "POST",
+      "path": "/api/app/controle-acesso/transporte",
+      "source_code": "T"
+    }
   },
   "contract_rules": [
+    "Antes de alterar contrato do APP, consultar possebon-neural-memory e registrar a mudança.",
     "unit_id deve ser validado no backend, não apenas filtrado pela UI.",
     "meus registros devem respeitar autoria/responsabilidade real mesmo para administradores.",
     "401/403 de sessão permanente devem ser tratados de forma consistente com a política de renovação.",
     "falha de rede não equivale a sessão revogada.",
-    "não adicionar/alterar rota sem registrar o contrato nesta memória após validação."
-  ]
+    "não adicionar/alterar rota sem registrar o contrato nesta memória após validação.",
+    "Transporte: Firebase/FCM é transporte de PUSH, não banco de estado operacional."
+  ],
+  "transport": {
+    "status": "attention",
+    "note": "Contrato observado no Flutter atual e nos arquivos backend fornecidos em 21-22/10; conferir backend vivo antes de alterar.",
+    "meu_transporte": {
+      "path": "/api/app/meu-transporte",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "context": [
+        "pessoa_id",
+        "unit_id"
+      ],
+      "get_actions_known": [
+        "mapa",
+        "posicao",
+        "disponiveis",
+        "gestao_acesso",
+        "gestao",
+        "gestao_monitores",
+        "monitor_paradas",
+        "gestao_solicitacoes"
+      ],
+      "post_actions_known": [
+        "confirmar",
+        "embarque",
+        "monitor_identificar",
+        "monitor_embarque_salvar",
+        "monitor_presenca",
+        "monitor_parada_criar_v2",
+        "monitor_parada_vincular_v2",
+        "monitor_parada_editar_v2",
+        "monitor_parada_excluir_v2",
+        "monitor_solicitar_passageiro",
+        "gestao_solicitacao_decidir",
+        "adicionar",
+        "assento",
+        "gestao_assento",
+        "gestao_transferir",
+        "gestao_remover",
+        "gestao_monitor",
+        "carona_solicitar",
+        "gestao_carona_decidir",
+        "gestao_nao_utiliza",
+        "iniciar",
+        "atualizar_posicao",
+        "finalizar"
+      ],
+      "critical_rules": [
+        "monitor_paradas e mapa leem a mesma fonte persistente",
+        "solicitação monitor->gestor não altera rota antes da aprovação",
+        "Firebase Storage não persiste estado operacional",
+        "falha de PUSH não invalida gravação operacional"
+      ]
+    }
+  }
 }
