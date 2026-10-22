@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-22T10:12:57.389420+00:00",
+  "generated_at": "2026-10-22T15:18:40.688152+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "72fe09bc67d795bc8714887afb5c0c67c25aec60"
+    "head": "73bedbb350b762327d8bfd353997aafc3600ed3f"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -5669,7 +5669,7 @@
       "title": "Home",
       "domain": "App",
       "path": "lib/screens/home_screen.dart",
-      "source_hash": "5d27c89d5a397da2",
+      "source_hash": "c52ab3e7851dbd33",
       "preview": {
         "kind": "grid",
         "widgets": {
@@ -5698,7 +5698,7 @@
           "Divider": 3,
           "CircularProgressIndicator": 2,
           "Icon": 18,
-          "Text": 47
+          "Text": 48
         },
         "layout": [
           {
