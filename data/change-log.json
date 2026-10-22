@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-22T07:53:00-03:00",
+  "updated_at": "2026-10-22T08:20:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-22",
+      "area": "Meu Transporte / correção sistêmica",
+      "status": "in_progress",
+      "summary": "Usuário autorizou iniciar a correção dos problemas do Transporte. Ordem de trabalho: 1) diagnosticar e recuperar /api/app/unidades/PWA se ainda afetado; 2) revisar o backend vivo 22/10/2026 e o Flutter atual; 3) eliminar a dupla fonte Firebase Storage x POSSEBON; 4) alinhar paradas/lista/mapa; 5) validar solicitação monitor->gestor e aprovação; 6) preservar presença manual, unit_id e grupo 33. Nenhuma mudança deve ser considerada estável sem validação runtime."
+    },
     {
       "date": "2026-10-22",
       "area": "Audicomp / Semana do mês",
