@@ -1,10 +1,10 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-10-22T15:18:40.688152+00:00",
+  "generated_at": "2026-10-22T20:08:11.439263+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "73bedbb350b762327d8bfd353997aafc3600ed3f"
+    "head": "6b42b5256e33fdc0da73f9a00a706b8c0b8ae768"
   },
   "method": "static-code-indexer+ordered-ui-blueprint+module-flow-enrichment",
   "confidence_policy": {
@@ -3749,7 +3749,7 @@
       "title": "Acesso",
       "domain": "Acesso",
       "path": "lib/screens/acesso_screen.dart",
-      "source_hash": "16841f9055a0d43f",
+      "source_hash": "7c611383a2a87a53",
       "preview": {
         "kind": "form",
         "widgets": {
@@ -4129,6 +4129,10 @@
           "path": "lib/services/session_service.dart"
         },
         {
+          "import": "../services/notification_service.dart",
+          "path": "lib/services/notification_service.dart"
+        },
+        {
           "import": "../utils/identity_name_formatter.dart",
           "path": "lib/utils/identity_name_formatter.dart"
         }
@@ -4137,6 +4141,7 @@
         "lib/repositories/app_repository.dart",
         "lib/services/api_service.dart",
         "lib/services/app_error_service.dart",
+        "lib/services/notification_service.dart",
         "lib/services/session_service.dart"
       ],
       "api_routes": [
