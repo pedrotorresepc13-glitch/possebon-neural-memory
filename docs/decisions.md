@@ -112,3 +112,20 @@ Este arquivo registra decisões que **não devem ser reinterpretadas a cada conv
 - Só registrar uma mudança como estável depois de implementada e validada.
 - Nunca armazenar credenciais, tokens, senhas ou dados pessoais aqui.
 - Em conversa nova, bootstrap obrigatório: `README` → `current-state` → `project-memory` → docs do módulo → código real.
+
+## 2026-10-22 — Hard gate da Neural Memory
+
+- Nenhuma alteração do POSSEBON App pode ocorrer sem consultar primeiro `possebon-neural-memory`.
+- A intenção deve entrar na memória como `planned`/`in_progress` antes da edição.
+- Flutter atual e backend vivo precisam ser conferidos depois da memória.
+- Depois da implementação, a memória deve refletir o estado real.
+- Preparado/gerado não significa aplicado; compilado não significa validado.
+
+## 2026-10-22 — Transporte: fonte de verdade e notificações
+
+- Persistência de paradas, solicitações e estado operacional do Transporte pertence ao POSSEBON/banco operacional confirmado.
+- Firebase Storage não deve ser usado como segunda fonte de verdade do Transporte.
+- Firebase/FCM permanece apropriado para PUSH.
+- Comunicação gestor→monitor pode reutilizar `AppMensagem` com tipo destinatário `T = Transporte`; esta direção está **planned**, não implementada/validada.
+- Lista de paradas e mapa devem consumir o mesmo estado.
+- Monitor solicita inclusão/transferência; gestor aprova/recusa antes da alteração permanente de rota.
