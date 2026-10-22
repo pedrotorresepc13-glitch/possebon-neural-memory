@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-09-16T22:36:00-03:00",
+    "updated_at": "2026-10-22T07:04:00-03:00",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -34,6 +34,7 @@
     "blocked": "Depende de informação/arquivo/acesso"
   },
   "global_rules": [
+    "HARD GATE: nenhuma alteração no POSSEBON App pode ser feita sem consultar primeiro o possebon-neural-memory, registrar o estado da mudança e conferir a fonte operacional real.",
     "Unidade é fronteira rígida de dados e contexto.",
     "Pessoa é identidade única; Colaborador/Candidato são vínculos/contextos.",
     "Sessão permanente não deve cair por expiração normal do access token.",
@@ -58,8 +59,15 @@
       "x": 3650,
       "y": 2450,
       "summary": "Flutter Android/Web integrado ao POSSEBON Web. Contexto por unidade, sessão permanente, Segurança Operacional, RDO, Transporte, acesso, documentos, notificações e offline parcial.",
-      "files": ["lib/main.dart", "pubspec.yaml"],
-      "rules": ["Código limpo", "Padrões compartilhados", "Status rigoroso de implantação"]
+      "files": [
+        "lib/main.dart",
+        "pubspec.yaml"
+      ],
+      "rules": [
+        "Código limpo",
+        "Padrões compartilhados",
+        "Status rigoroso de implantação"
+      ]
     },
     {
       "id": "brain",
@@ -69,8 +77,17 @@
       "x": 3650,
       "y": 5050,
       "summary": "Fonte externa de contexto: regras, arquitetura, estado, decisões, contratos, histórico e pontos exatos de mudança.",
-      "files": ["README.md", "data/current-state.json", "data/project-memory.json", "docs/operating-protocol.md"],
-      "rules": ["Consultar antes de trabalho relevante", "Atualizar depois de validação", "Nunca guardar segredos"]
+      "files": [
+        "README.md",
+        "data/current-state.json",
+        "data/project-memory.json",
+        "docs/operating-protocol.md"
+      ],
+      "rules": [
+        "Consultar antes de trabalho relevante",
+        "Atualizar depois de validação",
+        "Nunca guardar segredos"
+      ]
     },
     {
       "id": "session",
@@ -80,9 +97,20 @@
       "x": 3200,
       "y": 1510,
       "summary": "Access token curto + refresh token seguro + renovação single-flight. Rede indisponível não deve apagar sessão.",
-      "files": ["lib/core/session/auth_session_manager.dart", "lib/core/session/session_storage.dart", "lib/services/session_service.dart"],
-      "backend": ["AppSessaoApiTrait.php", "AppDispositivo.php", "rotas ativar/refresh/revogar"],
-      "rules": ["Usuário só sai por Sair/revogação real", "Tracking e notificações sobrevivem à renovação"]
+      "files": [
+        "lib/core/session/auth_session_manager.dart",
+        "lib/core/session/session_storage.dart",
+        "lib/services/session_service.dart"
+      ],
+      "backend": [
+        "AppSessaoApiTrait.php",
+        "AppDispositivo.php",
+        "rotas ativar/refresh/revogar"
+      ],
+      "rules": [
+        "Usuário só sai por Sair/revogação real",
+        "Tracking e notificações sobrevivem à renovação"
+      ]
     },
     {
       "id": "access",
@@ -92,8 +120,14 @@
       "x": 2400,
       "y": 1450,
       "summary": "Unidade → CPF → identificação → senha/primeiro acesso → sessão persistente.",
-      "files": ["lib/screens/acesso_screen.dart", "lib/screens/splash_screen.dart"],
-      "rules": ["Unidade obrigatória no fluxo do colaborador", "Sessão salva deve ser reaproveitada quando válida"]
+      "files": [
+        "lib/screens/acesso_screen.dart",
+        "lib/screens/splash_screen.dart"
+      ],
+      "rules": [
+        "Unidade obrigatória no fluxo do colaborador",
+        "Sessão salva deve ser reaproveitada quando válida"
+      ]
     },
     {
       "id": "home",
@@ -103,8 +137,13 @@
       "x": 3650,
       "y": 1420,
       "summary": "Hub contextual por Pessoa + Unidade + capabilities. Concentra carregamentos, notificações e navegação de vários módulos.",
-      "files": ["lib/screens/home_screen.dart"],
-      "next": ["Reduzir rebuilds globais", "Separar responsabilidades gradualmente"],
+      "files": [
+        "lib/screens/home_screen.dart"
+      ],
+      "next": [
+        "Reduzir rebuilds globais",
+        "Separar responsabilidades gradualmente"
+      ],
       "risk": "Ponto provável de custo de UI por excesso de responsabilidades."
     },
     {
@@ -115,7 +154,9 @@
       "x": 3050,
       "y": 2150,
       "summary": "unit_id funciona como fronteira rígida. Dados pessoais são da Pessoa; vínculos e conteúdos funcionais pertencem à unidade atual.",
-      "rules": ["Sem vazamento de avisos, vagas, documentos, RDO, Segurança, Transporte, cardápio ou auditorias entre unidades"]
+      "rules": [
+        "Sem vazamento de avisos, vagas, documentos, RDO, Segurança, Transporte, cardápio ou auditorias entre unidades"
+      ]
     },
     {
       "id": "person",
@@ -125,7 +166,10 @@
       "x": 2750,
       "y": 2350,
       "summary": "Pessoa é única. Colaborador/Candidato são vínculos/contextos; contratação não duplica a Pessoa.",
-      "rules": ["Candidato depende de vínculo oficial com vaga da unidade", "RH cria vínculo oficial com vaga"]
+      "rules": [
+        "Candidato depende de vínculo oficial com vaga da unidade",
+        "RH cria vínculo oficial com vaga"
+      ]
     },
     {
       "id": "security",
@@ -135,7 +179,11 @@
       "x": 4820,
       "y": 2100,
       "summary": "Família: Minha Ronda, Dono de Área, Audicomp, Amigo do Peito e Planos. Padrão oficial = Minha Ronda.",
-      "rules": ["Equipe opcional", "Mesmo design/fluxo quando equivalente", "Meus registros = autoria real"]
+      "rules": [
+        "Equipe opcional",
+        "Mesmo design/fluxo quando equivalente",
+        "Meus registros = autoria real"
+      ]
     },
     {
       "id": "ronda",
@@ -145,9 +193,16 @@
       "x": 5550,
       "y": 1450,
       "summary": "Referência visual/funcional da Segurança: identificação, condições, evidências, planos, revisão e PDF.",
-      "files": ["lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart"],
-      "backend": ["RondaGerencialAppApiTrait.php"],
-      "rules": ["PDF salvo pode ser reaberto", "Serve de padrão para fluxos equivalentes"]
+      "files": [
+        "lib/features/seguranca_operacional/presentation/minha_ronda_gerencial_screen.dart"
+      ],
+      "backend": [
+        "RondaGerencialAppApiTrait.php"
+      ],
+      "rules": [
+        "PDF salvo pode ser reaberto",
+        "Serve de padrão para fluxos equivalentes"
+      ]
     },
     {
       "id": "dono",
@@ -157,10 +212,22 @@
       "x": 5570,
       "y": 1810,
       "summary": "Dono de Área deve ter paridade funcional/visual com Minha Ronda na etapa Segurança, mudando apenas dados/perguntas próprios.",
-      "files": ["lib/features/seguranca_operacional/presentation/dono_area_screen.dart", "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"],
-      "backend": ["SegurancaOperacionalAppApiTrait.php"],
-      "rules": ["Subcategorias 35..62", "Equipe opcional", "Identificação igual ao padrão"],
-      "next": ["Validar fluxo completo", "Eliminar divergências remanescentes"]
+      "files": [
+        "lib/features/seguranca_operacional/presentation/dono_area_screen.dart",
+        "lib/features/seguranca_operacional/presentation/seguranca_operacional_legacy.dart"
+      ],
+      "backend": [
+        "SegurancaOperacionalAppApiTrait.php"
+      ],
+      "rules": [
+        "Subcategorias 35..62",
+        "Equipe opcional",
+        "Identificação igual ao padrão"
+      ],
+      "next": [
+        "Validar fluxo completo",
+        "Eliminar divergências remanescentes"
+      ]
     },
     {
       "id": "audicomp",
@@ -170,7 +237,10 @@
       "x": 5570,
       "y": 2170,
       "summary": "Auditoria comportamental com perguntas/regras próprias dentro do padrão compartilhado da Segurança.",
-      "rules": ["Não criar design isolado", "Registros próprios do usuário"]
+      "rules": [
+        "Não criar design isolado",
+        "Registros próprios do usuário"
+      ]
     },
     {
       "id": "amigo",
@@ -180,9 +250,17 @@
       "x": 5570,
       "y": 2530,
       "summary": "Fluxo simplificado. Resolvido encerra; não resolvido gera plano automático para Gerente SMS com prazo +7 dias.",
-      "files": ["lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart", "lib/features/seguranca_operacional/data/amigo_peito_repository.dart"],
-      "backend": ["AmigoPeitoAppApiTrait.php"],
-      "rules": ["Sem etapa visual artificial de plano", "Foto/evidência deve acompanhar a origem/plano conforme contrato"]
+      "files": [
+        "lib/features/seguranca_operacional/presentation/amigo_peito_screen.dart",
+        "lib/features/seguranca_operacional/data/amigo_peito_repository.dart"
+      ],
+      "backend": [
+        "AmigoPeitoAppApiTrait.php"
+      ],
+      "rules": [
+        "Sem etapa visual artificial de plano",
+        "Foto/evidência deve acompanhar a origem/plano conforme contrato"
+      ]
     },
     {
       "id": "plans",
@@ -192,9 +270,21 @@
       "x": 4920,
       "y": 2940,
       "summary": "Lista planos do responsável atual; origem é independente da autoria. Replanejamento deve manter histórico acumulativo.",
-      "files": ["lib/features/seguranca_operacional/presentation/planos_acao_screen.dart", "lib/features/seguranca_operacional/data/seguranca_operacional_repository.dart"],
-      "rules": ["Resolver origem por active_record + primary_key", "Abrir PDF oficial da origem", "Motivo obrigatório", "Troca de responsável opcional"],
-      "next": ["Validar origem nos quatro fluxos", "Validar múltiplos replanejamentos", "Confirmar backend realmente aplicado"]
+      "files": [
+        "lib/features/seguranca_operacional/presentation/planos_acao_screen.dart",
+        "lib/features/seguranca_operacional/data/seguranca_operacional_repository.dart"
+      ],
+      "rules": [
+        "Resolver origem por active_record + primary_key",
+        "Abrir PDF oficial da origem",
+        "Motivo obrigatório",
+        "Troca de responsável opcional"
+      ],
+      "next": [
+        "Validar origem nos quatro fluxos",
+        "Validar múltiplos replanejamentos",
+        "Confirmar backend realmente aplicado"
+      ]
     },
     {
       "id": "rdo",
@@ -204,19 +294,62 @@
       "x": 2550,
       "y": 2850,
       "summary": "Offline-first com fila local e sincronização protegida.",
-      "files": ["lib/screens/meu_rdo_screen.dart", "lib/repositories/rdo_repository.dart", "lib/services/rdo_sync_service.dart"],
-      "rules": ["Somente RDO do usuário atual", "Arquivado somente leitura", "Emissão editável na próxima etapa"]
+      "files": [
+        "lib/screens/meu_rdo_screen.dart",
+        "lib/repositories/rdo_repository.dart",
+        "lib/services/rdo_sync_service.dart"
+      ],
+      "rules": [
+        "Somente RDO do usuário atual",
+        "Arquivado somente leitura",
+        "Emissão editável na próxima etapa"
+      ]
     },
     {
       "id": "transport",
       "title": "Meu Transporte",
       "kind": "screen",
-      "status": "active",
+      "status": "attention",
       "x": 1600,
       "y": 2200,
-      "summary": "Rotas, confirmação, GPS, monitor/motorista, mapa, viagem ativa, tracking e presença.",
-      "files": ["lib/screens/meu_transporte_screen.dart", "lib/screens/transporte_mapa_screen.dart", "lib/services/transporte_tracking_service.dart"],
-      "rules": ["Contexto por unidade", "Tracking não pode cair com refresh", "Ocultar ações sem percurso quando não fizerem sentido"]
+      "summary": "Meu Transporte/Gestão: rotas, monitor, pontos/paradas, chamada manual por viagem/parada, carona, solicitações ao gestor e tracking. Em 22/10/2026 está em ATTENTION por dupla fonte POSSEBON x Firebase Storage e regressão runtime do PWA após tentativa de correção.",
+      "files": [
+        "lib/screens/meu_transporte_screen.dart",
+        "lib/screens/transporte_mapa_screen.dart",
+        "lib/services/transporte_tracking_service.dart",
+        "lib/features/transporte/presentation/transport_management_screen.dart",
+        "lib/services/api_service.dart",
+        "lib/repositories/transporte_repository.dart",
+        "lib/features/transporte/domain/transport_attendance.dart",
+        "lib/features/transporte/presentation/attendance_badge.dart",
+        "lib/features/transporte/presentation/transport_operations_summary.dart",
+        "lib/features/transporte/presentation/transport_live_summary.dart"
+      ],
+      "rules": [
+        "Contexto rígido por unit_id.",
+        "Grupo 33 App_Minha Rota = gestão geral de todas as rotas/monitores da unidade; não limitar por rota_transporte.system_users_id.",
+        "Monitor define ponto/parada de embarque para todos os passageiros.",
+        "QR de crachá apenas identifica colaborador; não marca presença.",
+        "Presença oficial é manual pelo monitor por viagem/parada: Presente/Ausente.",
+        "Lista de paradas e mapa usam a mesma fonte persistente.",
+        "Solicitação monitor->gestor não altera rota oficial antes da aprovação.",
+        "Firebase/FCM somente PUSH; Firebase Storage não é fonte de verdade do Transporte.",
+        "Preservar fotos, carona, mapa, viagem ativa, tracking e notificações existentes."
+      ],
+      "backend": [
+        "app/custom/TransporteAppApiTrait.php",
+        "app/custom/TransporteWorkflowFirebaseTrait.php",
+        "app/controller/ApiAppController.php",
+        "app/custom/FirebaseNotificationTrait.php"
+      ],
+      "next": [
+        "Recuperar /api/app/unidades/PWA.",
+        "Diagnosticar backend vivo antes de novo patch.",
+        "Remover dupla fonte Firebase Storage x POSSEBON.",
+        "Validar paradas existentes/editar/excluir/vincular.",
+        "Validar solicitação e aprovação do gestor.",
+        "Validar chamada manual por parada e visão diária do gestor."
+      ]
     },
     {
       "id": "geofence",
@@ -226,8 +359,14 @@
       "x": 1600,
       "y": 2760,
       "summary": "Geofence e presença automática no contexto da unidade.",
-      "files": ["lib/screens/cerca_virtual_admin_screen.dart", "lib/features/access_control/data/access_control_api.dart"],
-      "rules": ["Capability administrativa", "Origem de presença C"]
+      "files": [
+        "lib/screens/cerca_virtual_admin_screen.dart",
+        "lib/features/access_control/data/access_control_api.dart"
+      ],
+      "rules": [
+        "Capability administrativa",
+        "Origem de presença C"
+      ]
     },
     {
       "id": "attendance",
@@ -237,7 +376,10 @@
       "x": 1000,
       "y": 2480,
       "summary": "Presença por Cerca Virtual e Transporte.",
-      "rules": ["C = Cerca Virtual", "T = Transporte"]
+      "rules": [
+        "C = Cerca Virtual",
+        "T = Transporte"
+      ]
     },
     {
       "id": "notices",
@@ -247,8 +389,15 @@
       "x": 3080,
       "y": 3470,
       "summary": "Avisos por unidade/público com estado local de leitura e refinamento de destinatários.",
-      "files": ["lib/screens/quadro_avisos_screen.dart"],
-      "rules": ["C = candidatos", "F = colaboradores", "Sem encarregado", "Sem vazamento entre unidades"]
+      "files": [
+        "lib/screens/quadro_avisos_screen.dart"
+      ],
+      "rules": [
+        "C = candidatos",
+        "F = colaboradores",
+        "Sem encarregado",
+        "Sem vazamento entre unidades"
+      ]
     },
     {
       "id": "profile",
@@ -258,8 +407,14 @@
       "x": 3650,
       "y": 3520,
       "summary": "Dados da Pessoa/Colaborador, foto oficial e entrada para treinamentos.",
-      "files": ["lib/screens/meus_dados_screen.dart", "lib/screens/foto_oficial_screen.dart"],
-      "rules": ["Pessoa única", "Vínculo funcional por unidade"]
+      "files": [
+        "lib/screens/meus_dados_screen.dart",
+        "lib/screens/foto_oficial_screen.dart"
+      ],
+      "rules": [
+        "Pessoa única",
+        "Vínculo funcional por unidade"
+      ]
     },
     {
       "id": "training",
@@ -269,7 +424,9 @@
       "x": 4180,
       "y": 3720,
       "summary": "Cache local primeiro, atualização silenciosa depois e logos locais/remotos.",
-      "files": ["lib/screens/meus_treinamentos_screen.dart"]
+      "files": [
+        "lib/screens/meus_treinamentos_screen.dart"
+      ]
     },
     {
       "id": "documents",
@@ -279,8 +436,13 @@
       "x": 4700,
       "y": 3540,
       "summary": "Documentos exigidos pelo vínculo oficial em vaga/processo; envio individual e visualização.",
-      "files": ["lib/screens/processo_documentos_screen.dart"],
-      "rules": ["App não cria vínculo oficial de vaga", "Conteúdo respeita Pessoa + unidade"]
+      "files": [
+        "lib/screens/processo_documentos_screen.dart"
+      ],
+      "rules": [
+        "App não cria vínculo oficial de vaga",
+        "Conteúdo respeita Pessoa + unidade"
+      ]
     },
     {
       "id": "badge",
@@ -290,7 +452,10 @@
       "x": 2050,
       "y": 3520,
       "summary": "Busca colaborador, QR Code e OCR/ML Kit para leitura do crachá.",
-      "files": ["lib/screens/cadastro_cracha_screen.dart", "lib/screens/qr_cracha_scanner_screen.dart"]
+      "files": [
+        "lib/screens/cadastro_cracha_screen.dart",
+        "lib/screens/qr_cracha_scanner_screen.dart"
+      ]
     },
     {
       "id": "manifest",
@@ -300,7 +465,9 @@
       "x": 2520,
       "y": 3800,
       "summary": "Sugestão, reclamação, elogio e dúvida; contador de relato e envio.",
-      "files": ["lib/screens/manifestacao_screen.dart"],
+      "files": [
+        "lib/screens/manifestacao_screen.dart"
+      ],
       "performance_note": "Listener com setState por tecla deve ser isolado se provocar rebuild amplo."
     },
     {
@@ -311,8 +478,14 @@
       "x": 4300,
       "y": 4440,
       "summary": "Firebase/FCM, notificação local e navegação contextual para processo/transporte/avisos.",
-      "files": ["lib/services/notification_service.dart"],
-      "rules": ["Token coerente com sessão", "Não misturar unidade", "Deep-link/destino correto"]
+      "files": [
+        "lib/services/notification_service.dart"
+      ],
+      "rules": [
+        "Token coerente com sessão",
+        "Não misturar unidade",
+        "Deep-link/destino correto"
+      ]
     },
     {
       "id": "offline",
@@ -322,8 +495,14 @@
       "x": 2760,
       "y": 4480,
       "summary": "Drift/SQLite, cache contextual, arquivos locais e outbox de RDO.",
-      "files": ["lib/repositories/app_repository_native.dart", "lib/database/app_database.dart"],
-      "rules": ["Cache por Pessoa + Unidade", "Erro de negócio não usa cache velho como máscara"]
+      "files": [
+        "lib/repositories/app_repository_native.dart",
+        "lib/database/app_database.dart"
+      ],
+      "rules": [
+        "Cache por Pessoa + Unidade",
+        "Erro de negócio não usa cache velho como máscara"
+      ]
     },
     {
       "id": "api",
@@ -333,8 +512,15 @@
       "x": 3600,
       "y": 4480,
       "summary": "ApiService legado coexistindo com ApiClient novo. Migração deve ser gradual e sem duplicar autenticação.",
-      "files": ["lib/services/api_service.dart", "lib/core/network/api_client.dart", "lib/core/network/api_uri_builder.dart"],
-      "rules": ["Falha transitória não desloga", "Token centralizado"]
+      "files": [
+        "lib/services/api_service.dart",
+        "lib/core/network/api_client.dart",
+        "lib/core/network/api_uri_builder.dart"
+      ],
+      "rules": [
+        "Falha transitória não desloga",
+        "Token centralizado"
+      ]
     },
     {
       "id": "design",
@@ -344,8 +530,15 @@
       "x": 5950,
       "y": 3540,
       "summary": "Tema, cores, inputs, botões, cards, progressos e widgets compartilhados.",
-      "files": ["lib/core/theme/app_theme.dart", "lib/core/theme/app_colors.dart", "lib/core/ui/"],
-      "rules": ["Sem paleta própria arbitrária", "Segurança mantém um padrão único"]
+      "files": [
+        "lib/core/theme/app_theme.dart",
+        "lib/core/theme/app_colors.dart",
+        "lib/core/ui/"
+      ],
+      "rules": [
+        "Sem paleta própria arbitrária",
+        "Segurança mantém um padrão único"
+      ]
     },
     {
       "id": "performance",
@@ -355,8 +548,14 @@
       "x": 5200,
       "y": 4380,
       "summary": "Sintomas atuais: teclado/IME quase travando e telas lentas. Investigar rebuilds amplos, MediaQuery/viewInsets, mapas, imagens, polling e telas monolíticas.",
-      "files": ["docs/performance-audit.md"],
-      "next": ["Medir em flutter run --profile", "Corrigir teclado/input", "Depois abertura/Home/mapas/imagens"]
+      "files": [
+        "docs/performance-audit.md"
+      ],
+      "next": [
+        "Medir em flutter run --profile",
+        "Corrigir teclado/input",
+        "Depois abertura/Home/mapas/imagens"
+      ]
     },
     {
       "id": "backend",
@@ -366,23 +565,262 @@
       "x": 4300,
       "y": 5070,
       "summary": "Adianti/PHP/PostgreSQL. Baseline vem de ZIP/arquivo validado, não do GitHub Web.",
-      "files": ["docs/backend-map.md", "data/api-contracts.json"],
-      "rules": ["Priorizar padrão nativo MAD Builder", "php -l antes de aplicar", "Pacote preparado não é pacote aplicado"]
+      "files": [
+        "docs/backend-map.md",
+        "data/api-contracts.json"
+      ],
+      "rules": [
+        "Priorizar padrão nativo MAD Builder",
+        "php -l antes de aplicar",
+        "Pacote preparado não é pacote aplicado"
+      ]
     }
   ],
   "edges": [
-    ["brain","core"],["brain","backend"],["core","home"],["core","session"],["core","api"],["core","offline"],["core","security"],["core","rdo"],["core","transport"],["core","unit"],["core","person"],["core","performance"],["core","design"],
-    ["access","session"],["access","unit"],["person","unit"],["session","api"],["home","security"],["home","rdo"],["home","transport"],["home","notices"],["home","profile"],["home","documents"],["home","badge"],["home","manifest"],
-    ["security","ronda"],["security","dono"],["security","audicomp"],["security","amigo"],["security","plans"],["ronda","plans"],["dono","plans"],["audicomp","plans"],["amigo","plans"],
-    ["transport","attendance"],["geofence","attendance"],["attendance","api"],["transport","api"],["geofence","api"],["rdo","offline"],["profile","training"],["notifications","home"],["notifications","transport"],
-    ["notices","unit"],["documents","unit"],["transport","unit"],["geofence","unit"],["rdo","unit"],["security","unit"],["api","backend"],["plans","backend"],["ronda","backend"],["dono","backend"],["amigo","backend"],
-    ["design","security"],["performance","home"],["performance","security"],["performance","transport"],["performance","manifest"]
+    [
+      "brain",
+      "core"
+    ],
+    [
+      "brain",
+      "backend"
+    ],
+    [
+      "core",
+      "home"
+    ],
+    [
+      "core",
+      "session"
+    ],
+    [
+      "core",
+      "api"
+    ],
+    [
+      "core",
+      "offline"
+    ],
+    [
+      "core",
+      "security"
+    ],
+    [
+      "core",
+      "rdo"
+    ],
+    [
+      "core",
+      "transport"
+    ],
+    [
+      "core",
+      "unit"
+    ],
+    [
+      "core",
+      "person"
+    ],
+    [
+      "core",
+      "performance"
+    ],
+    [
+      "core",
+      "design"
+    ],
+    [
+      "access",
+      "session"
+    ],
+    [
+      "access",
+      "unit"
+    ],
+    [
+      "person",
+      "unit"
+    ],
+    [
+      "session",
+      "api"
+    ],
+    [
+      "home",
+      "security"
+    ],
+    [
+      "home",
+      "rdo"
+    ],
+    [
+      "home",
+      "transport"
+    ],
+    [
+      "home",
+      "notices"
+    ],
+    [
+      "home",
+      "profile"
+    ],
+    [
+      "home",
+      "documents"
+    ],
+    [
+      "home",
+      "badge"
+    ],
+    [
+      "home",
+      "manifest"
+    ],
+    [
+      "security",
+      "ronda"
+    ],
+    [
+      "security",
+      "dono"
+    ],
+    [
+      "security",
+      "audicomp"
+    ],
+    [
+      "security",
+      "amigo"
+    ],
+    [
+      "security",
+      "plans"
+    ],
+    [
+      "ronda",
+      "plans"
+    ],
+    [
+      "dono",
+      "plans"
+    ],
+    [
+      "audicomp",
+      "plans"
+    ],
+    [
+      "amigo",
+      "plans"
+    ],
+    [
+      "transport",
+      "attendance"
+    ],
+    [
+      "geofence",
+      "attendance"
+    ],
+    [
+      "attendance",
+      "api"
+    ],
+    [
+      "transport",
+      "api"
+    ],
+    [
+      "geofence",
+      "api"
+    ],
+    [
+      "rdo",
+      "offline"
+    ],
+    [
+      "profile",
+      "training"
+    ],
+    [
+      "notifications",
+      "home"
+    ],
+    [
+      "notifications",
+      "transport"
+    ],
+    [
+      "notices",
+      "unit"
+    ],
+    [
+      "documents",
+      "unit"
+    ],
+    [
+      "transport",
+      "unit"
+    ],
+    [
+      "geofence",
+      "unit"
+    ],
+    [
+      "rdo",
+      "unit"
+    ],
+    [
+      "security",
+      "unit"
+    ],
+    [
+      "api",
+      "backend"
+    ],
+    [
+      "plans",
+      "backend"
+    ],
+    [
+      "ronda",
+      "backend"
+    ],
+    [
+      "dono",
+      "backend"
+    ],
+    [
+      "amigo",
+      "backend"
+    ],
+    [
+      "design",
+      "security"
+    ],
+    [
+      "performance",
+      "home"
+    ],
+    [
+      "performance",
+      "security"
+    ],
+    [
+      "performance",
+      "transport"
+    ],
+    [
+      "performance",
+      "manifest"
+    ]
   ],
   "current_focus": [
+    "INCIDENTE: recuperar carregamento de unidades/PWA após alteração de backend em 22/10/2026.",
+    "Meu Transporte: unificar paradas e solicitações na fonte oficial POSSEBON, sem Firebase Storage.",
+    "Aplicar HARD GATE da memória neural antes de toda alteração futura.",
     "Finalizar vínculo visual e funcional do registro/PDF de origem em Meus Planos de Ação.",
     "Validar replanejamento com motivo, histórico acumulativo e troca opcional de responsável.",
     "Auditar e corrigir lentidão do teclado/IME e abertura de telas no app inteiro.",
-    "Depois implementar edição controlada do Meu RDO: Emissão editável, Arquivado somente leitura.",
-    "Manter esta memória sincronizada com o estado real do projeto."
+    "Depois implementar edição controlada do Meu RDO: Emissão editável, Arquivado somente leitura."
   ]
 }
