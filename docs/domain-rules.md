@@ -156,3 +156,19 @@ Regras comuns:
 - Regra compartilhada deve preferir componente/serviço compartilhado.
 - Não copiar código de uma tela para outra se isso criar duas implementações da mesma regra.
 - Toda mudança validada deve atualizar esta memória neural.
+
+## Transporte — regras confirmadas em outubro/2026
+
+- `unit_id` continua sendo fronteira rígida.
+- Grupo 33 `App_Minha Rota` libera Gestão de Transporte para todas as rotas e monitores da unidade; não limitar a gestão por `rota_transporte.system_users_id`.
+- O monitor é a autoridade do ponto/parada de embarque de **todos** os passageiros.
+- QR do crachá serve para localizar/identificar o colaborador; QR não é presença.
+- Presença oficial do transporte é marcada manualmente pelo monitor por viagem/parada: Presente ou Ausente.
+- Não voltar à presença automática inferida pela localização do celular do passageiro.
+- Em cada parada, mostrar somente os passageiros vinculados àquela parada para chamada rápida.
+- A lista de paradas e o mapa devem representar a mesma fonte persistente.
+- Parada deve ser reutilizável: criar uma vez, listar depois, editar, excluir e vincular passageiro posteriormente.
+- Monitor que queira trazer/incluir/transferir colaborador deve criar solicitação; vínculo oficial de rota só muda após aprovação do gestor.
+- Firebase/FCM pode notificar; **Firebase Storage não é banco de estado operacional de Transporte**.
+- Falha de notificação não pode desfazer nem impedir a operação já salva no POSSEBON.
+- Preservar carona temporária, fotos dos passageiros, mapa, viagem ativa e tracking ao evoluir o módulo.
