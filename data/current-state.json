@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T08:15:00-03:00",
+  "updated_at": "2026-10-22T08:45:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -684,5 +684,28 @@
       "transaction_state": "uncertain_no_commit_confirmed",
       "note": "Transcript enviado em 22/10 mostrou SELECT 48, UPDATE 48 e divergencias_restantes=0 dentro de transação (prompt possebon_app=*#), mas não mostrou COMMIT do Audicomp. Em seguida houve colagem acidental de texto/comandos no psql e prompt incompleto possebon_app(*#. Não considerar normalização persistida até nova consulta em sessão limpa."
     }
+  },
+  "transporte": {
+    "status": "implemented_unverified",
+    "flutter_head": "456d2978624528a3f7e67661d1b724a40cfd22ae",
+    "backend_package": "POSSEBON_FIX_TRANSPORTE_COMPLETO_22-10-2026.zip",
+    "backend_status": "prepared_not_applied",
+    "changes_2026_10_22": [
+      "TransporteWorkflowFirebaseTrait preparado sem Firebase Storage; S/E/Q em app_transporte.",
+      "Paradas do modal e mapa passam a usar a mesma fonte POSSEBON/app_transporte.",
+      "Q formalizado como solicitação permanente monitor->gestor; aprovação transfere e recusa não altera vínculo.",
+      "Aprovação e recusa notificam monitor solicitante e passageiro alvo; solicitação nova notifica gestores grupo 33 da unidade.",
+      "FirebaseNotificationTrait preparado com Web Push link para abrir/focalizar o PWA.",
+      "Flutter: GPS com wake lock no Android, reenvio imediato da posição ao voltar conectividade, filtro de GPS ruim e persistência de trajeto mais frequente.",
+      "Flutter: iOS com UIBackgroundModes location e remote-notification.",
+      "Flutter: push TRANSPORTE_SOLICITACAO abre Gestão de Transporte; decisão abre Meu Transporte; Web foreground mostra SnackBar com ação Abrir."
+    ],
+    "validation": [
+      "backend php -l workflow OK",
+      "backend php -l FirebaseNotificationTrait OK",
+      "composição das traits COMPOSE_OK",
+      "ApiAppController php -l OK no snapshot com arquivos substituídos",
+      "Flutter ainda sem flutter analyze/build nesta etapa; requer CI/runtime"
+    ]
   }
 }
