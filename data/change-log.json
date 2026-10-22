@@ -1,6 +1,18 @@
 {
-  "updated_at": "2026-10-01T14:28:00-03:00",
+  "updated_at": "2026-10-22T07:04:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-22",
+      "area": "Governança / Neural Memory",
+      "status": "stable",
+      "summary": "Usuário definiu HARD GATE: nenhuma alteração no POSSEBON App pode ocorrer sem consultar primeiro possebon-neural-memory, registrar planned/in_progress, conferir Flutter atual e backend vivo, validar e atualizar o cérebro com o estado real."
+    },
+    {
+      "date": "2026-10-22",
+      "area": "Meu Transporte / PWA",
+      "status": "attention",
+      "summary": "Diagnóstico confirmou dupla fonte: mapa/base usa POSSEBON/app_transporte enquanto TransporteWorkflowFirebaseTrait desviava paradas e solicitações para Firebase Storage. PWA mostrou HTTP 404 do bucket, lista vazia e falha de solicitação. Após tentativa de substituição em 22/10, PWA passou a falhar também no carregamento de unidades; causa exata ainda não confirmada."
+    },
     {
       "date": "2026-10-01",
       "area": "Meu RDO / Acesso e hierarquia",
