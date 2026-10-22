@@ -77,3 +77,29 @@ Aplicação necessária:
 - nenhum ajuste em `ApiAppController.php`.
 
 Status: runtime pendente.
+
+## Incidente Meu Transporte / PWA — 22/10/2026
+
+Status: **attention**.
+
+Diagnóstico confirmado:
+
+- o Flutter atual possui gestão de paradas e solicitação de passageiro;
+- o mapa já recebe paradas/embarques do fluxo principal do POSSEBON;
+- `TransporteWorkflowFirebaseTrait.php` desviou `monitor_paradas`, solicitações e ações `*_v2` para Firebase Storage;
+- o PWA exibiu `HTTP 404: The specified bucket does not exist`;
+- resultado observado: mapa com paradas, modal de lista vazio e solicitação de passageiro falhando.
+
+Isso caracteriza duas fontes de verdade para o mesmo domínio e não deve permanecer.
+
+Em 22/10 foi aplicada uma tentativa de substituir esse workflow por persistência no banco. Logo depois o PWA passou a falhar no carregamento de `/api/app/unidades`. O sintoma é confirmado, mas a causa runtime ainda **não foi provada**. Essa tentativa não deve ser marcada como validada.
+
+Prioridade de recuperação:
+
+1. restaurar o carregamento de unidades/PWA;
+2. obter erro HTTP/PHP real se persistir;
+3. comparar backend vivo anterior x aplicado;
+4. só depois corrigir paradas/solicitações usando uma única fonte POSSEBON;
+5. validar ponta a ponta antes de evoluir o módulo.
+
+Flutter confirmado na branch `possebon`: `72fe09bc67d795bc8714887afb5c0c67c25aec60` (`chore: dispara novo deploy no Vercel`).
