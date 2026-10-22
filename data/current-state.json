@@ -1,12 +1,12 @@
 {
-  "updated_at": "2026-10-22T07:04:00-03:00",
+  "updated_at": "2026-10-22T07:53:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "possebon",
     "flutter_head_confirmed": "72fe09bc67d795bc8714887afb5c0c67c25aec60",
-    "backend_baseline": "possebon_web-27-09-2026-23-21-36.zip enviado pelo usuário em 28/09/2026; fonte atual do MAD Builder/Web",
-    "backend_rule": "Backend MAD Builder/PHP: usar somente ZIP/arquivo vivo mais recente confirmado pelo usuário + alterações confirmadas como aplicadas. GitHub possebon_web não é baseline autoritativo.",
+    "backend_baseline": "possebon_web-22-10-2026-07-46-27.zip compartilhado pelo usuário em 22/10/2026; baseline atual do MAD Builder/Web para esta correção.",
+    "backend_rule": "GitHub possebon_web NÃO é fonte autoritativa. Para PHP usar o ZIP/arquivo mais recente confirmado pelo usuário; baseline atual: possebon_web-22-10-2026-07-46-27.zip.",
     "backend_latest_confirmed_files_2026_10_22": [
       "ApiAppController completo fornecido em 21/10/2026",
       "TransporteAppApiTrait.php v4.15.0 do trabalho corrente",
@@ -658,5 +658,21 @@
       "extra_proxy": "api/proxy.js também existe e adiciona Basic Authorization, mas o ApiUriBuilder atual não o usa para as chamadas normais.",
       "conclusion": "Existem duas estratégias de proxy no repositório. Isso é uma inconsistência arquitetural a revisar, mas NÃO foi provado como causa do incidente de /unidades de 22/10."
     }
+  },
+  "audicomp_semana_fix_2026_10_22": {
+    "status": "implemented_unverified",
+    "source": "possebon_web-22-10-2026-07-46-27.zip",
+    "finding": "No backend vivo, tipo D usava segSemanaMesDonoArea() (domingo) e tipo A caía em segSemanaMes() legado (segunda-feira), apesar de AudicompPublicForm usar a mesma regra dominical do Dono de Área.",
+    "official_rule": "Usar termno_em; dia 1 = Semana 1; cada domingo posterior ao dia 1 inicia a próxima semana.",
+    "change": "No bloco compartilhado de salvamento em SegurancaOperacionalAppApiTrait.php, tipos D e A passam juntos pelo mesmo cálculo do Dono de Área. R/P permanecem inalterados.",
+    "validation": [
+      "comparado com DonoDeAreaPublicForm.php do mesmo ZIP",
+      "comparado com AudicompPublicForm.php do mesmo ZIP",
+      "php -l OK",
+      "diff limitado ao bloco D/A de cálculo de período"
+    ],
+    "artifact": "POSSEBON_FIX_AUDICOMP_SEMANA_22-10-2026.zip",
+    "normalization_sql": "NORMALIZAR_AUDICOMP_SEMANA.sql preparado para corrigir apenas registros tipo A ativos com termno_em e validar divergencias_restantes=0.",
+    "runtime": "pending"
   }
 }
