@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T08:11:00-03:00",
+  "updated_at": "2026-10-22T08:15:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -680,7 +680,9 @@
       "divergent_rows": 48,
       "scope": "audicomp tipo A ativos com termno_em",
       "observation": "47 registros recentes de outubro estavam uma semana abaixo do correto e o registro 3340 estava uma semana acima; todos devem ser recalculados pela regra oficial baseada em domingos.",
-      "update_status": "not_executed_yet"
+      "update_status": "not_executed_yet",
+      "transaction_state": "uncertain_no_commit_confirmed",
+      "note": "Transcript enviado em 22/10 mostrou SELECT 48, UPDATE 48 e divergencias_restantes=0 dentro de transação (prompt possebon_app=*#), mas não mostrou COMMIT do Audicomp. Em seguida houve colagem acidental de texto/comandos no psql e prompt incompleto possebon_app(*#. Não considerar normalização persistida até nova consulta em sessão limpa."
     }
   }
 }
