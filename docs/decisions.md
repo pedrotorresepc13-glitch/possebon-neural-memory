@@ -160,3 +160,7 @@ Achados verificados no Flutter branch `possebon` HEAD `73bedbb350b762327d8bfd353
 11. Deploy Vercel `possebon.vercel.app` foi confirmado READY para HEAD `73bedbb...` na inspeção de deployment, mas logs de runtime deram 403 (sem acesso). Status READY não valida funcionamento. Não assumir publicação do pacote PHP.
 
 Próximo quality gate: confirmar app iOS nativo vs PWA instalado, APNs Apple Developer e capacidades iOS (push+background), FCM token por plataforma (não armazenar token em brain), worker e permissão por navegador, logs HTTP status/body para unidades e sessão, testes iPhone Safari/Home Screen, Android e Chrome desktop, benchmark de startup/reload, GPS offline, registros de entrega e clique. Preferir correções isoladas, testes regressão e implantação gradativa.
+
+## 2026-10-22 — Correção PWA iPhone em andamento
+
+**Status: in_progress; não implantado, não validado em aparelho.** Pedido do usuário: resolver lentidão, travamento de toques e falhas de Web Push no PWA instalado na Tela de Início do iPhone; PC e Android funcionam. Alterações devem ser isoladas em branch técnica, sem alterar backend vivo ou regras de negócio, e não podem ser declaradas estáveis antes de testes de WebKit/FCM e build.
