@@ -650,6 +650,13 @@
       "eliminar persistência de transporte no Firebase Storage sem criar segunda fonte",
       "alinhar monitor_paradas e mapa ao mesmo contrato",
       "validar solicitação monitor->gestor sem alterar rota antes da aprovação"
-    ]
+    ],
+    "pwa_network_observation": {
+      "status": "attention_not_root_cause_confirmed",
+      "current_flutter_behavior": "ApiUriBuilder no Web monta /backend/api/...; buscarUnidades chama /api/app/unidades e portanto usa /backend/api/app/unidades.",
+      "current_vercel_behavior": "vercel.json reescreve /backend/:path* diretamente para https://app.possebon.com.br:19302/:path*.",
+      "extra_proxy": "api/proxy.js também existe e adiciona Basic Authorization, mas o ApiUriBuilder atual não o usa para as chamadas normais.",
+      "conclusion": "Existem duas estratégias de proxy no repositório. Isso é uma inconsistência arquitetural a revisar, mas NÃO foi provado como causa do incidente de /unidades de 22/10."
+    }
   }
 }
