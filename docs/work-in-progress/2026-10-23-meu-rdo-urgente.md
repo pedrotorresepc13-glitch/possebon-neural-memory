@@ -71,3 +71,5 @@ Fontes de verdade: GitHub `pedrotorresepc13-glitch/possebon`, branch `possebon`;
 - Flutter PR #7 atualizado commit `713d98b4ee4a57324837141ed184363a5e319380`: no primeiro PDF antigo gerado, persiste caminho no estado da listagem; Safari PWA pode exigir mais um toque se popup foi bloqueado, mas não exibe mais modal intermediário; PDFs já registrados abrem no primeiro clique.
 - CI de commit `5b27713be962263913c9d9b7b12210019582153f`: success [40000765429](https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/40000765429). Aguardar CI do head `713d98b4` antes de merge.
 - **A implantação continua pendente**, e o problema 401 não deve ser dito como resolvido em produção até o usuário aplicar o Trait, integrar Flutter, validar Vercel e testar o PDF.
+
+- **CI final para o commit 713d98b4ee4a57324837141ed184363a5e319380**: [GitHub Actions 40001293618](https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/40001293618) **SUCCESS**, incluindo `flutter analyze` e `flutter build web --release`. Este sucesso não substitui a validação do backend nem teste no navegador.\n
