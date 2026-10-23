@@ -1,10 +1,10 @@
 {
   "schema_version": 3,
-  "updated_at": "2026-10-23T15:05:56.016327+00:00",
+  "updated_at": "2026-10-23T19:15:00.075586+00:00",
   "source": {
     "repository": "pedrotorresepc13-glitch/possebon",
     "branch": "possebon",
-    "head": "bbeb45267e53a43203c0e8c8ba4b4f0deff00159"
+    "head": "6218feae82021bd49dd5e7e1036c85eb8d8c6e6c"
   },
   "sync": {
     "state": "synced",
@@ -13,7 +13,7 @@
   "coverage": {
     "screens_indexed": 41,
     "screens_with_blueprint": 41,
-    "dart_files_scanned": 106,
+    "dart_files_scanned": 107,
     "navigation_edges": 60
   },
   "evidence": {
