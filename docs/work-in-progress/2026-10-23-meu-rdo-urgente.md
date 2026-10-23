@@ -37,3 +37,11 @@ Fontes de verdade: GitHub `pedrotorresepc13-glitch/possebon`, branch `possebon`;
 - Pendências para stable: mesclar com PHP **atual** do MadBuilder (ZIP exportado pode ter alterações posteriores), aplicar com backup, testar PDF real Web/iPhone, criação PT/LT/PTT e regra de datas com unidade e hierarquia; só então integrar PR #7 à branch operacional e verificar deployment Vercel. Não prometer entrega automática ou afirmar produção funcional.
 
 - **CI do head final** [39984502471](https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/39984502471), commit `fd5fbc65df4b6a28e6a05a5d5c127006a55b0370`: **success** (Flutter pub get, dart format local runner, Flutter analyze, Flutter build web release). Continua **sem backend implantado**, PR em draft.\n
+## Revisão 23/10 — arquivos protegidos do MAD Builder NÃO devem ser alterados
+
+- O usuário esclareceu que **não pode/não quer alterar `app/control/adm_contratual/RdoDocument.php`**, que é gerado e protegido pelo MAD Builder. O objetivo é ter PDF funcionando **apenas no aplicativo**, sem depender do PDF Web administrativo.
+- O pacote anterior de **3 arquivos fica INVALIDADO** e NÃO DEVE SER INSTALADO: `POSSEBON_RDO_CORRECAO_BACKEND_23-10-2026.zip`.
+- Novo pacote seguro com **somente** `app/routes/api.php` e `app/custom/RdoAppApiTrait.php`: `POSSEBON_RDO_APP_SEM_RDODOCUMENT_23-10-2026.zip`.
+- O PDF do app é independente, gerado no trait pela biblioteca `Dompdf` que já vem no `vendor` da exportação do MAD Builder, sem chamar `RdoDocument` e sem usar o template gerado. Resposta mantém `data.arquivo_pdf` no caminho `tmp/` esperado pelo Flutter. Novo relatório tem aparência independente do PDF Web.
+- Verificações no ambiente de preparação: `php -l` OK nos 2 arquivos; conteúdo do ZIP verificado; nenhuma chamada `RdoDocument` no trait; biblioteca Dompdf presente no ZIP de origem. **Não houve teste funcional contra banco ou runtime vivo**; status `active / blocked` até instalação/teste no MAD Builder.
+- Preservar merge/backup do código real do servidor e controle de unidade/escopo. Usar apenas esse novo pacote. PR Flutter #7 permanece draft, sem publicação operacional.
