@@ -45,3 +45,11 @@ Fontes de verdade: GitHub `pedrotorresepc13-glitch/possebon`, branch `possebon`;
 - O PDF do app é independente, gerado no trait pela biblioteca `Dompdf` que já vem no `vendor` da exportação do MAD Builder, sem chamar `RdoDocument` e sem usar o template gerado. Resposta mantém `data.arquivo_pdf` no caminho `tmp/` esperado pelo Flutter. Novo relatório tem aparência independente do PDF Web.
 - Verificações no ambiente de preparação: `php -l` OK nos 2 arquivos; conteúdo do ZIP verificado; nenhuma chamada `RdoDocument` no trait; biblioteca Dompdf presente no ZIP de origem. **Não houve teste funcional contra banco ou runtime vivo**; status `active / blocked` até instalação/teste no MAD Builder.
 - Preservar merge/backup do código real do servidor e controle de unidade/escopo. Usar apenas esse novo pacote. PR Flutter #7 permanece draft, sem publicação operacional.
+
+## Confirmacao das versoes enviadas pelo usuario — 23/10/2026 17:38
+- Usuario forneceu `RdoAppApiTrait.php` completo (2128 linhas) e `api.php` completo (1449 linhas).
+- Comparacao com patch anterior (normalizacao CRLF/LF): arquivos originais coincidem integralmente; apenas **3 blocos adicionados no trait** e **1 bloco nas rotas**, sem deletar ou substituir linhas.
+- Novo pacote reconstituido a partir dos anexos originais: `POSSEBON_RDO_CORRIGIDO_VERSOES_ENVIADAS_23-10-2026.zip`, contendo somente os dois PHP e README.
+- Nao alterar `RdoDocument.php`. `php -l` passou nos dois PHP. Um metodo PDF, um cadastro PT, um helper de data; uma rota PDF e uma de permissao.
+- SHA256 dos **originais enviados**: Trait `3d416cea6db3481362397a13e0b8d1c58c29b047fd6058ab210c1e4abc2377fe`; routes `6a5d4090102c88bc648619a912c3f06c8aabe6a147bc681961bae18ca630ca05`.
+- Estado: patch entregue para instalacao **pelo usuario**, backend MAD Builder vivo **nao alterado nem testado em banco**. Fazer backup e reconfirmar codigo atual antes de sobrescrever caso tenha havido edicoes apos o envio.
