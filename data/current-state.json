@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T08:45:00-03:00",
+  "updated_at": "2026-10-26T12:00:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -707,5 +707,33 @@
       "ApiAppController php -l OK no snapshot com arquivos substituídos",
       "Flutter ainda sem flutter analyze/build nesta etapa; requer CI/runtime"
     ]
+  },
+  "transport_pending_2026_10_26": {
+    "status": "active_prepared_not_deployed",
+    "flutter_branch": "fix/monitor-ios-pwa-20261023",
+    "flutter_head": "affd3aae184cb8c6553910dedd83327972e1748e",
+    "flutter_pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/6",
+    "ci_validation": "https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/40346630070 — success build/analyze",
+    "backend_package": "POSSEBON_TRANSPORTE_PENDENCIAS_CORRIGIDAS_26-10-2026.zip",
+    "backend_baseline": "possebon_web-22-10-2026-12-09-54(1).zip; current live version not confirmed",
+    "files": [
+      "app/custom/TransporteWorkflowFirebaseTrait.php",
+      "app/control/adm_financeiro/TransporteTrajetoWebAdmin.php (NEW)"
+    ],
+    "behavior": [
+      "monitor remove stop even with passengers and last stop, retains route/seat",
+      "monitor unlink individual from stop without losing route/seat",
+      "cancel journey without saving R",
+      "Web group33 can soft-delete only recorded trajectory R after linking Designer action"
+    ],
+    "pending": [
+      "confirm actual live backend",
+      "install PHP after backup and merge",
+      "wire Web reset action in Designer and permissions for native route CRUD screens",
+      "functional SQL/multi-unit/monitor tests",
+      "merge PR6 only after server compatibility confirmed",
+      "confirm Vercel and test GPS on physical iPhone PWA/Android"
+    ],
+    "limitation": "iOS PWA cannot guarantee GPS collection while locked/background; never claim end-to-end complete trajectory"
   }
 }
