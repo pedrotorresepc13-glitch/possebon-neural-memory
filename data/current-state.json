@@ -735,5 +735,20 @@
       "confirm Vercel and test GPS on physical iPhone PWA/Android"
     ],
     "limitation": "iOS PWA cannot guarantee GPS collection while locked/background; never claim end-to-end complete trajectory"
+  },
+  "meu_rh_2026_10_27": {
+    "status": "active_prepared_not_deployed",
+    "app_branch": "feature/meu-rh-20261027",
+    "pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/9",
+    "ui": "Card Meu RH na home de ativos CLT; Envelope de Pagamentos, Histórico Salarial, Espelho de Ponto Em desenvolvimento.",
+    "api_client": "GET /api/app/meu-rh/{envelopes|historico-salarial}, proposto e nao implantado; responde sem dados simulados se 404.",
+    "source_known": "TOTVS RM PT_07 historico PFHSTSAL+PMOTMUDSAL, CODCOLIGADA+CHAPA; envelope requer API oficial TOTVS Swagger.",
+    "security": "Colaborador ativo CLT POSSEBON/Consorcio EPC13, terceiros fora, auth backend por token, unidade e empresa; sem armazenamento RH no POSSEBON Web, sem PDF publico.",
+    "pending": [
+      "confirmar e implementar consulta server-to-server usando conexao RM existente",
+      "validar contratos dados e PDF de envelope",
+      "garantir filtro empresa elegivel com IDs configurados",
+      "PHP backend live, testes de identidade cruzada e publicacao controlada"
+    ]
   }
 }
