@@ -291,3 +291,23 @@ Não duplicar lógica de token; migração deve ser gradual e validada.
 
 ### Regra
 Novo módulo deve partir do design system/padrão existente; não criar paleta própria sem necessidade.
+
+---
+
+## Meu RH (em desenvolvimento)
+
+### Home / UI
+- `lib/screens/home_screen.dart` — card para colaborador ativo, contrato CLT, unidade corrente.
+- `lib/features/meu_rh/presentation/meu_rh_screen.dart` — três cards: Envelope de Pagamentos, Histórico Salarial e Espelho de Ponto (**Em desenvolvimento**).
+- `lib/features/meu_rh/domain/meu_rh_acesso.dart` — guarda visual testável.
+- `lib/features/meu_rh/data/meu_rh_api.dart` — cliente Bearer no-store para consultas privadas; não guarda dados sensíveis.
+
+### Backend/TOTVS (PENDENTE)
+- História salarial TOTVS PT_07 (PFHSTSAL/PMOTMUDSAL) por CHAPA + CODCOLIGADA, acesso servidor-servidor.
+- Holerite por API oficial TOTVS, PDF autenticado (sem link público, sem persistência no POSSEBON Web).
+- Backend precisa conferir identidade, status ativo, contrato CLT, empresa elegível e unit_id com a sessão JWT antes de cada requisição.
+- Rotas em `docs/meu-rh-api-contract.md` são **contrato proposto**, não implementadas no PHP vivo.
+- Espelho de Ponto futuramente pelo Mail Import, armazenado no Web.
+
+### Estado
+PR técnica #9 em branch `feature/meu-rh-20261027`. Não integrada ao aplicativo operacional nem aprovada por RH/backend.
