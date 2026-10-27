@@ -171,3 +171,10 @@ Workflow criado ≠ workflow executado com sucesso.
 Arquivo gerado ≠ arquivo validado.
 
 Sempre registrar o estado real.
+
+## Datas e localização (padrão permanente do APP)
+
+- Toda data exibida ao colaborador no APP POSSEBON deve usar convenção brasileira **DD/MM/AAAA**; competências, **MM/AAAA**. Não exibir datas em estilo americano ou `AAAA-MM-DD` na interface.
+- A API pode continuar trafegando datas ISO `AAAA-MM-DD` para ordenação/validação, sem mudança de fuso para campos que representam apenas uma data civil; converter somente na camada de apresentação.
+- Quando o dado não estiver disponível ou for inválido, exibir texto neutro em vez de um valor ambíguo ou incorreto.
+
