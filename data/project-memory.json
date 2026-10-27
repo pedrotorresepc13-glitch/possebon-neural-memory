@@ -574,6 +574,29 @@
         "php -l antes de aplicar",
         "Pacote preparado não é pacote aplicado"
       ]
+    },
+    {
+      "id": "meu_rh",
+      "title": "Meu RH",
+      "kind": "screen",
+      "status": "active",
+      "x": 1680,
+      "y": 2970,
+      "summary": "Card para colaborador ativo CLT no contexto da unidade, com envelopes de pagamentos, histórico salarial e espelho de ponto Em desenvolvimento. UI/cliente propostos na PR #9; integração TOTVS backend ainda não implantada.",
+      "files": [
+        "lib/features/meu_rh/presentation/meu_rh_screen.dart",
+        "lib/features/meu_rh/data/meu_rh_api.dart",
+        "lib/features/meu_rh/domain/meu_rh_acesso.dart",
+        "lib/screens/home_screen.dart"
+      ],
+      "requirements": [
+        "TOTVS PT_07 PFHSTSAL/PMOTMUDSAL para histórico, CODCOLIGADA+CHAPA",
+        "Envelope via API oficial TOTVS, confirmar endpoint Swagger",
+        "Backend resolve identidade e unidade da sessão, exclui terceiros, não grava remuneração no POSSEBON Web",
+        "Espelho de Ponto futuro via Mail Import para POSSEBON Web"
+      ],
+      "deployment": "prepared_not_merged",
+      "security": "financial_sensitive_no_cache"
     }
   ],
   "edges": [
@@ -812,6 +835,18 @@
     [
       "performance",
       "manifest"
+    ],
+    [
+      "home",
+      "meu_rh"
+    ],
+    [
+      "meu_rh",
+      "api"
+    ],
+    [
+      "meu_rh",
+      "backend"
     ]
   ],
   "current_focus": [
