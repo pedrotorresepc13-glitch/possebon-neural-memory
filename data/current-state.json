@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-26T12:00:00-03:00",
+  "updated_at": "2026-10-27T00:20:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -737,7 +737,7 @@
     "limitation": "iOS PWA cannot guarantee GPS collection while locked/background; never claim end-to-end complete trajectory"
   },
   "meu_rh_2026_10_27": {
-    "status": "active_backend_file_prepared_manual_install_pending",
+    "status": "historico_pt07_funcional_envelopes_queries_preparadas",
     "app_branch": "feature/meu-rh-20261027",
     "pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/9",
     "ui": "Card Meu RH na home de ativos CLT; Envelope de Pagamentos, Histórico Salarial, Espelho de Ponto Em desenvolvimento.",
@@ -745,13 +745,15 @@
     "source_known": "TOTVS RM PT_07 historico PFHSTSAL+PMOTMUDSAL, CODCOLIGADA+CHAPA; envelope requer API oficial TOTVS Swagger.",
     "security": "Colaborador ativo CLT POSSEBON/Consorcio EPC13, terceiros fora, auth backend por token, unidade e empresa; sem armazenamento RH no POSSEBON Web, sem PDF publico.",
     "pending": [
-      "Instalar novo MeuRhAppApiTrait.php no servidor vivo",
-      "Testar GET com JWT novo (revogar token exposto) e preservar escopo 3",
-      "Conferir integração TOTVS PT_07 em runtime e formato de linhas",
-      "Implementar envelopes via API oficial (ainda desconhecida)",
-      "Integrar cache criptografado native em futuro estágio"
+      "Validar duas sentenças de envelopes no TOTVS",
+      "Confirmar competência/periodos liberados no RM Portal antes de expor folha",
+      "Implementar API de lista/detalhe e tela Flutter sem afetar PT07",
+      "Determinar PDF oficial seguro",
+      "Testar segurança acesso cruzado e cache nativo"
     ],
     "backend_pt07": "TotvsRmApiService.php JÁ implementa getHistoricoSalarial(CODCOLIGADA,CHAPA) via application.ini [totvs_rm]. O código anterior de bridge My Import deve ser substituído por chamada direta; preparado arquivo completo app/custom/MeuRhAppApiTrait.php para instalação manual. NÃO instalado/não validado em runtime.",
-    "backend_baseline": "possebon_web-26-10-2026-22-21-50.zip"
+    "backend_baseline": "possebon_web-26-10-2026-22-21-50.zip",
+    "historico_runtime": "FUNCIONANDO: usuario enviou captura da UI com salarios reais PT_07 em 27/10/2026. Sem teste cruzado/offline ainda.",
+    "envelopes": "SQLs diagnosticas APP_RH_ENV_LISTA e APP_RH_ENV_ITENS preparadas em ZIP na conversa; NÃO cadastradas/testadas no TOTVS e NÃO disponíveis no app. Exige conferir regra liberacao no RM Portal antes de expor dados PFFINANC; PDF oficial pendente."
   }
 }
