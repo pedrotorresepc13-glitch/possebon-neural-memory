@@ -35,3 +35,8 @@
 4. Monitorar deploy Vercel e não afirmar que atualizou até conferência.
 
 **Nota:** a regra de reordenação foi entregue com ações subir/descer (não arrastar); atende reordenar ordem de paradas e persistir, mas não implementa drag-and-drop por gesto.
+
+## Validação após abertura da PR #10
+- Draft PR #10 verificada `mergeable=true`, base `feature/meu-rh-20261027`, head `fix/transporte-completo-20261028`.
+- Workflow GitHub Actions run **40668901059** na PR **FAILED** em ~2s, **antes de executar qualquer etapa**: job `validate` registra `steps=[]`, `runner_id=0`, `runner_name=""`; não há logs disponíveis (BlobNotFound). Isso aponta problema de inicialização/agendamento/ambiente CI, **não confirma erro Dart** e tampouco valida compilação. Investigar e rerodar CI antes de merge/deploy. Status de Vercel commit estava pending.
+- Pacote final `/mnt/data/POSSEBON_TRANSPORTE_COMPLETO_28-10-2026.zip` verificado: 6 arquivos, 3 PHP com `php -l` OK, `bash -n` OK, instalação preflight sem alteração contra cópia do backend baseline 26/10 OK. Script preserva owner/group/mode dos arquivos ao aplicar; instalação real pendente. Atualização do ZIP conferida em 28/10. Sem prova de servidor atualizado.
