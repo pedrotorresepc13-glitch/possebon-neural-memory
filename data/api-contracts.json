@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22",
+  "updated_at": "2026-10-28T08:00:00-03:00",
   "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
   "auth": {
     "session_activate": {
@@ -120,7 +120,7 @@
   ],
   "transport": {
     "status": "attention",
-    "note": "Contrato observado no Flutter atual e nos arquivos backend fornecidos em 21-22/10; conferir backend vivo antes de alterar.",
+    "note": "Contrato observado no Flutter PR #10, ZIP real MAD Builder de 26/10 e PHP customizado preparado 28/10; criação/edição/exclusão e reordenar/limpar exigem aplicação manual do backend e testes de runtime.",
     "meu_transporte": {
       "path": "/api/app/meu-transporte",
       "methods": [
@@ -164,14 +164,64 @@
         "gestao_nao_utiliza",
         "iniciar",
         "atualizar_posicao",
-        "finalizar"
+        "finalizar",
+        "monitor_parada_desvincular_v2",
+        "monitor_parada_reordenar_v2",
+        "cancelar_viagem",
+        "gestao_limpar_gravacao",
+        "gestao_rota_salvar",
+        "gestao_rota_excluir"
       ],
       "critical_rules": [
         "monitor_paradas e mapa leem a mesma fonte persistente",
         "solicitação monitor->gestor não altera rota antes da aprovação",
         "Firebase Storage não persiste estado operacional",
-        "falha de PUSH não invalida gravação operacional"
-      ]
+        "falha de PUSH não invalida gravação operacional",
+        "Gestão administrativa existe no POSSEBON App E no Web; group33 autoriza todas as rotas da unidade."
+      ],
+      "pending_manual_backend_actions": [
+        "monitor_parada_desvincular_v2",
+        "monitor_parada_reordenar_v2",
+        "gestao_limpar_gravacao",
+        "gestao_rota_salvar",
+        "gestao_rota_excluir",
+        "cancelar_viagem"
+      ],
+      "route_admin_form": {
+        "action": "gestao_rota_salvar",
+        "body": [
+          "pessoa_id",
+          "unit_id",
+          "rota_id (optional)",
+          "codigo <= 8",
+          "nome <= 125",
+          "assentos integer 1..9999",
+          "ponto_partica <=125"
+        ],
+        "response": [
+          "salvo:true",
+          "rota_id"
+        ],
+        "status": "implemented_unverified"
+      },
+      "route_admin_delete": {
+        "action": "gestao_rota_excluir",
+        "body": [
+          "pessoa_id",
+          "unit_id",
+          "rota_id"
+        ],
+        "response": [
+          "excluido:true"
+        ],
+        "rules": [
+          "bloquear se houver passageiro ativo",
+          "bloquear viagem ativa",
+          "soft-delete e auditoria",
+          "grupo33 e unit_id"
+        ],
+        "status": "implemented_unverified"
+      }
     }
   }
 }
