@@ -51,3 +51,12 @@
 - GitHub Actions run `40671926563` FALHOU antes de executar `steps` (`steps=null`); não equivale a bug Flutter confirmado, mas tampouco comprova compilação. Flutter SDK não está disponível no contêiner local para analyze/build. Testar via runner disponível antes de merge/deploy.
 - Não considerar resolvida a Gestão Web de limpar GPS/paradas: a tela MAD Builder gerada NÃO foi alterada e precisa ação via Designer + serviço customizado no backend vivo. Não sugerir editar arquivo gerado pelo pacote antigo.
 - Status atual: código Flutter em PR draft; sem deploy, sem confirmação do backend ou teste de campo.
+
+## 28/10 — DECISÃO MAIS RECENTE: Gestão de Transporte nos DOIS ambientes
+
+Esta decisão do usuário **substitui** a orientação anterior de manter administração somente no POSSEBON Web. O POSSEBON App continuará com **Gestão de Transporte administrativa**, e o POSSEBON Web/MAD Builder também. O futuro Portal não implica remoção da gestão atual.
+
+- Regra oficial: grupo 33 App_Minha Rota, todas as rotas/monitores da `unit_id`, sem condicionar a gestão ao colaborador ter rota, ser monitor ou ser passageiro. Backend continua revalidando autorização e identidade da sessão.
+- Confirmado no Flutter branch `fix/transporte-completo-20261028`: commit `dd863e5420c47cd36c78dcaec862d60934e4dcf8` move consulta `gestao_acesso` da Home para fora do bloco `if (ehColaborador)`. Card e tela de gestão existentes permanecem.
+- Inspecionado ZIP real `possebon_web-26-10-2026-22-21-50.zip`: `TransporteAppApiTrait.php` possui `gestao_acesso`, `gestao`, alterações de monitor/assento/transferência, grupo 33 e escopo `unit_id`. `TransporteWorkflowFirebaseTrait.php` do ZIP não possui `monitor_parada_reordenar_v2` nem `gestao_limpar_gravacao`; pacote preparado de 28/10 acrescenta as duas ações e outras correções, **sem implantação confirmada**.
+- A gestão Web e App devem coexistir; ações da gestão App que ainda não possuem endpoint instalado no servidor ficam pendentes. Não afirmar conclusão até a validação de contrato e testes.
