@@ -334,7 +334,9 @@
         "Lista de paradas e mapa usam a mesma fonte persistente.",
         "Solicitação monitor->gestor não altera rota oficial antes da aprovação.",
         "Firebase/FCM somente PUSH; Firebase Storage não é fonte de verdade do Transporte.",
-        "Preservar fotos, carona, mapa, viagem ativa, tracking e notificações existentes."
+        "Preservar fotos, carona, mapa, viagem ativa, tracking e notificações existentes.",
+        "Colaborador com rota vinculada deve poder acompanhar ônibus no mapa; nunca condicionar a monitor/gestor.",
+        "Não sobrescrever páginas geradas no MAD Builder: preferir Designer e entregar arquivo customizado PHP completo para substituição manual."
       ],
       "backend": [
         "app/custom/TransporteAppApiTrait.php",
@@ -343,12 +345,10 @@
         "app/custom/FirebaseNotificationTrait.php"
       ],
       "next": [
-        "Recuperar /api/app/unidades/PWA.",
-        "Diagnosticar backend vivo antes de novo patch.",
-        "Remover dupla fonte Firebase Storage x POSSEBON.",
-        "Validar paradas existentes/editar/excluir/vincular.",
-        "Validar solicitação e aprovação do gestor.",
-        "Validar chamada manual por parada e visão diária do gestor."
+        "Flutter PR #10 draft: confirmar CI analyze/test/build, validar no app mapa do colaborador e finalização automática",
+        "Monitor retirar da parada e excluir ocupada/reordenar: depende das ações customizadas no backend vivo; confirmar contratos no MAD Builder",
+        "Gestão Web: configurar ação limpar GPS e paradas via Designer MAD Builder e serviço customizado sem substituir páginas geradas",
+        "Homologar PWA iOS (GPS em segundo plano tem limitações nativas) e sincronização offline"
       ]
     },
     {
