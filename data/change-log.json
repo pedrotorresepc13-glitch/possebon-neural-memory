@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-28T07:51:00-03:00",
+  "updated_at": "2026-10-28T08:03:00-03:00",
   "entries": [
     {
       "date": "2026-10-28",
       "area": "Meu Transporte / concluir Flutter e Gestão no APP + Web",
-      "status": "in_progress",
-      "summary": "Decisão explícita do usuário: Gestão de Transporte continua no POSSEBON App e também no POSSEBON Web, não é exclusiva do Web e não deve ser retirada para o futuro Portal. Grupo 33 App_Minha Rota pode administrar todas as rotas/monitores da unidade; respeitar unit_id e backend. Revisar PR #10, preservar acompanhamento do ônibus por colaborador, monitor, carona e funções atuais. Verificar contratos do MAD Builder antes de ativar ações dependentes; não substituir páginas geradas nem publicar/mesclar sem testes."
+      "status": "implemented_unverified",
+      "summary": "Flutter PR #10 branch fix/transporte-completo-20261028: corrigida gestão de grupo33 independentemente de ehColaborador, adicionadas telas de criação/edição/exclusão de rotas e API POST gestao_rota_salvar/excluir (HEAD 7ad863d). Preparados dois PHP custom completos com endpoint CRUD e ajuste seguro do resolver grupo33 por system_user_unit; php -l OK. Nenhum backend instalado no MAD Builder; GitHub Actions falha antes de runner (steps=[]). Sem merge, deploy ou validação runtime; não marcar stable."
     },
     {
       "date": "2026-10-22",
