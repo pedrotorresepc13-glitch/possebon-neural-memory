@@ -755,5 +755,24 @@
     "backend_baseline": "possebon_web-26-10-2026-22-21-50.zip",
     "historico_runtime": "FUNCIONANDO: usuario enviou captura da UI com salarios reais PT_07 em 27/10/2026. Sem teste cruzado/offline ainda.",
     "envelopes": "SQLs diagnosticas APP_RH_ENV_LISTA e APP_RH_ENV_ITENS preparadas em ZIP na conversa; NÃO cadastradas/testadas no TOTVS e NÃO disponíveis no app. Exige conferir regra liberacao no RM Portal antes de expor dados PFFINANC; PDF oficial pendente."
+  },
+  "transport_2026_10_28": {
+    "status": "flutter_pr_draft_backend_zip_prepared_not_deployed",
+    "app_repo": "pedrotorresepc13-glitch/possebon",
+    "app_branch": "fix/transporte-completo-20261028",
+    "app_pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/10",
+    "app_map_hotfix": "feature/meu-rh-20261027 commit ae320e5dca8d7b54baa03a02696e525413bf35db",
+    "backend_source": "possebon_web-26-10-2026-22-21-50.zip",
+    "backend_package": "POSSEBON_TRANSPORTE_COMPLETO_28-10-2026.zip criado localmente, não instalado",
+    "requested": [
+      "monitor excluir parada ocupada",
+      "monitor retirar passageiro da parada",
+      "monitor reordenar sequência de paradas",
+      "gestor limpar GPS e paradas mantendo pessoas/rota/assentos",
+      "monitor finalizar automaticamente no destino GPS confiável",
+      "colaborador acompanhar ônibus no mapa"
+    ],
+    "validation": "PHP lint, bash lint, installer readonly preflight passaram; CI Flutter/Vercel pendente, sem runtime teste servidor",
+    "brain_doc": "docs/work-in-progress/2026-10-28-transporte.md"
   }
 }
