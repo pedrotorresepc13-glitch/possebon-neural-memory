@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T07:54:00-03:00",
+  "updated_at": "2026-10-28T08:03:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -757,13 +757,28 @@
     "envelopes": "SQLs diagnosticas APP_RH_ENV_LISTA e APP_RH_ENV_ITENS preparadas em ZIP na conversa; NÃO cadastradas/testadas no TOTVS e NÃO disponíveis no app. Exige conferir regra liberacao no RM Portal antes de expor dados PFFINANC; PDF oficial pendente."
   },
   "transport_2026_10_28": {
-    "status": "in_progress",
+    "status": "implemented_unverified",
     "decision": "Administração de Transporte simultânea no POSSEBON App e no POSSEBON Web, sem exclusividade Web; grupo33 gerencia todas as rotas da unit_id.",
     "flutter_branch": "fix/transporte-completo-20261028",
-    "flutter_commit": "dd863e5420c47cd36c78dcaec862d60934e4dcf8",
+    "flutter_commit": "7ad863d7806f7f8830032738b8be31cf0bcaccd9",
     "pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/10",
     "confirmed_change": "Home passou a consultar gestao_acesso independentemente de ehColaborador; backend continua decidindo autorização por grupo e unidade",
     "backend": "ZIP baseline 26/10 inspecionado; pacote 28/10 preparado com reordenar/limpar; ainda não aplicado, não há runtime validado",
-    "next": "Validar backend e CI antes de merge; implementar manutenção de rotas no App por API oficial sem alterar telas geradas do Web"
+    "next": "Instalar manualmente e validar PHP no MAD Builder preservando alterações posteriores; aprovar CI Flutter, testar CRUD unidade/grupo33, monitor e PWA antes de merge/deploy",
+    "changes": [
+      "Home gestão grupo 33 sem exigir ehColaborador",
+      "Tela de Gestão do App: cadastrar, editar, excluir rota",
+      "Contrato Flutter de gestao_rota_salvar/gestao_rota_excluir",
+      "Trait custom preparado com CRUD, limpar rota, reordenar e demais correções",
+      "Trait TransporteAppApi preparado com gestão de admins vinculados à unidade mesmo sem Colaborador"
+    ],
+    "php_lint": "php -l OK nos dois traits customizados",
+    "php_files": [
+      "TransporteAppApiTrait.php (completo, preparado)",
+      "TransporteWorkflowFirebaseTrait.php (completo, preparado)"
+    ],
+    "backend_applied": false,
+    "ci": "GitHub Actions falhou antes de iniciar steps, runner vazio, código Flutter não compilado",
+    "runtime_validated": false
   }
 }
