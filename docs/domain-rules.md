@@ -172,3 +172,12 @@ Regras comuns:
 - Firebase/FCM pode notificar; **Firebase Storage não é banco de estado operacional de Transporte**.
 - Falha de notificação não pode desfazer nem impedir a operação já salva no POSSEBON.
 - Preservar carona temporária, fotos dos passageiros, mapa, viagem ativa e tracking ao evoluir o módulo.
+
+## Decisão de 28/10/2026 — gestão nos dois canais
+
+- **Gestão de Transporte permanece no POSSEBON App e no POSSEBON Web (MAD Builder)**. A interface administrativa não é exclusiva do Web e não deve ser removida do App quando o futuro POSSEBON Portal for criado.
+- Grupo 33 (`App_Minha Rota`) dá acesso ao painel de gestão, rotas e monitores de **toda a unidade autenticada**, com autorização sempre revalidada na API. Não condicionar a visibilidade do card, no Flutter, ao usuário ser passageiro/monitor; o backend decide o acesso.
+- O App deve oferecer gestão administrativa compatível com os contratos oficiais (inclusive manutenção de cadastro de rota quando a API existir), além das ações de monitor que já utiliza.
+- O Web continua com o cadastro administrativo do MAD Builder; evitar substituir páginas geradas e oferecer serviços em `app/custom` quando indispensável.
+- Acesso do colaborador ao mapa do seu ônibus é independente do grupo 33. Não regredir carona, presença manual, trajeto, histórico e `unit_id`.
+- **Não liberar operações destrutivas no cliente quando o endpoint correspondente do backend vivo não estiver confirmado**.
