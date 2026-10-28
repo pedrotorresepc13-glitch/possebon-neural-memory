@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-10-22T07:04:00-03:00",
+    "updated_at": "2026-10-28T07:54:00-03:00",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -312,7 +312,7 @@
       "status": "attention",
       "x": 1600,
       "y": 2200,
-      "summary": "Meu Transporte/Gestão: rotas, monitor, pontos/paradas, chamada manual por viagem/parada, carona, solicitações ao gestor e tracking. Em 22/10/2026 está em ATTENTION por dupla fonte POSSEBON x Firebase Storage e regressão runtime do PWA após tentativa de correção.",
+      "summary": "Meu Transporte + Gestão nos dois canais (App e Web): rotas, monitores, paradas/passageiros, carona, solicitações, GPS e mapa. PR #10 segue draft; nova regra grupo33 confirmada em 28/10; backend compatível pendente de instalação/homologação.",
       "files": [
         "lib/screens/meu_transporte_screen.dart",
         "lib/screens/transporte_mapa_screen.dart",
@@ -336,7 +336,8 @@
         "Firebase/FCM somente PUSH; Firebase Storage não é fonte de verdade do Transporte.",
         "Preservar fotos, carona, mapa, viagem ativa, tracking e notificações existentes.",
         "Colaborador com rota vinculada deve poder acompanhar ônibus no mapa; nunca condicionar a monitor/gestor.",
-        "Não sobrescrever páginas geradas no MAD Builder: preferir Designer e entregar arquivo customizado PHP completo para substituição manual."
+        "Não sobrescrever páginas geradas no MAD Builder: preferir Designer e entregar arquivo customizado PHP completo para substituição manual.",
+        "Gestão de Transporte fica no POSSEBON App E no POSSEBON Web, inclusive para grupo 33; nunca mover exclusivamente ao Web/Portal. Visibilidade do card no Flutter segue gestao_acesso e não depende de ser passageiro/monitor; backend revalida pessoa, unidade e grupo."
       ],
       "backend": [
         "app/custom/TransporteAppApiTrait.php",
@@ -345,6 +346,7 @@
         "app/custom/FirebaseNotificationTrait.php"
       ],
       "next": [
+        "Incluir/validar manutenção administrativa de cadastro de rotas no App além de monitor, passageiros e limpeza; conferir API customizada no backend vivo antes de liberar.",
         "Flutter PR #10 draft: confirmar CI analyze/test/build, validar no app mapa do colaborador e finalização automática",
         "Monitor retirar da parada e excluir ocupada/reordenar: depende das ações customizadas no backend vivo; confirmar contratos no MAD Builder",
         "Gestão Web: configurar ação limpar GPS e paradas via Designer MAD Builder e serviço customizado sem substituir páginas geradas",
