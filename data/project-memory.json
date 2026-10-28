@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-10-28T07:54:00-03:00",
+    "updated_at": "2026-10-28T08:03:00-03:00",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -312,7 +312,7 @@
       "status": "attention",
       "x": 1600,
       "y": 2200,
-      "summary": "Meu Transporte + Gestão nos dois canais (App e Web): rotas, monitores, paradas/passageiros, carona, solicitações, GPS e mapa. PR #10 segue draft; nova regra grupo33 confirmada em 28/10; backend compatível pendente de instalação/homologação.",
+      "summary": "Transporte e Gestão administrativa no POSSEBON App e Web. Flutter PR #10 draft: mapa colaborador, monitor, reordenação, cancelamento, encerramento e CRUD de rotas (28/10). Traits PHP custom preparados mas não aplicados; CI e runtime pendentes.",
       "files": [
         "lib/screens/meu_transporte_screen.dart",
         "lib/screens/transporte_mapa_screen.dart",
@@ -346,6 +346,7 @@
         "app/custom/FirebaseNotificationTrait.php"
       ],
       "next": [
+        "Validar e instalar manualmente os dois PHP custom no MAD Builder após comparar versão viva, confirmar CRUD de rotas, grupo33/unidade e CI analyze/test/build; PR #10 continua draft.",
         "Incluir/validar manutenção administrativa de cadastro de rotas no App além de monitor, passageiros e limpeza; conferir API customizada no backend vivo antes de liberar.",
         "Flutter PR #10 draft: confirmar CI analyze/test/build, validar no app mapa do colaborador e finalização automática",
         "Monitor retirar da parada e excluir ocupada/reordenar: depende das ações customizadas no backend vivo; confirmar contratos no MAD Builder",
