@@ -757,7 +757,7 @@
     "envelopes": "SQLs diagnosticas APP_RH_ENV_LISTA e APP_RH_ENV_ITENS preparadas em ZIP na conversa; NÃO cadastradas/testadas no TOTVS e NÃO disponíveis no app. Exige conferir regra liberacao no RM Portal antes de expor dados PFFINANC; PDF oficial pendente."
   },
   "transport_2026_10_28": {
-    "status": "flutter_pr_draft_backend_zip_prepared_not_deployed",
+    "status": "flutter_pr_draft_app_only_backend_madbuilder_pending",
     "app_repo": "pedrotorresepc13-glitch/possebon",
     "app_branch": "fix/transporte-completo-20261028",
     "app_pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/10",
@@ -773,6 +773,12 @@
       "colaborador acompanhar ônibus no mapa"
     ],
     "validation": "PHP lint, bash lint, installer readonly preflight passaram; CI Flutter/Vercel pendente, sem runtime teste servidor",
-    "brain_doc": "docs/work-in-progress/2026-10-28-transporte.md"
+    "brain_doc": "docs/work-in-progress/2026-10-28-transporte.md",
+    "latest_flutter_commit": "23ee40214b571c74881bcf4799a9728dcb1c359f",
+    "latest_flutter_change": "Mapa recebe estado final após conclusão automática confirmada pelo servidor; mapa colaborador, monitor e tracking já presentes na PR.",
+    "backend_update_policy": "NÃO sobrescrever páginas geradas MAD Builder nem usar instalador SSH. Custom traits PHP completos entregues para colar manualmente após conferir backend vivo; páginas administrativas via Designer nativo.",
+    "backend_deployed": false,
+    "flutter_deployed": false,
+    "flutter_ci": "GitHub Actions run 40671926563 failure before steps (steps=null), sem validação analyze/test/build, validação PWA/Android pendente."
   }
 }
