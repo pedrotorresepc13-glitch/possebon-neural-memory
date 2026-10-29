@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-29T09:10:00-03:00",
+  "updated_at": "2026-10-29T10:43:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-29",
+      "area": "Segurança Operacional / padronizar C,T,N sem regressão",
+      "status": "in_progress",
+      "summary": "Decisão explícita: tipo_desvio deve ser C=Crítico,T=Sistêmico,N=Pontual em todos os fluxos Ronda/Dono/Audicomp e telas MAD Builder. Preservar comportamento dos registros existentes, aceitar S legado e normalizar gravação onde seguro; NÃO alterar banco/produção nesta etapa. Preparar alterações por branch Flutter e cópias PHP custom após inspeção ZIP atual; após isso comparar via SSH os arquivos realmente ativos antes da aplicação manual. Não sobrescrever páginas geradas do MAD Builder."
+    },
     {
       "date": "2026-10-29",
       "area": "Segurança Operacional / tipo_desvio S",
