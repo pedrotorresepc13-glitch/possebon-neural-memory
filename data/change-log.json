@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-28T08:03:00-03:00",
+  "updated_at": "2026-10-29T09:10:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-29",
+      "area": "Segurança Operacional / tipo_desvio S",
+      "status": "diagnosed_unfixed",
+      "summary": "CSV audicomp_item: 30/16818 S na unit_id 3, entre julho-outubro. ZIP backend real de 26/10 confirma fontes que escrevem S: RondaGerencialAppApiTrait e combos legados AudicompForm/RondaGerencialForm/MinhaRondaGerencialForm. Dono/Audicomp oficiais usam T para Sistêmico; AudicompItemList erroneamente exibe S como Sem Desvio. Flutter Minha Ronda consome S do catálogo; D/A normalizam S para T no PHP atual. Registrar no WIP 2026-10-29-tipo-desvio-s.md. Sem alterações de produção; para atribuir registros por ferramenta, confirmar audicomp.tipo."
+    },
     {
       "date": "2026-10-28",
       "area": "Meu Transporte / concluir Flutter e Gestão no APP + Web",
