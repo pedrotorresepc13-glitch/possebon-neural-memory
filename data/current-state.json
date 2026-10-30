@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:38:00-03:00",
+  "updated_at": "2026-10-30T10:44:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -892,6 +892,8 @@
     "validation": "php -l OK, diff isolado, imports Flutter verificados; build/tests Dart e API real pendentes",
     "security": "grupo33 e unit_id pelo resolverGestor; T sozinho não identifica rota",
     "note": "Quando PHP não tem ação, Flutter esconde painel novo sem mostrar zero; demais ferramentas não são alteradas",
-    "latest_flutter_sha": "62e49b5e78295b1e10fe4b207cc6e00eaea23ff0"
+    "latest_flutter_sha": "21fc4d58f354d66e3698566a7ad219dc9fb02490",
+    "backend_contract": "viagens_dia com partidas/chegadas/duracao de todas viagens na data; presencas consolidadas pela pessoa entre todas viagens; última viagem destacada",
+    "package_sha256": "7ad69b96f1bd45b4002785d68459d3fcc481465a7b896fe4dba110a853fea179"
   }
 }
