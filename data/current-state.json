@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:01:00-03:00",
+  "updated_at": "2026-10-30T10:13:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -812,12 +812,15 @@
     "latest_flutter_commit": "c0ee868d16d727229534d1583496c7aa3a6ce626",
     "presentation": "Resumo de mês selecionado com horas trabalhadas/extras/dias com ponto/dias a conferir. Detalhe sem quaisquer rótulos de Previsto; batidas reais e Trabalhado/Extra estimada mantidos; tamanho desktop limitado a 1080 px; dia atual sem batida aguardando marcação",
     "deployment": "Git main e possebon sincronizadas, Vercel status pending, não verificado no app do usuário",
-    "php_patch": "POSSEBON_Corrigir_Rota_Meu_RH_Seguro.sh criado localmente, testado sobre ZIP 30/10, idempotente e php -l OK, NÃO executado no servidor"
+    "php_patch": "POSSEBON_Corrigir_Rota_Meu_RH_Seguro.sh criado localmente, testado sobre ZIP 30/10, idempotente e php -l OK, NÃO executado no servidor",
+    "vercel_build_git_status": "success for c0ee868",
+    "backend_route_patch": "safe script created and tested on ZIP backup, still not applied to production",
+    "live_test": "not verified; Vercel authorization request sent to user"
   },
   "main_integracao_2026_10_30": {
     "status": "implemented_unverified",
     "verified_git_sha": "c0ee868d16d727229534d1583496c7aa3a6ce626",
-    "backup": "backup/main-pre-integracao-20261030",
+    "backup": "backup/possebon-pre-sync-20261030",
     "source_branches": [
       "possebon",
       "feature/meu-rh-20261027",
@@ -840,7 +843,9 @@
     "docs": "docs/meu-rh-api-contract.md atualizado",
     "deploy": "não confirmado; default GitHub possebon, Vercel team access 403",
     "published": "Vercel status pending após sync possebon; não afirmar deploy concluído",
-    "branch_sync": "main == possebon no commit c0ee868; histórico anterior possebon em backup/possebon-pre-sync-20261030"
+    "branch_sync": "main == possebon no commit c0ee868; histórico anterior possebon em backup/possebon-pre-sync-20261030",
+    "vercel_build_git_status": "success for commit c0ee868 after main/possebon sync; production URL commit still unverified because Vercel team grant 403",
+    "source_of_truth": "main; possebon synchronized as compatibility for currently configured default/deploy"
   },
   "meu_rh_backend_2026_10_30": {
     "status": "repair_prepared_not_installed",
