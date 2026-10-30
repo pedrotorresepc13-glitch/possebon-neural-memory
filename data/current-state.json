@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-30T08:40:00-03:00",
+  "updated_at": "2026-10-30T08:46:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
-    "flutter_head_confirmed": "d634bf7042b38ff852458d5f8ea7cea2bc95cf56",
+    "flutter_head_confirmed": "5fb21fc462d70b559da8acf54cbc614cb90f8b89",
     "backend_baseline": "possebon_web-26-10-2026-22-21-50.zip fornecido pelo usuário e inspecionado em 27/10/2026; baseline do backend atual para Meu RH",
     "backend_rule": "GitHub possebon_web NÃO é fonte autoritativa. Para PHP usar o ZIP/arquivo mais recente confirmado; baseline para Transporte e Meu RH: possebon_web-26-10-2026-22-21-50.zip. Pacote preparado 28/10 ainda não instalado.",
     "backend_latest_confirmed_files_2026_10_22": [
@@ -803,7 +803,7 @@
   },
   "main_integracao_2026_10_30": {
     "status": "implemented_unverified",
-    "verified_git_sha": "d634bf7042b38ff852458d5f8ea7cea2bc95cf56",
+    "verified_git_sha": "5fb21fc462d70b559da8acf54cbc614cb90f8b89",
     "backup": "backup/main-pre-integracao-20261030",
     "source_branches": [
       "possebon",
@@ -821,6 +821,10 @@
       "Histórico Salarial",
       "Espelho de Ponto"
     ],
-    "backend": "endpoints Meu RH e Espelho seguem pendentes de confirmação e instalação manual conforme versão MAD Builder, nada PHP alterado em produção"
+    "backend": "endpoints Meu RH e Espelho seguem pendentes de confirmação e instalação manual conforme versão MAD Builder, nada PHP alterado em produção",
+    "access_fix": "podeExibirMeuRh exige status A, tipo_contrato C e colaborador.unidade.id igual unitId da sessão",
+    "validation": "17 arquivos e todos imports locais verificados; teste unitário Flutter incluído, MAS não executado; PHP não publicado",
+    "docs": "docs/meu-rh-api-contract.md atualizado",
+    "deploy": "não confirmado; default GitHub possebon, Vercel team access 403"
   }
 }
