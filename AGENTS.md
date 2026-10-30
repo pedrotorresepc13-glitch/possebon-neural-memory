@@ -17,7 +17,7 @@ Este repositório existe para impedir perda de contexto entre conversas, tarefas
 
 A memória neural explica **o que existe, por que existe, como se relaciona e qual é o estado conhecido**. Ela não autoriza editar código sem conferir a fonte atual.
 
-- Flutter: fonte operacional = `pedrotorresepc13-glitch/possebon`, branch `possebon`.
+- Flutter: fonte operacional = `pedrotorresepc13-glitch/possebon`, branch **`main`** (decisão explícita de 30/10/2026; código consolidado no commit `d634bf7`). O GitHub ainda pode apresentar `possebon` como branch padrão até a configuração do repositório ser atualizada. Não confundir branch padrão/configuração de deploy com fonte oficial escolhida pelo usuário.
 - Backend MAD Builder/PHP: fonte operacional = ZIP/arquivo mais recente confirmado pelo usuário. O GitHub Web não é fonte autoritativa do backend.
 - Esta memória: fonte de arquitetura, regras, decisões, status, histórico e localização de responsabilidades.
 
@@ -92,7 +92,7 @@ Antes de qualquer edição, commit, patch, artefato para MAD Builder/Vercel ou m
 1. ler `data/current-state.json` e `data/project-memory.json`;
 2. ler regras/decisões do domínio afetado;
 3. registrar a mudança como `planned` ou `in_progress`;
-4. conferir o Flutter atual na branch `possebon`;
+4. conferir o Flutter atual na branch **`main`** e eventuais branches de trabalho para conciliar diferenças sem perder funcionalidades;
 5. conferir o backend vivo/arquivo mais recente confirmado pelo usuário;
 6. somente então modificar código;
 7. validar;
