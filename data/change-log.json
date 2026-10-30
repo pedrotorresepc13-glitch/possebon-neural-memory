@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-30T09:48:00-03:00",
+  "updated_at": "2026-10-30T10:00:00-03:00",
   "entries": [
     {
       "date": "2026-10-30",
       "area": "Meu RH / funcao historica",
-      "status": "in_progress",
-      "summary": "Mostrar função em cada vigência salarial usando histórico funcional do TOTVS, sem reutilizar cargo atual. Frontend já suporta campo funcao; API PHP atual não retorna campo; consulta PT_07 precisa juntar histórico de funções. Preparar correção segura e validar sem substituir outros endpoints."
+      "status": "implemented_unverified",
+      "summary": "Diagnóstico conclusivo: Flutter main já renderiza item.funcao, mas MeuRhAppApiTrait.php do ZIP 30/10 não retornava funcao/codigo_funcao. Recuperado SQL preexistente PT_07_HISTORICO_SALARIAL_FUNCAO.sql com OUTER APPLY em PHSTFCO DTMUDANCA<=data vigencia e PFUNCAO.NOME. Criado pacote POSSEBON_MEU_RH_FUNCAO_VIGENCIA_30-10-2026.zip: trait completo 2 campos, SQL PT_07 e diagnóstico, script patch no trait vivo com backup/php -l/idempotência. Executado php -l e testes de patch em cópia do ZIP; OK. SQL TOTVS e API produtiva não modificadas; falta validar sentença PT_07 atual e aplicar PHP no MAD Builder. Documentado na main Flutter em docs/meu-rh-historico-funcao-por-vigencia.md."
     },
     {
       "date": "2026-10-30",
