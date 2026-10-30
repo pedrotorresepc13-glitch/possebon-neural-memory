@@ -205,3 +205,7 @@ Regras comuns:
 - Presença oficial do dia e rota exige chamada `app_transporte.tipo_registro = P` com `viagem_id`; `controle_acesso.tipo=T` comprova acesso de transporte do dia mas **não contém rota**. Não atribuir T a rota sem cruzar com chamada de viagem. P sem T é divergência, não presença confirmada.
 - Gestor grupo 33 consulta operações por data, inclusive última inicialização, GPS gravado, início/fim/duração, marcador sem início e sem chamada. Sem viagem não inventar horas nem registros de presença. Exibir última viagem com aviso se houver mais de uma no dia.
 - Módulo permanece App e Web, escopo rígido `unit_id`. Backend customizado exige aplicação manual após comparar versão viva. Novo painel Flutter não mostra resumo fictício se contrato da API ainda não existir.
+
+## Histórico salarial TOTVS — nome da tabela (30/10/2026)
+
+- Tabela real do histórico de função em TOTVS RM: **`PFHSTFCO` (NÃO PHSTFCO)**, validada na documentação oficial TOTVS. A SQL antiga distribuída com `PHSTFCO` falha (`Invalid object name`). Usar somente a consulta corrigida, testando a PT_07 antes de salvar/substituir a sentença ativa. Flutter não precisa mudar.
