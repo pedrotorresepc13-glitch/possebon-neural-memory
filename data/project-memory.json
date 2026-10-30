@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-10-30T08:46:00-03:00",
+    "updated_at": "2026-10-30T09:26:00-03:00",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -585,7 +585,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Meu RH está na branch MAIN commit 5fb21fc, com Envelope de Pagamentos, Histórico Salarial e Espelho de Ponto. Visível para CLT ativo da mesma unidade funcional (status A, tipo_contrato C, unidade.id == unitId). Testes adicionados, NÃO executados; backend espelho não instalado; deploy não confirmado.",
+      "summary": "Meu RH na MAIN: Espelho por mês com 2 informações diárias previstas/trabalhadas preservadas, resumo apenas de batidas completas do mês selecionado. PR de back-end ZIP 30/10 omitiu rotas históricas de Salário e Envelopes; Histórico PT_07 funcionava 27/10, provável regressão de rota. Flutter corrigido; API backend precisa restauração aditiva sem perder código produtivo.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -594,7 +594,10 @@
         "lib/features/meu_rh/presentation/espelho_ponto_screen.dart",
         "app/custom/ControleAcessoAppApiTrait.php",
         "app/routes/api.php",
-        "test/features/meu_rh/meu_rh_acesso_test.dart"
+        "test/features/meu_rh/meu_rh_acesso_test.dart",
+        "lib/features/meu_rh/domain/resumo_ponto_mensal.dart",
+        "test/features/meu_rh/resumo_ponto_mensal_test.dart",
+        "docs/meu-rh-rotas-preservacao-20261030.md"
       ],
       "requirements": [
         "TOTVS PT_07 PFHSTSAL/PMOTMUDSAL para histórico, CODCOLIGADA+CHAPA",
@@ -607,9 +610,10 @@
         "Sem classificação de falta por batida ausente; extras estimadas não compõem folha aprovada",
         "Não inventar feriado local sem cadastro por unidade",
         "Visibilidade de Meu RH = colaborador ativo da unidade atual (status A, tipo_contrato C); consulta nunca torna o card inteiro indisponível.",
-        "Todas as telas de RH concentram-se em main desde 30/10; não criar features escondidas em branches sem integrá-las."
+        "Todas as telas de RH concentram-se em main desde 30/10; não criar features escondidas em branches sem integrá-las.",
+        "Sempre preservar endpoints já instalados no MAD Builder: Histórico Salarial, Envelope de Pagamentos e Espelho de Ponto; nunca substituir app/routes/api.php do servidor por exportação desatualizada."
       ],
-      "deployment": "main_implemented_unverified_backend_not_installed",
+      "deployment": "main_flutter_updated_unverified_backend_routes_attention",
       "security": "financial_sensitive_no_cache"
     }
   ],
