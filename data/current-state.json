@@ -1,17 +1,20 @@
 {
-  "updated_at": "2026-10-30T07:35:00-03:00",
+  "updated_at": "2026-10-30T08:40:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
-    "flutter_branch": "possebon",
-    "flutter_head_confirmed": "6218feae82021bd49dd5e7e1036c85eb8d8c6e6c",
+    "flutter_branch": "main",
+    "flutter_head_confirmed": "d634bf7042b38ff852458d5f8ea7cea2bc95cf56",
     "backend_baseline": "possebon_web-26-10-2026-22-21-50.zip fornecido pelo usuário e inspecionado em 27/10/2026; baseline do backend atual para Meu RH",
     "backend_rule": "GitHub possebon_web NÃO é fonte autoritativa. Para PHP usar o ZIP/arquivo mais recente confirmado; baseline para Transporte e Meu RH: possebon_web-26-10-2026-22-21-50.zip. Pacote preparado 28/10 ainda não instalado.",
     "backend_latest_confirmed_files_2026_10_22": [
       "ApiAppController completo fornecido em 21/10/2026",
       "TransporteAppApiTrait.php v4.15.0 do trabalho corrente",
       "TransporteWorkflowFirebaseTrait.php do trabalho corrente"
-    ]
+    ],
+    "github_default_branch_reported": "possebon (ainda não alterada no GitHub; requer reconfiguração administrativa)",
+    "production_deployment_branch": "não confirmada; acesso Vercel para este escopo retornou 403",
+    "main_backup_branch": "backup/main-pre-integracao-20261030 @ ad26960db949a4ac4270fc8088cbdfe5ccf85d24"
   },
   "madbuilder_editing_rule": {
     "priority": "usar Designer/MAD Builder e app/custom; app/routes e app/controller quando necessário",
@@ -782,19 +785,42 @@
     "runtime_validated": false
   },
   "espelho_ponto_2026_10_30": {
-    "status": "implemented_unverified",
+    "status": "implemented_unverified_not_deployed",
     "flutter_pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/12",
     "branch": "feat/espelho-ponto-20261030",
     "branch_base": "feature/meu-rh-20261027",
     "backend_baseline": "possebon_web-26-10-2026-22-21-50.zip",
     "backend_package": "POSSEBON_ESPELHO_PONTO_30-10-2026.zip",
     "backend_installed": false,
-    "flutter_merged": false,
+    "flutter_merged": true,
     "tests": "php -l 2 arquivos OK; teste PHP funcional isolado OK; Flutter analyze/build e runtime pendentes",
     "data": "controle_acesso.tipo=P, acesso_em, pessoa_id e unit_id; totvs_atestado por colaborador",
     "day_shift": "seg-qui 9h, sex 8h; intervalo 12-13 previsto e presumido se 2 batidas com intervalo coberto",
     "holidays": "nacionais fixos; municípios/estados sem fonte estruturada na exportação",
     "night_shift": "não implementado por não haver mapeamento confiável de turnos",
-    "warnings": "sem falta presumida; extras e saldo são estimativas, não folha"
+    "warnings": "sem falta presumida; extras e saldo são estimativas, não folha",
+    "flutter_main_sha": "d634bf7042b38ff852458d5f8ea7cea2bc95cf56"
+  },
+  "main_integracao_2026_10_30": {
+    "status": "implemented_unverified",
+    "verified_git_sha": "d634bf7042b38ff852458d5f8ea7cea2bc95cf56",
+    "backup": "backup/main-pre-integracao-20261030",
+    "source_branches": [
+      "possebon",
+      "feature/meu-rh-20261027",
+      "feat/espelho-ponto-20261030",
+      "fix/transporte-completo-20261028",
+      "fix/tipo-desvio-ctn-20261029"
+    ],
+    "check": "603 caminhos Git incluídos, 17 arquivos críticos e imports locais conferidos, condições do card Meu RH/CTN conferidas",
+    "ci": "Flutter analyze/test/build ainda não executados com êxito, infraestrutura Actions falha sem runner",
+    "production": "não implantado; branch default do GitHub ainda possebon; Vercel verificação de projeto 403",
+    "rh_visibility": "colaborador ativo status=A, tipo_contrato=C, unidade selecionada",
+    "rh_cards": [
+      "Envelope de Pagamentos",
+      "Histórico Salarial",
+      "Espelho de Ponto"
+    ],
+    "backend": "endpoints Meu RH e Espelho seguem pendentes de confirmação e instalação manual conforme versão MAD Builder, nada PHP alterado em produção"
   }
 }
