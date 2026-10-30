@@ -191,3 +191,9 @@ Regras comuns:
 - Atestados são buscados em `totvs_atestado` por `colaborador_id + unit_id`, intervalo `dtinicio/dtfinal`; no espelho, mostrar somente o estado 'Atestado'/'Atestado parcial', sem CID ou dados clínicos.
 - Uma batida isolada no dia em curso significa 'jornada em andamento'; batidas ímpares/anômalas não devem virar cálculos definitivos. Dias sem batidas **não equivalem automaticamente a falta**.
 - Horas trabalhadas, extras e saldo são **estimativas informativas**, não cálculos aprovados, descontos ou folhas de pagamento. Restringir acesso ao colaborador ativo e à unidade da sessão.
+
+## Meu RH — visibilidade e branch oficial (30/10/2026)
+
+- Meu RH deve aparecer para todos os **colaboradores ativos CLT da unidade selecionada**, com `colaborador.status = A` e `colaborador.tipo_contrato = C`. Não condicionar a presença do card à disponibilidade momentânea das APIs de salário/ponto.
+- Os três serviços ficam agrupados sob Meu RH: Envelope de Pagamentos, Histórico Salarial e Espelho de Ponto. Cada endpoint valida identidade/vínculo na sessão e pode retornar indisponibilidade específica sem esconder o card.
+- Branch canônica do App passou a ser `main` por decisão explícita do usuário em 30/10; nunca deixar funcionalidades aprovadas isoladas em outras branches. Preservar `possebon` e backups até confirmar CI, deploy e origem da publicação.
