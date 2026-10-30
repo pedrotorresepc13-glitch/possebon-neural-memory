@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T09:38:00-03:00",
+  "updated_at": "2026-10-30T09:57:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "Meu RH / corrigir regressão de publicação e espelho",
+      "status": "fixed_in_main_not_published",
+      "summary": "Usuário confirma que produção Vercel continua antiga. MAIN Flutter commit c0ee868: Espelho removeu todos textos de horários/quantidades 'Previsto' no detalhe, manteve batidas reais, Trabalhado e Extra estimada, resumo mensal calculado a partir apenas da competência selecionada com testes no domínio, altura desktop limitada a 1080px, hoje sem batidas 'Aguardando marcações' e marca incompleta sem 'Trabalhado --:--'. Histórico Salarial 404/501 distinguido de indisponibilidade TOTVS. ZIP backend real 30/10 09:13 preserva MeuRhAppApiTrait mas perdeu rota historico-salarial. Criado script local POSSEBON_Corrigir_Rota_Meu_RH_Seguro.sh: só insere rota faltante no api.php atual com backup, validações de trait, controlador, âncora e php -l, testado em diretório temporário com ZIP atual e idempotência OK. Sem instalação no servidor. GitHub default ainda possebon; Vercel equipe recusou acesso 403 e precisa consentimento; main preview status Vercel pending, build Flutter/produção ainda não homologados. Não sincronizar branch deploy nem forçar produção sem build aprovado."
+    },
     {
       "date": "2026-10-30",
       "area": "Meu RH / conferir novo ZIP backend e restaurar Histórico",
