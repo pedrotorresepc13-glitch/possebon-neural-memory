@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-10-30T07:35:00-03:00",
+    "updated_at": "2026-10-30T08:40:00-03:00",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -585,7 +585,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Meu RH com Envelope/Histórico preservados e Espelho de Ponto implementado no Flutter PR #12 (branch feature/meu-rh-20261027) com API PHP preparada, não instalada; extras estimadas somente dia e feriados nacionais; atestados por cadastro TOTVS; runtime pendente.",
+      "summary": "Meu RH restaurado e presente na main integrada d634bf7: Envelope, Histórico e Espelho. Card visível somente para colaborador ativo status A com tipo_contrato C (CLT) na unidade selecionada. Código Git atualizado; app/rotas PHP não publicado nem homologado.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -604,9 +604,11 @@
         "Atestado: totvs_atestado por colaborador_id e unidade, sem CID/diagnóstico no cliente",
         "Turno dia seg-qui 9h, sexta 8h, intervalo 12–13 previsto; turno noite somente com escala oficial",
         "Sem classificação de falta por batida ausente; extras estimadas não compõem folha aprovada",
-        "Não inventar feriado local sem cadastro por unidade"
+        "Não inventar feriado local sem cadastro por unidade",
+        "Visibilidade de Meu RH = colaborador ativo da unidade atual (status A, tipo_contrato C); consulta nunca torna o card inteiro indisponível.",
+        "Todas as telas de RH concentram-se em main desde 30/10; não criar features escondidas em branches sem integrá-las."
       ],
-      "deployment": "espelho_ponto_implemented_unverified_PR12_backend_prepared_not_applied",
+      "deployment": "main_implemented_unverified_backend_not_installed",
       "security": "financial_sensitive_no_cache"
     }
   ],
