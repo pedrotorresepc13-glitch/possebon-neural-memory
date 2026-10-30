@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T08:46:00-03:00",
+  "updated_at": "2026-10-30T09:26:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -785,21 +785,30 @@
     "runtime_validated": false
   },
   "espelho_ponto_2026_10_30": {
-    "status": "implemented_unverified_not_deployed",
+    "status": "implemented_unverified_main_corrected",
     "flutter_pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/12",
     "branch": "feat/espelho-ponto-20261030",
     "branch_base": "feature/meu-rh-20261027",
     "backend_baseline": "possebon_web-26-10-2026-22-21-50.zip",
     "backend_package": "POSSEBON_ESPELHO_PONTO_30-10-2026.zip",
-    "backend_installed": false,
+    "backend_installed": "não confirmado o arquivo exato do servidor",
     "flutter_merged": true,
-    "tests": "php -l 2 arquivos OK; teste PHP funcional isolado OK; Flutter analyze/build e runtime pendentes",
+    "tests": "Flutter analyze/test/build ainda não confirmados; arquivos de teste adicionados",
     "data": "controle_acesso.tipo=P, acesso_em, pessoa_id e unit_id; totvs_atestado por colaborador",
     "day_shift": "seg-qui 9h, sex 8h; intervalo 12-13 previsto e presumido se 2 batidas com intervalo coberto",
     "holidays": "nacionais fixos; municípios/estados sem fonte estruturada na exportação",
     "night_shift": "não implementado por não haver mapeamento confiável de turnos",
     "warnings": "sem falta presumida; extras e saldo são estimativas, não folha",
-    "flutter_main_sha": "d634bf7042b38ff852458d5f8ea7cea2bc95cf56"
+    "flutter_main_sha": "d634bf7042b38ff852458d5f8ea7cea2bc95cf56",
+    "changes_latest": [
+      "Resumo por competência selecionada a partir de batidas completas, sem previsto global ou saldo presumido",
+      "Detalhe mantém horário previsto, previsto em horas e trabalhado como usuário autorizou",
+      "Testes puros de resumo mês anterior, incompleto e zero batidas adicionados",
+      "GET histórico 404/501 não é mais interpretado como erro do TOTVS"
+    ],
+    "backend_risk": "Arquivo app/routes/api.php do ZIP preparado 30/10 não contém /meu-rh/historico-salarial e /meu-rh/envelopes; fonte real ativa não verificada. Não substituir PHP antigo sem mesclar e restaurar rotas existentes.",
+    "month_filter": "recalcula apenas com dias do mês selecionado no frontend, sem campos previstos no resumo",
+    "backend_salario": "histórico funcionava em 27/10; perda provável de rotas ao instalar pacote PHP substitutivo 30/10; confirmação runtime pendente"
   },
   "main_integracao_2026_10_30": {
     "status": "implemented_unverified",
