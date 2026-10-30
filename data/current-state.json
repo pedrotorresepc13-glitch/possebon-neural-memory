@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:52:00-03:00",
+  "updated_at": "2026-10-30T11:06:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -862,7 +862,7 @@
     "safety": "Não inventar rota de Envelopes sem implementação; preservar CRUD e APIs existentes"
   },
   "meu_rh_funcao_historica_2026_10_30": {
-    "status": "implemented_unverified",
+    "status": "sql_corrected_unverified",
     "flutter": "main já mostra item['funcao']; nenhum arquivo Flutter editado",
     "backend_baseline": "possebon_web-30-10-2026-09-13-19.zip",
     "sql_source": "PT_07_HISTORICO_SALARIAL_FUNCAO.sql preexistente na biblioteca, histórico de função PHSTFCO/PFUNCAO até DTMUDANCA da vigência",
@@ -872,7 +872,13 @@
     "backend_installed": false,
     "totvs_sql_updated": "não confirmado",
     "github_main_doc": "docs/meu-rh-historico-funcao-por-vigencia.md",
-    "security": "não reutilizar cargo atual em histórico; não aceitar chapa/coligada do cliente"
+    "security": "não reutilizar cargo atual em histórico; não aceitar chapa/coligada do cliente",
+    "table_correct": "PFHSTFCO",
+    "table_wrong": "PHSTFCO",
+    "previous_sql_invalid": true,
+    "new_sql_artifact": "POSSEBON_SQL_TOTVS_PT07_CORRIGIDO_30-10-2026.zip",
+    "totvs_runtime_validated": false,
+    "warning": "Não salvar SQL que falha no TOTVS; executar SQL corrigida para confirmar dados antes de publicar"
   },
   "transporte_painel_2026_10_30": {
     "status": "implemented_unverified",
@@ -885,7 +891,7 @@
       "retorna presença confirmada por P de viagem cruzada com controle_acesso T"
     ],
     "backend_source": "possebon_web-30-10-2026-09-13-19.zip",
-    "backend_package": "POSSEBON_TRANSPORTE_GESTAO_DIA_30-10-2026.zip",
+    "backend_package": "POSSEBON_TRANSPORTE_GESTAO_DIA_REENVIO_30-10-2026.zip",
     "backend_trait": "app/custom/TransporteAppApiTrait.php",
     "backend_endpoint": "GET /api/app/meu-transporte?acao=gestao_operacao_dia",
     "backend_installed": false,
@@ -897,6 +903,8 @@
     "package_sha256": "7ad69b96f1bd45b4002785d68459d3fcc481465a7b896fe4dba110a853fea179",
     "legacy_branch_synced": true,
     "vercel_build": "Pendente de confirmação para último SHA; build anterior 4b84d60 aprovado, latest não homologado",
-    "ci": "Flutter SDK não disponível; tests Dart não executados; imports conferidos e php -l OK"
+    "ci": "Flutter SDK não disponível; tests Dart não executados; imports conferidos e php -l OK",
+    "backend_package_unchanged": true,
+    "distribution": "reenviado após erro ao abrir link anterior; zip de 3 arquivos verificado por CRC e php -l"
   }
 }
