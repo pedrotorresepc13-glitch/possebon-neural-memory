@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T07:35:00-03:00",
+  "updated_at": "2026-10-30T08:33:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "App / unificar main e restaurar Meu RH",
+      "status": "in_progress",
+      "summary": "Decisão usuário: main deve concentrar código atual, preservar todas ferramentas, Meu RH visível para colaboradores ativos CLT (status=A, tipo_contrato=C) da unidade; Envelope/Histórico/Espelho permanecem dentro dele. Auditoria confirma main ad26960 divergiu por 1 merge antigo mas não possui arquivos com diferenças exclusivas em relação ao possebon; branch operacional possebon 6218fea, Meu RH somente feature/meu-rh-20261027, ponto na PR #12 em feat/espelho-ponto-20261030. Preparar merge que preserve histórico/árvore, corrigir Home/status. Validar antes de publicar; backend Meu RH e Espelho seguem independentes e pendentes. Não descartar correções de Transporte/Segurança sem avaliar."
+    },
     {
       "date": "2026-10-30",
       "area": "Meu RH / Espelho de Ponto",
