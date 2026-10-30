@@ -44,3 +44,12 @@
 - `podeExibirMeuRh` verifica `status=A`, `tipo_contrato=C` e `colaborador.unidade.id` coincidente com a unidade da sessão. O JSON real de `ApiAppController::meusDados` no ZIP de 26/10 contém `colaborador.unidade.id` e `tipo_contrato`. Isso evita exibir dados financeiros de unidade administrativa diferente.
 - Testes manuais Dart anteriores foram atualizados e `test/features/meu_rh/meu_rh_acesso_test.dart` adicionado, mas Flutter não foi executado.
 - Separar **código em main** de **publicação Web/Android**. GitHub default `possebon` permanece, Vercel não permitiu verificar projeto (403), produção não confirmada. PHP endpoints de Espelho não instalados.
+
+## 30/10 — correções de regressão mensais (latest)
+
+- Usuário mostrou Web de produção: Resumo da competência 184h Previstas e 112h26 Trabalhadas não deveriam ser apresentados como saldo previsto do mês; quer horas reais do mês selecionado e capacidade de navegar meses. Última instrução preserva os dois indicadores diários (horário da escala / previsto e trabalhado).
+- Flutter `main`: `EspelhoPontoScreen` passa a computar resumo **só das batidas completas da competência selecionada**, mostrando horas trabalhadas e extras estimadas, dias com ponto e dias a conferir; mantém horários previstos e quantidade de horas previstas/trabalhadas no detalhe do dia. Domínio `calcularResumoPontoMensal` com testes de meses separados e marcações incompletas, a executar.
+- CSV `sql1289442827.csv`: exportação P termina em **29/10/2026 14:52**, e 848 pessoas têm apenas uma batida em 29/10, por isso NÃO concluir falta ou saída não registrada na origem viva sem conferir importação posterior.
+- Histórico Salarial **funcionava em 27/10** usando `app/custom/MeuRhAppApiTrait.php` e `TotvsRmApiService::getHistoricoSalarial`. Pacote PHP Espelho 30/10 trouxe `app/routes/api.php` desatualizado sem `/meu-rh/historico-salarial` e sem `/meu-rh/envelopes`; causa provável de 404 ao recolar arquivo. Corrigir por **mesclagem aditiva na versão ativa**, não recolar exportação inteira. Estado do backend vivo não verificado; não afirmar que já restaurou.
+- Mensagem no Flutter 404/501 diferenciada de 503: 'consulta não disponível na versão atual' em vez de atribuir falsamente erro ao TOTVS. Documentação da correção no repo `docs/meu-rh-rotas-preservacao-20261030.md`.
+- Nenhuma alteração de banco, PHP instalado ou publicação Android; somente Flutter e docs main. Compilação/testes Flutter reais pendentes.
