@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-28T08:00:00-03:00",
+  "updated_at": "2026-10-30T07:35:00-03:00",
   "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
   "auth": {
     "session_activate": {
@@ -222,6 +222,45 @@
         ],
         "status": "implemented_unverified"
       }
+    }
+  },
+  "meu_rh": {
+    "espelho_ponto": {
+      "status": "prepared_not_installed",
+      "method": "GET",
+      "path": "/api/app/meu-rh/espelho-ponto",
+      "query": [
+        "unit_id (deve coincidir com sessão)",
+        "competencia YYYY-MM (opcional)"
+      ],
+      "security": [
+        "AppApiBearerMiddleware",
+        "app_pessoa_id e app_unit_id resolvidos da sessão, nunca confiar pessoa_id no cliente",
+        "colaborador ativo, tipo_contrato C na unidade"
+      ],
+      "data_source": [
+        "controle_acesso tipo=P, acesso_em",
+        "totvs_atestado por colaborador_id+unit_id"
+      ],
+      "response": {
+        "status": "success",
+        "data": [
+          "competencia",
+          "unit_id",
+          "turno=D",
+          "escala",
+          "informativo=true",
+          "resumo{previsto_minutos,trabalhado_estimado_minutos,extras_estimadas_minutos,saldo_estimado_minutos,dias_com_batidas,dias_incompletos,dias_atestado,dias_feriado}",
+          "dias[{data,dia_semana,status,batidas,previsto_minutos,trabalhado_minutos,extras_minutos,saldo_minutos,incompleto,intervalo_presumido_minutos,horarios_previstos,feriado,atestado,observacao}]"
+        ]
+      },
+      "error_behavior": "400/422 competencia, 403 vinculo, 500 sanitized",
+      "limitations": [
+        "sem fonte oficial feriados locais",
+        "sem turno noturno",
+        "sem garantia folha aprovada"
+      ],
+      "privacy": "never return CID, doctor, CPF, CHAPA, history salary or NSR unless needed"
     }
   }
 }
