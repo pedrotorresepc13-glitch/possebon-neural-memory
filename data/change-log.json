@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-30T10:07:00-03:00",
+  "updated_at": "2026-10-30T10:38:00-03:00",
   "entries": [
     {
       "date": "2026-10-30",
       "area": "Gestao Transporte / painel operacional e frotas",
-      "status": "in_progress",
-      "summary": "Implementar na main sem regressão: separar rotas código /^R[0-9]+$/i de frotas (demais códigos) na gestão, resumo por dia com rotas/viagem ativa, GPS gravado, início/última inicialização/final/duração; monitor não iniciou e não registrou presença; confirmação vai_utilizar S/N/null permanece independente da presença manual P/A; controle_acesso tipo T é fonte de presença efetiva, por unit_id e data. Conferidos ZIP backend 30-10-2026 09:13 e Flutter main; backend gestao atualmente só conta presenças quando viagem ativa, perde visibilidade após finalização. Modificar só Flutter main e preparar complemento API custom PHP revisável; preservar unit_id grupo 33, Dados RH, mapa e operações existentes; não alterar MAD Builder gerado e não instalar API sem versão viva confirmada."
+      "status": "implemented_unverified",
+      "summary": "Flutter main alterada: painel gestor por dia via action gestao_operacao_dia com status viagem, ultima inicialização, GPS, chamada P de viagem cruzada com T do dia, resposta sim/nao/neutra, alertas e duração; Rotas (código começa R) e Frotas (demais), cadastro/editar assentos/monitor preservados. Monitor paradas agora NÃO remove resposta N da chamada e mostra cor vermelha/verde/neutra, mesmo para quem informou não usa continua marcação manual P/A. PHP trait custom gerado a partir ZIP 30/10, handler GET e método apenas leitura, php -l OK, diffs e pacote POSSEBON_TRANSPORTE_GESTAO_DIA_30-10-2026.zip. Nenhum PHP instalado/DB alterado; Flutter esconde novo painel se contrato ainda não existir. CI Flutter e teste real pendentes. GitHub somente main (default possebon ainda antiga e divergirá até sincronização)."
     },
     {
       "date": "2026-10-30",
