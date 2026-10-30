@@ -197,3 +197,11 @@ Regras comuns:
 - Meu RH deve aparecer para todos os **colaboradores ativos CLT da unidade selecionada**, com `colaborador.status = A` e `colaborador.tipo_contrato = C`. Não condicionar a presença do card à disponibilidade momentânea das APIs de salário/ponto.
 - Os três serviços ficam agrupados sob Meu RH: Envelope de Pagamentos, Histórico Salarial e Espelho de Ponto. Cada endpoint valida identidade/vínculo na sessão e pode retornar indisponibilidade específica sem esconder o card.
 - Branch canônica do App passou a ser `main` por decisão explícita do usuário em 30/10; nunca deixar funcionalidades aprovadas isoladas em outras branches. Preservar `possebon` e backups até confirmar CI, deploy e origem da publicação.
+
+## Transporte — painel diário Rotas/Frotas (30/10/2026)
+
+- Rotas e frotas continuam no mesmo cadastro de `rota_transporte`, sem migração automática. No painel do App, código iniciado por **R** (ex.: R01) é **Rota**; outros códigos são **Frotas/veículos**.
+- A intenção `vai_utilizar` (C em `app_transporte`) é **independente** da presença: sim verde, não vermelho, sem resposta neutro. Nunca filtrar quem respondeu N da lista de chamada; monitor ainda pode marcar **Presente/Ausente**.
+- Presença oficial do dia e rota exige chamada `app_transporte.tipo_registro = P` com `viagem_id`; `controle_acesso.tipo=T` comprova acesso de transporte do dia mas **não contém rota**. Não atribuir T a rota sem cruzar com chamada de viagem. P sem T é divergência, não presença confirmada.
+- Gestor grupo 33 consulta operações por data, inclusive última inicialização, GPS gravado, início/fim/duração, marcador sem início e sem chamada. Sem viagem não inventar horas nem registros de presença. Exibir última viagem com aviso se houver mais de uma no dia.
+- Módulo permanece App e Web, escopo rígido `unit_id`. Backend customizado exige aplicação manual após comparar versão viva. Novo painel Flutter não mostra resumo fictício se contrato da API ainda não existir.
