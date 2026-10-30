@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-10-30T10:00:00-03:00",
+    "updated_at": "2026-10-30T10:38:00-03:00",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -312,7 +312,7 @@
       "status": "attention",
       "x": 1600,
       "y": 2200,
-      "summary": "Transporte e Gestão administrativa no POSSEBON App e Web. Flutter PR #10 draft: mapa colaborador, monitor, reordenação, cancelamento, encerramento e CRUD de rotas (28/10). Traits PHP custom preparados mas não aplicados; CI e runtime pendentes.",
+      "summary": "Gestão de Transporte no App main: rotas (código R) e frotas (demais) separados; painel diário por data, GPS, última inicialização, viagem ativa/finalizada/duração, alertas sem início/chamada; chamada inclui resposta N em vermelho sem impedir presença. GET gestao_operacao_dia PHP preparado e não instalado; T só comprova acesso após casar app_transporte P por viagem.",
       "files": [
         "lib/screens/meu_transporte_screen.dart",
         "lib/screens/transporte_mapa_screen.dart",
@@ -323,7 +323,12 @@
         "lib/features/transporte/domain/transport_attendance.dart",
         "lib/features/transporte/presentation/attendance_badge.dart",
         "lib/features/transporte/presentation/transport_operations_summary.dart",
-        "lib/features/transporte/presentation/transport_live_summary.dart"
+        "lib/features/transporte/presentation/transport_live_summary.dart",
+        "lib/features/transporte/domain/transporte_categoria.dart",
+        "lib/features/transporte/presentation/transport_day_operations_panel.dart",
+        "lib/features/transporte/data/transport_management_api.dart",
+        "test/features/transporte/transporte_categoria_test.dart",
+        "docs/transporte-gestao-operacao-dia-20261030.md"
       ],
       "rules": [
         "Contexto rígido por unit_id.",
@@ -346,13 +351,15 @@
         "app/custom/FirebaseNotificationTrait.php"
       ],
       "next": [
+        "Aplicar/validar backend GET gestao_operacao_dia em app/custom/TransporteAppApiTrait.php após comparar PHP vivo com ZIP 30/10; confirmar P por viagem + T por pessoa/dia, viagem R/frota, carona, grupo33, teste Web/Android.",
         "Validar e instalar manualmente os dois PHP custom no MAD Builder após comparar versão viva, confirmar CRUD de rotas, grupo33/unidade e CI analyze/test/build; PR #10 continua draft.",
         "Incluir/validar manutenção administrativa de cadastro de rotas no App além de monitor, passageiros e limpeza; conferir API customizada no backend vivo antes de liberar.",
         "Flutter PR #10 draft: confirmar CI analyze/test/build, validar no app mapa do colaborador e finalização automática",
         "Monitor retirar da parada e excluir ocupada/reordenar: depende das ações customizadas no backend vivo; confirmar contratos no MAD Builder",
         "Gestão Web: configurar ação limpar GPS e paradas via Designer MAD Builder e serviço customizado sem substituir páginas geradas",
         "Homologar PWA iOS (GPS em segundo plano tem limitações nativas) e sincronização offline"
-      ]
+      ],
+      "deployment": "flutter_main_implemented_unverified_php_day_panel_prepared_not_installed"
     },
     {
       "id": "geofence",
