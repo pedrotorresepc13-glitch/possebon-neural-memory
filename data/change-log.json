@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T09:26:00-03:00",
+  "updated_at": "2026-10-30T09:38:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "Meu RH / conferir novo ZIP backend e restaurar Histórico",
+      "status": "repair_prepared_not_installed",
+      "summary": "ZIP atualizado possebon_web-30-10-2026-09-13-19.zip inspecionado: app/routes/api.php tem somente /meu-rh/espelho-ponto; histórico-salarial ausente embora ApiAppController carregue MeuRhAppApiTrait e TotvsRmApiService tenha getHistoricoSalarial. Comparação do trait do ZIP com a versão revisada 27/10 encontrou perda apenas dos campos funcao/codigo_funcao. Preparado ZIP POSSEBON_MEU_RH_RECUPERACAO_30-10-2026.zip com api.php inteiro preservado + adição de rota GET /meu-rh/historico-salarial no grupo JWT; trait inteiro restaurando função histórica; patch incremental e instruções. php -l ambos OK. Envelopes PT_13/PT_14 testadas previamente mas endpoint PHP NÃO existe no ZIP; não inventar rota. Nada instalado em produção, banco intocado."
+    },
     {
       "date": "2026-10-30",
       "area": "Meu RH / regressões e espelho por mês (main)",
