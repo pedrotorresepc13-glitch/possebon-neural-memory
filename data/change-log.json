@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-30T10:44:00-03:00",
+  "updated_at": "2026-10-30T10:52:00-03:00",
   "entries": [
     {
       "date": "2026-10-30",
       "area": "Gestao Transporte / painel operacional e frotas",
       "status": "implemented_unverified",
-      "summary": "Flutter main alterada: painel gestor por dia via action gestao_operacao_dia com status viagem, ultima inicialização, GPS, chamada P de viagem cruzada com T do dia, resposta sim/nao/neutra, alertas e duração; Rotas (código começa R) e Frotas (demais), cadastro/editar assentos/monitor preservados. Monitor paradas agora NÃO remove resposta N da chamada e mostra cor vermelha/verde/neutra, mesmo para quem informou não usa continua marcação manual P/A. PHP trait custom gerado a partir ZIP 30/10, handler GET e método apenas leitura, php -l OK, múltiplas viagens do dia listadas e presenças consolidadas, diffs e pacote POSSEBON_TRANSPORTE_GESTAO_DIA_30-10-2026.zip. Nenhum PHP instalado/DB alterado; Flutter esconde novo painel se contrato ainda não existir. CI Flutter e teste real pendentes. GitHub somente main (default possebon ainda antiga e divergirá até sincronização)."
+      "summary": "Flutter main alterada: painel gestor por dia via action gestao_operacao_dia com status viagem, ultima inicialização, GPS, chamada P de viagem cruzada com T do dia, resposta sim/nao/neutra, alertas e duração; Rotas (código começa R) e Frotas (demais), cadastro/editar assentos/monitor preservados. Monitor paradas agora NÃO remove resposta N da chamada e mostra cor vermelha/verde/neutra, mesmo para quem informou não usa continua marcação manual P/A. PHP trait custom gerado a partir ZIP 30/10, handler GET e método apenas leitura, php -l OK, múltiplas viagens do dia listadas e presenças consolidadas, diffs e pacote POSSEBON_TRANSPORTE_GESTAO_DIA_30-10-2026.zip. Nenhum PHP instalado/DB alterado; Flutter esconde novo painel se contrato ainda não existir. CI Flutter e teste real pendentes. GitHub somente main (default possebon ainda antiga e divergirá até sincronização). Branch legada possebon sincronizada main por fast-forward no SHA 21fc4d58f354d66e3698566a7ad219dc9fb02490; default GitHub permanece possebon, mas não há divergência. Backend GET novo ainda NÃO instalado; Flutter SDK indisponível, build do último commit na Vercel pending."
     },
     {
       "date": "2026-10-30",
