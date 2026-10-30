@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-30T07:28:00-03:00",
+  "updated_at": "2026-10-30T07:35:00-03:00",
   "entries": [
     {
       "date": "2026-10-30",
       "area": "Meu RH / Espelho de Ponto",
-      "status": "in_progress",
-      "summary": "Criar Espelho de Ponto pessoal (somente registros controle_acesso.tipo=P, acesso_em, pessoa_id+unit_id) via novo endpoint PHP autenticado, turnos dia seg-qui 07-12/13-17 (9h) sex 07-12/13-16 (8h); mostrar batidas/status/feriados reais/atestados totais-parciais, separar estimativa de extras e horas incompletas sem inferir falsamente falta, não processar folha. Flutter base feature/meu-rh-20261027 para preservar envelope/histórico. Backend baseline ZIP 26/10, não editar páginas geradas, PHP manual após conferência de produção. Brain obrigatório."
+      "status": "implemented_unverified",
+      "summary": "Feito Flutter na draft PR #12 base feature/meu-rh-20261027 com tela Espelho de Ponto, cliente API e integração card Meu RH, preservando envelope/histórico. PHP completo e rota no pacote POSSEBON_ESPELHO_PONTO_30-10-2026.zip, read-only, JWT pessoa/unidade, controle_acesso.tipo=P e totvs_atestado; php -l + testes calculos isolados OK. CSV provou predominância 2 batidas/dia; intervalo previsto 12–13 presumido, sem inventar batidas, extras/saldo estimados. Feriados nacionais fixos, local e turno noite pendentes fonte oficial. Nenhuma instalação backend, merge PR ou runtime validado. Ver WIP 2026-10-30-espelho-ponto.md."
     },
     {
       "date": "2026-10-29",
