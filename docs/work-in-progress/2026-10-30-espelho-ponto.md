@@ -53,3 +53,11 @@
 - Histórico Salarial **funcionava em 27/10** usando `app/custom/MeuRhAppApiTrait.php` e `TotvsRmApiService::getHistoricoSalarial`. Pacote PHP Espelho 30/10 trouxe `app/routes/api.php` desatualizado sem `/meu-rh/historico-salarial` e sem `/meu-rh/envelopes`; causa provável de 404 ao recolar arquivo. Corrigir por **mesclagem aditiva na versão ativa**, não recolar exportação inteira. Estado do backend vivo não verificado; não afirmar que já restaurou.
 - Mensagem no Flutter 404/501 diferenciada de 503: 'consulta não disponível na versão atual' em vez de atribuir falsamente erro ao TOTVS. Documentação da correção no repo `docs/meu-rh-rotas-preservacao-20261030.md`.
 - Nenhuma alteração de banco, PHP instalado ou publicação Android; somente Flutter e docs main. Compilação/testes Flutter reais pendentes.
+
+## 30/10 — Inspeção do backend exportado 09:13:19 (último recebido)
+
+- Fonte: `possebon_web-30-10-2026-09-13-19.zip`, 4.953 entradas; `app/routes/api.php` 1.465 linhas e **única rota Meu RH** `GET /meu-rh/espelho-ponto` na linha 312; ausentes `GET /meu-rh/historico-salarial` e `GET /meu-rh/envelopes`.
+- `app/controller/ApiAppController.php` já carrega e usa `MeuRhAppApiTrait` (linhas 23/45). `app/custom/MeuRhAppApiTrait.php` já fornece `historicoSalarialMeuRh` (PT_07) e `app/service/TotvsRmApiService.php` já possui `getHistoricoSalarial`. Portanto basta adicionar a rota existente no grupo JWT para recuperar esta consulta, após comparar backend vivo.
+- Comparação exata `MeuRhAppApiTrait.php` do ZIP atual vs versão revisada anterior de 27/10: apenas a descrição e os campos `funcao` / `codigo_funcao` com histórico de cargos estão ausentes no ZIP; recuperei somente esses acréscimos no arquivo revisado.
+- **Envelope de Pagamentos**: não há endpoint implementado no ZIP, apesar de PT_13 e PT_14 previamente testadas na origem; não inventar método nem prometer funcionalidade.
+- Artefato preparado `POSSEBON_MEU_RH_RECUPERACAO_30-10-2026.zip`: PHP completo `app/routes/api.php` com rota aditiva, `app/custom/MeuRhAppApiTrait.php` restaurado, patch isolado e instruções; `php -l` OK nos dois. **Não instalado**. Não substituir arquivos em produção se mudaram depois da exportação.
