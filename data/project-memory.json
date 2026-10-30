@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-10-28T08:03:00-03:00",
+    "updated_at": "2026-10-30T07:35:00-03:00",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -582,23 +582,31 @@
       "id": "meu_rh",
       "title": "Meu RH",
       "kind": "screen",
-      "status": "active",
+      "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Card para colaborador ativo CLT no contexto da unidade, com envelopes de pagamentos, histórico salarial e espelho de ponto Em desenvolvimento. UI/cliente propostos na PR #9; integração TOTVS backend ainda não implantada.",
+      "summary": "Meu RH com Envelope/Histórico preservados e Espelho de Ponto implementado no Flutter PR #12 (branch feature/meu-rh-20261027) com API PHP preparada, não instalada; extras estimadas somente dia e feriados nacionais; atestados por cadastro TOTVS; runtime pendente.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
         "lib/features/meu_rh/domain/meu_rh_acesso.dart",
-        "lib/screens/home_screen.dart"
+        "lib/screens/home_screen.dart",
+        "lib/features/meu_rh/presentation/espelho_ponto_screen.dart",
+        "app/custom/ControleAcessoAppApiTrait.php",
+        "app/routes/api.php"
       ],
       "requirements": [
         "TOTVS PT_07 PFHSTSAL/PMOTMUDSAL para histórico, CODCOLIGADA+CHAPA",
         "Envelope via API oficial TOTVS, confirmar endpoint Swagger",
         "Backend resolve identidade e unidade da sessão, exclui terceiros, não grava remuneração no POSSEBON Web",
-        "Espelho de Ponto futuro via Mail Import para POSSEBON Web"
+        "Espelho de Ponto futuro via Mail Import para POSSEBON Web",
+        "Espelho: controle_acesso.tipo=P, acesso_em, filtro estrito pessoa_id+unit_id pela sessão",
+        "Atestado: totvs_atestado por colaborador_id e unidade, sem CID/diagnóstico no cliente",
+        "Turno dia seg-qui 9h, sexta 8h, intervalo 12–13 previsto; turno noite somente com escala oficial",
+        "Sem classificação de falta por batida ausente; extras estimadas não compõem folha aprovada",
+        "Não inventar feriado local sem cadastro por unidade"
       ],
-      "deployment": "prepared_not_merged",
+      "deployment": "espelho_ponto_implemented_unverified_PR12_backend_prepared_not_applied",
       "security": "financial_sensitive_no_cache"
     }
   ],
