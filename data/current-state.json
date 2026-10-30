@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:13:00-03:00",
+  "updated_at": "2026-10-30T10:00:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -860,5 +860,18 @@
     "lint": "php -l 2 arquivos OK",
     "deployment": "não aplicado; comparar versão viva antes de substituir",
     "safety": "Não inventar rota de Envelopes sem implementação; preservar CRUD e APIs existentes"
+  },
+  "meu_rh_funcao_historica_2026_10_30": {
+    "status": "implemented_unverified",
+    "flutter": "main já mostra item['funcao']; nenhum arquivo Flutter editado",
+    "backend_baseline": "possebon_web-30-10-2026-09-13-19.zip",
+    "sql_source": "PT_07_HISTORICO_SALARIAL_FUNCAO.sql preexistente na biblioteca, histórico de função PHSTFCO/PFUNCAO até DTMUDANCA da vigência",
+    "php": "Trait atual do ZIP omite funcao/codigo_funcao; gerado trait completo e script patch seguro adicionando só esses campos",
+    "artifact": "POSSEBON_MEU_RH_FUNCAO_VIGENCIA_30-10-2026.zip",
+    "validation": "php -l OK, aplicação em cópia ZIP e idempotência OK; SQL TOTVS e runtime não validados",
+    "backend_installed": false,
+    "totvs_sql_updated": "não confirmado",
+    "github_main_doc": "docs/meu-rh-historico-funcao-por-vigencia.md",
+    "security": "não reutilizar cargo atual em histórico; não aceitar chapa/coligada do cliente"
   }
 }
