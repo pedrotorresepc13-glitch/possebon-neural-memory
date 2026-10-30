@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T09:57:00-03:00",
+  "updated_at": "2026-10-30T10:01:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "App / sincronização da produção e patch PHP de RH",
+      "status": "git_synced_vite_pending",
+      "summary": "main e possebon sincronizados por fast-forward sem force para c0ee868; backup/possebon-pre-sync-20261030 referencia 6218fea. GitHub default continua possebon e precisa ser movido administrativamente para main; Vercel produção não conferida porque acesso à equipe 403 aguardando aceite. Status de deployment Vercel do push synced está pending; Actions falham sem runner/steps, não provam falha de Dart. Espelho UI em main confirmado sem qualquer 'Previsto', preserva batidas, Trabalhado e Extra estimada, resumo mês selecionado. Script seguro /mnt/data/POSSEBON_Corrigir_Rota_Meu_RH_Seguro.sh testado com ZIP backend 30/10 em execução temporária: 1 rota historico-salarial adicionada, segunda execução idempotente, php -l OK; não rodado no servidor. Não declarar app/live RH corrigido até build e aplicação backend."
+    },
     {
       "date": "2026-10-30",
       "area": "Meu RH / corrigir regressão de publicação e espelho",
