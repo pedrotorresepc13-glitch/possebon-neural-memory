@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-30T09:38:00-03:00",
+  "updated_at": "2026-10-30T10:01:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
-    "flutter_head_confirmed": "5fb21fc462d70b559da8acf54cbc614cb90f8b89",
+    "flutter_head_confirmed": "c0ee868d16d727229534d1583496c7aa3a6ce626",
     "backend_baseline": "possebon_web-30-10-2026-09-13-19.zip recebido e inspecionado em 30/10/2026; exportação mais recente disponibilizada nesta conversa",
     "backend_rule": "Nunca substituir arquivos PHP do MAD Builder sem comparar com o backend vivo. ZIP 30/10 09:13 confirma ausência da rota GET /api/app/meu-rh/historico-salarial, embora trait/código TOTVS PT_07 existam.",
     "backend_latest_confirmed_files_2026_10_22": [
@@ -12,7 +12,7 @@
       "TransporteAppApiTrait.php v4.15.0 do trabalho corrente",
       "TransporteWorkflowFirebaseTrait.php do trabalho corrente"
     ],
-    "github_default_branch_reported": "possebon (ainda não alterada no GitHub; requer reconfiguração administrativa)",
+    "github_default_branch_reported": "possebon, mas ponteiro sincronizado por fast-forward para main em 30/10; ambos apontam c0ee868",
     "production_deployment_branch": "não confirmada; acesso Vercel para este escopo retornou 403",
     "main_backup_branch": "backup/main-pre-integracao-20261030 @ ad26960db949a4ac4270fc8088cbdfe5ccf85d24"
   },
@@ -808,11 +808,15 @@
     ],
     "backend_risk": "Arquivo app/routes/api.php do ZIP preparado 30/10 não contém /meu-rh/historico-salarial e /meu-rh/envelopes; fonte real ativa não verificada. Não substituir PHP antigo sem mesclar e restaurar rotas existentes.",
     "month_filter": "recalcula apenas com dias do mês selecionado no frontend, sem campos previstos no resumo",
-    "backend_salario": "histórico funcionava em 27/10; perda provável de rotas ao instalar pacote PHP substitutivo 30/10; confirmação runtime pendente"
+    "backend_salario": "histórico funcionava em 27/10; perda provável de rotas ao instalar pacote PHP substitutivo 30/10; confirmação runtime pendente",
+    "latest_flutter_commit": "c0ee868d16d727229534d1583496c7aa3a6ce626",
+    "presentation": "Resumo de mês selecionado com horas trabalhadas/extras/dias com ponto/dias a conferir. Detalhe sem quaisquer rótulos de Previsto; batidas reais e Trabalhado/Extra estimada mantidos; tamanho desktop limitado a 1080 px; dia atual sem batida aguardando marcação",
+    "deployment": "Git main e possebon sincronizadas, Vercel status pending, não verificado no app do usuário",
+    "php_patch": "POSSEBON_Corrigir_Rota_Meu_RH_Seguro.sh criado localmente, testado sobre ZIP 30/10, idempotente e php -l OK, NÃO executado no servidor"
   },
   "main_integracao_2026_10_30": {
     "status": "implemented_unverified",
-    "verified_git_sha": "5fb21fc462d70b559da8acf54cbc614cb90f8b89",
+    "verified_git_sha": "c0ee868d16d727229534d1583496c7aa3a6ce626",
     "backup": "backup/main-pre-integracao-20261030",
     "source_branches": [
       "possebon",
@@ -834,7 +838,9 @@
     "access_fix": "podeExibirMeuRh exige status A, tipo_contrato C e colaborador.unidade.id igual unitId da sessão",
     "validation": "17 arquivos e todos imports locais verificados; teste unitário Flutter incluído, MAS não executado; PHP não publicado",
     "docs": "docs/meu-rh-api-contract.md atualizado",
-    "deploy": "não confirmado; default GitHub possebon, Vercel team access 403"
+    "deploy": "não confirmado; default GitHub possebon, Vercel team access 403",
+    "published": "Vercel status pending após sync possebon; não afirmar deploy concluído",
+    "branch_sync": "main == possebon no commit c0ee868; histórico anterior possebon em backup/possebon-pre-sync-20261030"
   },
   "meu_rh_backend_2026_10_30": {
     "status": "repair_prepared_not_installed",
