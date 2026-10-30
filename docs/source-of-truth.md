@@ -7,7 +7,7 @@ Atualizado em 2026-09-17.
 Fonte operacional oficial:
 
 - Repositório: `pedrotorresepc13-glitch/possebon`
-- Branch: `possebon`
+- Branch oficial a partir de 30/10/2026: **`main`** (commit de integração `d634bf7`; `possebon` permanece branch histórica/default no GitHub até reconfiguração administrativa).
 - Package Android: `br.com.possebon.app`
 
 Snapshot remoto confirmado em 2026-09-25: `2d78b5034c01ff91c1e07f2d95c0cfda0b6f2751`.
@@ -16,8 +16,8 @@ Esse SHA é somente um ponto de referência. Antes de qualquer edição deve ser
 
 ### Regra de Git
 
-- trabalhar na branch `possebon`;
-- evitar `main` e detached HEAD para o app;
+- consolidar alterações validadas na branch **`main`**, mantendo branch de integração/backup antes de merges importantes;
+- evitar tratar `possebon` ou branches `feature/*` como produção após a decisão de 30/10/2026; nunca usar detached HEAD para publicar;
 - não usar `git pull` cegamente quando houver alterações locais;
 - antes de reset/restauração, verificar mudanças staged, unstaged, unmerged e stashes;
 - depois de consolidar uma mudança, confirmar commit/push e estado da árvore local.
@@ -67,7 +67,7 @@ No projeto POSSEBON, a memória neural deve ser tratada como o **cérebro operac
 
 1. consultar `data/current-state.json`;
 2. consultar as regras/decisões relevantes em `docs/` da neural-memory;
-3. confirmar o HEAD atual do Flutter na branch `possebon`;
+3. confirmar o HEAD atual do Flutter na branch `main` e conferir a configuração de build/branch do deploy;
 4. confirmar a fonte real atual do backend MAD Builder (ZIP/arquivo mais recente confirmado pelo usuário + alterações já aplicadas);
 5. verificar código, tabelas, relacionamentos e contratos reais antes de inferir;
 6. só então escolher a solução mínima que preserve tudo já validado;
