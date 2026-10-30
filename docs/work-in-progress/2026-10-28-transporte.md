@@ -70,3 +70,12 @@ Esta decisão do usuário **substitui** a orientação anterior de manter admini
 - `php -l` nos dois traits: OK. Sem conexão ao banco de produção, teste de API, instalação em MAD Builder, build Flutter ou testes de aparelho. Não considerar aplicado/validado.
 - Actions do Flutter no head continuam falhando antes do job (`steps=[]`, runner vazio). A falha é de infraestrutura/inicialização do CI, não prova erro de Dart; código não foi compilado.
 - A PR continua **DRAFT**, base `feature/meu-rh-20261027`; não mesclar até reconciliação/validação. Quando o usuário quiser instalar PHP, entregar arquivos completos para colar manualmente. Não instalar via SSH nem sobrescrever páginas geradas.
+
+
+## 30/10 — Gestão diária e separação Rotas/Frotas (main)
+
+- Nova regra: cadastros com `codigo` iniciado em R são **Rotas** e os demais são **Frotas**. Não houve migração de banco; manter o cadastro `rota_transporte` e editar código/nome/quantidade de assentos/ponto, monitor, passageiro/assento por ferramentas já existentes.
+- Monitor mostra todos na chamada, inclusive quem informou não usar, com **vermelho** para N, **verde** para S e **neutro** para não respondido. Marcação P/A continua manual e só P grava `controle_acesso T` pelo backend; não confundir resposta e presença.
+- Gestão App main adiciona painel de operação por dia: GPS gravado, viagem ativa/finalizada, último início, saída/chegada/duração, múltiplas viagens do dia, chamada consolidada P por viagem cruzada com T no mesmo dia, alertas de não início/chamada, respostas por status. Grupo 33 e `unit_id` continuam obrigatórios. Novo painel se oculta sem contrato PHP para não mostrar zeros falsos.
+- Backend customizado `app/custom/TransporteAppApiTrait.php` preparado a partir do ZIP real 30/10/2026 09:13: pacote `POSSEBON_TRANSPORTE_GESTAO_DIA_30-10-2026.zip`, apenas ação GET `gestao_operacao_dia` e novo método read-only. `php -l` OK, patch no pacote. **NÃO instalado**. Comparar versão viva antes de aplicar manualmente; nunca sobrescrever páginas geradas.
+- Fonte Flutter única **main** `21fc4d58f354d66e3698566a7ad219dc9fb02490`; branch legada `possebon` sincronizada via fast-forward sem descartar commits (continua default configurada do GitHub). Flutter analyze/test/build e API real não homologados; últimos Vercel statuses ainda pendentes. Consulte `docs/transporte-gestao-operacao-dia-20261030.md` no repo do App.
