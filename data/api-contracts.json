@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:38:00-03:00",
+  "updated_at": "2026-10-30T10:44:00-03:00",
   "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
   "auth": {
     "session_activate": {
@@ -237,11 +237,11 @@
         "response": [
           "data",
           "unit_id",
-          "rotas[{rota_id,codigo,nome,assentos,monitor_id,trajeto_disponivel,ultima_inicializacao,viagem,quantidade_viagens_dia,monitor_iniciou,monitor_marcou_presenca,presencas,passageiros}]"
+          "rotas[{rota_id,codigo,nome,assentos,monitor_id,trajeto_disponivel,ultima_inicializacao,viagem,quantidade_viagens_dia,viagens_dia[{id,status,iniciado_em,finalizado_em,duracao_minutos}],monitor_iniciou,monitor_marcou_presenca,presencas,passageiros}]"
         ],
         "attendance": "P em app_transporte vinculado a viagem + T em controle_acesso para confirmar presente; S/N/null da confirmação C são intenção",
         "security": "Grupo33 e unit_id validados por transporteResolverGestor, read-only",
-        "limitations": "seleciona última viagem na data, informa quantidade se houver múltiplas; cadastro de passageiros atual com adição de registros P históricos"
+        "limitations": "Destaca última viagem, lista todas as viagens selecionadas (e viagem ainda ativa hoje se iniciada anteriormente); chamadas P consolidadas por pessoa nas viagens do dia e cruzadas com controle_acesso T; passageiros atuais + P históricos"
       }
     }
   },
