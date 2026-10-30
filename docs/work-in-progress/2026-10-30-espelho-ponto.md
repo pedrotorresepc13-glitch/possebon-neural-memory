@@ -30,3 +30,10 @@
 4. Confirmar cadastro oficial de turno para distinguir jornada dia/noite e fonte de feriados municipais/estaduais específicos de cada unidade; nunca marcar folha como calculada por este módulo.
 
 **STATUS: implemented_unverified — frontend em draft PR, backend preparado em arquivo, não em produção.**
+
+## Integração da Home na main em 30/10
+
+- O usuário relatou ausência de Meu RH e determinou centralização de **todo o App na main** com visibilidade apenas para colaboradores ativos **CLT** (status A, tipo_contrato C).
+- Consolidado o conteúdo de PR #12, Transporte PR #10 e Segurança PR #11 com o estado mais atual do App. `main` confirmado em `d634bf7042b38ff852458d5f8ea7cea2bc95cf56`; backup `backup/main-pre-integracao-20261030` criado.
+- Confirmados por leitura de código os três cards e a regra visual status A/contrato C. Conferidos imports e existência dos arquivos do módulo no Git; **não** é prova de compilação, publicação Web, Android ou backend ativo.
+- `possebon` ainda é branch default do repositório; Vercel MCP recusou consulta ao projeto por 403 no escopo. Não afirmar mudança em produção; API PHP/endpoint Espelho continua pendente conforme pacote 30/10.
