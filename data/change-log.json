@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T10:52:00-03:00",
+  "updated_at": "2026-10-30T11:06:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "TOTVS PT_07 / corrigir nome PFHSTFCO e reenviar Transporte",
+      "status": "corrected_files_unverified_runtime",
+      "summary": "Correção confirmada em 30/10/2026: histórico funcional TOTVS RM usa PFHSTFCO (com PF), NÃO PHSTFCO. As consultas PT_07_HISTORICO_SALARIAL_FUNCAO.sql e SQL_HISTORICO_FUNCAO_TOTVS_RM.sql distribuídas antes de 30/10 às 14h com PHSTFCO apresentaram Invalid object name. Novos arquivos SQL corrigidos no pacote POSSEBON_SQL_TOTVS_PT07_CORRIGIDO_30-10-2026.zip (testes SQL reais TOTVS ainda pendentes). Pacote Transporte íntegro, reenviado como POSSEBON_TRANSPORTE_GESTAO_DIA_REENVIO_30-10-2026.zip sem alterar conteúdo/back-end. Nenhum arquivo SQL, PHP ou banco instalado nesta etapa."
+    },
     {
       "date": "2026-10-30",
       "area": "Gestao Transporte / painel operacional e frotas",
