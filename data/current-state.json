@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:00:00-03:00",
+  "updated_at": "2026-10-30T10:38:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -873,5 +873,25 @@
     "totvs_sql_updated": "não confirmado",
     "github_main_doc": "docs/meu-rh-historico-funcao-por-vigencia.md",
     "security": "não reutilizar cargo atual em histórico; não aceitar chapa/coligada do cliente"
+  },
+  "transporte_painel_2026_10_30": {
+    "status": "implemented_unverified",
+    "flutter_branch": "main",
+    "changes": [
+      "separa rotas código R e frotas demais sem mexer no modelo",
+      "painel operacional por dia na visão geral e rota individual com GPS, duração e última inicialização",
+      "monitor agora vê e pode dar presença a quem respondeu não; cores verde/vermelha/neutra",
+      "chamada existente manual P/A continua emitindo T via PHP",
+      "retorna presença confirmada por P de viagem cruzada com controle_acesso T"
+    ],
+    "backend_source": "possebon_web-30-10-2026-09-13-19.zip",
+    "backend_package": "POSSEBON_TRANSPORTE_GESTAO_DIA_30-10-2026.zip",
+    "backend_trait": "app/custom/TransporteAppApiTrait.php",
+    "backend_endpoint": "GET /api/app/meu-transporte?acao=gestao_operacao_dia",
+    "backend_installed": false,
+    "validation": "php -l OK, diff isolado, imports Flutter verificados; build/tests Dart e API real pendentes",
+    "security": "grupo33 e unit_id pelo resolverGestor; T sozinho não identifica rota",
+    "note": "Quando PHP não tem ação, Flutter esconde painel novo sem mostrar zero; demais ferramentas não são alteradas",
+    "latest_flutter_sha": "62e49b5e78295b1e10fe4b207cc6e00eaea23ff0"
   }
 }
