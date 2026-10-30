@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T10:00:00-03:00",
+  "updated_at": "2026-10-30T10:07:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "Gestao Transporte / painel operacional e frotas",
+      "status": "in_progress",
+      "summary": "Implementar na main sem regressão: separar rotas código /^R[0-9]+$/i de frotas (demais códigos) na gestão, resumo por dia com rotas/viagem ativa, GPS gravado, início/última inicialização/final/duração; monitor não iniciou e não registrou presença; confirmação vai_utilizar S/N/null permanece independente da presença manual P/A; controle_acesso tipo T é fonte de presença efetiva, por unit_id e data. Conferidos ZIP backend 30-10-2026 09:13 e Flutter main; backend gestao atualmente só conta presenças quando viagem ativa, perde visibilidade após finalização. Modificar só Flutter main e preparar complemento API custom PHP revisável; preservar unit_id grupo 33, Dados RH, mapa e operações existentes; não alterar MAD Builder gerado e não instalar API sem versão viva confirmada."
+    },
     {
       "date": "2026-10-30",
       "area": "Meu RH / funcao historica",
