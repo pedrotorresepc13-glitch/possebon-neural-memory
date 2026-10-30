@@ -37,3 +37,10 @@
 - Consolidado o conteúdo de PR #12, Transporte PR #10 e Segurança PR #11 com o estado mais atual do App. `main` confirmado em `d634bf7042b38ff852458d5f8ea7cea2bc95cf56`; backup `backup/main-pre-integracao-20261030` criado.
 - Confirmados por leitura de código os três cards e a regra visual status A/contrato C. Conferidos imports e existência dos arquivos do módulo no Git; **não** é prova de compilação, publicação Web, Android ou backend ativo.
 - `possebon` ainda é branch default do repositório; Vercel MCP recusou consulta ao projeto por 403 no escopo. Não afirmar mudança em produção; API PHP/endpoint Espelho continua pendente conforme pacote 30/10.
+
+## Revisão após migração para main
+
+- `main` HEAD confirmado: `5fb21fc462d70b559da8acf54cbc614cb90f8b89`, após o merge `d634bf7` e a verificação da visibilidade CLT/unidade.
+- `podeExibirMeuRh` verifica `status=A`, `tipo_contrato=C` e `colaborador.unidade.id` coincidente com a unidade da sessão. O JSON real de `ApiAppController::meusDados` no ZIP de 26/10 contém `colaborador.unidade.id` e `tipo_contrato`. Isso evita exibir dados financeiros de unidade administrativa diferente.
+- Testes manuais Dart anteriores foram atualizados e `test/features/meu_rh/meu_rh_acesso_test.dart` adicionado, mas Flutter não foi executado.
+- Separar **código em main** de **publicação Web/Android**. GitHub default `possebon` permanece, Vercel não permitiu verificar projeto (403), produção não confirmada. PHP endpoints de Espelho não instalados.
