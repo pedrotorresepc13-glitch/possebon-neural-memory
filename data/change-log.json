@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T10:01:00-03:00",
+  "updated_at": "2026-10-30T09:48:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "Meu RH / funcao historica",
+      "status": "in_progress",
+      "summary": "Mostrar função em cada vigência salarial usando histórico funcional do TOTVS, sem reutilizar cargo atual. Frontend já suporta campo funcao; API PHP atual não retorna campo; consulta PT_07 precisa juntar histórico de funções. Preparar correção segura e validar sem substituir outros endpoints."
+    },
     {
       "date": "2026-10-30",
       "area": "App / sincronização da produção e patch PHP de RH",
