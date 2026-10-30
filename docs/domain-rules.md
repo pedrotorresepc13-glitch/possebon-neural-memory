@@ -181,3 +181,13 @@ Regras comuns:
 - O Web continua com o cadastro administrativo do MAD Builder; evitar substituir páginas geradas e oferecer serviços em `app/custom` quando indispensável.
 - Acesso do colaborador ao mapa do seu ônibus é independente do grupo 33. Não regredir carona, presença manual, trajeto, histórico e `unit_id`.
 - **Não liberar operações destrutivas no cliente quando o endpoint correspondente do backend vivo não estiver confirmado**.
+
+## Meu RH — Espelho de Ponto (30/10/2026)
+
+- Os horários exibidos como **batidas reais** vêm exclusivamente de `controle_acesso.tipo = P`, filtrados por `pessoa_id + unit_id` da sessão autenticada. Não usar o tipo `C` (cerca virtual) ou `T` (transporte) como ponto.
+- A base entregue tem predominância de **duas** marcações por pessoa/dia; nunca inventar batidas intermediárias de almoço. Intervalo 12h–13h é **previsto**, podendo ser **presumido e explicitamente rotulado** no cálculo preliminar.
+- Turno diurno inicial: segunda–quinta 07h–12h/13h–17h (9h), sexta 07h–12h/13h–16h (8h), sábado/domingo sem jornada prevista. Não aplicar essa escala silenciosamente ao noturno; configurar turno e feriados por unidade quando a origem oficial existir.
+- Feriados nacionais devem aparecer mesmo sem batida; trabalho no feriado/repouso é sinalizado como hora extra **estimada** para conferência. Feriados municipais/estaduais exigem origem oficial própria, não inferir imagens institucionais.
+- Atestados são buscados em `totvs_atestado` por `colaborador_id + unit_id`, intervalo `dtinicio/dtfinal`; no espelho, mostrar somente o estado 'Atestado'/'Atestado parcial', sem CID ou dados clínicos.
+- Uma batida isolada no dia em curso significa 'jornada em andamento'; batidas ímpares/anômalas não devem virar cálculos definitivos. Dias sem batidas **não equivalem automaticamente a falta**.
+- Horas trabalhadas, extras e saldo são **estimativas informativas**, não cálculos aprovados, descontos ou folhas de pagamento. Restringir acesso ao colaborador ativo e à unidade da sessão.
