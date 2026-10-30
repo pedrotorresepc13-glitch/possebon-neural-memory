@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-10-30T08:40:00-03:00",
+  "updated_at": "2026-10-30T08:46:00-03:00",
   "entries": [
     {
       "date": "2026-10-30",
       "area": "App / unificar main e restaurar Meu RH",
       "status": "implemented_unverified",
-      "summary": "main atualizada para commit d634bf7042b38ff852458d5f8ea7cea2bc95cf56 por merge fast-forward preservando 4 ancestrais: main antiga, Meu RH/Espelho, Transporte e Segurança; 603 entradas totais, 17 arquivos críticos/imports conferidos. CLT ativos status A e tipo_contrato C veem card Meu RH (Envelope, Histórico, Ponto). Backup backup/main-pre-integracao-20261030 criado. GitHub branch default ainda possebon, Vercel escopo 403, CI Flutter sem runner/analyze/test/build; NENHUM deploy real ou backend modificado. Verificar pipeline antes de publicar."
+      "summary": "main confirmada em 5fb21fc462d70b559da8acf54cbc614cb90f8b89 (merge inicial d634bf7), incluindo possebon, Meu RH/Espelho, Transporte PR10 e Segurança PR11, com backup. Fix de acesso RH 3792626: status A, tipo_contrato C, unidade funcional corresponde à sessão; teste Dart em test/features/meu_rh/ (não executado) e ferramenta de verificação atualizada, documentação do endpoint revista. 17 arquivos críticos e imports locais conferidos. GitHub default segue possebon; Vercel consulta 403, CI Flutter não disponível, PHP do espelho não instalado e nenhum deploy confirmado. NÃO afirmar que RH está visível na versão já publicada."
     },
     {
       "date": "2026-10-30",
