@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T08:46:00-03:00",
+  "updated_at": "2026-10-30T09:04:00-03:00",
   "entries": [
+    {
+      "date": "2026-10-30",
+      "area": "Meu RH / regressões e espelho por mês (main)",
+      "status": "in_progress",
+      "summary": "Usuário enviou telas Vercel: Espelho atual confunde resumo previsto total (184h) com batidas (112h), informa saldo -2h34 e extras 1h01 sem contexto, marcação 29/10 incompleta; Histórico Salarial mostra 'Integração com TOTVS ainda não está disponível'. Confirmado via histórico anterior: Histórico PT_07 funcionava em 27/10 via MeuRhAppApiTrait e TotvsRmApiService::getHistoricoSalarial, envelopes PT_13/PT_14 testados. Revisar rotas/backend/proxy sem alegar indisponibilidade real do TOTVS. Decisão UI: preservar no detalhe do dia as informações previstas e trabalhadas destacadas pelo usuário; resumo mensal SOMENTE do mês selecionado baseado em batidas efetivas, sem total planejado apresentado como apurado, não confundir previsão e ponto real. Tratar navegação de meses e mensagens sem inventar dados. Trabalhar exclusivamente main; não quebrar ferramentas. Sem mexer no PHP produtivo antes de confirmar diferenças."
+    },
     {
       "date": "2026-10-30",
       "area": "App / unificar main e restaurar Meu RH",
