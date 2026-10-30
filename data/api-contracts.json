@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T07:35:00-03:00",
+  "updated_at": "2026-10-30T10:38:00-03:00",
   "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
   "auth": {
     "session_activate": {
@@ -139,7 +139,8 @@
         "gestao",
         "gestao_monitores",
         "monitor_paradas",
-        "gestao_solicitacoes"
+        "gestao_solicitacoes",
+        "gestao_operacao_dia"
       ],
       "post_actions_known": [
         "confirmar",
@@ -221,6 +222,26 @@
           "grupo33 e unit_id"
         ],
         "status": "implemented_unverified"
+      },
+      "gestao_operacao_dia": {
+        "status": "prepared_not_installed",
+        "path": "/api/app/meu-transporte",
+        "method": "GET",
+        "query": [
+          "acao=gestao_operacao_dia",
+          "pessoa_id (obrigatoriamente da sessão)",
+          "unit_id (unidade da sessão)",
+          "data YYYY-MM-DD (hoje por padrão)",
+          "rota_id opcional"
+        ],
+        "response": [
+          "data",
+          "unit_id",
+          "rotas[{rota_id,codigo,nome,assentos,monitor_id,trajeto_disponivel,ultima_inicializacao,viagem,quantidade_viagens_dia,monitor_iniciou,monitor_marcou_presenca,presencas,passageiros}]"
+        ],
+        "attendance": "P em app_transporte vinculado a viagem + T em controle_acesso para confirmar presente; S/N/null da confirmação C são intenção",
+        "security": "Grupo33 e unit_id validados por transporteResolverGestor, read-only",
+        "limitations": "seleciona última viagem na data, informa quantidade se houver múltiplas; cadastro de passageiros atual com adição de registros P históricos"
       }
     }
   },
