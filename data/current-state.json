@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-10-30T10:44:00-03:00",
+  "updated_at": "2026-10-30T10:52:00-03:00",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
-    "flutter_head_confirmed": "c0ee868d16d727229534d1583496c7aa3a6ce626",
+    "flutter_head_confirmed": "21fc4d58f354d66e3698566a7ad219dc9fb02490",
     "backend_baseline": "possebon_web-30-10-2026-09-13-19.zip recebido e inspecionado em 30/10/2026; exportação mais recente disponibilizada nesta conversa",
     "backend_rule": "Nunca substituir arquivos PHP do MAD Builder sem comparar com o backend vivo. ZIP 30/10 09:13 confirma ausência da rota GET /api/app/meu-rh/historico-salarial, embora trait/código TOTVS PT_07 existam.",
     "backend_latest_confirmed_files_2026_10_22": [
@@ -12,7 +12,7 @@
       "TransporteAppApiTrait.php v4.15.0 do trabalho corrente",
       "TransporteWorkflowFirebaseTrait.php do trabalho corrente"
     ],
-    "github_default_branch_reported": "possebon, mas ponteiro sincronizado por fast-forward para main em 30/10; ambos apontam c0ee868",
+    "github_default_branch_reported": "GitHub default ainda possebon, mas sincronizada por fast-forward a main no SHA 21fc4d58f354d66e3698566a7ad219dc9fb02490",
     "production_deployment_branch": "não confirmada; acesso Vercel para este escopo retornou 403",
     "main_backup_branch": "backup/main-pre-integracao-20261030 @ ad26960db949a4ac4270fc8088cbdfe5ccf85d24"
   },
@@ -894,6 +894,9 @@
     "note": "Quando PHP não tem ação, Flutter esconde painel novo sem mostrar zero; demais ferramentas não são alteradas",
     "latest_flutter_sha": "21fc4d58f354d66e3698566a7ad219dc9fb02490",
     "backend_contract": "viagens_dia com partidas/chegadas/duracao de todas viagens na data; presencas consolidadas pela pessoa entre todas viagens; última viagem destacada",
-    "package_sha256": "7ad69b96f1bd45b4002785d68459d3fcc481465a7b896fe4dba110a853fea179"
+    "package_sha256": "7ad69b96f1bd45b4002785d68459d3fcc481465a7b896fe4dba110a853fea179",
+    "legacy_branch_synced": true,
+    "vercel_build": "Pendente de confirmação para último SHA; build anterior 4b84d60 aprovado, latest não homologado",
+    "ci": "Flutter SDK não disponível; tests Dart não executados; imports conferidos e php -l OK"
   }
 }
