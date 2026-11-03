@@ -625,7 +625,7 @@
         "Histórico Salarial: cada linha mostra cargo na data de início da vigência do salário (PHSTFCO <= PFHSTSAL.DTMUDANCA, PFUNCAO.NOME), nunca cargo atual; null se não houver histórico.",
         "Decisão 03/11/2026 prevalece sobre metas antigas: Espelho mostra APENAS primeira entrada e última saída por dia/competência da Carol (controle_acesso P). Toda apuração de extras/abonos/faltas virá do TOTVS tratado; não exibir estimativas Flutter."
       ],
-      "deployment": "main_flutter_simplified_2026_11_03_unverified",
+      "deployment": "main_and_legacy_synced_at_cea32be_vercel_pending",
       "security": "financial_sensitive_no_cache"
     }
   ],
