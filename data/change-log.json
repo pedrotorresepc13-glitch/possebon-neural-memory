@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-10-30T11:06:00-03:00",
+  "updated_at": "2026-11-03",
   "entries": [
+    {
+      "date": "2026-11-03",
+      "area": "Meu RH / Espelho de Ponto simplificado",
+      "status": "in_progress",
+      "summary": "Decisão atual do usuário: exibir SOMENTE os horários de entrada e saída (primeira e última marcações reais tipo P por dia) por mês, com navegação de competência. Retirar cards de resumo, horas trabalhadas, extras estimadas, saldos, cargas previstas, feriados, atestados e outros indicadores da tela; TOTVS proverá informações tratadas posteriormente. Não alterar tabela, API, TOTVS, históricos, Envelope, Transporte nem controle de acesso. Implementar exclusivamente Flutter main após conferir brain e fonte atual. Proteger dia com uma batida (saída pendente, sem inventar valor), dois ou mais registros (primeira/última), e não confundir turnos noturnos que cruzem meia-noite com horas apuradas."
+    },
     {
       "date": "2026-10-30",
       "area": "TOTVS PT_07 / corrigir nome PFHSTFCO e reenviar Transporte",
