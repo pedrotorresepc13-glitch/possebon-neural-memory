@@ -4,7 +4,7 @@
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
-    "flutter_head_confirmed": "21fc4d58f354d66e3698566a7ad219dc9fb02490",
+    "flutter_head_confirmed": "cea32bec42ad575531e5dbad42426f7efeaf531d",
     "backend_baseline": "possebon_web-30-10-2026-09-13-19.zip recebido e inspecionado em 30/10/2026; exportação mais recente disponibilizada nesta conversa",
     "backend_rule": "Nunca substituir arquivos PHP do MAD Builder sem comparar com o backend vivo. ZIP 30/10 09:13 confirma ausência da rota GET /api/app/meu-rh/historico-salarial, embora trait/código TOTVS PT_07 existam.",
     "backend_latest_confirmed_files_2026_10_22": [
@@ -12,7 +12,7 @@
       "TransporteAppApiTrait.php v4.15.0 do trabalho corrente",
       "TransporteWorkflowFirebaseTrait.php do trabalho corrente"
     ],
-    "github_default_branch_reported": "GitHub default ainda possebon, mas sincronizada por fast-forward a main no SHA 21fc4d58f354d66e3698566a7ad219dc9fb02490",
+    "github_default_branch_reported": "Branch default ainda possebon, mas sincronizada por fast-forward com main @ cea32bec42ad575531e5dbad42426f7efeaf531d em 03/11/2026",
     "production_deployment_branch": "não confirmada; acesso Vercel para este escopo retornou 403",
     "main_backup_branch": "backup/main-pre-integracao-20261030 @ ad26960db949a4ac4270fc8088cbdfe5ccf85d24"
   },
@@ -933,7 +933,10 @@
     "totvs_changed": false,
     "other_modules_changed": false,
     "limitations": "primeira/última por dia civil; turno noturno atravessando meia-noite exige posterior interpretação TOTVS",
-    "validation": "código lido e referências locais verificadas; Vercel/Flutter build e produção pendentes",
-    "main_commit": "cea32bec42ad575531e5dbad42426f7efeaf531d"
+    "validation": "imports locais e diff somente 5 arquivos RH conferidos, testes Dart adicionados mas não executados; build Vercel ainda pending",
+    "main_commit": "cea32bec42ad575531e5dbad42426f7efeaf531d",
+    "legacy_branch_sync": true,
+    "branch_sync_method": "possebon avançou por fast-forward sem force nem perder histórico; desenvolvimento somente na main",
+    "deployment": "Vercel build do commit sincronizado ainda pendente, produção não verificada"
   }
 }
