@@ -592,7 +592,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Histórico PT_07 preservado, Espelho Carol Entrada/Saída na main. Envelope: métodos PHP e rota instalados no servidor em 03/11 por instalador aditivo com backups, mas acesso continua bloqueado por falta da configuração de períodos liberados pelo RH; ainda não há teste real TOTVS/UI.",
+      "summary": "Meu RH: Histórico Salarial PT07 e Espelho Carol preservados. Envelope: backend original instalado porém exige liberação manual e ainda responde 423. Nova decisão do usuário (03/11): exibir ao próprio titular todos envelopes existentes desde colaborador.dt_admissao até hoje, com filtro de competências/datas, sem meses manuais. Patch PHP preparado, testado em cópia e NÃO instalado; aguarda SSH. Flutter main já apresenta lista e detalhe.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -627,9 +627,10 @@
         "Sempre preservar endpoints já instalados no MAD Builder: Histórico Salarial, Envelope de Pagamentos e Espelho de Ponto; nunca substituir app/routes/api.php do servidor por exportação desatualizada.",
         "Histórico Salarial: cada linha mostra cargo na data de início da vigência do salário (PHSTFCO <= PFHSTSAL.DTMUDANCA, PFUNCAO.NOME), nunca cargo atual; null se não houver histórico.",
         "Decisão 03/11/2026 prevalece sobre metas antigas: Espelho mostra APENAS primeira entrada e última saída por dia/competência da Carol (controle_acesso P). Toda apuração de extras/abonos/faltas virá do TOTVS tratado; não exibir estimativas Flutter.",
-        "Envelope TOTVS: consultar APP_RH_ENV_LISTA e APP_RH_ENV_ITENS, somente próprio CLT ativo/unidade JWT, sem cache; PFFINANC não indica liberação, portanto período e competência só com allowlist manual RH em application.ini; detalhe P/D/B e PDF oficial só com relatório autorizado."
+        "Envelope TOTVS: consultar APP_RH_ENV_LISTA e APP_RH_ENV_ITENS, somente próprio CLT ativo/unidade JWT, sem cache; PFFINANC não indica liberação, portanto período e competência só com allowlist manual RH em application.ini; detalhe P/D/B e PDF oficial só com relatório autorizado.",
+        "Decisão de 03/11 posterior à regra de liberação: Envelope mostra todos períodos do próprio titular desde dt_admissao até data atual; sem habilitado/periodos_liberados; limite por competência e data pagamento; segurança sessão+unidade permanece."
       ],
-      "deployment": "backend_envelope_installed_config_blocked_unverified",
+      "deployment": "envelope_old_backend_live_patch_admission_prepared_not_installed",
       "security": "financial_sensitive_no_cache"
     }
   ],
