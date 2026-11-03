@@ -284,7 +284,7 @@
       "privacy": "never return CID, doctor, CPF, CHAPA, history salary or NSR unless needed"
     },
     "envelopes": {
-      "status": "backend_prepared_not_installed",
+      "status": "backend_installed_old_gate_admission_patch_prepared",
       "source_zip": "possebon_web-30-10-2026-09-13-19.zip",
       "package": "POSSEBON_MEU_RH_ENVELOPES_03-11-2026.zip",
       "route": "GET /api/app/meu-rh/envelopes",
@@ -300,10 +300,13 @@
       "list_response": "status=success; data.envelopes[{competencia,periodo,descricao,data_pagamento,total_proventos_formatado,total_descontos_formatado,valor_liquido_formatado}]",
       "detail_response": "status=success; data.detalhe{competencia,periodo,itens[{codigo,descricao,tipo P/D/B,referencia,valor_formatado}],total_proventos_formatado,total_descontos_formatado,valor_liquido_formatado}",
       "sources": "APP_RH_ENV_LISTA/APP_RH_ENV_ITENS (PT_13/PT_14 conforme cadastro) via TotvsRmApiService::executarConsultaSql, PFFINANC + PEVENTO",
-      "required_release": "[meu_rh_envelopes] habilitado=1 e periodos_liberados com aprovação expressa RH; configurações de quiosque do TOTVS não são inferidas",
-      "security": "JWT, app_pessoa_id/app_unit_id/app_usuario_id, colaborador ativo status A tipo C, empresa/codcoligada/chapa server-side; cache no-store, não persistir; 423 sem liberação, 403 período não autorizado",
+      "required_release": "Removida por decisão atual do usuário: allowlist manual NÃO é necessária após patch; filtrar exclusivamente próprio colaborador desde dt_admissao até hoje.",
+      "security": "Somente JWT do titular com app_pessoa_id/app_unit_id/app_usuario_id, vínculo CLT ativo, CHAPA e coligada server-side; bloqueia outra unidade; não cache; não expõe datas futuras",
       "pdf": "Não implementado; exige contrato de relatório autorizado TOTVS",
-      "validation": "PHP lint + testes simulados OK; Flutter estrutura/imports OK; Vercel e TOTVS reais pendentes"
+      "validation": "PHP lint + 21 verificações simuladas em cópia do backend; patch idempotente, ainda não aplicado em produção",
+      "new_patch": "POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.zip",
+      "new_patch_installed": false,
+      "date_range": "colaborador.dt_admissao (servidor) até hoje, America/Sao_Paulo; anos passados para APP_RH_ENV_LISTA, filtragem por competência e DATA_PAGAMENTO no retorno e no detalhe"
     }
   }
 }
