@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-11-03",
+      "area": "Envelope / restauração conjunta método + rota",
+      "status": "repair_validated_offline_not_installed",
+      "summary": "SSH 13:21 confirmou que não existe rota GET /meu-rh/envelopes no api.php ativo; script interrompeu por não encontrar 'function envelopesMeuRh' no MeuRhAppApiTrait.php. Sintaxe PHP válida, mas método e rota não estão presentes. Teste local com cópia do ZIP de 30/10 com histórico e espelho: reinstalador original /tmp/possebon-envelope/aplicar_envelopes_seguro.py restaurou método e rota; patch de admissão CORRIGIDO aplicou corretamente; ambos php -l aprovados, sem alterar histórico ou espelho. Próximo comando SSH deve encadear os dois instaladores com set -e e conferir as três rotas; não substituir trait/rotas por versões antigas. Causa da perda não comprovada, possível regeneração Builder."
+    },
+    {
+      "date": "2026-11-03",
       "area": "Envelope / correção do instalador de admissão",
       "status": "patched_artifact_unverified_live",
       "summary": "Execução SSH do usuário em 03/11 devolveu ERRO: Rota preexistente não encontrada '/meu-rh/envelopes', apesar de grep anterior mostrar GET /meu-rh/envelopes. php -l da trait passou, mas instalador interrompeu antes de modificações. Inspeção do script identificou verificação literal SOMENTE com aspas simples; erro também pode ocorrer se MAD Builder tiver regenerado/removido a rota, ainda não confirmado. Criado script corrigido POSSEBON_Envelope_Admissao_Ate_Hoje_CORRIGIDO_03-11-2026.py e ZIP POSSEBON_Envelope_Correcao_Instalador_03-11-2026.zip: reconhece aspas simples/duplas e espaços, exige GET Router::get com o handler exato; sem rota real aborta sem mudar nada. Testado em cópia com aspas simples e duplas, sucesso/idempotência; rota ausente abort seguro. Backend de produção não alterado nesta correção; instruir inspecionar grep do api.php vivo antes de aplicar."
