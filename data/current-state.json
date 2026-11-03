@@ -970,7 +970,7 @@
     "deployment": "nenhuma alteração PHP em produção; nada de folha liberada sem RH",
     "flutter_main_commit": "f53ae1bbd51aa43c97ceb0737588d50590b40283",
     "legacy_branch_synced": true,
-    "vercel_deploy": "pending",
+    "vercel_deploy": "Vercel commit status SUCCESS; URL da execução: https://vercel.com/pedrotorresepc13-glitch/possebon/6DZuoEX4e3Yu9HXKYMsw4KwmfAMC",
     "php_package_validated": "ZIP íntegro SHA-256 950a9564753bf60089d77d77e332667938abc770224e3c8b49f0f10b844c222f",
     "actual_runtime": "PHP publicado no filesystem, resposta HTTP autenticada não comprovada",
     "backend_install_confirmed_by": "Saída SSH do usuário em 03/11/2026 12:39:58",
@@ -1065,7 +1065,7 @@
       "lib/features/meu_rh/presentation/envelope_detalhe_screen.dart"
     ],
     "new_ui_commit": "c0790088ca8e0f816187391dbb495c3ad6084ccf",
-    "flutter_build": "status Vercel pending, Flutter SDK tests not executed",
+    "flutter_build": "Vercel commit c0790088ca8e0f816187391dbb495c3ad6084ccf status SUCCESS; presença em produção/versão vista pelo usuário não conferidas; testes Flutter SDK locais não executados",
     "pdf_runtime": false,
     "affected_modules": [
       "Meu RH Envelope presentation"
