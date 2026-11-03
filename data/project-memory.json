@@ -6,7 +6,7 @@
     "source_branch": "possebon",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-10-30T10:38:00-03:00",
+    "updated_at": "2026-11-03",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -592,7 +592,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Meu RH na main. Histórico salarial já consulta TOTVS PT_07 e mostra valores; para mostrar cargo de cada vigência, PHP precisa devolver funcao/codigo_funcao e SQL PT_07 precisa consultar PHSTFCO por data. Pacote preparado, sem instalação no backend. Não alterar Flutter nem demais rotas.",
+      "summary": "Meu RH na main: Espelho de Ponto agora mostra SOMENTE Entrada/Saída das marcações Carol importadas como controle_acesso.tipo=P, por competência mensal. Sem cards de horas extras, previstas, trabalhadas, saldo, atestado ou feriado; esses eventos virão posteriormente do TOTVS RM tratados. Histórico Salarial e Envelope preservados. Código Flutter editado; CI e publicação não confirmados.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -605,7 +605,9 @@
         "lib/features/meu_rh/domain/resumo_ponto_mensal.dart",
         "test/features/meu_rh/resumo_ponto_mensal_test.dart",
         "docs/meu-rh-rotas-preservacao-20261030.md",
-        "docs/meu-rh-historico-funcao-por-vigencia.md"
+        "docs/meu-rh-historico-funcao-por-vigencia.md",
+        "lib/features/meu_rh/domain/ponto_entrada_saida.dart",
+        "test/features/meu_rh/ponto_entrada_saida_test.dart"
       ],
       "requirements": [
         "TOTVS PT_07 PFHSTSAL/PMOTMUDSAL para histórico, CODCOLIGADA+CHAPA",
@@ -620,9 +622,10 @@
         "Visibilidade de Meu RH = colaborador ativo da unidade atual (status A, tipo_contrato C); consulta nunca torna o card inteiro indisponível.",
         "Todas as telas de RH concentram-se em main desde 30/10; não criar features escondidas em branches sem integrá-las.",
         "Sempre preservar endpoints já instalados no MAD Builder: Histórico Salarial, Envelope de Pagamentos e Espelho de Ponto; nunca substituir app/routes/api.php do servidor por exportação desatualizada.",
-        "Histórico Salarial: cada linha mostra cargo na data de início da vigência do salário (PHSTFCO <= PFHSTSAL.DTMUDANCA, PFUNCAO.NOME), nunca cargo atual; null se não houver histórico."
+        "Histórico Salarial: cada linha mostra cargo na data de início da vigência do salário (PHSTFCO <= PFHSTSAL.DTMUDANCA, PFUNCAO.NOME), nunca cargo atual; null se não houver histórico.",
+        "Decisão 03/11/2026 prevalece sobre metas antigas: Espelho mostra APENAS primeira entrada e última saída por dia/competência da Carol (controle_acesso P). Toda apuração de extras/abonos/faltas virá do TOTVS tratado; não exibir estimativas Flutter."
       ],
-      "deployment": "main_flutter_updated_unverified_backend_routes_attention",
+      "deployment": "main_flutter_simplified_2026_11_03_unverified",
       "security": "financial_sensitive_no_cache"
     }
   ],
