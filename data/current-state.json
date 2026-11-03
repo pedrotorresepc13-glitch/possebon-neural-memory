@@ -981,7 +981,7 @@
     "install_mechanism": "aplicar_envelopes_seguro.py — aditivo, informou OK e criou backups",
     "application_ini_updated": false,
     "release": "Sem configuração manual de competências; contrato vigente é admissão até hoje para o titular JWT",
-    "totvs_sql_active": "APP_RH_ENV_LISTA e APP_RH_ENV_ITENS (ou PT_13/PT_14) precisam de confirmação no TOTVS real",
+    "totvs_sql_active": "Código real PT_13 e PT_14 confirmado na lista RM; consulta REST ainda falha HTTP 404 na coligada 3, sistema T",
     "real_auth_test": "pendente",
     "warning": "Não marcar como funcionando no App sem configurar liberação aprovada RH e testar dados reais",
     "live_backend": "Instalador original de Envelope aplicado pelo usuário em 03/11/2026 e rotas PHP com lint OK; versão viva AINDA exige periodos_liberados até instalação do novo patch.",
@@ -1024,6 +1024,11 @@
     "backup_original_trait": "MeuRhAppApiTrait.php.backup-envelope-20261103T132630Z-1673266",
     "backup_routes": "api.php.backup-envelope-20261103T132630Z-1673266",
     "backup_admission_trait": "MeuRhAppApiTrait.php.backup-envelope-admissao-20261103T132630Z-1673272",
-    "validation": "Instalação e sintaxe PHP reais confirmadas pelo usuário; ainda falta consulta autenticada ao TOTVS e conferência dos valores/UI"
+    "validation": "Instalação e sintaxe PHP reais confirmadas pelo usuário; ainda falta consulta autenticada ao TOTVS e conferência dos valores/UI",
+    "totvs_sql_codes_confirmed_by_user_image": {
+      "PT_13": "APP_RH_ENV_LISTA",
+      "PT_14": "APP_RH_ENV_ITENS"
+    },
+    "totvs_sql_visibility_issue": "TOTVS RM mostra consultas PT_13 e PT_14 cadastradas; porém API RealizaConsulta em coligada 3/sistema T retorna HTTP 404 para ambas. Descrição APP_RH_ENV_LISTA/ITENS NÃO é o código da sentença. Verificar aplicação/coligada de cadastro (3 vs global 0) e permissões do usuário integração antes de alterar PHP."
   }
 }
