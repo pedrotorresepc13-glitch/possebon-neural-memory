@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T10:44:00-03:00",
+  "updated_at": "2026-11-03",
   "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
   "auth": {
     "session_activate": {
@@ -282,6 +282,28 @@
         "sem garantia folha aprovada"
       ],
       "privacy": "never return CID, doctor, CPF, CHAPA, history salary or NSR unless needed"
+    },
+    "envelopes": {
+      "status": "backend_prepared_not_installed",
+      "source_zip": "possebon_web-30-10-2026-09-13-19.zip",
+      "package": "POSSEBON_MEU_RH_ENVELOPES_03-11-2026.zip",
+      "route": "GET /api/app/meu-rh/envelopes",
+      "list_query": [
+        "unit_id da sessão"
+      ],
+      "detail_query": [
+        "unit_id da sessão",
+        "ano YYYY",
+        "mes MM",
+        "periodo 0..99"
+      ],
+      "list_response": "status=success; data.envelopes[{competencia,periodo,descricao,data_pagamento,total_proventos_formatado,total_descontos_formatado,valor_liquido_formatado}]",
+      "detail_response": "status=success; data.detalhe{competencia,periodo,itens[{codigo,descricao,tipo P/D/B,referencia,valor_formatado}],total_proventos_formatado,total_descontos_formatado,valor_liquido_formatado}",
+      "sources": "APP_RH_ENV_LISTA/APP_RH_ENV_ITENS (PT_13/PT_14 conforme cadastro) via TotvsRmApiService::executarConsultaSql, PFFINANC + PEVENTO",
+      "required_release": "[meu_rh_envelopes] habilitado=1 e periodos_liberados com aprovação expressa RH; configurações de quiosque do TOTVS não são inferidas",
+      "security": "JWT, app_pessoa_id/app_unit_id/app_usuario_id, colaborador ativo status A tipo C, empresa/codcoligada/chapa server-side; cache no-store, não persistir; 423 sem liberação, 403 período não autorizado",
+      "pdf": "Não implementado; exige contrato de relatório autorizado TOTVS",
+      "validation": "PHP lint + testes simulados OK; Flutter estrutura/imports OK; Vercel e TOTVS reais pendentes"
     }
   }
 }
