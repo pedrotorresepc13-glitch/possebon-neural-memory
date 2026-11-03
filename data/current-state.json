@@ -4,7 +4,7 @@
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
-    "flutter_head_confirmed": "cea32bec42ad575531e5dbad42426f7efeaf531d",
+    "flutter_head_confirmed": "f53ae1bbd51aa43c97ceb0737588d50590b40283",
     "backend_baseline": "possebon_web-30-10-2026-09-13-19.zip recebido e inspecionado em 30/10/2026; exportação mais recente disponibilizada nesta conversa",
     "backend_rule": "Nunca substituir arquivos PHP do MAD Builder sem comparar com o backend vivo. ZIP 30/10 09:13 confirma ausência da rota GET /api/app/meu-rh/historico-salarial, embora trait/código TOTVS PT_07 existam.",
     "backend_latest_confirmed_files_2026_10_22": [
@@ -12,7 +12,7 @@
       "TransporteAppApiTrait.php v4.15.0 do trabalho corrente",
       "TransporteWorkflowFirebaseTrait.php do trabalho corrente"
     ],
-    "github_default_branch_reported": "Branch default ainda possebon, mas sincronizada por fast-forward com main @ cea32bec42ad575531e5dbad42426f7efeaf531d em 03/11/2026",
+    "github_default_branch_reported": "Branch padrão ainda possebon, ponteiro sincronizado por fast-forward com main em 03/11/2026 @ f53ae1bbd51aa43c97ceb0737588d50590b40283; desenvolvimento somente na main",
     "production_deployment_branch": "não confirmada; acesso Vercel para este escopo retornou 403",
     "main_backup_branch": "backup/main-pre-integracao-20261030 @ ad26960db949a4ac4270fc8088cbdfe5ccf85d24"
   },
@@ -967,6 +967,11 @@
       "banco PostgreSQL",
       "demais rotas"
     ],
-    "deployment": "nenhuma alteração PHP em produção; nada de folha liberada sem RH"
+    "deployment": "nenhuma alteração PHP em produção; nada de folha liberada sem RH",
+    "flutter_main_commit": "f53ae1bbd51aa43c97ceb0737588d50590b40283",
+    "legacy_branch_synced": true,
+    "vercel_deploy": "pending",
+    "php_package_validated": "ZIP íntegro SHA-256 950a9564753bf60089d77d77e332667938abc770224e3c8b49f0f10b844c222f",
+    "actual_runtime": "not applied"
   }
 }
