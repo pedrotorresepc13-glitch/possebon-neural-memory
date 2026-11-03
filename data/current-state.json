@@ -940,7 +940,7 @@
     "deployment": "Vercel build do commit sincronizado ainda pendente, produção não verificada"
   },
   "meu_rh_envelopes_2026_11_03": {
-    "status": "implemented_unverified",
+    "status": "backend_installed_release_blocked",
     "flutter_repo": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
     "flutter_changes": [
@@ -950,7 +950,7 @@
     ],
     "backend_source": "possebon_web-30-10-2026-09-13-19.zip",
     "backend_package": "POSSEBON_MEU_RH_ENVELOPES_03-11-2026.zip",
-    "backend_installed": false,
+    "backend_installed": true,
     "totvs_sql_files": [
       "APP_RH_ENV_LISTA",
       "APP_RH_ENV_ITENS"
@@ -972,6 +972,17 @@
     "legacy_branch_synced": true,
     "vercel_deploy": "pending",
     "php_package_validated": "ZIP íntegro SHA-256 950a9564753bf60089d77d77e332667938abc770224e3c8b49f0f10b844c222f",
-    "actual_runtime": "not applied"
+    "actual_runtime": "not applied",
+    "backend_install_confirmed_by": "Saída SSH do usuário em 03/11/2026 12:39:58",
+    "php_files_changed": [
+      "app/custom/MeuRhAppApiTrait.php",
+      "app/routes/api.php"
+    ],
+    "install_mechanism": "aplicar_envelopes_seguro.py — aditivo, informou OK e criou backups",
+    "application_ini_updated": false,
+    "release": "NEGADO POR PADRÃO (423) até RH liberar via [meu_rh_envelopes] habilitado e periodos_liberados",
+    "totvs_sql_active": "APP_RH_ENV_LISTA e APP_RH_ENV_ITENS (ou PT_13/PT_14) precisam de confirmação no TOTVS real",
+    "real_auth_test": "não realizado",
+    "warning": "Não marcar como funcionando no App sem configurar liberação aprovada RH e testar dados reais"
   }
 }
