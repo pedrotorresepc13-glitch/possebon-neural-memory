@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-11-03",
+      "area": "Meu RH / Envelope instalado no servidor (ainda bloqueado)",
+      "status": "installed_unverified_release_blocked",
+      "summary": "Usuário executou o instalador incremental pelo SSH em 03/11 às 12:39. Saída OK em /var/www/html/possebon_app/app/custom/MeuRhAppApiTrait.php e app/routes/api.php; backups criados e application.ini explicitamente não alterado. Backend instalado, mas API ainda negará envelopes enquanto RH não configurar [meu_rh_envelopes] e liberar competências/períodos. Próximos passos: php -l, confirmar rotas e seção INI sem exibir segredos; validar SQLs APP_RH_ENV_LISTA/ITENS ou PT_13/PT_14 cadastradas no TOTVS; RH aprovar períodos e testar funcionário válido e bloqueado. Nenhum teste com TOTVS real confirmado."
+    },
+    {
+      "date": "2026-11-03",
       "area": "Meu RH / Envelope de Pagamentos TOTVS",
       "status": "implemented_unverified",
       "summary": "Flutter na main: MeuRhApi buscarEnvelopeDetalhe, tratamento 423 não liberado; MeuRhScreen cartões de Envelope com proventos/descontos/líquido e abertura; EnvelopeDetalheScreen lista rubricas P/D/B e totais sem PDF fictício. PHP baseado ZIP 30/10: métodos acrescentados no MeuRhAppApiTrait, rota GET /meu-rh/envelopes no grupo JWT; TotvsRmApiService executarConsultaSql APP_RH_ENV_LISTA/ITENS, códigos ajustáveis em config. Segurança RH: nenhuma competência/período disponibilizado se [meu_rh_envelopes] não estiver explicitamente habilitado e allowlist RH preenchido; não confundir PFFINANC com liberação RM Portal. Script instalar idempotente, exige rota PT07 viva, cria backup, testa php -l antes de tocar arquivos. Testes simulados PHP OK incluindo unidade, chapa, períodos proibidos e totais; SDK Flutter ausente e Vercel pendente. Pacote POSSEBON_MEU_RH_ENVELOPES_03-11-2026.zip gerado, nenhum arquivo PHP instalado e nenhuma folha liberada em produção. QA final ZIP SHA256 950a9564753bf60089d77d77e332667938abc770224e3c8b49f0f10b844c222f, PHP sintaxe ok, 11 checks simulados OK; imports/brackets Flutter estruturais ok. Branch possebon avançou por fast-forward para main f53ae1bbd51aa43c97ceb0737588d50590b40283 sem force; Vercel build pending, backend ainda NÃO instalado."
