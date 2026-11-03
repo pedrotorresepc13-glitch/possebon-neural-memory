@@ -940,7 +940,7 @@
     "deployment": "Vercel build do commit sincronizado ainda pendente, produção não verificada"
   },
   "meu_rh_envelopes_2026_11_03": {
-    "status": "totvs_PT13_PT14_sql_validated_php_global_context_patch_prepared",
+    "status": "backend_user_validated_flutter_labels_implemented_unverified_pdf_pending",
     "flutter_repo": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
     "flutter_changes": [
@@ -959,15 +959,13 @@
     "security": "FOP financeiro PFFINANC pode conter períodos não liberados; API bloqueia por padrão até liberação expressa no application.ini aprovada pelo RH considerando quiosques",
     "php_test": "php -l nos arquivos completos, instalador idempotente testado em fixture com rota PT_07; simulações de 11 cenários OK",
     "flutter_test": "análise de imports e balanceamento de blocos passou, SDK Flutter indisponível para analyze/test; Vercel build pendente",
-    "official_pdf": "não implementado, relatório TOTVS requerido",
+    "official_pdf": "not implemented; verify TOTVS configured report type and endpoint; RM Portal Lab04, RM Reports WsReport, SmartView FOPTRP0013 supported by vendor; cannot infer instance",
     "unchanged": [
       "PT07",
-      "Espelho Carol",
-      "app/routes/api.php",
-      "application.ini",
-      "Flutter",
-      "SQLs TOTVS",
-      "PostgreSQL"
+      "Espelho de Ponto Carol",
+      "SQL TOTVS PT13/PT14",
+      "Backend PHP live",
+      "Transporte"
     ],
     "deployment": "nenhuma alteração PHP em produção; nada de folha liberada sem RH",
     "flutter_main_commit": "f53ae1bbd51aa43c97ceb0737588d50590b40283",
@@ -1052,6 +1050,25 @@
     ],
     "prepared_patch_behavior": "Acrescenta parâmetro opcional de contexto em executarConsultaSql; usa PT_13/PT_14 como defaults só no envelope, com coligada da sentença 0 e contexto da unidade/empresa; preserva coligada 3/CHAPA na SQL e autenticação JWT; demais chamadas sem mudança.",
     "tests": "php -l service/trait OK com código reconstruído do ZIP+patchs instalados; execução do instalador em fixture com controlador e 3 rotas passou; 2ª execução idempotente; ZIP íntegro SHA-256 e518ea6cc6b646d8c1b2aedb3808de013b9eeef9a9c9955964b7a039bf4b9131",
-    "runtime": "Em produção ainda NÃO aplicado novo patch global, sem teste HTTP real; método/admissão instalados anteriormente"
+    "runtime": "Em produção ainda NÃO aplicado novo patch global, sem teste HTTP real; método/admissão instalados anteriormente",
+    "backend_global_context_installed": true,
+    "backend_global_context_confirmation": "Usuário afirmou 'funcionou' em 03/11/2026 após patch PT_13/PT_14 global; listar/abrir envelopes funcionando",
+    "period_labels": {
+      "1": "Salário",
+      "6": "Adiantamento salarial",
+      "other": "Outro pagamento"
+    },
+    "new_ui_files": [
+      "lib/features/meu_rh/domain/tipo_pagamento.dart",
+      "test/features/meu_rh/tipo_pagamento_test.dart",
+      "lib/features/meu_rh/presentation/meu_rh_screen.dart",
+      "lib/features/meu_rh/presentation/envelope_detalhe_screen.dart"
+    ],
+    "new_ui_commit": "c0790088ca8e0f816187391dbb495c3ad6084ccf",
+    "flutter_build": "status Vercel pending, Flutter SDK tests not executed",
+    "pdf_runtime": false,
+    "affected_modules": [
+      "Meu RH Envelope presentation"
+    ]
   }
 }
