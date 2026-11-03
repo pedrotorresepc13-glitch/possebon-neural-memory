@@ -940,7 +940,7 @@
     "deployment": "Vercel build do commit sincronizado ainda pendente, produção não verificada"
   },
   "meu_rh_envelopes_2026_11_03": {
-    "status": "backend_old_installed_new_admission_patch_prepared",
+    "status": "admission_patch_first_attempt_aborted",
     "flutter_repo": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
     "flutter_changes": [
@@ -1004,6 +1004,11 @@
       "application.ini",
       "Banco PostgreSQL",
       "Flutter main"
-    ]
+    ],
+    "admission_first_attempt": "03/11, script recusou rota /meu-rh/envelopes por validação textual rígida; php -l do PHP preexistente OK; nenhuma escrita realizada pelo patch",
+    "corrected_patch": "POSSEBON_Envelope_Admissao_Ate_Hoje_CORRIGIDO_03-11-2026.py",
+    "corrected_package": "POSSEBON_Envelope_Correcao_Instalador_03-11-2026.zip",
+    "corrected_patch_tests": "rota GET single/double quotes OK e idempotente; rota ausente abort seguro",
+    "pending": "Conferir conteúdo atual app/routes/api.php; instalar o patch corrigido se as 3 rotas válidas existirem; autenticar teste com empregado e TOTVS real"
   }
 }
