@@ -592,7 +592,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Meu RH: Histórico Salarial PT07 e Espelho Carol preservados. Envelope: backend original instalado porém exige liberação manual e ainda responde 423. Nova decisão do usuário (03/11): exibir ao próprio titular todos envelopes existentes desde colaborador.dt_admissao até hoje, com filtro de competências/datas, sem meses manuais. Patch PHP preparado, testado em cópia e NÃO instalado; aguarda SSH. Flutter main já apresenta lista e detalhe.",
+      "summary": "Envelope: backend original restaurado e patch de admissão até hoje aplicado em produção em 03/11/2026; método e rota presentes, PHP lint OK. Falta validar chamada real autenticada à consulta TOTVS e detalhamento no App. Histórico salarial PT07 e Espelho Carol mantiveram rotas.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -630,7 +630,7 @@
         "Envelope TOTVS: consultar APP_RH_ENV_LISTA e APP_RH_ENV_ITENS, somente próprio CLT ativo/unidade JWT, sem cache; PFFINANC não indica liberação, portanto período e competência só com allowlist manual RH em application.ini; detalhe P/D/B e PDF oficial só com relatório autorizado.",
         "Decisão de 03/11 posterior à regra de liberação: Envelope mostra todos períodos do próprio titular desde dt_admissao até data atual; sem habilitado/periodos_liberados; limite por competência e data pagamento; segurança sessão+unidade permanece."
       ],
-      "deployment": "envelope_old_backend_live_patch_admission_prepared_not_installed",
+      "deployment": "envelope_php_restored_admission_patch_installed_http_totvs_unverified",
       "security": "financial_sensitive_no_cache"
     }
   ],
