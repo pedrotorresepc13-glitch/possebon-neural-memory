@@ -237,3 +237,9 @@ Regras comuns:
 - Data de admissão ausente ou posterior a hoje: não ampliar período por suposição; devolver erro, sem consulta TOTVS.
 - Preservar a autorização ao **próprio titular**, unidade/coligada e status CLT ativo; sem persistir resultados em POSSEBON ou cache local. A ficha financeira não equivale ao PDF oficial e pode ter lançamentos ainda não homologados; mostrar somente como consulta pessoal do TOTVS.
 - Alteração operacional é **um patch exclusivo no arquivo `app/custom/MeuRhAppApiTrait.php`**, sem modificar rota ou SQL do usuário. Pacote `POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.zip` foi preparado e validado em cópia do backend; ainda não aplicado em produção.
+
+## Atualização 03/11/2026 — consultas globais TOTVS PT_13 / PT_14
+
+- O usuário confirmou no TOTVS RM a execução com dados reais da `PT_13` (lista de envelopes) e `PT_14` (rubricas P/D/B). Ambas estão cadastradas em `GCONSSQL` com `CODCOLIGADA=0`, `APLICACAO='T'`, mas os colaboradores pertencem à coligada real 3. **Não criar cópias nem alterar as sentenças SQL.**
+- Conforme a API TOTVS, consultar global em `/RealizaConsulta/PT_13/0/T` ou `/PT_14/0/T`, com `context=CODCOLIGADA%3D3` e parâmetro SQL `CODCOLIGADA=3`; a CHAPA deve permanecer texto com zeros à esquerda, vinda exclusivamente do vínculo autenticado. O serviço original `executarConsultaSql` rejeita 0, então o patch acrescenta um argumento opcional de contexto mantendo chamadas antigas, como PT_07, idênticas.
+- O pacote `POSSEBON_Envelope_PT13_PT14_Global_03-11-2026.zip` foi preparado e validado em fixture (PHP lint + backups + idempotência). **NÃO foi aplicado em produção**, que continua com patch de admissão instalado. Modifica apenas `app/service/TotvsRmApiService.php` e `app/custom/MeuRhAppApiTrait.php`; aborta se código vivo divergir.
