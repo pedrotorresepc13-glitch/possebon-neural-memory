@@ -940,7 +940,7 @@
     "deployment": "Vercel build do commit sincronizado ainda pendente, produção não verificada"
   },
   "meu_rh_envelopes_2026_11_03": {
-    "status": "admission_patch_first_attempt_aborted",
+    "status": "backend_live_regression_method_and_route_missing",
     "flutter_repo": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
     "flutter_changes": [
@@ -1009,6 +1009,11 @@
     "corrected_patch": "POSSEBON_Envelope_Admissao_Ate_Hoje_CORRIGIDO_03-11-2026.py",
     "corrected_package": "POSSEBON_Envelope_Correcao_Instalador_03-11-2026.zip",
     "corrected_patch_tests": "rota GET single/double quotes OK e idempotente; rota ausente abort seguro",
-    "pending": "Conferir conteúdo atual app/routes/api.php; instalar o patch corrigido se as 3 rotas válidas existirem; autenticar teste com empregado e TOTVS real"
+    "pending": "Conferir conteúdo atual app/routes/api.php; instalar o patch corrigido se as 3 rotas válidas existirem; autenticar teste com empregado e TOTVS real",
+    "live_confirmation": "03/11 13:21 SSH grep: api.php tem histórico e espelho, não contém GET /meu-rh/envelopes. Verificação do script confirmou trait PHP sem envelopesMeuRh; PHP lint OK.",
+    "cause": "possível regeneração MAD Builder, ainda não comprovada",
+    "repair": "reexecutar /tmp/possebon-envelope/aplicar_envelopes_seguro.py com payload inc (instala método e rota), depois /tmp/POSSEBON_Envelope_Admissao_Ate_Hoje_CORRIGIDO_03-11-2026.py, ambos com guardas e backup",
+    "repair_test": "Fluxo de dois instaladores executado em cópia real do ZIP backend 30/10 com histórico restaurado e envelope removido; ambos OK, php -l trait e api.php OK, três rotas preservadas",
+    "repair_applied_live": false
   }
 }
