@@ -592,7 +592,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Meu RH Flutter main: Histórico Salarial PT_07 preservado; Espelho de Ponto Carol Entrada/Saída preservado; Envelope de Pagamentos com lista e detalhe de proventos/descontos/bases no código, backend PHP incremental preparado e testado isoladamente, ainda NÃO instalado nem habilitado. Liberação da ficha financeira só com autorização RH por competência/período; negado por padrão.",
+      "summary": "Histórico PT_07 preservado, Espelho Carol Entrada/Saída na main. Envelope: métodos PHP e rota instalados no servidor em 03/11 por instalador aditivo com backups, mas acesso continua bloqueado por falta da configuração de períodos liberados pelo RH; ainda não há teste real TOTVS/UI.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -629,7 +629,7 @@
         "Decisão 03/11/2026 prevalece sobre metas antigas: Espelho mostra APENAS primeira entrada e última saída por dia/competência da Carol (controle_acesso P). Toda apuração de extras/abonos/faltas virá do TOTVS tratado; não exibir estimativas Flutter.",
         "Envelope TOTVS: consultar APP_RH_ENV_LISTA e APP_RH_ENV_ITENS, somente próprio CLT ativo/unidade JWT, sem cache; PFFINANC não indica liberação, portanto período e competência só com allowlist manual RH em application.ini; detalhe P/D/B e PDF oficial só com relatório autorizado."
       ],
-      "deployment": "flutter_main_envelope_implemented_unverified_php_package_not_installed",
+      "deployment": "backend_envelope_installed_config_blocked_unverified",
       "security": "financial_sensitive_no_cache"
     }
   ],
@@ -891,5 +891,6 @@
     "Validar replanejamento com motivo, histórico acumulativo e troca opcional de responsável.",
     "Auditar e corrigir lentidão do teclado/IME e abertura de telas no app inteiro.",
     "Depois implementar edição controlada do Meu RDO: Emissão editável, Arquivado somente leitura."
-  ]
+  ],
+  "updated_at": "2026-11-03"
 }
