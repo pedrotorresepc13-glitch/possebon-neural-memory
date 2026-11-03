@@ -908,12 +908,32 @@
     "distribution": "reenviado após erro ao abrir link anterior; zip de 3 arquivos verificado por CRC e php -l"
   },
   "espelho_ponto_2026_11_03": {
-    "status": "in_progress",
-    "scope": "Flutter UI somente, branch main",
-    "decision": "Exibir somente Entrada e Saída a partir de controle_acesso tipo P por dia e competência, utilizando primeira e última marcação real; com uma marcação, Saída em aberto. Ocultar resumo mensal e todo cálculo de horas trabalhadas, horas extras, saldo, jornada prevista, atestados, feriados e notas de cálculo. Estes dados virão futuramente tratados no TOTVS RM.",
-    "unchanged": "Backend/rotas/API/database/Meu RH histórico salarial/envelopes/Transporte",
-    "navigation": "Seleção do mês atual, anterior e posterior permitidos até mês atual",
-    "source": "App Flutter current main e backend POSSEBON Web ZIP 30-10-2026 09:13; API já devolve dias[].batidas[]",
-    "validation": "a implementar/testar"
+    "status": "implemented_unverified",
+    "flutter_branch": "main",
+    "entry_exit_source": "Carol Clock In -> rotina de integração -> controle_acesso.tipo=P, acesso_em, pessoa_id, unit_id (não chamada direta Flutter)",
+    "api": "GET /api/app/meu-rh/espelho-ponto com JWT; backend atual mantido e devolve batidas originais por competência",
+    "screen": "espelho_ponto_screen.dart substituída para renderizar somente Entrada/Saída por data com marcação",
+    "card": "meu_rh_screen.dart descrição atualizada",
+    "helper": "lib/features/meu_rh/domain/ponto_entrada_saida.dart com extração primeira/última por dia",
+    "tests": "test/features/meu_rh/ponto_entrada_saida_test.dart criado (5 casos; ainda não executado por ausência SDK Flutter local)",
+    "month_navigation": "mês atual e 24 anteriores, filtro por YYYY-MM preservado",
+    "removed_ui": [
+      "resumo mensal",
+      "estimativa de horas trabalhadas",
+      "horas extras estimadas",
+      "saldo",
+      "carga horária prevista",
+      "atestado",
+      "feriado",
+      "notas de cálculos"
+    ],
+    "future_totvs": "apuração oficial de horas extras, dias abonados e outras ocorrências virá do TOTVS RM, sem cálculos locais",
+    "security": "JWT e unit_id da sessão inalterados",
+    "backend_changed": false,
+    "totvs_changed": false,
+    "other_modules_changed": false,
+    "limitations": "primeira/última por dia civil; turno noturno atravessando meia-noite exige posterior interpretação TOTVS",
+    "validation": "código lido e referências locais verificadas; Vercel/Flutter build e produção pendentes",
+    "main_commit": "cea32bec42ad575531e5dbad42426f7efeaf531d"
   }
 }
