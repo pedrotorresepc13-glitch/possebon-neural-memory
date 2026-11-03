@@ -592,7 +592,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Envelope: usuário validou PT13/PT14 diretamente no TOTVS (lista e rubricas P/D/B); ambas são sentenças globais GCONSSQL coligada 0 sistema T, dados do colaborador na coligada 3, CHAPA com zeros. PHP de admissão instalado, mas ainda precisa patch preparado para URL /PT_13/0/T e /PT_14/0/T com context=CODCOLIGADA=3; preserva SQL CODCOLIGADA=3 e JWT. Patch global testado em cópia, NÃO instalado; PT07/Carol preservados.",
+      "summary": "Envelope TOTVS lista/detalhe funcionando segundo usuário. Na main, códigos P1 e P6 agora são exibidos como Salário e Adiantamento salarial em ambas telas, sem excluir adiantamento; branch legada em fast-forward. Solicitação adicional de baixar contracheque oficial TOTVS: ainda não implementada; depende de identificar se o ambiente usa Lab04, RM Reports/wsReport ou SmartView, e o relatório/endpoint real. PT07/Carol mantidos.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -610,7 +610,9 @@
         "test/features/meu_rh/ponto_entrada_saida_test.dart",
         "lib/features/meu_rh/presentation/envelope_detalhe_screen.dart",
         "docs/meu-rh-api-contract.md",
-        "app/custom/MeuRhAppApiTrait.php"
+        "app/custom/MeuRhAppApiTrait.php",
+        "lib/features/meu_rh/domain/tipo_pagamento.dart",
+        "test/features/meu_rh/tipo_pagamento_test.dart"
       ],
       "requirements": [
         "TOTVS PT_07 PFHSTSAL/PMOTMUDSAL para histórico, CODCOLIGADA+CHAPA",
@@ -629,9 +631,10 @@
         "Decisão 03/11/2026 prevalece sobre metas antigas: Espelho mostra APENAS primeira entrada e última saída por dia/competência da Carol (controle_acesso P). Toda apuração de extras/abonos/faltas virá do TOTVS tratado; não exibir estimativas Flutter.",
         "Envelope TOTVS: consultar APP_RH_ENV_LISTA e APP_RH_ENV_ITENS, somente próprio CLT ativo/unidade JWT, sem cache; PFFINANC não indica liberação, portanto período e competência só com allowlist manual RH em application.ini; detalhe P/D/B e PDF oficial só com relatório autorizado.",
         "Decisão de 03/11 posterior à regra de liberação: Envelope mostra todos períodos do próprio titular desde dt_admissao até data atual; sem habilitado/periodos_liberados; limite por competência e data pagamento; segurança sessão+unidade permanece.",
-        "TOTVS consultas globais: PT_13/PT_14 cadastradas em coligada 0 e aplicação T; passar contexto CODCOLIGADA da empresa/unidade do titular para RealizaConsulta, manter parâmetros CODCOLIGADA e CHAPA (com zeros) do vínculo autenticado. Nunca duplicar sentenças RM."
+        "TOTVS consultas globais: PT_13/PT_14 cadastradas em coligada 0 e aplicação T; passar contexto CODCOLIGADA da empresa/unidade do titular para RealizaConsulta, manter parâmetros CODCOLIGADA e CHAPA (com zeros) do vínculo autenticado. Nunca duplicar sentenças RM.",
+        "1=Salário, 6=Adiantamento salarial somente na apresentação, preservando ambos registros e número na API. PDF oficial TOTVS deve ser gerado pelo serviço configurado (Lab04/RM Reports/SmartView), com autorização JWT/coligada/CHAPA e no-store; ainda não implementado."
       ],
-      "deployment": "envelope_sql_validated_global_context_patch_ready_not_installed",
+      "deployment": "envelope_runtime_user_confirmed_flutter_labels_committed_pdf_pending",
       "security": "financial_sensitive_no_cache"
     }
   ],
