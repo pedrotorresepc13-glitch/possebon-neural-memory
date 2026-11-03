@@ -219,3 +219,11 @@ Regras comuns:
 - Posteriormente, horas extras, dias abonados, faltas justificadas e demais eventos virão do **TOTVS RM já tratados**, e não dos cálculos locais.
 - Preserve o endpoint autenticado atual de ponto, seus filtros de pessoa/unidade, as rotas do Meu RH e demais módulos. A mudança de 03/11 é apenas na apresentação Flutter.
 - Primeira/última batida do **dia civil** não resolve turnos que atravessam meia-noite; não inventar interpretação de turno noturno antes da apuração TOTVS.
+
+## Meu RH — Envelope de Pagamentos (03/11/2026)
+
+- Envelope deve aparecer somente ao próprio colaborador ativo CLT da unidade selecionada, com identidade JWT, empresa/CODCOLIGADA e CHAPA resolvidas exclusivamente no backend; nenhuma informação financeira via outro usuário ou unit_id.
+- O TOTVS RM possui as consultas APP_RH_ENV_LISTA (lista) e APP_RH_ENV_ITENS (rubricas), ou códigos equivalentes PT_13/PT_14 conforme cadastro real. Consulta on-demand via TotvsRmApiService, sem persistir remuneração ou relatório no POSSEBON.
+- **CRÍTICO: PFFINANC não indica liberação pelo RH.** O RM Portal aplica competência inicial/final, períodos permitidos e excluídos por grupo de quiosque. Por segurança a API POSSEBON nega por padrão até o RH aprovar manualmente os períodos para TODOS os grupos abrangidos na [meu_rh_envelopes]. O allowlist manual é independente da liberação automática do RM Portal e deve ser mantido pelo RH. Um período fora do allowlist não pode disparar consulta financeira.
+- Somente relatório autorizado pelo TOTVS pode gerar PDF oficial de holerite. Não criar PDF sintético de verba/totais, não incluir links públicos ou previsíveis, não registrar salários em logs.
+- Backend MAD Builder deverá receber patch incremental (rota + métodos no MeuRhAppApiTrait) com backup e lint, **nunca substituir o api.php vivo por uma exportação antiga**; preservar PT_07 e Espelho Carol.
