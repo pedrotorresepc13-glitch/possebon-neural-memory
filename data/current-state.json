@@ -940,7 +940,7 @@
     "deployment": "Vercel build do commit sincronizado ainda pendente, produção não verificada"
   },
   "meu_rh_envelopes_2026_11_03": {
-    "status": "backend_installed_release_blocked",
+    "status": "backend_old_installed_new_admission_patch_prepared",
     "flutter_repo": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
     "flutter_changes": [
@@ -983,6 +983,27 @@
     "release": "NEGADO POR PADRÃO (423) até RH liberar via [meu_rh_envelopes] habilitado e periodos_liberados",
     "totvs_sql_active": "APP_RH_ENV_LISTA e APP_RH_ENV_ITENS (ou PT_13/PT_14) precisam de confirmação no TOTVS real",
     "real_auth_test": "não realizado",
-    "warning": "Não marcar como funcionando no App sem configurar liberação aprovada RH e testar dados reais"
+    "warning": "Não marcar como funcionando no App sem configurar liberação aprovada RH e testar dados reais",
+    "live_backend": "Instalador original de Envelope aplicado pelo usuário em 03/11/2026 e rotas PHP com lint OK; versão viva AINDA exige periodos_liberados até instalação do novo patch.",
+    "user_decision": "Consultar do dia de admissão do colaborador ativo na unidade até a data da consulta, automaticamente, todas as competências/periodos existentes; sem allowlist RH.",
+    "new_patch": "POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.zip",
+    "patch_script": "POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.py",
+    "new_patch_installed": false,
+    "start_date_source": "colaborador.dt_admissao confirmado no model atual do ZIP 30/10",
+    "end_date_source": "DateTimeImmutable(now, America/Sao_Paulo)",
+    "sql_range": "ANO_INICIO = ano admissão e ANO_FIM = ano atual; aplicação refina por competência e DATA_PAGAMENTO quando presente",
+    "new_allowlist_requirement": false,
+    "current_version_release_block": "A versão atualmente instalada ainda retorna 423 sem INI; patch futuro removerá bloqueio manual",
+    "protection": "JWT, pessoa/unidade/vínculo CLT ativo, coligada e CHAPA resolvidas apenas no backend. Sem dados financeiros de terceiros ou futuro",
+    "qa": "php -l OK; idempotência OK; 21 verificações simuladas; variantes de instalação original/intermediária testadas; query real TOTVS pendente",
+    "package_sha256": "b1ca5360b111563c39cf33f551ff8b41244d17294f910172e4efd5a83b7552c5",
+    "untouched": [
+      "Histórico Salarial PT07",
+      "Espelho Carol",
+      "app/routes/api.php",
+      "application.ini",
+      "Banco PostgreSQL",
+      "Flutter main"
+    ]
   }
 }
