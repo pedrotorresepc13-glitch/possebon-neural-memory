@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-11-03",
+      "area": "Meu RH / nomes de pagamentos e contracheque oficial",
+      "status": "in_progress",
+      "summary": "Usuário confirmou backend Envelope funcionando e informou P1=Salário, P6=Adiantamento Salarial. Substituir os códigos técnicos 'Período 1/6' nas telas de lista e detalhe por nomenclatura legível, preservando ambos pagamentos e identificador numérico na API; não remover adiantamento. Para outros números, usar label genérico sem inventar tipo. PDF deve ser documento oficial TOTVS: TOTVS Meu RH suporta download via SmartView FOPTRP0013 ou RM Reports; WsReport possui GetReportInfo/GenerateReport/GetGeneratedReportSize/GetFileChunk com BASIC Auth. Descobrir o relatório efetivamente configurado no ambiente antes de criar rota de download; não usar PDF sintético nem link público. Flutter main somente; preservar PT07/Carol/Transporte. Execução real do PDF pendente de contrato do ambiente."
+    },
+    {
+      "date": "2026-11-03",
       "area": "Envelope / restauração conjunta método + rota",
       "status": "repair_validated_offline_not_installed",
       "summary": "SSH 13:21 confirmou que não existe rota GET /meu-rh/envelopes no api.php ativo; script interrompeu por não encontrar 'function envelopesMeuRh' no MeuRhAppApiTrait.php. Sintaxe PHP válida, mas método e rota não estão presentes. Teste local com cópia do ZIP de 30/10 com histórico e espelho: reinstalador original /tmp/possebon-envelope/aplicar_envelopes_seguro.py restaurou método e rota; patch de admissão CORRIGIDO aplicou corretamente; ambos php -l aprovados, sem alterar histórico ou espelho. Próximo comando SSH deve encadear os dois instaladores com set -e e conferir as três rotas; não substituir trait/rotas por versões antigas. Causa da perda não comprovada, possível regeneração Builder."
