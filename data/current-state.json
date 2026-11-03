@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T11:06:00-03:00",
+  "updated_at": "2026-11-03",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -906,5 +906,14 @@
     "ci": "Flutter SDK não disponível; tests Dart não executados; imports conferidos e php -l OK",
     "backend_package_unchanged": true,
     "distribution": "reenviado após erro ao abrir link anterior; zip de 3 arquivos verificado por CRC e php -l"
+  },
+  "espelho_ponto_2026_11_03": {
+    "status": "in_progress",
+    "scope": "Flutter UI somente, branch main",
+    "decision": "Exibir somente Entrada e Saída a partir de controle_acesso tipo P por dia e competência, utilizando primeira e última marcação real; com uma marcação, Saída em aberto. Ocultar resumo mensal e todo cálculo de horas trabalhadas, horas extras, saldo, jornada prevista, atestados, feriados e notas de cálculo. Estes dados virão futuramente tratados no TOTVS RM.",
+    "unchanged": "Backend/rotas/API/database/Meu RH histórico salarial/envelopes/Transporte",
+    "navigation": "Seleção do mês atual, anterior e posterior permitidos até mês atual",
+    "source": "App Flutter current main e backend POSSEBON Web ZIP 30-10-2026 09:13; API já devolve dias[].batidas[]",
+    "validation": "a implementar/testar"
   }
 }
