@@ -940,7 +940,7 @@
     "deployment": "Vercel build do commit sincronizado ainda pendente, produção não verificada"
   },
   "meu_rh_envelopes_2026_11_03": {
-    "status": "backend_live_regression_method_and_route_missing",
+    "status": "backend_admission_patch_installed_runtime_totvs_unverified",
     "flutter_repo": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
     "flutter_changes": [
@@ -972,7 +972,7 @@
     "legacy_branch_synced": true,
     "vercel_deploy": "pending",
     "php_package_validated": "ZIP íntegro SHA-256 950a9564753bf60089d77d77e332667938abc770224e3c8b49f0f10b844c222f",
-    "actual_runtime": "not applied",
+    "actual_runtime": "PHP publicado no filesystem, resposta HTTP autenticada não comprovada",
     "backend_install_confirmed_by": "Saída SSH do usuário em 03/11/2026 12:39:58",
     "php_files_changed": [
       "app/custom/MeuRhAppApiTrait.php",
@@ -980,20 +980,20 @@
     ],
     "install_mechanism": "aplicar_envelopes_seguro.py — aditivo, informou OK e criou backups",
     "application_ini_updated": false,
-    "release": "NEGADO POR PADRÃO (423) até RH liberar via [meu_rh_envelopes] habilitado e periodos_liberados",
+    "release": "Sem configuração manual de competências; contrato vigente é admissão até hoje para o titular JWT",
     "totvs_sql_active": "APP_RH_ENV_LISTA e APP_RH_ENV_ITENS (ou PT_13/PT_14) precisam de confirmação no TOTVS real",
-    "real_auth_test": "não realizado",
+    "real_auth_test": "pendente",
     "warning": "Não marcar como funcionando no App sem configurar liberação aprovada RH e testar dados reais",
     "live_backend": "Instalador original de Envelope aplicado pelo usuário em 03/11/2026 e rotas PHP com lint OK; versão viva AINDA exige periodos_liberados até instalação do novo patch.",
     "user_decision": "Consultar do dia de admissão do colaborador ativo na unidade até a data da consulta, automaticamente, todas as competências/periodos existentes; sem allowlist RH.",
     "new_patch": "POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.zip",
     "patch_script": "POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.py",
-    "new_patch_installed": false,
+    "new_patch_installed": true,
     "start_date_source": "colaborador.dt_admissao confirmado no model atual do ZIP 30/10",
     "end_date_source": "DateTimeImmutable(now, America/Sao_Paulo)",
     "sql_range": "ANO_INICIO = ano admissão e ANO_FIM = ano atual; aplicação refina por competência e DATA_PAGAMENTO quando presente",
     "new_allowlist_requirement": false,
-    "current_version_release_block": "A versão atualmente instalada ainda retorna 423 sem INI; patch futuro removerá bloqueio manual",
+    "current_version_release_block": "Removido pelo patch de admissão segundo saída SSH do usuário; pendente teste real",
     "protection": "JWT, pessoa/unidade/vínculo CLT ativo, coligada e CHAPA resolvidas apenas no backend. Sem dados financeiros de terceiros ou futuro",
     "qa": "php -l OK; idempotência OK; 21 verificações simuladas; variantes de instalação original/intermediária testadas; query real TOTVS pendente",
     "package_sha256": "b1ca5360b111563c39cf33f551ff8b41244d17294f910172e4efd5a83b7552c5",
@@ -1010,10 +1010,20 @@
     "corrected_package": "POSSEBON_Envelope_Correcao_Instalador_03-11-2026.zip",
     "corrected_patch_tests": "rota GET single/double quotes OK e idempotente; rota ausente abort seguro",
     "pending": "Conferir conteúdo atual app/routes/api.php; instalar o patch corrigido se as 3 rotas válidas existirem; autenticar teste com empregado e TOTVS real",
-    "live_confirmation": "03/11 13:21 SSH grep: api.php tem histórico e espelho, não contém GET /meu-rh/envelopes. Verificação do script confirmou trait PHP sem envelopesMeuRh; PHP lint OK.",
+    "live_confirmation": "SSH usuário 03/11/2026 13:26:37: instalador original restaurou método/rota e patch corrigido informou OK Envelope agora consulta desde admissão; php -l trait/api OK",
     "cause": "possível regeneração MAD Builder, ainda não comprovada",
     "repair": "reexecutar /tmp/possebon-envelope/aplicar_envelopes_seguro.py com payload inc (instala método e rota), depois /tmp/POSSEBON_Envelope_Admissao_Ate_Hoje_CORRIGIDO_03-11-2026.py, ambos com guardas e backup",
     "repair_test": "Fluxo de dois instaladores executado em cópia real do ZIP backend 30/10 com histórico restaurado e envelope removido; ambos OK, php -l trait e api.php OK, três rotas preservadas",
-    "repair_applied_live": false
+    "repair_applied_live": false,
+    "php_method": "app/custom/MeuRhAppApiTrait.php:236 envelopesMeuRh(Request $request)",
+    "routes_confirmed": [
+      "312 GET /meu-rh/historico-salarial",
+      "316 GET /meu-rh/envelopes",
+      "317 GET /meu-rh/espelho-ponto"
+    ],
+    "backup_original_trait": "MeuRhAppApiTrait.php.backup-envelope-20261103T132630Z-1673266",
+    "backup_routes": "api.php.backup-envelope-20261103T132630Z-1673266",
+    "backup_admission_trait": "MeuRhAppApiTrait.php.backup-envelope-admissao-20261103T132630Z-1673272",
+    "validation": "Instalação e sintaxe PHP reais confirmadas pelo usuário; ainda falta consulta autenticada ao TOTVS e conferência dos valores/UI"
   }
 }
