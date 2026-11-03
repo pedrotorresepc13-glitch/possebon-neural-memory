@@ -227,3 +227,13 @@ Regras comuns:
 - **CRÍTICO: PFFINANC não indica liberação pelo RH.** O RM Portal aplica competência inicial/final, períodos permitidos e excluídos por grupo de quiosque. Por segurança a API POSSEBON nega por padrão até o RH aprovar manualmente os períodos para TODOS os grupos abrangidos na [meu_rh_envelopes]. O allowlist manual é independente da liberação automática do RM Portal e deve ser mantido pelo RH. Um período fora do allowlist não pode disparar consulta financeira.
 - Somente relatório autorizado pelo TOTVS pode gerar PDF oficial de holerite. Não criar PDF sintético de verba/totais, não incluir links públicos ou previsíveis, não registrar salários em logs.
 - Backend MAD Builder deverá receber patch incremental (rota + métodos no MeuRhAppApiTrait) com backup e lint, **nunca substituir o api.php vivo por uma exportação antiga**; preservar PT_07 e Espelho Carol.
+
+## Decisão mais recente — Envelope por admissão até hoje (03/11/2026)
+
+**Substitui a regra de allowlist manual de Envelope escrita acima em 03/11/2026.** O usuário determinou que a consulta ao histórico da própria ficha financeira seja automática e inclua todos os envelopes que existirem entre a **data de admissão do vínculo ativo da unidade** e o dia da consulta. Não exigir `habilitado=1` nem `periodos_liberados`.
+
+- Fonte do início: `colaborador.dt_admissao` do vínculo CLT ativo validado por sessão JWT, unidade e pessoa; fim: data atual do servidor, fuso `America/Sao_Paulo`. Nunca aceitar datas, CPF, CHAPA ou CODCOLIGADA do Flutter.
+- Consulta `APP_RH_ENV_LISTA`: passar `ANO_INICIO` do vínculo e `ANO_FIM` do ano atual; filtrar competências por mês de admissão/mês atual e, quando disponível, `DATA_PAGAMENTO` para descartar pagamentos anteriores à admissão ou futuros. Mesma restrição no detalhe da `APP_RH_ENV_ITENS`.
+- Data de admissão ausente ou posterior a hoje: não ampliar período por suposição; devolver erro, sem consulta TOTVS.
+- Preservar a autorização ao **próprio titular**, unidade/coligada e status CLT ativo; sem persistir resultados em POSSEBON ou cache local. A ficha financeira não equivale ao PDF oficial e pode ter lançamentos ainda não homologados; mostrar somente como consulta pessoal do TOTVS.
+- Alteração operacional é **um patch exclusivo no arquivo `app/custom/MeuRhAppApiTrait.php`**, sem modificar rota ou SQL do usuário. Pacote `POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.zip` foi preparado e validado em cópia do backend; ainda não aplicado em produção.
