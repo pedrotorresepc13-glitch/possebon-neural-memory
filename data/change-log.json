@@ -4,8 +4,8 @@
     {
       "date": "2026-11-03",
       "area": "Meu RH / nomes de pagamentos e contracheque oficial",
-      "status": "in_progress",
-      "summary": "Usuário confirmou backend Envelope funcionando e informou P1=Salário, P6=Adiantamento Salarial. Substituir os códigos técnicos 'Período 1/6' nas telas de lista e detalhe por nomenclatura legível, preservando ambos pagamentos e identificador numérico na API; não remover adiantamento. Para outros números, usar label genérico sem inventar tipo. PDF deve ser documento oficial TOTVS: TOTVS Meu RH suporta download via SmartView FOPTRP0013 ou RM Reports; WsReport possui GetReportInfo/GenerateReport/GetGeneratedReportSize/GetFileChunk com BASIC Auth. Descobrir o relatório efetivamente configurado no ambiente antes de criar rota de download; não usar PDF sintético nem link público. Flutter main somente; preservar PT07/Carol/Transporte. Execução real do PDF pendente de contrato do ambiente."
+      "status": "implemented_unverified_pdf_pending",
+      "summary": "Usuário confirmou Envelope funcionando no app após patch de consulta global. Períodos TOTVS 1 e 6 passam a mostrar Salário e Adiantamento salarial na lista e detalhe sem excluir nenhum, preservando período na API. 4 arquivos Flutter commit c0790088ca8e0f816187391dbb495c3ad6084ccf na main, possebon sincronizada fast-forward. Helper com 3 testes adicionados; Flutter SDK indisponível, build Vercel pendente. Download PDF oficial ainda não implementado: requer descobrir tipo/ID do relatório usado no Meu RH RM (Lab04/RM Reports WsReport/SmartView). Fontes TOTVS verificadas; nenhum endpoint, botão de PDF ou arquivo sintético inventado. Sem alteração em backend, banco, PT07, Carol, Transporte."
     },
     {
       "date": "2026-11-03",
