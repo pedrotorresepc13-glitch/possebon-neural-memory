@@ -592,7 +592,7 @@
       "status": "attention",
       "x": 1680,
       "y": 2970,
-      "summary": "Meu RH na main: Espelho de Ponto agora mostra SOMENTE Entrada/Saída das marcações Carol importadas como controle_acesso.tipo=P, por competência mensal. Sem cards de horas extras, previstas, trabalhadas, saldo, atestado ou feriado; esses eventos virão posteriormente do TOTVS RM tratados. Histórico Salarial e Envelope preservados. Código Flutter editado; CI e publicação não confirmados.",
+      "summary": "Meu RH Flutter main: Histórico Salarial PT_07 preservado; Espelho de Ponto Carol Entrada/Saída preservado; Envelope de Pagamentos com lista e detalhe de proventos/descontos/bases no código, backend PHP incremental preparado e testado isoladamente, ainda NÃO instalado nem habilitado. Liberação da ficha financeira só com autorização RH por competência/período; negado por padrão.",
       "files": [
         "lib/features/meu_rh/presentation/meu_rh_screen.dart",
         "lib/features/meu_rh/data/meu_rh_api.dart",
@@ -607,7 +607,10 @@
         "docs/meu-rh-rotas-preservacao-20261030.md",
         "docs/meu-rh-historico-funcao-por-vigencia.md",
         "lib/features/meu_rh/domain/ponto_entrada_saida.dart",
-        "test/features/meu_rh/ponto_entrada_saida_test.dart"
+        "test/features/meu_rh/ponto_entrada_saida_test.dart",
+        "lib/features/meu_rh/presentation/envelope_detalhe_screen.dart",
+        "docs/meu-rh-api-contract.md",
+        "app/custom/MeuRhAppApiTrait.php"
       ],
       "requirements": [
         "TOTVS PT_07 PFHSTSAL/PMOTMUDSAL para histórico, CODCOLIGADA+CHAPA",
@@ -623,9 +626,10 @@
         "Todas as telas de RH concentram-se em main desde 30/10; não criar features escondidas em branches sem integrá-las.",
         "Sempre preservar endpoints já instalados no MAD Builder: Histórico Salarial, Envelope de Pagamentos e Espelho de Ponto; nunca substituir app/routes/api.php do servidor por exportação desatualizada.",
         "Histórico Salarial: cada linha mostra cargo na data de início da vigência do salário (PHSTFCO <= PFHSTSAL.DTMUDANCA, PFUNCAO.NOME), nunca cargo atual; null se não houver histórico.",
-        "Decisão 03/11/2026 prevalece sobre metas antigas: Espelho mostra APENAS primeira entrada e última saída por dia/competência da Carol (controle_acesso P). Toda apuração de extras/abonos/faltas virá do TOTVS tratado; não exibir estimativas Flutter."
+        "Decisão 03/11/2026 prevalece sobre metas antigas: Espelho mostra APENAS primeira entrada e última saída por dia/competência da Carol (controle_acesso P). Toda apuração de extras/abonos/faltas virá do TOTVS tratado; não exibir estimativas Flutter.",
+        "Envelope TOTVS: consultar APP_RH_ENV_LISTA e APP_RH_ENV_ITENS, somente próprio CLT ativo/unidade JWT, sem cache; PFFINANC não indica liberação, portanto período e competência só com allowlist manual RH em application.ini; detalhe P/D/B e PDF oficial só com relatório autorizado."
       ],
-      "deployment": "main_and_legacy_synced_at_cea32be_vercel_pending",
+      "deployment": "flutter_main_envelope_implemented_unverified_php_package_not_installed",
       "security": "financial_sensitive_no_cache"
     }
   ],
