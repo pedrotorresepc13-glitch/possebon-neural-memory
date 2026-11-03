@@ -209,3 +209,13 @@ Regras comuns:
 ## Histórico salarial TOTVS — nome da tabela (30/10/2026)
 
 - Tabela real do histórico de função em TOTVS RM: **`PFHSTFCO` (NÃO PHSTFCO)**, validada na documentação oficial TOTVS. A SQL antiga distribuída com `PHSTFCO` falha (`Invalid object name`). Usar somente a consulta corrigida, testando a PT_07 antes de salvar/substituir a sentença ativa. Flutter não precisa mudar.
+
+## Atualização vinculante — Espelho de Ponto somente Carol (03/11/2026)
+
+**Esta decisão substitui as regras de apresentação/cálculo do Espelho registradas em 30/10/2026 acima.**
+
+- Mostrar somente as marcações brutas de **Entrada** e **Saída** por dia civil do mês consultado, recebidas pela **Carol** e persistidas no POSSEBON como `controle_acesso.tipo=P` (isolamento por Pessoa e `unit_id`). Usar primeira e última batida do dia; com uma batida, saída fica vazia. Exibir apenas datas que possuem marcações, com navegação por mês.
+- Não exibir no Flutter horas trabalhadas, horas extras, saldos, previstos, carga horária, descontos, atestados, feriados ou suposta falta nesta etapa. Nunca inferir eventos de folha a partir das batidas cruas.
+- Posteriormente, horas extras, dias abonados, faltas justificadas e demais eventos virão do **TOTVS RM já tratados**, e não dos cálculos locais.
+- Preserve o endpoint autenticado atual de ponto, seus filtros de pessoa/unidade, as rotas do Meu RH e demais módulos. A mudança de 03/11 é apenas na apresentação Flutter.
+- Primeira/última batida do **dia civil** não resolve turnos que atravessam meia-noite; não inventar interpretação de turno noturno antes da apuração TOTVS.
