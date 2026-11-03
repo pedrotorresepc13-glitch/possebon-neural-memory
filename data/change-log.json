@@ -3,9 +3,15 @@
   "entries": [
     {
       "date": "2026-11-03",
+      "area": "Meu RH / Envelope da admissão até hoje",
+      "status": "implemented_unverified",
+      "summary": "Pedido final do usuário: ao abrir Envelope consultar todos os pagamentos do titular CLT ativo de sua data de admissão até o dia atual. Campo confirmado no model: colaborador.dt_admissao. PHP patch autocontido POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.py, ZIP correspondente, transforma exclusivamente método Envelope no MeuRhAppApiTrait.php instalado, sem alterar api.php, PT07, Espelho Carol ou INI. ANO_INICIO=ano admissão ANO_FIM=ano atual; filtros mês admissão/hoje e DATA_PAGAMENTO (quando houver); bloqueia detalhe antes admissão/futuro; não exige habilitado/allowlist. Rejeita se dt_admissao inválida/nula, preserva JWT/unidade/CLT/chapa/coligada. Testes simulados 21 casos, php -l, idempotência, versões original/intermediária OK. Novo patch não instalado, ZIP SHA256 b1ca5360b111563c39cf33f551ff8b41244d17294f910172e4efd5a83b7552c5. Real TOTVS não validado."
+    },
+    {
+      "date": "2026-11-03",
       "area": "Meu RH / Envelope todos os períodos existentes",
-      "status": "in_progress",
-      "summary": "Nova decisão explícita do usuário substitui allowlist manual: consultar e exibir todas as competências e períodos presentes na PFFINANC para o colaborador titular logado no POSSEBON, inclusive histórico antigo. Não exigir [meu_rh_envelopes].habilitado nem periodos_liberados. Manter JWT, app_pessoa_id, app_unit_id, app_usuario_id, CLT ativo, coligada/chapa server-side e exclusão de outras pessoas/unidades; sem persistir valores ou abrir acesso público. Patch incremental sobre MeuRhAppApiTrait.php vivo instalado em 03/11, sem alterar api.php/PT_07/Carol/Transporte. SQL APP_RH_ENV_LISTA atual parametrizada ANO_INICIO/ANO_FIM deve cobrir histórico inteiro (até 9999), sem lista predefinida. Validar com fixture PHP e lint; ambiente real TOTVS pendente."
+      "status": "superseded_by_date_range",
+      "summary": "Nova decisão explícita do usuário substitui allowlist manual: consultar e exibir todas as competências e períodos presentes na PFFINANC para o colaborador titular logado no POSSEBON, inclusive histórico antigo. Não exigir [meu_rh_envelopes].habilitado nem periodos_liberados. Manter JWT, app_pessoa_id, app_unit_id, app_usuario_id, CLT ativo, coligada/chapa server-side e exclusão de outras pessoas/unidades; sem persistir valores ou abrir acesso público. Patch incremental sobre MeuRhAppApiTrait.php vivo instalado em 03/11, sem alterar api.php/PT_07/Carol/Transporte. SQL APP_RH_ENV_LISTA atual parametrizada ANO_INICIO/ANO_FIM deve cobrir histórico inteiro (até 9999), sem lista predefinida. Validar com fixture PHP e lint; ambiente real TOTVS pendente. Refinado pelo usuário: NÃO consultar ANO_INICIO=0 / ANO_FIM=9999; usar colaborador.dt_admissao até hoje, com filtros de competência e data de pagamento."
     },
     {
       "date": "2026-11-03",
