@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-12",
   "entries": [
+    {
+      "date": "2026-11-12",
+      "area": "Meu RDO / LT PT PTT / primeiro acesso sem e-mail",
+      "status": "attention",
+      "summary": "Investigação de continuidade: Flutter main no commit 9ab2b86c com formulário de permissões recuperado (campos emitente e horários); GitHub Actions 43211469519 SUCCESS apenas para análise/validadores, sem POST em runtime. Branch default possebon 57 commits atrás. Diagnóstico SQL work_permit aceita horários nulos, portanto revisar validação PHP antes de tornar tudo obrigatório. Novo incidente: usuário novo sem pessoa.email fica impedido desde mudança 04/11 no ApiAppController; Flutter só pede CPF e senha e não oferece e-mail. Decisão: permitir cadastrar e confirmar e-mail no primeiro acesso, preservar logins antigos, pessoa_id e unit_id, sem login falso e sem abrir apropriação de conta por CPF. Backend vivo não alterado. Recomendada API própria server-side independente do MAD Builder no futuro, jamais conexão Flutter direta com PostgreSQL."
+    },
     {
       "date": "2026-11-03",
       "area": "Meu RH / nomes de pagamentos e contracheque oficial",
