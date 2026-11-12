@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-12",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
     "flutter_branch": "main",
-    "flutter_head_confirmed": "f53ae1bbd51aa43c97ceb0737588d50590b40283",
+    "flutter_head_confirmed": "9ab2b86c3acd4df8ba426def20bde12facd22e91",
     "backend_baseline": "possebon_web-30-10-2026-09-13-19.zip recebido e inspecionado em 30/10/2026; exportação mais recente disponibilizada nesta conversa",
     "backend_rule": "Nunca substituir arquivos PHP do MAD Builder sem comparar com o backend vivo. ZIP 30/10 09:13 confirma ausência da rota GET /api/app/meu-rh/historico-salarial, embora trait/código TOTVS PT_07 existam.",
     "backend_latest_confirmed_files_2026_10_22": [
@@ -12,7 +12,7 @@
       "TransporteAppApiTrait.php v4.15.0 do trabalho corrente",
       "TransporteWorkflowFirebaseTrait.php do trabalho corrente"
     ],
-    "github_default_branch_reported": "Branch padrão ainda possebon, ponteiro sincronizado por fast-forward com main em 03/11/2026 @ f53ae1bbd51aa43c97ceb0737588d50590b40283; desenvolvimento somente na main",
+    "github_default_branch_reported": "12/11/2026: default possebon @ c0790088ca8e0f816187391dbb495c3ad6084ccf; main @ 9ab2b86c3acd4df8ba426def20bde12facd22e91 (57 ahead, 0 behind). Desenvolvimento canônico main; não forçar merge sem confirmar deploy.",
     "production_deployment_branch": "não confirmada; acesso Vercel para este escopo retornou 403",
     "main_backup_branch": "backup/main-pre-integracao-20261030 @ ad26960db949a4ac4270fc8088cbdfe5ccf85d24"
   },
@@ -1069,6 +1069,44 @@
     "pdf_runtime": false,
     "affected_modules": [
       "Meu RH Envelope presentation"
+    ]
+  },
+  "meu_rdo_permissoes_2026_11_12": {
+    "status": "implemented_unverified",
+    "flutter_branch": "main",
+    "flutter_commit": "9ab2b86c3acd4df8ba426def20bde12facd22e91",
+    "changes": "Formulário LT/PT/PTT recuperado da branch de 23/10 em lib/screens/meu_rdo_screen.dart, incluindo emitente e horários; repository/API seguem POST /api/app/meu-rdo/permissao.",
+    "ci": "Run GitHub Actions 43211469519 SUCCESS, flutter analyze e teste de janela RDO aprovados. Não valida POST real.",
+    "backend": "Backend vivo não alterado e deve ser lido antes de mexer. Diagnóstico SQL da tabela work_permit mostra issuer e campos de horário nullable, com dados históricos incompletos. App exige todos os campos atualmente; verificar regra PHP exata para cada tipo e testar criação real.",
+    "remaining": [
+      "Validar criação LT/PT/PTT em ambiente de teste na main",
+      "Conferir diferença do formulário Web e validação PHP real",
+      "Não impor NOT NULL nem preencher horas artificiais",
+      "Preservar data/PDF/hierarquia e demais telas",
+      "Confirmar qual branch gera Play Store/PWA antes de publicar"
+    ]
+  },
+  "primeiro_acesso_email_2026_11_12": {
+    "status": "attention",
+    "user_rule": "Preservar usuários existentes/login/senha. Pessoas já cadastradas sem e-mail e sem primeiro acesso podem informar e-mail no primeiro acesso para gerar novo system_users.login, sem duplicar Pessoa. Confirmar identidade e posse do e-mail antes de ativar para impedir apropriação de conta.",
+    "root_cause": "Em 04/11 ApiAppController.php primeiroAcesso passou a exigir pessoa.email válido ao criar SystemUsers e retorna 422 se vazio; Flutter em main lib/screens/acesso_screen.dart pede CPF e senha sem campo de e-mail; lib/services/api_service.dart primeiroAcesso envia apenas pessoa_id, unit_id e password.",
+    "backend_reference": "Arquivo ApiAppController(9).php consultado da Library, não representa necessariamente o arquivo vivo de 12/11. Antes do patch comparar /var/www/html/possebon_app/app/controller/ApiAppController.php e as duas conexões system_users principal/permission.",
+    "dependencies": [
+      "POST /api/app/identificar",
+      "POST /api/app/primeiro-acesso",
+      "POST /api/app/autenticar",
+      "Pessoa.email",
+      "Pessoa.system_user_id",
+      "system_users.login",
+      "system_user_unit",
+      "identidade verificada e confirmação do e-mail"
+    ],
+    "remaining": [
+      "Inspecionar backend vivo e regras de verificação de identidade",
+      "Definir contrato de e-mail verificado, sem atribuição de conta por CPF isolado",
+      "Atualizar backend e Flutter em compatibilidade",
+      "Testar sem e-mail, com e-mail, login legado, duplicidade, unidade e concorrência",
+      "Validar runtime antes de declarar resolvido"
     ]
   }
 }
