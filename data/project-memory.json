@@ -3,10 +3,10 @@
     "project": "POSSEBON App",
     "memory_version": "2.0",
     "source_repository": "pedrotorresepc13-glitch/possebon",
-    "source_branch": "possebon",
+    "source_branch": "main",
     "package_id": "br.com.possebon.app",
     "purpose": "Memória externa viva, mapa neural, regras e continuidade operacional do desenvolvimento",
-    "updated_at": "2026-11-03",
+    "updated_at": "2026-11-12",
     "security_note": "Nunca armazenar senhas, Client Secrets, REST keys, access tokens, refresh tokens, CPF, dados pessoais ou credenciais nesta memória."
   },
   "bootstrap": {
@@ -22,7 +22,7 @@
     "rule": "Antes de planejar ou alterar o POSSEBON em qualquer conversa, usar esta memória para recuperar contexto e depois confirmar a implementação real na fonte operacional."
   },
   "source_of_truth": {
-    "flutter": "GitHub pedrotorresepc13-glitch/possebon branch possebon",
+    "flutter": "GitHub pedrotorresepc13-glitch/possebon branch main (possebon é default defasada desde 12/11)",
     "backend": "ZIP/arquivo mais recente explicitamente validado no trabalho corrente; não usar GitHub Web como baseline autoritativo",
     "memory": "GitHub pedrotorresepc13-glitch/possebon-neural-memory branch main"
   },
@@ -290,14 +290,17 @@
       "id": "rdo",
       "title": "Meu RDO",
       "kind": "screen",
-      "status": "active",
+      "status": "attention",
       "x": 2550,
       "y": 2850,
-      "summary": "Offline-first com fila local e sincronização protegida.",
+      "summary": "Meu RDO offline-first; em 12/11 cadastro LT/PT/PTT restaura emitente e horários na main commit 9ab2b86c, CI SUCCESS, criação real API/backend ainda não validada. Horários no work_permit são nullable; não impor obrigatoriedade sem validar API.",
       "files": [
         "lib/screens/meu_rdo_screen.dart",
         "lib/repositories/rdo_repository.dart",
-        "lib/services/rdo_sync_service.dart"
+        "lib/services/rdo_sync_service.dart",
+        "lib/services/api_service.dart",
+        "lib/repositories/rdo_repository_native.dart",
+        "lib/repositories/rdo_repository_web.dart"
       ],
       "rules": [
         "Somente RDO do usuário atual",
@@ -636,6 +639,27 @@
       ],
       "deployment": "envelope_runtime_user_confirmed_flutter_labels_committed_pdf_pending",
       "security": "financial_sensitive_no_cache"
+    },
+    {
+      "id": "first_access_email",
+      "title": "Primeiro acesso com e-mail",
+      "kind": "screen",
+      "status": "attention",
+      "x": 3100,
+      "y": 3100,
+      "summary": "Novas Pessoas já cadastradas sem email devem fornecer e confirmar seu e-mail antes de criar usuário, sem alterar logins existentes. Backend atual exige pessoa.email e retorna 422, Flutter ainda não captura e-mail na criação.",
+      "files": [
+        "lib/screens/acesso_screen.dart",
+        "lib/services/api_service.dart",
+        "app/controller/ApiAppController.php"
+      ],
+      "rules": [
+        "Usar pessoa.email como system_users.login somente para novo usuário",
+        "Preservar contas, senhas e vinculos legados",
+        "Evitar duplicacao e colisao de logins em ambos os bancos",
+        "Não permitir apropriação de Pessoa apenas com CPF e e-mail novo",
+        "Respeitar unit_id e regras de candidato/colaborador"
+      ]
     }
   ],
   "edges": [
@@ -889,6 +913,8 @@
     ]
   ],
   "current_focus": [
+    "PRIORIDADE 12/11: corrigir primeiro acesso de Pessoa existente sem email com validação adequada; preservação de conta legada.",
+    "PRIORIDADE 12/11: validar fluxo real de cadastro LT/PT/PTT depois do commit 9ab2b86c; não exigir horários indevidamente.",
     "INCIDENTE: recuperar carregamento de unidades/PWA após alteração de backend em 22/10/2026.",
     "Meu Transporte: unificar paradas e solicitações na fonte oficial POSSEBON, sem Firebase Storage.",
     "Aplicar HARD GATE da memória neural antes de toda alteração futura.",
@@ -897,5 +923,5 @@
     "Auditar e corrigir lentidão do teclado/IME e abertura de telas no app inteiro.",
     "Depois implementar edição controlada do Meu RDO: Emissão editável, Arquivado somente leitura."
   ],
-  "updated_at": "2026-11-03"
+  "updated_at": "2026-11-12"
 }
