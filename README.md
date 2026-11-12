@@ -19,7 +19,7 @@ Para qualquer trabalho relevante no POSSEBON App:
 
 ## Fontes de verdade
 
-- **Flutter:** `pedrotorresepc13-glitch/possebon`, branch `possebon`.
+- **Flutter:** `pedrotorresepc13-glitch/possebon`, branch de desenvolvimento **`main`** desde 30/10/2026. A branch padrão do GitHub ainda é `possebon` e pode estar atrasada; validar as duas e a origem da publicação antes de fazer merge/deploy.
 - **Backend / MAD Builder / Adianti:** ZIP/arquivo mais recente explicitamente validado no trabalho corrente. O GitHub Web não substitui esse baseline.
 - **Memória estrutural, regras, decisões e continuidade:** este repositório `possebon-neural-memory`.
 
