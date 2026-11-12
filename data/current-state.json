@@ -1084,7 +1084,21 @@
       "Não impor NOT NULL nem preencher horas artificiais",
       "Preservar data/PDF/hierarquia e demais telas",
       "Confirmar qual branch gera Play Store/PWA antes de publicar"
-    ]
+    ],
+    "backend_live_ssh_2026_11_12": {
+      "state": "confirmed_readonly",
+      "file": "/var/www/html/possebon_app/app/custom/RdoAppApiTrait.php",
+      "sha256": "3e62417f5692829dd7124a5c184d1549fd0e875558795c6c3405b838fdcaf111",
+      "method": "criarPermissaoMeuRdo linha 1903",
+      "mandatory_in_current_api": [
+        "issuer",
+        "requested_at",
+        "released_at",
+        "closed_at",
+        "scheduled_start e h_emissao para PT"
+      ],
+      "notes": "O backend vivo impõe obrigatoriedade independentemente da nulidade SQL. Conferir formulários WorkPermitSimpleForm/WorkPermitForm nativos antes de alterar exigência; nenhuma mudança em produção."
+    }
   },
   "primeiro_acesso_email_2026_11_12": {
     "status": "attention",
@@ -1107,6 +1121,19 @@
       "Atualizar backend e Flutter em compatibilidade",
       "Testar sem e-mail, com e-mail, login legado, duplicidade, unidade e concorrência",
       "Validar runtime antes de declarar resolvido"
-    ]
+    ],
+    "backend_live_ssh_2026_11_12": {
+      "state": "confirmed_readonly",
+      "file": "/var/www/html/possebon_app/app/controller/ApiAppController.php",
+      "sha256": "603be0299987a8b3b4d61b25c548fac93b28996d58d7fcc86606d7d37e3b4fed",
+      "method": "primeiroAcesso linha 1378",
+      "condition": "criandoUsuario: pessoa.email precisa ser e-mail válido ou retorna 422 na linha 1700",
+      "routes_present": [
+        "/primeiro-acesso",
+        "/meu-rdo/permissao"
+      ],
+      "api_routes_sha256": "b9efea51d8dbffe66e3bf006161f0b4d109354e5f9725a0a0ad2adb8d19d002a",
+      "note": "Primeiro acesso Flutter atual não envia email; não abrir escrita não autenticada de pessoa.email sem checagem de identidade/posse do endereço. Nenhuma mudança em produção."
+    }
   }
 }
