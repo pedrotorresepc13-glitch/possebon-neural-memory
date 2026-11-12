@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-11-12",
+      "area": "Diagnóstico SSH confirmado — LT/PT/PTT e cadastro inicial por e-mail",
+      "status": "attention_backend_contract_conflict",
+      "summary": "Hash e sintaxe do backend vivo confirmados em 12/11/2026: ApiAppController.php sha256 603be029... (função primeiroAcesso 1378, bloqueio pessoa.email vazio linha 1700); RdoAppApiTrait.php sha256 3e62417f... (criarPermissaoMeuRdo 1903, exige issuer/horários e para PT scheduled_start/h_emissao); app/routes/api.php sha256 b9efea51... com ambas rotas presentes. php -l OK nos 3. WorkPermit DB tem colunas nullable, mas nulidade não prova regra do formulário Web. Próxima etapa: auditar WorkPermitSimpleForm/WorkPermitForm/MeRdoWorkPermitForm nativos e confirmar método de identificação/verificação do primeiro acesso; evitar patch inseguro ou regressão. Nenhum arquivo PHP ou dado alterado no servidor. Brain atualizado em commit 1734e594; Flutter não alterado neste diagnóstico."
+    },
+    {
+      "date": "2026-11-12",
       "area": "Meu RDO / LT PT PTT / primeiro acesso sem e-mail",
       "status": "attention",
       "summary": "Investigação de continuidade: Flutter main no commit 9ab2b86c com formulário de permissões recuperado (campos emitente e horários); GitHub Actions 43211469519 SUCCESS apenas para análise/validadores, sem POST em runtime. Branch default possebon 57 commits atrás. Diagnóstico SQL work_permit aceita horários nulos, portanto revisar validação PHP antes de tornar tudo obrigatório. Novo incidente: usuário novo sem pessoa.email fica impedido desde mudança 04/11 no ApiAppController; Flutter só pede CPF e senha e não oferece e-mail. Decisão: permitir cadastrar e confirmar e-mail no primeiro acesso, preservar logins antigos, pessoa_id e unit_id, sem login falso e sem abrir apropriação de conta por CPF. Backend vivo não alterado. Recomendada API própria server-side independente do MAD Builder no futuro, jamais conexão Flutter direta com PostgreSQL."
