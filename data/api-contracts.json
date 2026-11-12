@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-12",
   "note": "Contratos conhecidos para navegação e continuidade. Sempre conferir api.php/backend atual antes de alterar payload ou semântica.",
   "auth": {
     "session_activate": {
@@ -307,6 +307,61 @@
       "new_patch": "POSSEBON_Envelope_Admissao_Ate_Hoje_03-11-2026.zip",
       "new_patch_installed": false,
       "date_range": "colaborador.dt_admissao (servidor) até hoje, America/Sao_Paulo; anos passados para APP_RH_ENV_LISTA, filtragem por competência e DATA_PAGAMENTO no retorno e no detalhe"
+    }
+  },
+  "meu_rdo_permissao": {
+    "status": "flutter_restored_backend_runtime_unverified",
+    "method": "POST",
+    "path": "/api/app/meu-rdo/permissao",
+    "flutter": "ApiService.criarPermissaoMeuRdo, RdoRepository, MeuRdoScreen",
+    "payload_known": [
+      "pessoa_id",
+      "unit_id",
+      "tipo PT LT TT (TT = PTT)",
+      "number",
+      "tipo_trabalho F/Q",
+      "dt_execution",
+      "dt_execucao_final (TT)",
+      "number_employees",
+      "area_id",
+      "service_front_id",
+      "issuer",
+      "requested_at",
+      "released_at",
+      "closed_at",
+      "scheduled_start (PT)",
+      "h_emissao (PT)"
+    ],
+    "database_note": "work_permit issuer/time columns nullable; não confundir constraint SQL com regra da API.",
+    "test": "GitHub Actions 43211469519 success flutter analyze/test janela RDO, sem POST de cadastro real."
+  },
+  "primeiro_acesso_email": {
+    "status": "change_required_backend_and_flutter",
+    "identify": {
+      "method": "POST",
+      "path": "/api/app/identificar",
+      "current_request": [
+        "unit_id",
+        "cpf"
+      ],
+      "current_response_flags": [
+        "precisa_criar_usuario",
+        "precisa_criar_senha",
+        "requer_autenticacao"
+      ],
+      "planned_response_flag": "precisa_informar_email (apenas novos usuários sem pessoa.email, não retornar endereço completo anonimamente)"
+    },
+    "create": {
+      "method": "POST",
+      "path": "/api/app/primeiro-acesso",
+      "current_request": [
+        "pessoa_id",
+        "unit_id",
+        "password"
+      ],
+      "desired_behavior": "Para novo usuário sem email Pessoa: receber email verificado, vincular à Pessoa existente e gerar system_users.login=email; validar disponibilidade nos bancos principal e permission; não alterar login de conta existente.",
+      "security": "A identificação com CPF e pessoa_id não constitui prova suficiente de titularidade. Exigir evidência de identidade autorizada e posse do email antes de habilitar a conta; limites de tentativas e operação atômica/idempotente. Nunca ativar por simples POST não autenticado de email.",
+      "production": "API viva atual precisa ser inspecionada; arquivo histórico da Library ApiAppController(9).php não é prova de estado ao vivo."
     }
   }
 }
