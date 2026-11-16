@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-11-16",
+      "area": "Transporte Flutter GPS e release Play Store",
+      "status": "partial_pr_draft_not_released",
+      "summary": "PR #13 pedrotorresepc13-glitch/possebon branch fix/transporte-mapa-confiavel-20261116: início/fim, heading, segmentação por lacunas temporais/espaciais e testes; outbox GPS Android em SyncOutbox existente por pessoa+unidade+rota+viagem com ts/accuracy/speed/heading, PWA best effort; cancelamento descarta apenas viagem cancelada; a finalização não salva como trajeto oficial geometria com lacunas e mantém dados para ACK futuro; TransportLiveSummary interrompe ETA se GPS ausente/stale; targetSdk=36 Play; docs release e script auditoria backend somente leitura. Sem backend PHP alterado e sem Play publicada. CI técnico AAB aguardando HEAD final. Falta servidor trajeto_pontos/ACK, mapa viário offline licenciado, TTL, monitor presença/chamadas, push, LT/PT/PTT, primeiro acesso e testes físicos."
+    },
+    {
+      "date": "2026-11-16",
       "area": "Transporte — trajeto offline e reconstrução em ruas",
       "status": "investigated_not_implemented",
       "summary": "Análise código real Flutter main 9ab2b86c: segmentação ausente (um Polyline único), falhas de rede só reenvia posição atual, trajeto detalhado só aprendizado, persistência por rota e não por viagem, ausência de início/fim/rumo no mapa, backend da Library de 30/10 só atualiza V última posição e R rota oficial na finalização. Usuário esclareceu que com queda de internet na Rua X e retomada na Rua A o sistema deve traçar ruas reais e não linha reta: offline GPS persistido por viagem; só inferir via grafo de vias local/licenciado caso GPS falhe e houver solução plausível; destacar inferência versus dado real; ausência de certeza vira lacuna. Plano e pendências detalhados em current-state.transport_offline_reliability_2026_11_16. Nenhum PHP, Flutter ou Play Store alterado; PHP vivo ainda precisa auditoria. Referência Flutter main 9ab2b86c."
