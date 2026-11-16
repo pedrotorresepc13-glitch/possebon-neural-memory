@@ -1361,5 +1361,27 @@
       "notes": "Full files supplied by user matched live hashes after CRLF normalization. Deliver by user copying full PHP inside MAD Builder (NO installer scripts, no SSH replacements, no DB write). Transport workflow adds Bearer-session scoped GPS batch ACK and abandoned trip manager action; first-access supports new email only for account creation when Pessoa email missing, checking DOB+mother and existing email conflict. Existing logins preserved.",
       "rdo_reason_unchanged": "Current Flutter main already restored fields issuer/requested_at/released_at/closed_at/scheduled_start/h_emissao in Meu RDO PT/LT/PTT form, matching current backend. Historical work_permit fields nullable and many old LT records missing times; do not change backend validation without actual Web forms and test results."
     }
+  },
+  "web_ios_android_platform_split_2026_11_16": {
+    "goal": "Android opening possebon.vercel.app must redirect to Play Store br.com.possebon.app; desktop remains Web; iOS Safari/Home Screen remains PWA with Web Push and best-effort GPS foreground/resume",
+    "web_repo": "pedrotorresepc13-glitch/possebon",
+    "branch": "main",
+    "code_commit": "f0dc12e6b894b0efb5fd66710fcfeb7120344c7c",
+    "play_url": "https://play.google.com/store/apps/details?id=br.com.possebon.app&pcampaignid=web_share",
+    "changes": [
+      "vercel.json 307 redirect GET root/index.html for UA Android, preserve /api /firebase-messaging-sw /manifest",
+      "web/index.html Android redirect also deep links before Flutter loads",
+      "pubspec.yaml pin mobile_scanner 7.4.1 to fix Dart 3.14 @JS extension constructors build error",
+      "lib/screens/home_screen.dart iOS PWA Home Screen install instructions for push",
+      "lib/services/transporte_tracking_service.dart PWA resumed one-shot GPS acquisition and historical outbox sync; do not invent missing points"
+    ],
+    "validation": "Static UA checks Android true and Safari iPhone/iPad/Desktop false, JSON and routes verified; Vercel Git production build queued at last observation, not yet READY",
+    "known_limit": "iOS PWA cannot guarantee continuous GPS while device locked or app background/force-closed; native Flutter iOS + Apple CoreLocation background mode and App Store required; PWA Web Push on Home Screen installed iOS16.4+ is supported, requires consent",
+    "vercel_project": "possebon",
+    "vercel_project_id": "prj_Rq4ZWTprXMoknBLnGbVVsIQodtTR",
+    "vercel_domain": "possebon.vercel.app",
+    "failure_diagnosis": "Previous Vercel build d400be failed mobile_scanner 7.4.0 @JS extension constructor with newer Dart. Pin 7.4.1 resolved dependency at Vercel install, compilation still pending.",
+    "pubspec_lock_note": "pubspec.lock still references 7.4.0 in Git; flutter pub get resolves 7.4.1 and user should save updated lock after verification",
+    "not_published_to_playstore": true
   }
 }
