@@ -1172,7 +1172,7 @@
       "backend_live_modified": false,
       "play_store_published": false,
       "base": "main@9ab2b86c3acd4df8ba426def20bde12facd22e91",
-      "current_head_observed": "28efd44c6c38d310184f6e0bf5198be925ac6c90",
+      "current_head_observed": "706fa1e7678e837befb7e6668c5268d152059fe9",
       "implemented": [
         "GPS mapa com início e fim e seta de rumo de heading",
         "Quebra linhas em lacunas grandes e temporais; sem inferir ruas inexistentes",
@@ -1209,7 +1209,15 @@
         "validar login e-mail e LT/PT/PTT com backend vivo",
         "assinatura Play oficial, versionCode novo, revisão Play Console"
       ],
-      "ci": "Workflow GitHub Actions submetido; HEAD final ainda não validado no momento do registro. Execuções antigas canceladas por concurrency.",
+      "ci": {
+        "previous_run": "43874225019",
+        "previous_result": "flutter analyze success, transport tests success, full suite 65 tests passed; AAB failed because Gradle 9.1.0 < Flutter 3.50 minimum 9.3.1",
+        "fix_commit": "706fa1e7678e837befb7e6668c5268d152059fe9",
+        "updated_gradle_wrapper": "9.3.1",
+        "current_run": "https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/43877703524",
+        "status": "in_progress_at_observation",
+        "release_status": "not published; temporary CI keystore only"
+      },
       "note": "Não liberar PR para main nem Play até os gates.",
       "additional_changes": [
         "Filtro de saltos fisicamente incompatíveis e amostras de baixa precisão para rota oficial",
@@ -1224,6 +1232,33 @@
       "production_RdoAppApiTrait_sha256": "3e62417f5692829dd7124a5c184d1549fd0e875558795c6c3405b838fdcaf111",
       "library_RdoAppApiTrait_sha256": "8f2bce5f27d8bb4a2e5b4518048bb06166fc397e56fb1d3e4137232d416317a3",
       "rule": "VERSÕES NÃO SÃO IDÊNTICAS. Não reinstalar Library PHP sobre produção. Inspecionar arquivos vivos antes de gerar patch/mudar validações."
+    },
+    "backend_live_ssh_2026_11_16": {
+      "confirmed": true,
+      "unit_id": 3,
+      "active_trips": 4,
+      "trips_no_recent_gps": 4,
+      "trips_older_than_six_hours": 4,
+      "sql_read_only": true,
+      "php_syntax_errors": 0,
+      "files": {
+        "TransporteAppApiTrait": "3506fc81542b004e34d58936b2f527bfc3d2455a9554a29009761f98a4090bad",
+        "TransporteWorkflowFirebaseTrait": "d001b6d586d30ad9c7da2c2f55e0c36fce365af42ebbfc3d0410723f33ff027c",
+        "FirebaseNotificationTrait": "343d5d28171fb9ab2cd285a27a40983a95d6d12f53b20a55ae4590355c1d766d",
+        "ApiAppController": "603be0299987a8b3b4d61b25c548fac93b28996d58d7fcc86606d7d37e3b4fed",
+        "RdoAppApiTrait": "3e62417f5692829dd7124a5c184d1549fd0e875558795c6c3405b838fdcaf111",
+        "api_php": "b9efea51d8dbffe66e3bf006161f0b4d109354e5f9725a0a0ad2adb8d19d002a"
+      },
+      "function_lines": {
+        "monitor_presence": 3107,
+        "notify_start": 3763,
+        "start": 3806,
+        "live_gps_update": 3951,
+        "finish": 4046,
+        "live_position": 4478,
+        "trip_lookup": 5502
+      },
+      "next": "Read-only identify four trip IDs and determine presence/tracking history; do not blindly mark F or delete; server TTL must preserve audit and distinguish expired/operationally ended vs normal destination finish."
     }
   }
 }
