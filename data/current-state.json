@@ -1172,7 +1172,7 @@
       "backend_live_modified": false,
       "play_store_published": false,
       "base": "main@9ab2b86c3acd4df8ba426def20bde12facd22e91",
-      "current_head_observed": "3d9a1134edbaaff55464f8ff1a106818702754ba",
+      "current_head_observed": "d400be241e09967c3989ffc34b7b064079065a07",
       "implemented": [
         "GPS mapa com início e fim e seta de rumo de heading",
         "Quebra linhas em lacunas grandes e temporais; sem inferir ruas inexistentes",
@@ -1230,7 +1230,14 @@
         "Driver/monitor stop auto sheet only after GPS recent, stationary >=8 sec, no repeat for same stop+trip",
         "Manager action gestao_encerrar_viagem_abandonada after >8h and >30m stale, preserves audit and restricts unit",
         "Gradle wrapper 9.3.1 target SDK 36 and CI tests"
-      ]
+      ],
+      "new_first_access": {
+        "api_service": "added optional email, dtNascimento, nomeMae payload to primeiroAcesso",
+        "acesso_screen": "if identificar returns precisa_cadastrar_email, show email / DOB / mother's name dialog and send to PHP, preserve existing login flow",
+        "transport_home": "on valid session Home start historical GPS sync even without active trip",
+        "android_build": "Gradle wrapper 9.3.1; AGP 9.1.1 required by Flutter CI",
+        "play_status": "not published; PR13 draft branch only"
+      }
     },
     "backend_reference_sha_mismatch": {
       "production_ApiAppController_sha256": "603be0299987a8b3b4d61b25c548fac93b28996d58d7fcc86606d7d37e3b4fed",
@@ -1328,6 +1335,31 @@
       "Monitor initial auto-presence P/T and offline attendance queue not done",
       "Real FCM end-to-end/deep link/ETA with passengers not validated",
       "No physical Android tests or official Google Play signed AAB/versionCode/upload"
-    ]
+    ],
+    "madbuilder_full_live_source_2026_11_16": {
+      "verified_sha_lf": {
+        "TransporteAppApiTrait": "3506fc81542b004e34d58936b2f527bfc3d2455a9554a29009761f98a4090bad",
+        "TransporteWorkflowFirebaseTrait": "d001b6d586d30ad9c7da2c2f55e0c36fce365af42ebbfc3d0410723f33ff027c",
+        "ApiAppController": "603be0299987a8b3b4d61b25c548fac93b28996d58d7fcc86606d7d37e3b4fed",
+        "RdoAppApiTrait": "3e62417f5692829dd7124a5c184d1549fd0e875558795c6c3405b838fdcaf111"
+      },
+      "artifacts_created": "POSSEBON_MADBUILDER_4_ARQUIVOS_COMPLETOS_20261116.zip; direct full PHP files for ApiAppController.php and TransporteWorkflowFirebaseTrait.php",
+      "changes_only": [
+        "TransporteWorkflowFirebaseTrait.php",
+        "ApiAppController.php"
+      ],
+      "no_changes": [
+        "TransporteAppApiTrait.php",
+        "RdoAppApiTrait.php"
+      ],
+      "updated_sha_lf": {
+        "TransporteWorkflowFirebaseTrait": "545f84867c3e0a1dacb48554cba0d9cf2a2425eefd52858c0d18964fb2e162a5",
+        "ApiAppController": "fb008f6c72923b0de6b4836c61f69aafe581fee171e0b3ea45f9b6139ec4c6cf"
+      },
+      "php_lint_all": "passed",
+      "server_applied": false,
+      "notes": "Full files supplied by user matched live hashes after CRLF normalization. Deliver by user copying full PHP inside MAD Builder (NO installer scripts, no SSH replacements, no DB write). Transport workflow adds Bearer-session scoped GPS batch ACK and abandoned trip manager action; first-access supports new email only for account creation when Pessoa email missing, checking DOB+mother and existing email conflict. Existing logins preserved.",
+      "rdo_reason_unchanged": "Current Flutter main already restored fields issuer/requested_at/released_at/closed_at/scheduled_start/h_emissao in Meu RDO PT/LT/PTT form, matching current backend. Historical work_permit fields nullable and many old LT records missing times; do not change backend validation without actual Web forms and test results."
+    }
   }
 }
