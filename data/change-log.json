@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-11-16",
+      "area": "Backend Transporte EPC13 e CI Android",
+      "status": "production_root_cause_confirmed_requires_fix",
+      "summary": "Diagnóstico fornecido do PHP vivo: 6 php -l ok; TransporteAppApiTrait.php sha256 3506fc81542b... e TransporteWorkflowFirebaseTrait d001b6d586...; no PostgreSQL unit_id 3 há exatamente 4 viagens V status A, as quatro sem GPS recente e abertas há mais de 6h; query read-only/ROLLBACK. CI Flutter PR13 run 43874225019: analyze + todos 65 testes PASS, AAB falhou por Gradle 9.1.0 abaixo do mínimo Flutter 3.50 (9.3.1). Corrigido wrapper na branch fix/transporte-mapa-confiavel-20261116 commit 706fa1e7; novo run 43877703524 em progresso. Não fazer UPDATE cego nas 4, ler IDs e histórico; nenhum PHP produção alterado."
+    },
+    {
+      "date": "2026-11-16",
       "area": "Transporte Flutter GPS e release Play Store",
       "status": "partial_pr_draft_not_released",
       "summary": "PR #13 pedrotorresepc13-glitch/possebon branch fix/transporte-mapa-confiavel-20261116: início/fim, heading, segmentação por lacunas temporais/espaciais e testes; outbox GPS Android em SyncOutbox existente por pessoa+unidade+rota+viagem com ts/accuracy/speed/heading, PWA best effort; cancelamento descarta apenas viagem cancelada; a finalização não salva como trajeto oficial geometria com lacunas e mantém dados para ACK futuro; TransportLiveSummary interrompe ETA se GPS ausente/stale; targetSdk=36 Play; docs release e script auditoria backend somente leitura. Sem backend PHP alterado e sem Play publicada. CI técnico AAB aguardando HEAD final. Falta servidor trajeto_pontos/ACK, mapa viário offline licenciado, TTL, monitor presença/chamadas, push, LT/PT/PTT, primeiro acesso e testes físicos."
