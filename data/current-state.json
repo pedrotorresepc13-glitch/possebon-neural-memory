@@ -1137,7 +1137,7 @@
     }
   },
   "transport_offline_reliability_2026_11_16": {
-    "status": "partial_flutter_fix_pr_draft_not_released",
+    "status": "integrated_flutter_and_backend_patch_prepared_not_deployed",
     "user_issue": "Exemplos de trajetos com segmentos em linha reta após queda da conexão, troca de app ou tela apagada; usuário exige reconstrução seguindo ruas, nunca linha reta arbitrária.",
     "rule": "Queda de internet NÃO é perda de GPS: capturar e persistir posições timestamped localmente durante viagem mesmo offline; reenvio idempotente e ordenado no retorno. Se GPS também falhar: inferência offline sobre mapa/grafo viário cacheado/licenciado, condicionada a plausibilidade/consistência temporal e ponto de partida/fim; distinguir trechos inferidos de GPS real; ausência de certeza -> lacuna visual explicada, não inventar percurso.",
     "git_main_verified_sha": "9ab2b86c3acd4df8ba426def20bde12facd22e91",
@@ -1172,7 +1172,7 @@
       "backend_live_modified": false,
       "play_store_published": false,
       "base": "main@9ab2b86c3acd4df8ba426def20bde12facd22e91",
-      "current_head_observed": "706fa1e7678e837befb7e6668c5268d152059fe9",
+      "current_head_observed": "3d9a1134edbaaff55464f8ff1a106818702754ba",
       "implemented": [
         "GPS mapa com início e fim e seta de rumo de heading",
         "Quebra linhas em lacunas grandes e temporais; sem inferir ruas inexistentes",
@@ -1210,13 +1210,10 @@
         "assinatura Play oficial, versionCode novo, revisão Play Console"
       ],
       "ci": {
-        "previous_run": "43874225019",
-        "previous_result": "flutter analyze success, transport tests success, full suite 65 tests passed; AAB failed because Gradle 9.1.0 < Flutter 3.50 minimum 9.3.1",
-        "fix_commit": "706fa1e7678e837befb7e6668c5268d152059fe9",
-        "updated_gradle_wrapper": "9.3.1",
-        "current_run": "https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/43877703524",
+        "latest_run": "https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/43880584339",
         "status": "in_progress_at_observation",
-        "release_status": "not published; temporary CI keystore only"
+        "previous_completed_run": "43874225019 analyze and 65 tests passed, Gradle 9.1 failed AAB, wrapper upgraded",
+        "release_status": "not published / AAB with throwaway CI signing only"
       },
       "note": "Não liberar PR para main nem Play até os gates.",
       "additional_changes": [
@@ -1224,6 +1221,15 @@
         "Conversão correta de fila por viagem sem misturar atualizações live com histórico",
         "Calibração de lacunas temporais para não quebrar percurso durante paradas longas",
         "Validação AAB do HEAD final ainda em andamento"
+      ],
+      "current_changes": [
+        "Native SQLite Outbox GPS per trip across days + Web PWA best-effort",
+        "ACK per UUID and batch sync only after server capability GET gps_capacidades_v1",
+        "ApiService gps_lote_v1 and cross-trip retry after next login",
+        "Separate live GPS status from active trip; stale >2min shown as last known rather than moving bus",
+        "Driver/monitor stop auto sheet only after GPS recent, stationary >=8 sec, no repeat for same stop+trip",
+        "Manager action gestao_encerrar_viagem_abandonada after >8h and >30m stale, preserves audit and restricts unit",
+        "Gradle wrapper 9.3.1 target SDK 36 and CI tests"
       ]
     },
     "backend_reference_sha_mismatch": {
@@ -1259,6 +1265,69 @@
         "trip_lookup": 5502
       },
       "next": "Read-only identify four trip IDs and determine presence/tracking history; do not blindly mark F or delete; server TTL must preserve audit and distinguish expired/operationally ended vs normal destination finish."
-    }
+    },
+    "four_abandoned_trips_from_db_readonly": [
+      {
+        "unit_id": 3,
+        "viagem_id": 352,
+        "rota": "R24",
+        "pessoa_id": 820,
+        "iniciado_em": "2026-10-27 05:17:58.069488",
+        "gps_atualizado_em": "2026-10-30 11:32:55.921844"
+      },
+      {
+        "unit_id": 3,
+        "viagem_id": 971,
+        "rota": "R03",
+        "pessoa_id": 545,
+        "iniciado_em": "2026-11-09 05:09:21.725699",
+        "gps_atualizado_em": "2026-11-09 05:09:21.725699"
+      },
+      {
+        "unit_id": 3,
+        "viagem_id": 1196,
+        "rota": "R06",
+        "pessoa_id": 434,
+        "iniciado_em": "2026-11-12 05:33:43.883647",
+        "gps_atualizado_em": "2026-11-12 05:39:21.761064"
+      },
+      {
+        "unit_id": 3,
+        "viagem_id": 1225,
+        "rota": "R08",
+        "pessoa_id": 625,
+        "iniciado_em": "2026-11-12 05:40:31.866033",
+        "gps_atualizado_em": "2026-11-12 05:40:31.866033"
+      }
+    ],
+    "backend_patch_prepared_2026_11_16": {
+      "source": "TransporteWorkflowFirebaseTrait.php",
+      "exact_live_sha256": "d001b6d586d30ad9c7da2c2f55e0c36fce365af42ebbfc3d0410723f33ff027c",
+      "patched_file_sha256": "4033e161a29bd263ca1247056b3f481b78d090851d529e2648d3c55f5155c21e",
+      "bundle_name": "POSSEBON_TRANSPORTE_BACKEND_PREPARADO_20261116.zip",
+      "bundle_sha256": "6cbda8acd41cd56976016cf30942a44b838b2730c95c264054ab93bb85214714",
+      "php_lint": "passed",
+      "server_applied": false,
+      "database_changed": false,
+      "action_post": [
+        "iniciar existing intercepted to expire >8h old >30m no GPS before legacy",
+        "gestao_encerrar_viagem_abandonada manager only unit_id+grupo33",
+        "gps_lote_v1 idempotent GPS batch max40 points UUID ACK, persisted to V.trajeto_json without changing live GPS"
+      ],
+      "action_get": [
+        "gps_capacidades_v1"
+      ],
+      "cron": "CLI read-only by default, --apply for status C with reason, unit 3, systemd timer optional and NOT enabled",
+      "installer": "SHA precondition + backup + rollback, dry-run default, installation APPLY=1 after testing",
+      "blocked_on": "backend PHP methods/permissions integration with current live ApiAppController/TransporteAppApiTrait, and on-device tests; do not install blindly"
+    },
+    "remaining_blockers": [
+      "Backend patch uninstalled; need read live ApiAppController and TransporteAppApiTrait to verify middleware authorization/token principal and actions",
+      "LT/PT/PTT and email first access backend live sources unavailable, so no safe production edits yet",
+      "Map offline road graph and credible reconstruction not implemented; GPS holes displayed as gaps, not inferred roads",
+      "Monitor initial auto-presence P/T and offline attendance queue not done",
+      "Real FCM end-to-end/deep link/ETA with passengers not validated",
+      "No physical Android tests or official Google Play signed AAB/versionCode/upload"
+    ]
   }
 }
