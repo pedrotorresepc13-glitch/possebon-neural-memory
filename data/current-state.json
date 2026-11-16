@@ -1137,7 +1137,7 @@
     }
   },
   "transport_offline_reliability_2026_11_16": {
-    "status": "investigated_not_implemented",
+    "status": "partial_flutter_fix_in_draft_pr",
     "user_issue": "Exemplos de trajetos com segmentos em linha reta após queda da conexão, troca de app ou tela apagada; usuário exige reconstrução seguindo ruas, nunca linha reta arbitrária.",
     "rule": "Queda de internet NÃO é perda de GPS: capturar e persistir posições timestamped localmente durante viagem mesmo offline; reenvio idempotente e ordenado no retorno. Se GPS também falhar: inferência offline sobre mapa/grafo viário cacheado/licenciado, condicionada a plausibilidade/consistência temporal e ponto de partida/fim; distinguir trechos inferidos de GPS real; ausência de certeza -> lacuna visual explicada, não inventar percurso.",
     "git_main_verified_sha": "9ab2b86c3acd4df8ba426def20bde12facd22e91",
@@ -1163,6 +1163,41 @@
       "backend_changes": false,
       "play_store_published": false,
       "brain_updated": true
+    },
+    "flutter_implementation": {
+      "repository": "pedrotorresepc13-glitch/possebon",
+      "branch": "fix/transporte-mapa-confiavel-20261116",
+      "base": "main@9ab2b86c3acd4df8ba426def20bde12facd22e91",
+      "pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/13",
+      "head_commit": "067aed01eb6b276d5fa53cd1cfbb404f4f9c52ee",
+      "files": [
+        "lib/features/transporte/domain/transporte_track_segments.dart",
+        "lib/screens/transporte_mapa_screen.dart",
+        "test/features/transporte/transporte_track_segments_test.dart",
+        ".github/workflows/validate-transporte-mapa-20261116.yml"
+      ],
+      "implemented": [
+        "Divisão da linha de trajeto em segmentos sem ligar grandes saltos GPS",
+        "Marcadores de origem e destino",
+        "Indicador de rumo GPS quando disponível",
+        "Teste de trecho contínuo, descontinuidade espacial, temporal e coordenada inválida",
+        "Análise/testes/build AAB técnico por workflow exclusivo"
+      ],
+      "not_implemented": [
+        "Coleta local de GPS por viagem com ACK idempotente e reenvio",
+        "Reconstrução por grafo viário offline",
+        "Mapas base offline licenciados",
+        "TTL de viagens e presença automática do monitor no PHP",
+        "Push + ETA server-side e acompanhamento confiável de viagens por passageiros",
+        "Correções de LT/PT/PTT e primeiro acesso sem e-mail no backend vivo",
+        "Distribuição na Play Store"
+      ],
+      "ci": {
+        "run": "https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/43872765209",
+        "status": "in_progress_at_inspection",
+        "note": "Não assumir sucesso antes do resultado final; AAB técnico usa assinatura descartável e NÃO pode ser publicado"
+      },
+      "production": false
     }
   }
 }
