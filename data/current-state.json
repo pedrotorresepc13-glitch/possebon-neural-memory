@@ -1172,7 +1172,7 @@
       "backend_live_modified": false,
       "play_store_published": false,
       "base": "main@9ab2b86c3acd4df8ba426def20bde12facd22e91",
-      "current_head_observed": "3ba8b84fd16da6c66e36f664441660a32806bc38",
+      "current_head_observed": "28efd44c6c38d310184f6e0bf5198be925ac6c90",
       "implemented": [
         "GPS mapa com início e fim e seta de rumo de heading",
         "Quebra linhas em lacunas grandes e temporais; sem inferir ruas inexistentes",
@@ -1210,7 +1210,20 @@
         "assinatura Play oficial, versionCode novo, revisão Play Console"
       ],
       "ci": "Workflow GitHub Actions submetido; HEAD final ainda não validado no momento do registro. Execuções antigas canceladas por concurrency.",
-      "note": "Não liberar PR para main nem Play até os gates."
+      "note": "Não liberar PR para main nem Play até os gates.",
+      "additional_changes": [
+        "Filtro de saltos fisicamente incompatíveis e amostras de baixa precisão para rota oficial",
+        "Conversão correta de fila por viagem sem misturar atualizações live com histórico",
+        "Calibração de lacunas temporais para não quebrar percurso durante paradas longas",
+        "Validação AAB do HEAD final ainda em andamento"
+      ]
+    },
+    "backend_reference_sha_mismatch": {
+      "production_ApiAppController_sha256": "603be0299987a8b3b4d61b25c548fac93b28996d58d7fcc86606d7d37e3b4fed",
+      "library_ApiAppController_sha256": "70ca3e952867a094b8d071f85c23670a009f29b6c2df9b917c211b103ad1841d",
+      "production_RdoAppApiTrait_sha256": "3e62417f5692829dd7124a5c184d1549fd0e875558795c6c3405b838fdcaf111",
+      "library_RdoAppApiTrait_sha256": "8f2bce5f27d8bb4a2e5b4518048bb06166fc397e56fb1d3e4137232d416317a3",
+      "rule": "VERSÕES NÃO SÃO IDÊNTICAS. Não reinstalar Library PHP sobre produção. Inspecionar arquivos vivos antes de gerar patch/mudar validações."
     }
   }
 }
