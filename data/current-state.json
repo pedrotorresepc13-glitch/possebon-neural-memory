@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12",
+  "updated_at": "2026-11-16",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -1134,6 +1134,35 @@
       ],
       "api_routes_sha256": "b9efea51d8dbffe66e3bf006161f0b4d109354e5f9725a0a0ad2adb8d19d002a",
       "note": "Primeiro acesso Flutter atual não envia email; não abrir escrita não autenticada de pessoa.email sem checagem de identidade/posse do endereço. Nenhuma mudança em produção."
+    }
+  },
+  "transport_offline_reliability_2026_11_16": {
+    "status": "investigated_not_implemented",
+    "user_issue": "Exemplos de trajetos com segmentos em linha reta após queda da conexão, troca de app ou tela apagada; usuário exige reconstrução seguindo ruas, nunca linha reta arbitrária.",
+    "rule": "Queda de internet NÃO é perda de GPS: capturar e persistir posições timestamped localmente durante viagem mesmo offline; reenvio idempotente e ordenado no retorno. Se GPS também falhar: inferência offline sobre mapa/grafo viário cacheado/licenciado, condicionada a plausibilidade/consistência temporal e ponto de partida/fim; distinguir trechos inferidos de GPS real; ausência de certeza -> lacuna visual explicada, não inventar percurso.",
+    "git_main_verified_sha": "9ab2b86c3acd4df8ba426def20bde12facd22e91",
+    "code_findings": [
+      "lib/services/transporte_tracking_service.dart: só acrescenta pontos detalhados se _modoAprendizado; `_tentarEnviarPosicao` perde intermediários após falha de rede, reenviando posição corrente; store local por rota, não por viagem.",
+      "lib/screens/transporte_mapa_screen.dart: um único Polyline(trajeto) une os pontos sem segmentação; marcadores do início/fim ausentes; bus marker não gira conforme direcao_graus.",
+      "lib/repositories/transporte_repository_native.dart e _web.dart: trajeto local snapshot por pessoa, unidade, rota, sem viagem_id.",
+      "Backend de 30/10 em Library, ainda NÃO confirmado vivo: `iniciar` cria V, `atualizar_posicao` atualiza somente última localização, `finalizar` grava R só se ainda não existir; início notifica grupo filtrado, sem prova de envio de ETA.",
+      "AndroidManifest declara background location e foreground service; serviço Flutter usa AndroidSettings foregroundNotificationConfig; PWA iOS não garante GPS com tela bloqueada."
+    ],
+    "requirements": [
+      "Registrar dados brutos GPS por viagem+unit_id+operador com horário, precisão, velocidade e rumo e seq em fila durável; idempotência ACK server-side, retenção, sincronização após falhas/reinicio.",
+      "Separar rota oficial (Rxx ônibus) de frota sem mudar dados, gerenciar status do trajeto, paradas gravadas, presenças por viagem/data e map viewer para gestor grupo33 da unidade.",
+      "Mapa: origem/fim distintos, direção do veículo, segmentos confirmados e inferidos visivelmente distintos; mapa offline licenciado e grafo local de vias.",
+      "Monitor conta como presente ao iniciar se corresponder a Colaborador da unidade, sem duplicar presença T; chamada de parada dispara em imobilização/geofence com proteção anti-repetição e sem distrair motorista.",
+      "Viagem só é 'ao vivo' se heartbeat GPS recente; TTL do servidor encerra viagem abandonada sem declarar percurso completo; finalização no destino com confirmação e grace period para reenvio.",
+      "Push aos passageiros elegíveis na rota ao iniciar com deep link mapa e ETA calculado por caminho restante, nunca ETA estimado de dados antigos sem alerta.",
+      "Não atualizar Play Store enquanto não houver builds de release, testes físicos Android tela apagada/outro app/sem rede, e contrato backend vivo validado."
+    ],
+    "next_action": "Inspecionar o PHP de produção TransporteAppApiTrait.php e TransporteWorkflowFirebaseTrait.php, contratos de app_transporte/trajeto_json/FCM, elaborar mudanças minimamente compatíveis, testar via CI e dispositivos antes de qualquer release.",
+    "deployment": {
+      "flutter_changes": false,
+      "backend_changes": false,
+      "play_store_published": false,
+      "brain_updated": true
     }
   }
 }
