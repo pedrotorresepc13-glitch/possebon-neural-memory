@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-11-12",
+  "updated_at": "2026-11-16",
   "entries": [
+    {
+      "date": "2026-11-16",
+      "area": "Transporte — trajeto offline e reconstrução em ruas",
+      "status": "investigated_not_implemented",
+      "summary": "Análise código real Flutter main 9ab2b86c: segmentação ausente (um Polyline único), falhas de rede só reenvia posição atual, trajeto detalhado só aprendizado, persistência por rota e não por viagem, ausência de início/fim/rumo no mapa, backend da Library de 30/10 só atualiza V última posição e R rota oficial na finalização. Usuário esclareceu que com queda de internet na Rua X e retomada na Rua A o sistema deve traçar ruas reais e não linha reta: offline GPS persistido por viagem; só inferir via grafo de vias local/licenciado caso GPS falhe e houver solução plausível; destacar inferência versus dado real; ausência de certeza vira lacuna. Plano e pendências detalhados em current-state.transport_offline_reliability_2026_11_16. Nenhum PHP, Flutter ou Play Store alterado; PHP vivo ainda precisa auditoria. Referência Flutter main 9ab2b86c."
+    },
     {
       "date": "2026-11-12",
       "area": "Diagnóstico SSH confirmado — LT/PT/PTT e cadastro inicial por e-mail",
