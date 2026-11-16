@@ -3,6 +3,12 @@
   "entries": [
     {
       "date": "2026-11-16",
+      "area": "Transporte integrado Flutter + backend condicional",
+      "status": "prepared_not_production",
+      "summary": "No repositório privado possebon PR #13 branch fix/transporte-mapa-confiavel-20261116, head 3d9a1134: GPS por viagem SQLite/PWA, lote idempotente UUID com ACK e negociação gps_capacidades_v1, retomada de histórico após login, marcador início/fim/heading, linhas segmentadas, alerta GPS vencido, ETA suspenso, parada do monitor exige GPS recente e imobilização >=8s, botão gestor de encerramento abandonado e Android targetSdk36/Gradle9.3.1. Backend patch preparado desde cópia exata SHA d001b6... da produção, corrigido SHA 4033e161..., zip SHA 6cbda8..., inclui intercepto iniciar para encerrar V abandonada após 8h+30m sem GPS, ação gestor grupo33, POST gps_lote_v1 e GET gps_capacidades_v1, cron unit3 por systemd opcional e instalador somente simulação até APPLY=1. Quatro viagens ativas órfãs IDs 352 R24, 971 R03, 1196 R06, 1225 R08 permanecem inalteradas. Flutter tests aguardando CI head 3d9a1134. Não instalar/lançar até validar auth token-principal, backend vivo, testes Android e demais pendências LT/PT/PTT, email, push, mapas offline. Nenhuma publicação Play."
+    },
+    {
+      "date": "2026-11-16",
       "area": "Backend Transporte EPC13 e CI Android",
       "status": "production_root_cause_confirmed_requires_fix",
       "summary": "Diagnóstico fornecido do PHP vivo: 6 php -l ok; TransporteAppApiTrait.php sha256 3506fc81542b... e TransporteWorkflowFirebaseTrait d001b6d586...; no PostgreSQL unit_id 3 há exatamente 4 viagens V status A, as quatro sem GPS recente e abertas há mais de 6h; query read-only/ROLLBACK. CI Flutter PR13 run 43874225019: analyze + todos 65 testes PASS, AAB falhou por Gradle 9.1.0 abaixo do mínimo Flutter 3.50 (9.3.1). Corrigido wrapper na branch fix/transporte-mapa-confiavel-20261116 commit 706fa1e7; novo run 43877703524 em progresso. Não fazer UPDATE cego nas 4, ler IDs e histórico; nenhum PHP produção alterado."
