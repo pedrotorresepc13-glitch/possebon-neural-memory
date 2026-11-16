@@ -1137,7 +1137,7 @@
     }
   },
   "transport_offline_reliability_2026_11_16": {
-    "status": "partial_flutter_fix_in_draft_pr",
+    "status": "partial_flutter_fix_pr_draft_not_released",
     "user_issue": "Exemplos de trajetos com segmentos em linha reta após queda da conexão, troca de app ou tela apagada; usuário exige reconstrução seguindo ruas, nunca linha reta arbitrária.",
     "rule": "Queda de internet NÃO é perda de GPS: capturar e persistir posições timestamped localmente durante viagem mesmo offline; reenvio idempotente e ordenado no retorno. Se GPS também falhar: inferência offline sobre mapa/grafo viário cacheado/licenciado, condicionada a plausibilidade/consistência temporal e ponto de partida/fim; distinguir trechos inferidos de GPS real; ausência de certeza -> lacuna visual explicada, não inventar percurso.",
     "git_main_verified_sha": "9ab2b86c3acd4df8ba426def20bde12facd22e91",
@@ -1167,37 +1167,50 @@
     "flutter_implementation": {
       "repository": "pedrotorresepc13-glitch/possebon",
       "branch": "fix/transporte-mapa-confiavel-20261116",
-      "base": "main@9ab2b86c3acd4df8ba426def20bde12facd22e91",
       "pr": "https://github.com/pedrotorresepc13-glitch/possebon/pull/13",
-      "head_commit": "067aed01eb6b276d5fa53cd1cfbb404f4f9c52ee",
+      "production": false,
+      "backend_live_modified": false,
+      "play_store_published": false,
+      "base": "main@9ab2b86c3acd4df8ba426def20bde12facd22e91",
+      "current_head_observed": "3ba8b84fd16da6c66e36f664441660a32806bc38",
+      "implemented": [
+        "GPS mapa com início e fim e seta de rumo de heading",
+        "Quebra linhas em lacunas grandes e temporais; sem inferir ruas inexistentes",
+        "Outbox GPS por unidade/pessoa/rota/viagem, timestamps, acurácia, velocidade, rumo: Android SyncOutbox SQLite já existente; Web PWA best effort",
+        "Não reenviar logs antigos ao atualizar_posicao que só atualiza posição ao vivo; reenvio em lotes depende de novo endpoint idempotente",
+        "Cancelamento confirmado descarta somente pontos da viagem cancelada; finalização mantém outbox para futuro ACK histórico",
+        "Bloqueio de gravação de percurso oficial R se houve lacunas ou poucos pontos; viagem pode finalizar",
+        "ETA do passageiro suspenso após >120s sem GPS confirmado, desde que gps_atualizado_em parseável",
+        "targetSdk 36 preparado, conforme Play API requirement 31/08/2026",
+        "testes de segmentação, workflow Dart analyze/flutter test/AAB com certificado temporário não publicável",
+        "roteiro de homologação e script read-only do backend no repositório"
+      ],
       "files": [
         "lib/features/transporte/domain/transporte_track_segments.dart",
+        "lib/services/transporte_gps_outbox_native.dart",
+        "lib/services/transporte_gps_outbox_web.dart",
+        "lib/services/transporte_gps_outbox.dart",
+        "lib/services/transporte_tracking_service.dart",
         "lib/screens/transporte_mapa_screen.dart",
+        "lib/features/transporte/presentation/transport_live_summary.dart",
+        "android/app/build.gradle.kts",
         "test/features/transporte/transporte_track_segments_test.dart",
-        ".github/workflows/validate-transporte-mapa-20261116.yml"
+        ".github/workflows/validate-transporte-mapa-20261116.yml",
+        "docs/release-playstore-transporte-20261116.md",
+        "tooling/DIAGNOSTICAR_TRANSPORTE_READONLY_20261116.sh"
       ],
-      "implemented": [
-        "Divisão da linha de trajeto em segmentos sem ligar grandes saltos GPS",
-        "Marcadores de origem e destino",
-        "Indicador de rumo GPS quando disponível",
-        "Teste de trecho contínuo, descontinuidade espacial, temporal e coordenada inválida",
-        "Análise/testes/build AAB técnico por workflow exclusivo"
+      "gates_pending": [
+        "CI do HEAD final concluir analyze/test/build AAB",
+        "auditoria PHP vivo e negociação contrato trajeto_pontos + ACK",
+        "implementação no backend real com versionamento e rollback",
+        "testes Android físico 30min tela apagada, outros apps, modo avião, voltar",
+        "mapa offline licenciado e reconstrução inferida com grafo real",
+        "presença automática monitor, chamadas offline, push/ETA e TTL server-side",
+        "validar login e-mail e LT/PT/PTT com backend vivo",
+        "assinatura Play oficial, versionCode novo, revisão Play Console"
       ],
-      "not_implemented": [
-        "Coleta local de GPS por viagem com ACK idempotente e reenvio",
-        "Reconstrução por grafo viário offline",
-        "Mapas base offline licenciados",
-        "TTL de viagens e presença automática do monitor no PHP",
-        "Push + ETA server-side e acompanhamento confiável de viagens por passageiros",
-        "Correções de LT/PT/PTT e primeiro acesso sem e-mail no backend vivo",
-        "Distribuição na Play Store"
-      ],
-      "ci": {
-        "run": "https://github.com/pedrotorresepc13-glitch/possebon/actions/runs/43872765209",
-        "status": "in_progress_at_inspection",
-        "note": "Não assumir sucesso antes do resultado final; AAB técnico usa assinatura descartável e NÃO pode ser publicado"
-      },
-      "production": false
+      "ci": "Workflow GitHub Actions submetido; HEAD final ainda não validado no momento do registro. Execuções antigas canceladas por concurrency.",
+      "note": "Não liberar PR para main nem Play até os gates."
     }
   }
 }
