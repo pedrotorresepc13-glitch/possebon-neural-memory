@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-17",
   "purpose": "Snapshot operacional curto e autoritativo para retomar o POSSEBON sem reconstruir o histórico.",
   "source_of_truth": {
     "flutter_repository": "pedrotorresepc13-glitch/possebon",
@@ -1383,5 +1383,42 @@
     "failure_diagnosis": "Previous Vercel build d400be failed mobile_scanner 7.4.0 @JS extension constructor with newer Dart. Pin 7.4.1 resolved dependency at Vercel install, compilation still pending.",
     "pubspec_lock_note": "pubspec.lock still references 7.4.0 in Git; flutter pub get resolves 7.4.1 and user should save updated lock after verification",
     "not_published_to_playstore": true
+  },
+  "mobile_home_navigation_seating_2026_11_17": {
+    "repo": "pedrotorresepc13-glitch/possebon",
+    "branch": "main",
+    "commit": "c0c624dd0b8418341286bb6edb68253fdda98666",
+    "requests": [
+      "Auto-organize home app grid pages without orphan last page",
+      "Respect Android 3-button/gesture navigation inset and floating button OS area",
+      "Blue background in Home status bar clock like My Data",
+      "Monitor cannot assign already occupied seat; manager likewise"
+    ],
+    "implemented": [
+      "lib/screens/home_screen.dart groups sorted, then balance across pages up to 6; top status blue and white icons",
+      "lib/screens/home_menu_pagination.dart deterministic balanced page function, test/home_menu_pagination_test.dart",
+      "lib/main.dart MaterialApp builder SafeArea bottom true and light neutral bottom under nav",
+      "lib/features/transporte/domain/seat_assignment_guard.dart validates numeric seat, capacity, occupant name and own seat exclusion, tests",
+      "lib/screens/meu_transporte_screen.dart seat edit confirms locally then refetches current unit route from backend before POST; seat request checks locally",
+      "lib/features/transporte/presentation/transport_management_screen.dart local seat guard"
+    ],
+    "php_manual_file": "/mnt/data/TransporteAppApiTrait_ASSENTOS_SEGUROS_20261117.php",
+    "php_source_sha256": "3506fc81542b004e34d58936b2f527bfc3d2455a9554a29009761f98a4090bad",
+    "php_corrected_sha256": "0d37fe017bb7a758df741991ce1825821d207e850c8f35b2b4fd50f15426b117",
+    "php_change": "Only in transporteValidarAssentoLivre, add SELECT rota_transporte ... LIMIT 1 FOR UPDATE to serialize seat operations in existing transaction. Full original file preserved; PHP -l success. Requires user manual MAD Builder update. No DB schema changes.",
+    "status": {
+      "flutter_main": "committed",
+      "vercel_web": "READY",
+      "github_actions_analyze": "passed",
+      "github_actions_regression": "in_progress_on_last_check",
+      "android_physical_validation": "pending",
+      "backend_applied": "no",
+      "play_store": "not published"
+    },
+    "risk_notes": [
+      "System overlay floating assistive button may cover arbitrary screen location, not controllable from app; bottom system navigation protected by SafeArea",
+      "Existing PHP has duplicate validation on normal seat modification. Concurrent requests need route row locking as patch; server must be manually updated",
+      "App QA needs real Android 3-button and gesture device, various screen sizes, seat attempts and real backend 409"
+    ]
   }
 }
