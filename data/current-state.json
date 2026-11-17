@@ -1447,5 +1447,18 @@
       "testing": "b537 Vercel READY. 0647 and 44 production deployments building/queued at last check. GitHub Android workflow 44084150002 in progress. No Play Store publication. Must verify on physical Android and iOS/PWA, and confirm group60 access with real SystemUser. No final claims until CI.",
       "privacy": "User screenshot exposed real-looking CPF/password; do not echo values; recommend password change."
     }
+  },
+  "transporte_pessoal_menu_pencil_2026_11_17": {
+    "repo": "pedrotorresepc13-glitch/possebon",
+    "branch": "main",
+    "commit": "fbc38e3438143bea022bccee2c27a071af3f4b63",
+    "changes": [
+      "Home _HomeMenuPager: remove large Editar ordem button and put Icons.edit_outlined 20px after Menu previous/next controls, responsive title",
+      "Meu Transporte passenger: only show TransportLiveSummary boarding/distance/ETA and Acompanhar ônibus no mapa when rota.viagem_ativa is Map; display live summary immediately above map button, before carona temporária",
+      "Poll current viagem_ativa from /api/app/meu-transporte?acao=posicao every 20s when foreground; refresh on resume; cancel timer and observer on dispose; only mutate trip presence when active state changes; keep other route features untouched"
+    ],
+    "expected_version": "fbc38e34",
+    "validation": "GitHub Android CI 44087114389 and permissions CI 44087114358 started; Vercel deployment dpl_Db6MsKztzBN6konzfSaDR6HszfzY BUILDING on latest observed; not yet manually tested on Android",
+    "playstore_published": false
   }
 }
