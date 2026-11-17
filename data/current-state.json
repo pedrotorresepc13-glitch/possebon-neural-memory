@@ -1460,5 +1460,24 @@
     "expected_version": "fbc38e34",
     "validation": "GitHub Android CI 44087114389 and permissions CI 44087114358 started; Vercel deployment dpl_Db6MsKztzBN6konzfSaDR6HszfzY BUILDING on latest observed; not yet manually tested on Android",
     "playstore_published": false
+  },
+  "espelho_ponto_pt23_flutter_2026_11_17": {
+    "app_repo": "pedrotorresepc13-glitch/possebon",
+    "branch": "main",
+    "head_commit": "eddb09f963e33f18e0cd39eb5d339d7952b30588",
+    "flutter_commits": [
+      "86b78f3f9274d03d1aaff6598ae1738d05f93949",
+      "4860f8706b8988e90cc92ccc588216566c7eaa71"
+    ],
+    "totvs_sql": "PT_23, SQL Server, parameters CODCOLIGADA CHAPA ANO MES, user tested successfully in TOTVS for EPC13 coligada 3, competência 2026-11, 21/10-20/11 with PERIODO/DIA/RESUMO rows",
+    "changes": [
+      "new lib/features/meu_rh/domain/espelho_ponto_periodo.dart adapter with period/daily parsing, only explicit TOTVS summary, minute formatting; tests",
+      "modified lib/features/meu_rh/data/meu_rh_api.dart preserve old contract and allow PT23-enabled contract",
+      "new Espelho de Ponto screen with full individual batidas, PT23 period dropdown when available, summary verified as TOTVS, day details sheet, source labels and unitName active; old API fallback",
+      "docs/totvs/rh-ponto/CONTRATO_API_APP_PT_23.md"
+    ],
+    "status": "Frontend committed; GitHub static analysis passed on 4860f870, test regression in progress. Vercel latest build in queue. PHP integration NOT executed, requires actual current app/custom/MeuRhAppApiTrait.php and current espelhoPonto handler. Do not claim PT23 integrated or salary/falta official shown.",
+    "user_preference": "One main branch, no alternate dirs, PHP complete file from current production before edits, MIDI unit EPC13 not platform POSSEBON in operational screens",
+    "tests": "flutter test test/features/meu_rh/espelho_ponto_periodo_test.dart; flutter run after git pull"
   }
 }
