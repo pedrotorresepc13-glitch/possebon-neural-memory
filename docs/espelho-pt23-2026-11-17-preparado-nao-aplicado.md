@@ -1,6 +1,6 @@
 # POSSEBON APP — Espelho de Ponto PT_23 (17/11/2026)
 
-**Status:** `prepared_not_applied` — NÃO publicado em produção e NÃO testado no TOTVS real.
+**Status:** `backend_applied_runtime_unverified` — PHP aplicado em produção e validado por SHA/sintaxe; ainda sem apuração PT_23 comprovada na API. O Flutter recebeu ajuste de texto na main, não publicado em Play.
 
 ## Estado confirmado
 - Flutter `pedrotorresepc13-glitch/possebon`, branch `main`, commit `eddb09f963e33f18e0cd39eb5d339d7952b30588`: tela e contrato PT_23 preparados. A branch padrão remota `possebon` não é fonte atual para o Flutter.
@@ -30,3 +30,12 @@
 3. Fazer teste JWT autenticado da EPC13: datas 21/10–20/11, marcações, apuração diária e resumo, comparando com RH do TOTVS.
 4. Corrigir atualização local do Flutter sem descartar arquivos; rodar o teste de período e validação no dispositivo.
 5. Auditar a ausência do método `envelopesMeuRh` no PHP vivo antes de declarar Envelopes em produção funcional.
+
+
+## Confirmação de instalação em produção e incidente em 17/11/2026
+- Usuário confirmou SSH: `app/custom/ControleAcessoAppApiTrait.php` em produção SHA256 `4dece1167259d1e9a9f2e0f2f27679b9b0432b159d8568940fd8bb81d86eb3c8`, alterado às 12:37:06 (-03), `php -l` OK e verificações textuais do método PT_23/serviço/controle_acesso/resumo_totvs OK.
+- Screenshot às 12:44 mostra nova UI Flutter `Meu RH · EPC13`, exibe marcações de 06/11 mas texto `O TOTVS ainda não enviou a apuração deste dia`. Não comprova ausência de apuração no RM; pode ser falha de request ou validação PHP.
+- Causa técnica para ocultação: `espelhoPonto` envolve consulta PT_23/parse em `try/catch(Throwable)`; ao falhar, descarrega período/resumo/dias apurados e retorna só `controle_acesso`. Só registra classe da exceção em `error_log`. A consulta HTTP real e os dados do resumo permanecem NÃO VERIFICADOS.
+- Regra UX reafirmada: interface não deve mencionar TOTVS/PT_23, mensagens de integração nem termos de desenvolvimento; precisa resumo de horas trabalhadas, horas extras executadas/autorizadas/calculadas e demais valores oficiais, diário de entradas/saídas reais, feriados e demais ocorrências quando confirmados.
+- Flutter UI corrigido na branch `main` commit `925f12152c2479b0376c59084712b64242b65aa2`: esconde termos técnicos nas mensagens, títulos neutros e adiciona horas extras executadas nos resumos e detalhes diários. Atualização de código apenas, sem build/teste local nem publicação na Play.
+- Próximo passo de diagnóstico: localizar registro `[MeuRh PT23]` nos logs efetivos do PHP do servidor, identificar se falha de HTTP/cadastro/escopo da sentença ou validação de linhas; confirmar resposta da API autenticada sem expor CHAPA/token/CPF; só depois corrigir backend. Não afirmar funcional enquanto resumo e diário não aparecerem com valores reais.
