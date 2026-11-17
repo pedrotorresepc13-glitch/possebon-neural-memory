@@ -1420,5 +1420,32 @@
       "Existing PHP has duplicate validation on normal seat modification. Concurrent requests need route row locking as patch; server must be manually updated",
       "App QA needs real Android 3-button and gesture device, various screen sizes, seat attempts and real backend 409"
     ]
+  },
+  "app_access_home_monitor_20261117": {
+    "repo": "pedrotorresepc13-glitch/possebon",
+    "branch": "main",
+    "head_commit": "44b3e4ffe8e548fca88f1a97d89e8f24b2129d03",
+    "commits": [
+      {
+        "sha": "b53712b7d6b36dc91e13ad9f08716df92742e385",
+        "purpose": "first-access email recovery, remove Gestao de Transporte from app navigation/notifications, monitor group 60 separate entry/screen, strict 6 app pages"
+      },
+      {
+        "sha": "0647bca2cfff3f93493dfe94af00360d08539764",
+        "purpose": "editable/saved home order via drag and reorder dialog, SharedPreferences keyed by pessoaId+unitId"
+      },
+      {
+        "sha": "44b3e4ffe8e548fca88f1a97d89e8f24b2129d03",
+        "purpose": "monitor UI explicit labeled actions, default passenger list expanded, clearer paradas instructions"
+      }
+    ],
+    "details": {
+      "email": "AcessoScreen first access: uses backend precisa_cadastrar_email flag normally; if API unexpectedly requires e-mail and flag was absent, automatically opens existing form collecting email, DOB and mother name then retries. Existing users not forced to create new accounts. Backend PHP had already been updated manually by user in prior conversation.",
+      "home": "Sequential 6 cards/page, later page only after previous full. Editar ordem opens draggable ReorderableListView; salvar ordem in SharedPreferences local per Pessoa+unidade, permissions still checked independently. Important: local persistence only, not synchronized across devices.",
+      "monitor": "AppGroupIds.monitorTransporte=60. New lib/screens/monitor_transporte_screen.dart wraps MeuTransporteScreen(modoMonitor:true). Personal Meu Transporte hides monitor controls; Monitor has only monitor area and backend checks actual route assignment. Monitor UI full-width labeled Mapa/Iniciar, Gerenciar paradas, Solicitar passageiro, Ver passageiros/assentos. No database/backend mutations.",
+      "admin": "Gestão de Transporte removed from Home card, no longer opens through notifications, manager capabilities removed from mobile home; transport management backend/source untouched for future Portal.",
+      "testing": "b537 Vercel READY. 0647 and 44 production deployments building/queued at last check. GitHub Android workflow 44084150002 in progress. No Play Store publication. Must verify on physical Android and iOS/PWA, and confirm group60 access with real SystemUser. No final claims until CI.",
+      "privacy": "User screenshot exposed real-looking CPF/password; do not echo values; recommend password change."
+    }
   }
 }
