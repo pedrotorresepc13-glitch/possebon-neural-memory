@@ -1,5 +1,26 @@
 # Auditoria CPF duplicado — 18/11/2026 — POSSEBON
 
+## Operação de migração executada e confirmada pelo usuário — 18/11/2026, 10:26 BRT
+
+**Status desta etapa: TRANSFERÊNCIA DOS VÍNCULOS CONCLUÍDA; PESSOAS DUPLICADAS NÃO REMOVIDAS.**
+
+Evidência: saída real de PHP/SQL executada no servidor `epc-lap-srv01`, com conclusão transacional sem erro.
+
+| Pessoa principal | Origem duplicada | Registros `event_participant` transferidos |
+| --- | --- | ---: |
+| 2745 | 2765 | 6 |
+| 2754 | 2767 | 7 |
+| 2773 | 2774 | 8 |
+| **Total** | | **21** |
+
+Validações relatadas pelo script aplicado:
+- CPF de cada par confirmado; 21 participações travadas e contadas; nenhum conflito de evento; atualização do único campo `person_id`; checagem de todos os demais campos, de novos IDs e de zero registros restantes na origem; conclusão da transação.
+- Backup integral antes da escrita: `/root/possebon-backups-pessoa/event-participant-20261118-102642-3301452.json` (no servidor; NÃO disponibilizar publicamente); SHA-256 `b8390b53eb51a4727b03b85224acc6fe385f2e38e471a52cf6aa5aeb87d108cf`.
+- **Não foi feito UPDATE/DELETE em `pessoa`.** As seis linhas (três principais + três duplicadas) continuam existindo; não afirmar consolidação completa, tampouco resolução da causa.
+- Auditoria de dependências ainda incompleta por `42501` em `procurement_oc_item.fornecedor_id` e `totvs_fornecedor_vinculo.pessoa_id`. Precisam de leitura autorizada antes de qualquer inativação/exclusão.
+- Dupla suspeita 1742/1803 ainda não verificada por CPF.
+- A rotina que recria pessoas incompletas, e o defeito de cadastro/primeiro acesso sem contato obrigatório, continuam pendentes e bloqueiam release à Play Store.
+
 **Status:** comprovado em produção por diagnóstico somente-leitura; ainda não corrigido.
 
 Resultado do diagnóstico em PostgreSQL `possebon_app` executado pelo usuário:
