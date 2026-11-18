@@ -1523,5 +1523,40 @@
     "contact_signup_flow_fixed": false,
     "play_store_published": false,
     "reference_doc": "docs/auditoria-cpf-duplicado-2026-11-18-resultado.md"
+  },
+  "cadastro_contatos_fix_2026_11_18": {
+    "status": "prepared_not_deployed",
+    "flutter_branch": "fix/cadastro-contato-pessoa-20261118",
+    "flutter_pr": 15,
+    "flutter_files": [
+      "lib/screens/acesso_screen.dart",
+      "lib/services/api_service.dart",
+      "lib/utils/contact_validator.dart",
+      "test/utils/contact_validator_test.dart",
+      ".github/workflows/validar-cadastro-contato.yml"
+    ],
+    "php_prepared": "ApiAppController_CADASTRO_CONTATOS_PREPARADO_20261118.php",
+    "php_live_updated": false,
+    "php_lint": "passed_on_prepared_file_only",
+    "flutter_ci": {
+      "run_id": 44316956174,
+      "conclusion": "failure",
+      "details": "logs and steps unavailable",
+      "verified": false
+    },
+    "blocking": [
+      "verify live PHP SHA and adapt compatible full file",
+      "email/SMS contact-possession verification or RH verified flow before enabling password creation",
+      "regression Flutter analyze/test and actual login tests",
+      "restricted procurement and supplier FK audit before inactivating duplicate Pessoas"
+    ],
+    "duplicates_persons_pending": [
+      2765,
+      2767,
+      2774
+    ],
+    "event_participant_transfer_completed": 21,
+    "playstore_published": false,
+    "memory_doc": "docs/cadastro-contato-duplicidade-2026-11-18-diagnostico.md"
   }
 }
