@@ -59,3 +59,19 @@ Separar esse caso da pendência de cadastro obrigatório de e-mail/telefone e re
 - Auditoria de FKs com conta PHP anterior encontrou somente 21 `event_participant.person_id` nas duplicadas; estes **21 registros foram depois transferidos** com validação. As três Pessoas duplicadas ainda não foram apagadas/inativadas até este diagnóstico.
 - Próxima ação: transação de limpeza guardada por precondições e backup local integral de linhas de `pessoa` (não imprimir dados pessoais), em conexão administrativa para checar novamente todas as FKs antes de qualquer exclusão; depois inspecionar origem e prevenir via unicidade por CPF normalizado.
 - **Cuidado:** não tratar a ausência de referência em FKs como prova absoluta da ausência de referências sem FK. Se forem identificadas referências não declaradas ou triggers desconhecidos, não eliminar antes de reconciliar.
+
+## Consolidação encerrada em produção — 18/11/2026, 11:01 BRT
+
+**Conclusão confirmada no terminal do usuário, não apenas planejada:**
+
+- Backup integral das seis Pessoas imediatamente antes da exclusão:
+  - Arquivo **servidor** `/root/possebon-backups-pessoa/pessoa-antes-consolidacao-20261118-110110.json`
+  - SHA-256 `1e4cb216f80046f597b0718f504433f427c7ba7fc3d3c699fc719de499b9b11a`
+  - Script validou seis Pessoas, os três pares com CPF normalizado idêntico, ausência de referências FKs, ausência de participações nas origens, `system_user_id`/contatos/nascimento/CEP vazios nas duplicadas e ausência de trigger DELETE personalizado; `COMMIT` confirmado.
+- **Pessoas eliminadas do PostgreSQL:** 2765, 2767, 2774. Verificação pós-COMMIT `duplicadas_restantes=0`. Dados principais 2745, 2754 e 2773 permaneceram.
+- Participações pós-COMMIT: 2745=10, 2754=7, 2773=8, **total 25** (inclui 4 que Renato já tinha).
+- As 21 participações antes associadas às duplicadas foram migradas na etapa anterior; esta operação removeu exclusivamente as três linhas redundantes de `pessoa`.
+- **Não generalizar:** os 3 pares específicos foram saneados, mas a origem da duplicação não está comprovada; outras duplicidades podem existir. Par suspeito 1742/1803 ainda depende da comparação de CPF.
+- **Pista:** no backup de event_participant original, todas as participações associadas às duplicadas foram cadastradas por `criado_por=28` (unidade 3) nas datas 04, 05 e 06/11/2026. Isso **não identifica com certeza** quem criou as Pessoas.
+- PHP de produção `ApiAppController.php`: hash `fb008f6c72923b0de6b4836c61f69aafe581fee171e0b3ea45f9b6139ec4c6cf` em 18/11, sintaxe válida. Nunca instalar automaticamente o patch PHP preparado a partir de arquivo anterior sem diff e validação.
+- PR Flutter #15 aberto em rascunho, não mesclado; testes de CI falharam e PHP vivo não foi alterado. Play Store segue não publicada.
