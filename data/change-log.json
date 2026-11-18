@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-11-16",
+  "updated_at": "2026-11-18",
   "entries": [
+    {
+      "date": "2026-11-18",
+      "area": "Ponto Carol + TOTVS PT_22 — PCONNECT independente e Espelho App",
+      "status": "in_progress_not_production",
+      "summary": "Regra confirmada: Carol consulta batidas do dia a cada minuto, meta de gravação e exibição 1–5min condicionada à disponibilidade da API. TOTVS é fonte oficial: reconciliação horária C/D, inclusive correções/ausências, e geral histórica em lotes; preservar a batida física Carol sem inventar passagem para D. Produção: auditor de hashes PT_22 em SQLite a cada hora já validado, janela 7 dias instalada; NÃO grava PostgreSQL e NÃO corrige saídas faltantes. Comparação 16/11 detectou 1035 C sem Carol correspondente. Todos 50 checkpoints por dispositivo iguais ao maior NSR PostgreSQL, mas isso não comprova ausência de lacunas intermediárias. Branch PR #61 ganhou preflight read-only do esquema/latência e especificação de implementação; não aplicados. Backend PHP vivo e esquema devem ser conferidos antes da projeção. My Import 2 visual menu flutuante restaurado, PR #62 visual separada; preservar UI/worker. Não tratar código de outras branches como versão DLL ativa sem comparar hash."
+    },
     {
       "date": "2026-11-16",
       "area": "Transporte integrado Flutter + backend condicional",
