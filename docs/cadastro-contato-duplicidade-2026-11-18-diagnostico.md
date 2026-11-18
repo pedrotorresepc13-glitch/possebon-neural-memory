@@ -35,3 +35,14 @@ Backend de referência: arquivo completo `ApiAppController.php` compartilhado em
 7. Bloquear PR de release Play até testes reais de cadastro, regularização, recuperação, contas legadas e ausência de duplicação.
 
 **Nada alterado em Flutter/PHP/bancos neste diagnóstico.**
+
+## Implementação preparada em 18/11 — ainda NÃO homologada / NÃO publicada
+
+- Flutter em branch separada `fix/cadastro-contato-pessoa-20261118`, draft PR **#15**: https://github.com/pedrotorresepc13-glitch/possebon/pull/15. Base `main@925f12152c2479b0376c59084712b64242b65aa2`.
+- `lib/screens/acesso_screen.dart`: cadastro novo inclui e-mail obrigatório e telefone com DDD obrigatório; confirmação inicial de nascimento/mãe e contatos faltantes; após JWT válido, dialog de regularização do cadastro atual com campos pessoais só leitura, contato faltante editável, validação servidor-side após gravação. Não cria Pessoa adicional.
+- `lib/services/api_service.dart`: payload `cadastrarCandidato` envia `email` e `telefone`; `primeiroAcesso` aceita telefone opcional; mantém token e rotas já existentes.
+- `lib/utils/contact_validator.dart`, `test/utils/contact_validator_test.dart`: validação isolada para e-mail e telefone brasileiros (10/11 dígitos com DDD).
+- Workflow de CI `.github/workflows/validar-cadastro-contato.yml` preparado, mas run `44316956174` reportou **failure** e não retornou logs/etapas pelo conector. **Flutter analyze, test e build não estão aprovados.**
+- Arquivo PHP completo preparado localmente a partir do arquivo `ApiAppController.php` fornecido em 17/11, com `php -l` OK; NUNCA assumir idêntico ao backend ativo sem comparar SHA. Ajusta cadastro: email e telefone obrigatórios; guarda CPF normalizado com consulta em PostgreSQL e advisory lock; identifica contatos ausentes; primeiro acesso envia telefone, confere nascimento/mãe; `meusDados` e `atualizarContato` exigem `app_pessoa_id` da sessão em vez de confiar apenas no ID enviado. **Não foi aplicado no servidor.**
+- Questões bloqueadoras de produção: (1) confirmar SHA/base do PHP vivo antes de aplicar arquivo completo; (2) implementação e teste da confirmação de posse do e-mail e telefone (OTP ou fluxo validado pelo RH) especialmente para primeira senha de Pessoa sem conta; dados estáticos como nome da mãe e nascimento não substituem validação de posse; (3) testes Flutter e integração HTTP com JWT real; (4) ainda existem duplicadas 2765, 2767 e 2774, apesar das 21 participações já transferidas; não removê-las antes das 2 tabelas restritas auditadas.
+- Release Play PR #14 `1.1.5+9` continua bloqueado; nenhum AAB oficial foi gerado nem enviado.
