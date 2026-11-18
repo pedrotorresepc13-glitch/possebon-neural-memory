@@ -1510,14 +1510,16 @@
       "2026-11-05",
       "2026-11-06"
     ],
-    "remaining": "Auditar origem de criacao da pessoa, prevenir CPF duplicado em todas as rotinas, verificar par suspeito 1742/1803, corrigir cadastro de contatos e primeiro acesso, validar PR #15 Flutter e backend vivo, Play Store bloqueada",
+    "remaining": "A consolidação dos 3 pares está encerrada. Próximo passo EXCLUSIVO app: confrontar PHP vivo com patch, impor validação de contato e sessão em meusDados/atualizarContato, verificação OTP/RH para primeiro acesso, homologar CI/Flutter e Play Store.",
     "php_live_sha256_2026_11_18": "fb008f6c72923b0de6b4836c61f69aafe581fee171e0b3ea45f9b6139ec4c6cf",
     "flutter_pr_url": "https://github.com/pedrotorresepc13-glitch/possebon/pull/15",
     "flutter_pr_draft": true,
     "flutter_ci_last_result": "failure",
     "php_patch_deployed": false,
     "play_store_published": false,
-    "reference_doc": "docs/auditoria-cpf-duplicado-2026-11-18-resultado.md"
+    "reference_doc": "docs/auditoria-cpf-duplicado-2026-11-18-resultado.md",
+    "flutter_pr_head": "c1b3ff1b7a7d586870317198d0121dc13ef4349d",
+    "flutter_recent_change": "18/11: ApiService.atualizarContato usa normalizarTelefoneContato/emailContatoValido/telefoneContatoValido e impede envio de ambos vazios. PR #15 segue draft; PHP vivo não alterado e CI falhou (logs não recuperáveis)."
   },
   "cadastro_contatos_fix_2026_11_18": {
     "status": "prepared_not_deployed",
