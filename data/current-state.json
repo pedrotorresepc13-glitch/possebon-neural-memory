@@ -1481,46 +1481,41 @@
     "tests": "flutter test test/features/meu_rh/espelho_ponto_periodo_test.dart; flutter run after git pull"
   },
   "pessoa_duplicidade_consolidacao_2026_11_18": {
-    "status": "participacoes_migradas_pessoas_duplicadas_ainda_existentes",
-    "date": "2026-11-18",
-    "source": "Saída do SSH do usuário em 18/11, migração concluída com sucesso",
-    "main_person_ids": [
+    "status": "tres_duplicidades_especificas_totalmente_consolidadas_no_postgresql_em_2026_11_18",
+    "evidence": "Terminal do usuario 18/11/2026 11:01 BRT; validacao de CPF, FK e backup, DELETE 3, COMMIT, consultas pos-commit",
+    "canonical": [
       2745,
       2754,
       2773
     ],
-    "duplicate_person_ids": [
+    "deleted": [
       2765,
       2767,
       2774
     ],
-    "migration_counts": [
-      {
-        "from": 2765,
-        "to": 2745,
-        "count": 6
-      },
-      {
-        "from": 2767,
-        "to": 2754,
-        "count": 7
-      },
-      {
-        "from": 2774,
-        "to": 2773,
-        "count": 8
-      }
+    "expected_event_participant_counts": {
+      "2745": 10,
+      "2754": 7,
+      "2773": 8
+    },
+    "participant_migration_completed": 21,
+    "other_referenced_tables": "procurement_oc_item e totvs_fornecedor_vinculo consultadas com postgres, 0 resultados para pessoas duplicadas",
+    "backup_before_person_deletion": "/root/possebon-backups-pessoa/pessoa-antes-consolidacao-20261118-110110.json",
+    "backup_sha256": "1e4cb216f80046f597b0718f504433f427c7ba7fc3d3c699fc719de499b9b11a",
+    "root_cause_confirmed": false,
+    "person_creator_confirmed": false,
+    "event_participant_created_by": 28,
+    "event_participant_dates": [
+      "2026-11-04",
+      "2026-11-05",
+      "2026-11-06"
     ],
-    "total_migrated": 21,
-    "backup_file": "/root/possebon-backups-pessoa/event-participant-20261118-102642-3301452.json",
-    "backup_sha256": "b8390b53eb51a4727b03b85224acc6fe385f2e38e471a52cf6aa5aeb87d108cf",
-    "pessoa_deletion": false,
-    "blocking_fk_audit": [
-      "procurement_oc_item.fornecedor_id (42501)",
-      "totvs_fornecedor_vinculo.pessoa_id (42501)"
-    ],
-    "cause_determined": false,
-    "contact_signup_flow_fixed": false,
+    "remaining": "Auditar origem de criacao da pessoa, prevenir CPF duplicado em todas as rotinas, verificar par suspeito 1742/1803, corrigir cadastro de contatos e primeiro acesso, validar PR #15 Flutter e backend vivo, Play Store bloqueada",
+    "php_live_sha256_2026_11_18": "fb008f6c72923b0de6b4836c61f69aafe581fee171e0b3ea45f9b6139ec4c6cf",
+    "flutter_pr_url": "https://github.com/pedrotorresepc13-glitch/possebon/pull/15",
+    "flutter_pr_draft": true,
+    "flutter_ci_last_result": "failure",
+    "php_patch_deployed": false,
     "play_store_published": false,
     "reference_doc": "docs/auditoria-cpf-duplicado-2026-11-18-resultado.md"
   },
