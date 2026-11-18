@@ -48,3 +48,14 @@ Separar esse caso da pendência de cadastro obrigatório de e-mail/telefone e re
 - Nenhuma alteração realizada até aqui. Próximo passo seguro: **migrar apenas as 21 participações** por transação/backup, sem eliminar/inativar Pessoas. Validar contagem, destino e restrição UNIQUE, e manter integridade dos metadados originais.
 - Para excluir/inativar registros duplicados no futuro: verificar as duas tabelas com papel de auditoria autorizado e qualquer dependência não declarada; preservar backups e idempotência.
 - Investigação de causa: duplicadas incompletas com participações; comparar eventos e timestamps/criado_por/importação. A origem exata ainda não foi comprovada.
+
+## Diagnóstico com leitura administrativa — 18/11/2026, após transferência
+
+**Evidência fornecida pelo usuário no terminal do servidor:**
+- `ApiAppController.php` **atualmente instalado**: SHA-256 `fb008f6c72923b0de6b4836c61f69aafe581fee171e0b3ea45f9b6139ec4c6cf`; `php -l` aprovado. **Não sobrescrever com patch de baseline antigo**; comparar antes.
+- Backup original das 21 participações mostra `criado_por=28` para todos os eventos destas Pessoas; `unit_id=3`; participações em 04/11, 05/11 e 06/11. O usuário 28 inseriu **participações**, não está provado que criou as Pessoas. Investigar importador de treinamento, tela de eventos e logs a partir dessas datas.
+- Acesso administrativo com `runuser -u postgres -- psql -d possebon_app` funcionou; ambas as tabelas antes sem privilégios foram consultadas com SELECT transacional READ ONLY. Resultado **0 linhas** nos IDs 2765,2767,2774 para `procurement_oc_item.fornecedor_id` e `totvs_fornecedor_vinculo.pessoa_id`.
+- A mensagem `could not change directory to /home/acessoconsole01: Permission denied` foi aviso não fatal de execução sudo/runuser, não erro SQL. Resposta registrou `BEGIN`, `(0 rows)`, `ROLLBACK`.
+- Auditoria de FKs com conta PHP anterior encontrou somente 21 `event_participant.person_id` nas duplicadas; estes **21 registros foram depois transferidos** com validação. As três Pessoas duplicadas ainda não foram apagadas/inativadas até este diagnóstico.
+- Próxima ação: transação de limpeza guardada por precondições e backup local integral de linhas de `pessoa` (não imprimir dados pessoais), em conexão administrativa para checar novamente todas as FKs antes de qualquer exclusão; depois inspecionar origem e prevenir via unicidade por CPF normalizado.
+- **Cuidado:** não tratar a ausência de referência em FKs como prova absoluta da ausência de referências sem FK. Se forem identificadas referências não declaradas ou triggers desconhecidos, não eliminar antes de reconciliar.
