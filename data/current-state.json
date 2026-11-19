@@ -1555,5 +1555,34 @@
     "event_participant_transfer_completed": 21,
     "playstore_published": false,
     "memory_doc": "docs/cadastro-contato-duplicidade-2026-11-18-diagnostico.md"
+  },
+  "android_play_candidate_2026_11_19": {
+    "status": "prepared_draft_not_built_not_uploaded",
+    "source": "GitHub connector confirms PR16 and workflow runs on 2026-11-19",
+    "repo": "pedrotorresepc13-glitch/possebon",
+    "main_head": "925f12152c2479b0376c59084712b64242b65aa2",
+    "branch": "release/possebon-android-1.1.5-contatos-20261119",
+    "pr": 16,
+    "pr_url": "https://github.com/pedrotorresepc13-glitch/possebon/pull/16",
+    "head": "f6da9cf2d3dc2f0a847affe0a78b4d9da37cf60a",
+    "version": "1.1.5+9",
+    "application_id": "br.com.possebon.app",
+    "flutter_includes": "candidato email+telefone obrigatorio e fluxo regulacao do PR15",
+    "workflow_signed_aab": ".github/workflows/android-play-build-signed.yml",
+    "ci_validation_run": 44532325677,
+    "ci_official_signed_run": 44532693527,
+    "ci_status": "failure; jobs steps=null; logs unavailable",
+    "signed_aab_generated": false,
+    "play_console_connected": false,
+    "play_store_published": false,
+    "production_backend_compatible": false,
+    "production_backend_sha256_2026_11_18": "fb008f6c72923b0de6b4836c61f69aafe581fee171e0b3ea45f9b6139ec4c6cf",
+    "signing_requirements": [
+      "official upload keystore in GitHub Actions secrets",
+      "versionCode 9 confirmed unused",
+      "CI green and real-device test"
+    ],
+    "blocking": "PHP vivo requer email para criar novo usuario, App velho nao envia email; usuarios existentes podem continuar bloqueados ate hotfix backend, mesmo com publicacao na Play",
+    "details_doc": "docs/android-play-2026-11-19-candidato-cadastro.md"
   }
 }
