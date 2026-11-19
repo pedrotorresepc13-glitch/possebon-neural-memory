@@ -1,6 +1,12 @@
 {
-  "updated_at": "2026-11-18",
+  "updated_at": "2026-11-19T13:33:59.751Z",
   "entries": [
+    {
+      "date": "2026-11-19",
+      "area": "PCONNECT PT_21 — Notas fiscais e OCs EPC13",
+      "status": "diagnosed_not_enabled",
+      "summary": "Diagnóstico REAL read-only do usuário: GET http://127.0.0.1:5087/api/import-models encontrou 1 modelo PT_21 TOTVS id c6cbe38ba95b44fc92fcfde68e9d8a48 unitId=3, enabled=false. Detalhe contém source (kind/api), handlerKey, processHandler, procurementContractRevision, systemModel, state, lastTestSummary; blocks=[], mappings=[], automationRules=[], dailyTimes=[]. PHP vivo /var/www/html/possebon_app/app/custom/MyImportBuilderApiTrait.php SHA256 23d5fe66d71836cee734de56504e18cb4c7181b559712023139398c64c6dbcce lint OK, grep PT21_OC_NF_V1/PT21_NF/PT_21 vazio, procura em app/custom por nf_numero etc vazia. SQL PostgreSQL read-only: procurement 14082 linhas, 11831 com totvs_oc_coligada=3 + totvs_oc_idmov + item_oc, 11712 ativos com chave, 0 chaves repetidas, 0 nf_numero preenchido, 119 inativos com chave. Campo nf_numero varchar30. SQL original PT_21_NOTAS_FISCAIS_DAS_OCS_EPC13.sql recuperado da Library: contrato PT21_OC_NF_V1, saída vinculada (CODCOLIGADA_OC,IDMOV_OC,ITEM_OC) -> (IDMOV_NF,ITEM_NF), coligada 3 filial 1, numero fiscal seguro NUMERO_FISCAL_IDENTIFICADO com EVIDENCIA_FISCAL (CHAVE_COM_FORMATO_NFE, NUMERO_ELETRONICO_RM), CANCELADA_NO_RM, EVIDENCIA_QUANTIDADE, ID_VINCULO_OC_NF, várias relações NF por item OC; vínculos via TITMMOVRELAC, caminhos diretos/indiretos. Diagnóstico anterior reportara 9818 relações, 3055 notas, 420 itens com NFs múltiplas, 164 para revisão, mas ainda requer reconfirmar na fonte live. NAO ativar modelo sem processador validado; PCONNECT deve ser independente do MAD Builder, sem mudanças por SSH no schema PG. Próximo passo consultar em read-only os metadados handlerKey/processHandler/source.kind e query PT_21 diretamente via conector TOTVS existente, cruzando com procurement; candidate only uniquely identified active OC with non-cancelled, reliable fiscal and direct evidence, no overwrite; multiples quarantine/relational view. Metadados PT21 não contêm XML/PDF em SQL original; anexos exigem fonte separada."
+    },
     {
       "date": "2026-11-18",
       "area": "Ponto Carol + TOTVS PT_22 — PCONNECT independente e Espelho App",
