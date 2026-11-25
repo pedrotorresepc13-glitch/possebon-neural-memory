@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "POSSEBON Portal",
-  "updated_at": "2026-11-25T12:48:00Z",
+  "updated_at": "2026-11-25T12:54:00Z",
   "source_of_truth": {
     "repository": "pedrotorresepc13-glitch/possebon-portal",
     "production_commit": "860fc20aeab2b2ec9e2658aad82c8dd4908e028a",
@@ -21,9 +21,9 @@
       "pr": 15,
       "branch": "feat/portal-postgres-direct-crud-20261125",
       "head": "522761d77fb8f2a803c03a745d36a8a00eefa0c0",
-      "prepared_detached": "c37ed4eb7b3ca1d1806b29ac3b5c5816166df3ee",
+      "prepared_detached": "0908db7cd1f72110b7588fc6c093ddc4adbb2604",
       "state": "prepared_not_deployed",
-      "notes": "CRUD genérico preparado em commit ISOLADO: catálogo e linhas, edição/criação/exclusão condicionais, chaves primárias manuais, autor de carimbos verificado no servidor, filtro direto por unit_id, validação, auditoria em arquivo. Não há compile/test aprovado nem implantação. Relações sem coluna unit_id exigem escopo manual adicional antes de gravação."
+      "notes": "Editor PostgreSQL completo em código isolado (sem instalar), auditoria de alterações, carimbos de ator no servidor, PK manual quando necessária e prevenção de escrita em tabelas SEM escopo direto unit_id/system_unit_id, exceto com PORTAL_DB_UNSCOPED_WRITES=1 autorizado depois de revisão. Nenhum build ou produção confirmados."
     },
     "studio_manual_install": {
       "pr": 18,
@@ -31,7 +31,7 @@
       "head": "296eb97495c56b6ca1890e3f3390d5671481a197",
       "based_on": "feat/studio-versions-dashboard-20261117",
       "state": "prepared_not_deployed",
-      "notes": "PR #18 atualizado: corrigido grep incompatível com pipeline e migração queued->discovered agora executada apenas uma vez; versões instaladas/pedidas sobrevivem a reinicialização. Instalador fixa código corrigido 3ee5817; ainda NÃO implantado e testes GitHub não confirmados."
+      "notes": "PR #18 HEAD 296eb974, com verificação sintática V8 para nove módulos; ainda exige npm test, homologação SQLite, instalação segura do Studio real; pipeline apenas enfileira após POST Instalar. Excluir instalação devolve ao histórico sem apagar commit."
     }
   },
   "parallel_work": [
