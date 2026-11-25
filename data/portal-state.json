@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "project": "POSSEBON Portal",
+  "updated_at": "2026-11-25T12:23:00Z",
+  "source_of_truth": {
+    "repository": "pedrotorresepc13-glitch/possebon-portal",
+    "production_commit": "860fc20aeab2b2ec9e2658aad82c8dd4908e028a",
+    "production_evidence": "Studio > Versões screenshot de 25/11/2026 às 09:19 (America/Sao_Paulo)",
+    "git_default_branch": "main",
+    "studio_repository": "pedrotorresepc13-glitch/studio",
+    "studio_install_policy": "somente clique em Instalar; implementar no Studio antes de habilitar"
+  },
+  "production": {
+    "sha": "860fc20aeab2b2ec9e2658aad82c8dd4908e028a",
+    "verified": false,
+    "verification": "captura fornecida pelo usuário; não verificado por acesso SSH/API",
+    "last_known_utc": "2026-11-25T12:19:00Z"
+  },
+  "changes": {
+    "postgres_crud": {
+      "pr": 15,
+      "branch": "feat/portal-postgres-direct-crud-20261125",
+      "head": "522761d77fb8f2a803c03a745d36a8a00eefa0c0",
+      "prepared_detached": "def016463d6650caa9c89dc8908c0abe0f85e69e",
+      "state": "prepared_not_deployed"
+    },
+    "studio_manual_install": {
+      "pr": 19,
+      "branch": "fix/manual-install-version-history-20261125",
+      "head": "da131224d75a7abf65d67a8a724d159a7f50d314",
+      "state": "draft_not_deployed"
+    }
+  },
+  "parallel_work": [
+    {
+      "branch": "claude/vigilant-euler-mqp27p",
+      "agent": "Uchoa/Claude",
+      "relation_to_production": "6 commits ahead as of 25/11",
+      "state": "review_before_merge"
+    },
+    {
+      "branch": "claude/funny-bardeen-1mhujo",
+      "agent": "Uchoa/Claude",
+      "relation_to_production": "diverged 7 ahead, 71 behind as of 25/11",
+      "state": "do_not_deploy_without_rebase"
+    }
+  ],
+  "rules": [
+    "Consultar esta memória E o código GitHub real antes de alterar.",
+    "Confirmar produção pelo Studio; branch main não implica produção.",
+    "Conferir alterações paralelas do Uchoa e PRs abertos antes de editar.",
+    "Sempre preservar versão publicada, comparar sha da base, compilar/testar antes de oferecer instalar.",
+    "Commit registrado não significa build; build não significa produção.",
+    "Nenhum agente deve alterar PHP/MAD Builder ou o PostgreSQL operacional por conta de ajustes visuais.",
+    "Não registrar credenciais, dados de colaboradores ou tokens no cérebro."
+  ],
+  "sync": {
+    "status": "pending_configuration",
+    "method": "GitHub API scheduled workflow",
+    "last_checked": null,
+    "required_secret": "POSSEBON_PORTAL_SOURCE_TOKEN (read-only access to portal repository)",
+    "notice": "Sem token com permissão de leitura, o workflow marca atenção em vez de anunciar sincronização."
+  }
+}

@@ -1,0 +1,32 @@
+name: Sync POSSEBON Portal Brain
+on:
+  schedule:
+    - cron: '11,41 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: portal-brain-sync
+  cancel-in-progress: true
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Atualizar referências sem mudar produção
+        env:
+          POSSEBON_PORTAL_SOURCE_TOKEN: ${{ secrets.POSSEBON_PORTAL_SOURCE_TOKEN }}
+          POSSEBON_SOURCE_TOKEN: ${{ secrets.POSSEBON_SOURCE_TOKEN }}
+        run: python scripts/sync_portal_state.py
+      - name: Validar e registrar
+        run: |
+          python -m json.tool data/portal-state.json > /dev/null
+          git diff --exit-code -- data/portal-state.json && exit 0
+          git config user.name "possebon-portal-brain[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/portal-state.json
+          git commit -m "brain(portal): atualizar referências GitHub verificadas"
+          git push
