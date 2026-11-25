@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "POSSEBON Portal",
-  "updated_at": "2026-11-25T12:54:00Z",
+  "updated_at": "2026-11-25T12:59:00Z",
   "source_of_truth": {
     "repository": "pedrotorresepc13-glitch/possebon-portal",
     "production_commit": "860fc20aeab2b2ec9e2658aad82c8dd4908e028a",
@@ -31,7 +31,21 @@
       "head": "296eb97495c56b6ca1890e3f3390d5671481a197",
       "based_on": "feat/studio-versions-dashboard-20261117",
       "state": "prepared_not_deployed",
-      "notes": "PR #18 HEAD 296eb974, com verificação sintática V8 para nove módulos; ainda exige npm test, homologação SQLite, instalação segura do Studio real; pipeline apenas enfileira após POST Instalar. Excluir instalação devolve ao histórico sem apagar commit."
+      "notes": "PR #18 HEAD 296eb974, com verificação sintática V8 para nove módulos; ainda exige npm test, homologação SQLite, instalação segura do Studio real; pipeline apenas enfileira após POST Instalar. Excluir instalação devolve ao histórico sem apagar commit.",
+      "validation": {
+        "source": "Studio PR #18 head 296eb97495c56b6ca1890e3f3390d5671481a197",
+        "logicTests": "pass: enqueue does not build; explicit queued builds; push does not build; one-time migration preserves subsequent queued",
+        "method": "V8 with mocked database and runner; not full Node/SQLite integration",
+        "githubActions": {
+          "run": 45616821331,
+          "conclusion": "failure_before_steps",
+          "job": 139214243113,
+          "runner": "",
+          "steps": 0
+        },
+        "deployment": "not installed",
+        "mainProductionUnchanged": true
+      }
     }
   },
   "parallel_work": [
