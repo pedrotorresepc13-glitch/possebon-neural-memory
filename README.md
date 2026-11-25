@@ -116,3 +116,7 @@ Este repositório é uma página estática na raiz:
 - Root Directory: raiz do repositório
 
 A página principal é `index.html`.
+
+## POSSEBON Portal — cérebro e publicação
+
+O Portal possui memória própria em [data/portal-state.json](data/portal-state.json) e o [protocolo entre IAs](docs/portal-operating-protocol.md). Antes de editar o Portal ou o Studio, **todas as IAs devem conferir o commit publicado no Studio, os commits e PRs reais do GitHub e as branches paralelas do Uchoa**. Uma alteração preparada não equivale a versão instalada. A experiência de instalação manual está preparada no PR #18 do repositório Studio, ainda sujeita à validação e instalação controlada.
