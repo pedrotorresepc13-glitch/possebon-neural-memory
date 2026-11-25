@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "POSSEBON Portal",
-  "updated_at": "2026-11-25T12:40:00Z",
+  "updated_at": "2026-11-25T12:45:00Z",
   "source_of_truth": {
     "repository": "pedrotorresepc13-glitch/possebon-portal",
     "production_commit": "860fc20aeab2b2ec9e2658aad82c8dd4908e028a",
@@ -21,8 +21,9 @@
       "pr": 15,
       "branch": "feat/portal-postgres-direct-crud-20261125",
       "head": "522761d77fb8f2a803c03a745d36a8a00eefa0c0",
-      "prepared_detached": "def016463d6650caa9c89dc8908c0abe0f85e69e",
-      "state": "prepared_not_deployed"
+      "prepared_detached": "4b92e1d5e57d95622dccaad5a7e349c27eab62ce",
+      "state": "prepared_not_deployed",
+      "notes": "Implementação genérica de linhas de todas as tabelas públicas com filtro por unidade, segredo oculto, CRUD parametrizado, flags por módulo e auditoria durável; commit isolado enquanto Studio em produção ainda constrói automaticamente a cada push. Não publicada nem validada."
     },
     "studio_manual_install": {
       "pr": 18,
