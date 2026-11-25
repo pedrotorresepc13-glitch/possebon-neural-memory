@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "POSSEBON Portal",
-  "updated_at": "2026-11-25T12:23:00Z",
+  "updated_at": "2026-11-25T12:40:00Z",
   "source_of_truth": {
     "repository": "pedrotorresepc13-glitch/possebon-portal",
     "production_commit": "860fc20aeab2b2ec9e2658aad82c8dd4908e028a",
@@ -25,17 +25,19 @@
       "state": "prepared_not_deployed"
     },
     "studio_manual_install": {
-      "pr": 19,
-      "branch": "fix/manual-install-version-history-20261125",
-      "head": "da131224d75a7abf65d67a8a724d159a7f50d314",
-      "state": "draft_not_deployed"
+      "pr": 18,
+      "branch": "feat/studio-manual-install-publish-safe-20261125",
+      "head": "6eae7165ca2882e3307893b1f7e735bb6e925316",
+      "based_on": "feat/studio-versions-dashboard-20261117",
+      "state": "prepared_not_deployed",
+      "notes": "PR #19 superado; PR #18 mantém tela real de Versões e inclui Install/Excluir com histórico e rollback."
     }
   },
   "parallel_work": [
     {
       "branch": "claude/vigilant-euler-mqp27p",
       "agent": "Uchoa/Claude",
-      "relation_to_production": "6 commits ahead as of 25/11",
+      "relation_to_production": "9 commits à frente em 25/11; trabalho paralelo ativo; conferir cabeça da branch antes de integrar",
       "state": "review_before_merge"
     },
     {
@@ -52,7 +54,8 @@
     "Sempre preservar versão publicada, comparar sha da base, compilar/testar antes de oferecer instalar.",
     "Commit registrado não significa build; build não significa produção.",
     "Nenhum agente deve alterar PHP/MAD Builder ou o PostgreSQL operacional por conta de ajustes visuais.",
-    "Não registrar credenciais, dados de colaboradores ou tokens no cérebro."
+    "Não registrar credenciais, dados de colaboradores ou tokens no cérebro.",
+    "O PR #18 do Studio é a base para Instalar/Excluir manual; NÃO usar o PR #19 fechado que parte da main antiga."
   ],
   "sync": {
     "status": "pending_configuration",
