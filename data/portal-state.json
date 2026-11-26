@@ -88,7 +88,7 @@
   "sync": {
     "status": "attention",
     "method": "GitHub API scheduled workflow",
-    "last_checked": "2026-11-25T21:59:00.250661+00:00",
+    "last_checked": "2026-11-26T04:08:55.981961+00:00",
     "required_secret": "POSSEBON_PORTAL_SOURCE_TOKEN (read-only access to portal repository)",
     "notice": "Sem token com permissão de leitura, o workflow marca atenção em vez de anunciar sincronização.",
     "error": "HTTPError"
