@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "POSSEBON Portal",
-  "updated_at": "2026-11-25T13:06:00Z",
+  "updated_at": "2026-11-26T15:55:35.334Z",
   "source_of_truth": {
     "repository": "pedrotorresepc13-glitch/possebon-portal",
     "production_commit": "860fc20aeab2b2ec9e2658aad82c8dd4908e028a",
@@ -57,6 +57,13 @@
         "source": "user terminal output",
         "ui_click_verified": false
       }
+    },
+    "shared_brain": {
+      "status": "repository_ready_studio_pending",
+      "portal_main_protocol_commit": "ab5e6bc94b3bfac4ad9c3455598d4f50c2b9a229",
+      "studio_pr": 20,
+      "studio_branch": "feat/studio-portal-brain-editor-20261126",
+      "note": "Claude e proprietário usam um cérebro do mesmo repositório do Portal; a aba Cérebro do Studio ainda não foi instalada."
     }
   },
   "parallel_work": [
@@ -83,7 +90,8 @@
     "Não registrar credenciais, dados de colaboradores ou tokens no cérebro.",
     "O PR #18 do Studio é a base para Instalar/Excluir manual; NÃO usar o PR #19 fechado que parte da main antiga.",
     "A navegação do Gerenciador de Banco e alterações de Uchoa compartilham main.tsx: fazer merge real de três vias, nunca sobrescrever arquivos.",
-    "Studio PR18 instalador corrigido no HEAD 296eb974; ainda NÃO foi aplicado ao serviço."
+    "Studio PR18 instalador corrigido no HEAD 296eb974; ainda NÃO foi aplicado ao serviço.",
+    "O estado compartilhado de página, estilo e decisões do Portal é editado somente em possebon-portal, branch portal-brain; este JSON público é ponteiro/arquivo histórico."
   ],
   "sync": {
     "status": "attention",
@@ -92,5 +100,19 @@
     "required_secret": "POSSEBON_PORTAL_SOURCE_TOKEN (read-only access to portal repository)",
     "notice": "Sem token com permissão de leitura, o workflow marca atenção em vez de anunciar sincronização.",
     "error": "HTTPError"
+  },
+  "canonical_shared_brain": {
+    "repository": "pedrotorresepc13-glitch/possebon-portal",
+    "branch": "portal-brain",
+    "path": "docs/portal-brain/state.json",
+    "status": "active_in_github_not_yet_integrated_in_live_studio",
+    "read_write": "mesmas permissões de Contents: Read and write do próprio repositório privado Portal",
+    "files": [
+      "docs/portal-brain/state.json",
+      "docs/portal-brain/design-system.md",
+      "docs/portal-brain/decisions.md",
+      "docs/portal-brain/change-log.ndjson"
+    ],
+    "note": "Esta cópia pública é apenas ponteiro e histórico. Atualize o estado do Portal diretamente na branch privada portal-brain. Não tente gravar regras do Portal aqui."
   }
 }
