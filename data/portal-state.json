@@ -96,7 +96,7 @@
   "sync": {
     "status": "attention",
     "method": "GitHub API scheduled workflow",
-    "last_checked": "2026-11-27T15:03:27.955244+00:00",
+    "last_checked": "2026-11-27T23:27:06.970041+00:00",
     "required_secret": "POSSEBON_PORTAL_SOURCE_TOKEN (read-only access to portal repository)",
     "notice": "Falha na leitura opcional de branches. O cérebro canônico continua em portal-brain.",
     "error": "HTTPError"
